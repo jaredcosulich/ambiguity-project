@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Ambiguity Project</title>
+<meta name="description" content="The Ambiguity Project is a 501(c)(3) non-profit helping people better recognize, live with, and navigate ambiguity.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+:root {
+  --navy: #0C1F47;
+  --ink: #16161A;
+  --ivory: #FBFAF7;
+  --muted: #4A4F5C;
+  --body: #3A3D45;
+  --salmon: #F2A98C;
+  --salmon-tint: #FAEBE3;
+  --plum: #2B1D33;
+  --ochre: #D9A441;
+  --ochre-line: #B8841F;
+  --ochre-text: #7A5210;
+  --ochre-tint: #F6EBD2;
+  --sage: #3F6B61;
+  --sage-text: #2F564D;
+  --sage-tint: #E5EEEA;
+  --peri-tint: #E8EDF7;
+  --serif: 'Libre Caslon Text', Georgia, serif;
+  --sans: 'Source Sans 3', system-ui, sans-serif;
+  --gutter: clamp(20px, 5.5vw, 96px);
+  --section-y: clamp(56px, 7vw, 104px);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--ivory); color: var(--ink); font-family: var(--serif); -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; }
+a { color: var(--navy); }
+h1, h2, h3, p { margin: 0; font-weight: 400; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.wrap { padding-inline: var(--gutter); }
+
+/* Buttons & links */
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 22px; font-family: var(--sans); font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 3px; border: 2px solid transparent; cursor: pointer; }
+.btn-lg { min-height: 46px; padding: 0 24px; font-size: 15px; }
+.more { font-family: var(--sans); font-size: 14px; font-weight: 600; text-decoration: none; }
+.more:hover { text-decoration: underline; text-underline-offset: 4px; }
+.go { display: inline-block; transition: transform .25s ease; }
+
+/* Bracket section labels (echo the logo) */
+.label { position: relative; align-self: flex-start; padding: 6px 0 6px 18px; font-size: 24px; line-height: 1.1; }
+.label::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 42px; border: 2.5px solid currentColor; border-right: 0; border-radius: 2px 0 0 2px; color: var(--bracket, currentColor); }
+.eyebrow { font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
+
+/* Header + hero */
+.hero-band { position: relative; background: var(--navy); color: #fff; overflow: hidden; }
+.site-header { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 64px; border-bottom: 1px solid rgba(255,255,255,0.18); }
+.logo { display: block; line-height: 0; }
+.nav { display: flex; align-items: center; gap: 29px; font-family: var(--sans); font-size: 14px; font-weight: 600; }
+.nav a:not(.btn) { color: #fff; text-decoration: none; opacity: .88; }
+.nav a:not(.btn):hover { opacity: 1; text-decoration: underline; text-underline-offset: 6px; }
+.nav .btn { background: #fff; color: var(--navy); }
+.menu-btn { display: none; min-height: 44px; padding: 0 14px; font-family: var(--sans); font-size: 14px; font-weight: 600; color: #fff; background: transparent; border: 2px solid rgba(255,255,255,0.5); border-radius: 3px; cursor: pointer; }
+.hero { position: relative; padding-block: clamp(51px, 7.2vw, 102px) clamp(58px, 8vw, 112px); }
+.hero .eyebrow { color: rgba(255,255,255,0.78); }
+.hero h1 { margin-top: 16px; font-size: clamp(32px, 4.32vw, 62px); line-height: 1.02; letter-spacing: -0.02em; }
+.mission { position: relative; margin-top: clamp(24px, 2.5vw, 35px); font-size: clamp(20px, 2.24vw, 32px); line-height: 1.25; letter-spacing: -0.01em; }
+.slot { position: relative; display: inline-block; vertical-align: top; height: 1.25em; width: 6.9em; white-space: nowrap; color: var(--salmon); }
+.slot::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0.06em; height: 3px; background: var(--salmon); }
+.caret { display: inline-block; width: 3px; height: 0.9em; margin-left: 3px; vertical-align: -0.1em; background: var(--salmon); animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.measure { position: absolute; left: 0; top: 0; visibility: hidden; white-space: nowrap; pointer-events: none; }
+
+/* Books */
+.books { display: flex; align-items: center; justify-content: center; gap: clamp(40px, 7vw, 90px); padding-block: var(--section-y); background: var(--salmon-tint); color: var(--plum); }
+.cover { width: clamp(200px, 22vw, 288px); aspect-ratio: 2 / 3; height: auto; flex-shrink: 0; object-fit: cover; border-radius: 2px; box-shadow: 0 2px 4px rgba(43,29,51,0.14), 0 26px 52px rgba(43,29,51,0.28); transform: rotate(-4deg); transition: transform .45s cubic-bezier(.2,.8,.2,1); }
+.cover:hover { transform: rotate(0deg) translateY(-6px) scale(1.02); }
+.book-copy { display: flex; flex-direction: column; max-width: 560px; }
+.book-copy .eyebrow { margin-top: 22px; color: #6B3E32; }
+.book-copy h2 { margin-top: 10px; font-size: clamp(34px, 3.8vw, 54px); line-height: 1.04; letter-spacing: -0.02em; }
+.book-copy .subtitle { margin-top: 11px; font-size: clamp(17px, 1.5vw, 21px); line-height: 1.3; font-style: italic; color: #3B2E40; }
+.book-copy .meta { margin-top: 18px; font-family: var(--sans); font-size: 14px; color: #5A4A55; }
+.book-copy .blurb { margin-top: 22px; font-size: 16px; line-height: 1.55; color: #3B2E40; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; margin-top: 29px; }
+.books .btn { background: var(--plum); color: #fff; }
+.books .more { color: var(--plum); }
+
+/* Shared section header */
+.section { padding-block: var(--section-y); }
+.section-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px 32px; margin-bottom: clamp(28px, 3vw, 38px); }
+.section-head > div { display: flex; flex-direction: column; gap: 19px; }
+.section h2 { font-size: clamp(26px, 2.5vw, 35px); line-height: 1.18; }
+
+/* Cards */
+.card { text-decoration: none; color: var(--ink); background: #fff; border-radius: 6px; transition: transform .25s ease, box-shadow .25s ease; }
+.card:hover { transform: translateY(-5px); box-shadow: 0 14px 32px rgba(12,31,71,0.14); }
+.card:hover .go { transform: translateX(5px); }
+
+/* Blog */
+.blog .label { color: var(--ochre-text); --bracket: var(--ochre-line); }
+.blog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 26px); }
+.post { display: flex; flex-direction: column; border: 1px solid #ECE6D6; overflow: hidden; }
+.post-img { display: flex; align-items: center; justify-content: center; height: clamp(130px, 11vw, 190px); background: var(--ochre-tint); font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #6E4A0E; }
+.post-body { display: flex; flex-direction: column; gap: 10px; padding: 22px; }
+.post-meta { display: flex; align-items: center; gap: 10px; font-family: var(--sans); font-size: 13px; color: var(--muted); }
+.tag { padding: 2px 9px; background: var(--ochre); color: #2A1D05; font-weight: 600; border-radius: 999px; }
+.post-title { font-size: 21px; line-height: 1.25; }
+.read { font-family: var(--sans); font-size: 14px; font-weight: 600; color: var(--navy); }
+
+/* Technology */
+.tech { background: var(--sage-tint); }
+.tech-inner { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
+.tech-intro { display: flex; flex-direction: column; gap: 19px; }
+.tech .label { color: var(--sage-text); --bracket: var(--sage); }
+.tech .more { color: var(--sage-text); }
+.tools { display: flex; flex-direction: column; gap: 13px; }
+.tool { display: flex; align-items: center; gap: 22px; padding: 22px 26px; }
+.tool-icon { display: flex; align-items: center; justify-content: center; width: 51px; height: 51px; flex-shrink: 0; background: var(--sage-tint); border-radius: 6px; }
+.tool-text { flex-grow: 1; display: flex; flex-direction: column; gap: 5px; }
+.tool-name { font-size: 21px; }
+.tool-desc { font-size: 14px; line-height: 1.45; color: var(--body); }
+.tool .go { font-size: 21px; color: var(--sage); }
+
+/* Learn more */
+.learn { display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center; background: var(--peri-tint); }
+.learn .label { align-self: center; color: var(--navy); }
+.learn h2 { font-size: clamp(28px, 3vw, 42px); line-height: 1.15; }
+.learn .btn { border-color: var(--navy); color: var(--navy); background: transparent; }
+.learn .btn:hover { background: var(--navy); color: #fff; }
+
+/* Support */
+.support { position: relative; background: var(--navy); color: #fff; overflow: hidden; }
+.support-head { position: relative; display: flex; flex-direction: column; gap: 19px; margin-bottom: clamp(28px, 3vw, 38px); }
+.support .label { color: #fff; --bracket: var(--salmon); }
+.support h2 { font-size: clamp(30px, 3.4vw, 48px); line-height: 1.08; }
+.support h2 span { color: var(--salmon); }
+.support-grid { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; }
+.panel { display: flex; flex-direction: column; gap: 13px; padding: clamp(22px, 2.4vw, 32px); border-radius: 8px; }
+.panel h3 { font-size: 24px; }
+.panel p { font-size: 15px; line-height: 1.55; }
+.panel-updates { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.18); }
+.panel-updates p { color: rgba(255,255,255,0.85); }
+.panel-donate { background: #fff; color: var(--ink); }
+.panel-donate h3 { color: var(--navy); }
+.panel-donate p { color: var(--body); }
+.field-label { margin-top: 6px; font-family: var(--sans); font-size: 13px; font-weight: 600; }
+.signup { display: flex; flex-wrap: wrap; gap: 10px; }
+.signup input { flex: 1 1 200px; min-height: 44px; padding: 0 13px; font-family: var(--sans); font-size: 15px; color: var(--ink); background: #fff; border: 0; border-radius: 3px; }
+.signup .btn { background: var(--ochre); color: #2A1D05; }
+.amounts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+.amount { min-height: 44px; min-width: 70px; padding: 0 14px; font-family: var(--sans); font-size: 14px; font-weight: 600; color: var(--navy); background: #fff; border: 2px solid #C9CEDA; border-radius: 3px; cursor: pointer; }
+.amount[aria-pressed="true"] { color: #fff; background: var(--navy); border-color: var(--navy); }
+.donate-row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 3px; }
+.donate-row .btn { background: var(--navy); color: #fff; }
+.fine { font-family: var(--sans); font-size: 12px; color: var(--muted); }
+
+/* Footer */
+.site-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px; padding-block: 40px; font-family: var(--sans); font-size: 13px; color: var(--muted); }
+.footer-nav { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+.footer-nav a { color: var(--ink); text-decoration: none; }
+.footer-nav a:hover { color: var(--navy); text-decoration: underline; text-underline-offset: 5px; }
+
+/* Hero with quotes */
+.hero { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr); gap: clamp(40px, 6vw, 120px); align-items: center; }
+.quote { margin: 0; }
+.quote blockquote { margin: 0; position: relative; padding-top: 30px; }
+.quote blockquote::before { content: "\201C"; position: absolute; left: -4px; top: -18px; font-size: 72px; line-height: 1; color: var(--salmon); }
+.quote p { font-style: italic; color: rgba(255,255,255,0.92); }
+.quote figcaption { margin-top: 14px; font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.72); }
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; }
+  .quotes { max-width: 560px; }
+}
+.quote p { font-size: clamp(18px, 1.6vw, 23px); line-height: 1.45; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .blog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .blog-grid .post:nth-child(3) { display: none; }
+  .tech-inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 860px) {
+  .menu-btn { display: inline-flex; align-items: center; }
+  .nav { display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 10; flex-direction: column; align-items: stretch; gap: 0; padding: 8px var(--gutter) 20px; background: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.18); }
+  .nav.open { display: flex; }
+  .nav a:not(.btn) { padding: 12px 0; font-size: 16px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .nav .btn { margin-top: 14px; }
+  .books { flex-direction: column; text-align: left; }
+  .book-copy { max-width: 620px; }
+  .support-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .mission br { display: none; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .blog-grid .post:nth-child(3) { display: flex; }
+  .tool { padding: 18px; gap: 16px; }
+  .tool-icon { width: 44px; height: 44px; }
+  .site-footer { flex-direction: column; align-items: flex-start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .caret { animation: none; }
+  .cover, .card, .go { transition: none; }
+}
+</style>
+</head>
+<body>
+<!-- Static responsive mockup, based on design board I (G + extended palette). -->
+
+<div class="hero-band">
+  <header class="site-header wrap">
+    <a class="logo" href="#" aria-label="The Ambiguity Project home">
+      <svg role="img" aria-label="The Ambiguity Project" viewBox="0 0 900 545" width="58" height="35" xmlns="http://www.w3.org/2000/svg"><path d="M415 6 H10 V539 H415" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><g font-family="'Libre Caslon Text', Georgia, serif" font-size="140" fill="#FFFFFF"><text x="172" y="192">The</text><text x="172" y="320">Ambiguity</text><text x="172" y="448">Project</text></g></svg>
+    </a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
+    <nav class="nav" id="main-nav" aria-label="Main">
+      <a href="#books">Books</a>
+      <a href="#blog">Blog</a>
+      <a href="#technology">Technology</a>
+      <a href="#learn">Learn More</a>
+      <a class="btn" href="#support">Support Us</a>
+    </nav>
+  </header>
+  <section class="hero wrap">
+    <div class="hero-main">
+    <p class="eyebrow">A 501(c)(3) Non-Profit</p>
+    <h1>The Ambiguity Project</h1>
+    <p class="mission">Helping <span class="sr-only">people, students, businesses, governments, organizations, and schools</span><span class="slot" id="tw-slot" aria-hidden="true"><span id="tw-text">people</span><span class="caret"></span></span> better recognize,<br> live with, and navigate ambiguity.<span class="measure" id="tw-measure" aria-hidden="true">organizations</span></p>
+    </div>
+    <aside class="quotes" aria-label="Quote">
+      <figure class="quote"><blockquote><p>Doubt is not a pleasant condition, but certainty is an absurd one.</p></blockquote><figcaption>Voltaire</figcaption></figure>
+    </aside>
+  </section>
+</div>
+
+<section id="books" class="books wrap" aria-labelledby="books-h">
+  <img class="cover" src="images/book-cover.png" alt="Cover of Ambiguity Everywhere by Jared Cosulich: a salmon jigsaw puzzle with missing and loose pieces">
+  <div class="book-copy">
+    <p class="label">Books</p>
+    <p class="eyebrow">New book · Pre-order now</p>
+    <h2 id="books-h">Ambiguity Everywhere</h2>
+    <p class="subtitle">Shaping our lives, society, and the world</p>
+    <p class="blurb">
+      All of life’s experiences, from how we learn, to our relationships, to scientific progress,
+      to the economy, to voting, and much more, are ambiguous. Ambiguity Everywhere explores these wide-ranging 
+      aspects of our world and how experts in each approach and manage ambiguity. 
+    </p>
+    <div class="actions">
+      <a class="btn btn-lg" href="#">Pre-order the book</a>
+      <a class="more" href="#">About the book →</a>
+    </div>
+  </div>
+</section>
+
+<section id="blog" class="section blog wrap" aria-labelledby="blog-h">
+  <div class="section-head">
+    <div>
+      <p class="label">Blog</p>
+      <h2 id="blog-h">Follow our progress and learn more about work done around ambiguity.</h2>
+    </div>
+    <a class="more" href="#">All posts →</a>
+  </div>
+  <div class="blog-grid">
+    <a class="card post" href="#"><span class="post-img">[Post image]</span><span class="post-body"><span class="post-meta"><span class="tag">[Category]</span>[Date]</span><span class="post-title">[Post title]</span><span class="read">Read post <span class="go">→</span></span></span></a>
+    <a class="card post" href="#"><span class="post-img">[Post image]</span><span class="post-body"><span class="post-meta"><span class="tag">[Category]</span>[Date]</span><span class="post-title">[Post title]</span><span class="read">Read post <span class="go">→</span></span></span></a>
+    <a class="card post" href="#"><span class="post-img">[Post image]</span><span class="post-body"><span class="post-meta"><span class="tag">[Category]</span>[Date]</span><span class="post-title">[Post title]</span><span class="read">Read post <span class="go">→</span></span></span></a>
+  </div>
+</section>
+
+<section id="technology" class="section tech wrap" aria-labelledby="tech-h">
+  <div class="tech-inner">
+    <div class="tech-intro">
+      <p class="label">Technology</p>
+      <h2 id="tech-h">Explore some of the tools we've built to support people as they confront ambiguity in different situations.</h2>
+      <a class="more" href="#">All tools →</a>
+    </div>
+    <div class="tools">
+      <a class="card tool" href="#"><span class="tool-icon"><svg aria-hidden="true" width="29" height="29" viewBox="0 0 36 36" fill="none" stroke="#3F6B61" stroke-width="2.5" stroke-linecap="round"><path d="M14 4 H4 V32 H14"/><path d="M22 4 H32 V32 H22"/></svg></span><span class="tool-text"><span class="tool-name">[Tool name]</span><span class="tool-desc">[Who it's for and the situation it helps with.]</span></span><span class="go" aria-hidden="true">→</span></a>
+      <a class="card tool" href="#"><span class="tool-icon"><svg aria-hidden="true" width="29" height="29" viewBox="0 0 36 36" fill="none" stroke="#3F6B61" stroke-width="2.5" stroke-linecap="round"><path d="M14 4 H4 V32 H14"/><path d="M22 4 H32 V32 H22"/></svg></span><span class="tool-text"><span class="tool-name">[Tool name]</span><span class="tool-desc">[Who it's for and the situation it helps with.]</span></span><span class="go" aria-hidden="true">→</span></a>
+      <a class="card tool" href="#"><span class="tool-icon"><svg aria-hidden="true" width="29" height="29" viewBox="0 0 36 36" fill="none" stroke="#3F6B61" stroke-width="2.5" stroke-linecap="round"><path d="M14 4 H4 V32 H14"/><path d="M22 4 H32 V32 H22"/></svg></span><span class="tool-text"><span class="tool-name">[Tool name]</span><span class="tool-desc">[Who it's for and the situation it helps with.]</span></span><span class="go" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="learn" class="section learn wrap" aria-labelledby="learn-h">
+  <p class="label">Learn More</p>
+  <h2 id="learn-h">Learn more about what we are doing and how we do it.</h2>
+  <a class="btn btn-lg" href="#">About The Ambiguity Project</a>
+</section>
+
+<section id="support" class="section support wrap" aria-labelledby="support-h">
+  <div class="support-head">
+    <p class="label">Support Us</p>
+    <h2 id="support-h">Help us explore and support how people manage <span>ambiguity</span>.</h2>
+  </div>
+  <div class="support-grid">
+    <div class="panel panel-updates">
+      <h3>Get updates</h3>
+      <p>Stay up-to-date on what we're doing and what we're learning.</p>
+      <label class="field-label" for="email">Email address</label>
+      <form class="signup" onsubmit="return false">
+        <input id="email" type="email" placeholder="you@example.com" autocomplete="email">
+        <button class="btn" type="submit">Sign up</button>
+      </form>
+    </div>
+    <div class="panel panel-donate">
+      <h3>Donate</h3>
+      <p>Your gift funds research, writing, tools, and much more to come!</p>
+      <div class="amounts" role="group" aria-label="Donation amount">
+        <button class="amount" type="button" data-amount="$25" aria-pressed="false">$25</button>
+        <button class="amount" type="button" data-amount="$50" aria-pressed="true">$50</button>
+        <button class="amount" type="button" data-amount="$100" aria-pressed="false">$100</button>
+        <button class="amount" type="button" data-amount="Other" aria-pressed="false">Other</button>
+      </div>
+      <div class="donate-row">
+        <a class="btn btn-lg" href="#">Donate<span id="donate-label">&nbsp;$50</span></a>
+        <span class="fine">501(c)(3) · EIN [XX-XXXXXXX]</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer wrap">
+  <svg role="img" aria-label="The Ambiguity Project" viewBox="0 0 900 545" width="48" height="29" xmlns="http://www.w3.org/2000/svg"><path d="M415 6 H10 V539 H415" fill="none" stroke="#0C1F47" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><g font-family="'Libre Caslon Text', Georgia, serif" font-size="140"><text x="172" y="192" fill="#0C1F47">The</text><text x="172" y="320" fill="#1A1A1A">Ambiguity</text><text x="172" y="448" fill="#0C1F47">Project</text></g></svg>
+  <nav class="footer-nav" aria-label="Footer"><a href="#books">Books</a><a href="#blog">Blog</a><a href="#technology">Technology</a><a href="#learn">Learn More</a><a href="#support">Support Us</a></nav>
+  <span>© 2026 The Ambiguity Project</span>
+</footer>
+
+<script>
+(function () {
+  // Rotating word (typewriter), sized to the longest word so nothing shifts
+  var WORDS = ['people', 'students', 'businesses', 'governments', 'organizations', 'schools'];
+  var textEl = document.getElementById('tw-text');
+  var slot = document.getElementById('tw-slot');
+  var measure = document.getElementById('tw-measure');
+  function sizeSlot() { var w = measure.getBoundingClientRect().width; if (w) slot.style.width = Math.ceil(w + 8) + 'px'; }
+  sizeSlot();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(sizeSlot);
+  window.addEventListener('resize', sizeSlot);
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var k = 0, txt = WORDS[0], del = true;
+  function tick() {
+    if (reduce) { k = (k + 1) % WORDS.length; textEl.textContent = WORDS[k]; return setTimeout(tick, 2600); }
+    var w = WORDS[k];
+    if (del) {
+      if (txt.length) { txt = txt.slice(0, -1); textEl.textContent = txt; return setTimeout(tick, 45); }
+      del = false; k = (k + 1) % WORDS.length; return setTimeout(tick, 300);
+    }
+    if (txt.length < w.length) { txt = w.slice(0, txt.length + 1); textEl.textContent = txt; return setTimeout(tick, 90); }
+    del = true; setTimeout(tick, 1900);
+  }
+  setTimeout(tick, 2000);
+
+
+  // Mobile menu
+  var menuBtn = document.querySelector('.menu-btn');
+  var nav = document.getElementById('main-nav');
+  menuBtn.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuBtn.textContent = open ? 'Close' : 'Menu';
+  });
+  nav.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); menuBtn.textContent = 'Menu'; });
+  });
+
+  // Donation amount picker
+  var buttons = document.querySelectorAll('[data-amount]');
+  var label = document.getElementById('donate-label');
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      buttons.forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+      var amt = b.getAttribute('data-amount');
+      label.textContent = amt === 'Other' ? '' : ' ' + amt;
+    });
+  });
+
+  // Placeholder links stay put instead of jumping to the top
+  document.querySelectorAll('a[href="#"]').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); }); });
+})();
+</script>
+</body>
+</html>
