@@ -1,2 +1,111 @@
 .DS_Store
 .claude/settings.local.json
+
+# codeyam-editor:start
+# Managed by `codeyam-editor init` / `codeyam-editor start`.
+# Do not edit between these markers — your changes will be overwritten.
+# NOT ignored, deliberately: .codeyam/state/finalize-debt.json.
+# `verify-full-finalize` compares the COMMITTED marker against the working
+# tree, so ignoring it makes the gate impossible to ever pass. It is a
+# committed artifact — like a lockfile. Do not add it here.
+# NOT ignored, deliberately: .codeyam/manual-tests/.
+# Manual tests and their completion state ride in the repo alongside the
+# code they verify — that is the whole point of the store. Do not add a
+# broader `.codeyam/manual-tests/` rule here.
+.codeyam/secrets.json
+.codeyam/setup-connections.json
+.codeyam/session-token
+test-results/
+playwright-report/
+blob-report/
+.codeyam/logs/
+.codeyam/.locks/
+.codeyam/run/
+.codeyam/llm-calls/
+.codeyam/captures/
+.codeyam/uploads/
+.codeyam/results/
+.codeyam/reviews/
+.codeyam/summaries/
+.codeyam/tmp/
+.codeyam/_legacy/
+.codeyam/rules/
+.codeyam/bin/
+.codeyam/ca/
+.codeyam/audit-baseline-cache/
+.codeyam/setup-browser-driver.mjs
+.codeyam/setup-browser-profile/
+.codeyam/setup-browser-snapshot.json
+.codeyam/setup-browser-snapshot.png
+.codeyam/build-agent-handoff.md
+.codeyam/build-agent-session.json
+.codeyam/claude-session-id.txt
+.codeyam/editor-mode-context.md
+.codeyam/dev-mode-context.md
+.codeyam/editor-step.json
+.codeyam/editor-step.json.bak
+.codeyam/editor-step.json.preserve
+.codeyam/editor-task-tracking.json
+.codeyam/editor-pending-plan.json
+.codeyam/pending-build-launch
+.codeyam/feature-finalized.json
+.codeyam/cycle-closed.json
+.codeyam/editor-user-prompt.txt
+.codeyam/preview-shown.json
+.codeyam/preview-state.json
+.codeyam/preview-env.json
+.codeyam/preview-capture.png
+.codeyam/preview-capture.*.png
+.codeyam/preview-html/
+.codeyam/results-shown.json
+.codeyam/handoff-context.md
+.codeyam/session-narrative.json
+.codeyam/coverage-baseline.json
+.codeyam/coverage-check.json
+.codeyam/server.json
+.codeyam/server-state.json
+.codeyam/queue.json
+.codeyam/active-scenario.json
+.codeyam/armed-wakeups.json
+.codeyam/recent-runs.json
+.codeyam/session-marker.json
+.codeyam/editor.local.json
+.codeyam/stack.local.json
+.codeyam/cloud.json
+.codeyam/glossary-index.txt
+.codeyam/deps-index.txt
+.codeyam/generated/
+.codeyam/.last-reconcile.json
+.codeyam/.pending-decisions.json
+.codeyam/cache/
+.codeyam/reconciliation-log.jsonl
+.codeyam/runner-timing-history.json
+.codeyam/state/last-advance.txt
+.codeyam/state/provider-auth-verdict.json
+.codeyam/state/dependency-provision.json
+.codeyam/state/setup-provision.json
+.codeyam/state/session-results-snapshot.json
+.codeyam/state/pre-commit-sync-rebase-gate.json
+.codeyam/state/pre-commit-sync-orphan-bail.json
+.codeyam/state/step-highwater.json
+.codeyam/state/finalize-phase-fingerprints.json
+.codeyam/state/merge-drivers-version
+.codeyam/state/command-output/
+.codeyam/state/needs-login.json
+.codeyam/state/check-in-grant.json
+.codeyam/remote-backup-preference.json
+.codeyam/state/harness-tasks-dir
+.codeyam/state/tool-loading-injected.json
+.codeyam/state/refusal-fingerprints.json
+.codeyam/state/rebase-heal.json
+.codeyam/state/rebuild-self-restart.json
+.codeyam/state/push-auto-amend.json
+.codeyam/state/change-origin.json
+.codeyam/state/audit-split.json
+.codeyam/test-run-marker.json
+.claude/settings.local.json
+.claude/hooks/__pycache__/
+*.waits
+*.heartbeat
+docker-compose.cloud.yml
+# codeyam-editor:end
