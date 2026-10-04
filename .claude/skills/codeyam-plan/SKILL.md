@@ -89,7 +89,7 @@ what produces generic "look at the codebase" plans the editor workflow has
 to re-research at the `explore` slug:
 
 - `codeyam-editor editor glossary-find <name>` (flags: `--prefix`,
-  `--substring`, `--feature`, `--format`) — look up named entries
+  `--substring`, `--names-only`, `--fields`, `--format`) — look up named entries
 - `codeyam-editor editor glossary-list` / `glossary-untested` /
   `glossary-by-tag <tag>` — projections across the whole table
 - `.codeyam/glossary-index.txt` — line-oriented, greppable sidecar; safe to
@@ -196,9 +196,18 @@ denial mid-implementation.
 Based on what you found in investigation, ask 1-2 targeted clarifying questions — with your harness's structured-question tool (on Claude, `AskUserQuestion`), or as plain text listing the options if it has none. These should be **specific questions that emerged from reading the code**, not generic planning questions.
 
 Good questions:
-- "I found that X and Y are tightly coupled — should both be in scope, or just X?"
-- "The current implementation uses pattern A, but pattern B would be simpler here. Which do you prefer?"
-- "This change touches the API layer — should we include backend changes, or keep it frontend-only?"
+- "Changing how X works also changes Y — should this plan fix both (a bigger change, touching screens you use daily), or just X?"
+- "There are two ways to build this: one ships sooner, the other is easier to change later. Which matters more here?"
+- "This change could stay on screen or also change how saved data is stored. Should it include the storage change (more work, and older saved data gets converted)?"
+
+These questions come from code you just read, so they drift into that code's vocabulary — config keys, route paths, internal design names. The person answering may never have seen any of it. Say what each option changes for them (what they get, lose, or wait for), define any project term the first time it appears, and make each option lead to a different result. Before asking, run the draft through the checker, passing the exact options you will offer:
+
+```bash
+echo '{"questions":[{"question":"…","options":[{"label":"…","description":"…"}]}]}' \
+  | codeyam-editor editor check-question-copy --structured
+```
+
+It is advisory: it never blocks, but fix what it reports — an option that says what it operates on instead of what happens, or two options with no difference the reader can weigh.
 
 **Skip this step entirely** if the request is unambiguous and investigation answered all questions. Don't ask questions for the sake of asking — only when the answer genuinely affects the plan.
 
@@ -543,7 +552,12 @@ ask. Rendering these three as prose leaves the user typing "commit it" by hand
   ```
   After the commit succeeds, `plan-complete` triggers a confirmation modal
   in the Plan tab offering to start another plan or return to the queued
-  changes list. Only run `plan-complete` on this branch — not on "I want
+  changes list. Its first line says whether an editor tab actually took the
+  signal (`DELIVERED`), is about to (`QUEUED`), or none is connected
+  (`QUEUED, NOT DELIVERED` — the modal appears when a tab next connects); tell
+  the user which. If asked later why the modal did not appear, answer from
+  `codeyam-editor editor plan-complete-status` rather than from the code.
+  Only run `plan-complete` on this branch — not on "I want
   changes" (which loops back to Step 6) or "Discard" (which returns to
   Step 1 with no plan saved).
 - **I want changes** — Make the requested changes to the plan file, then go back to Step 6

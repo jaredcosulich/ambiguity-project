@@ -223,8 +223,51 @@ def _flagged_terms(project_dir, text):
         return []
 
 
-def _log_question_copy(project_dir, event_data):
+# Seconds to wait for the audience recorder. Like the jargon check it is an
+# observer: a slow binary costs the automatic save (the step's explicit
+# `audience --set` instruction still stands) and never delays the turn more.
+AUDIENCE_RECORD_TIMEOUT_S = 3
+
+
+def _record_audience_answer(project_dir, event_data):
+    """Save the answer to the one-time "explain or keep it brief?" question.
+
+    Asking and saving used to be two separate agent actions, and the save
+    was the one that got dropped — so the preference stayed unset and the
+    question came back. This hands every answered question to
+    `audience --record-answer`, which decides in Rust whether it was the
+    audience question (the label vocabulary lives beside the step copy that
+    defines it) and records the choice. It prints nothing and swallows every
+    failure: a hook that raises interrupts the turn.
+    """
+    try:
+        import subprocess
+
+        payload = json.dumps(
+            {
+                "tool_input": event_data.get("tool_input", {}) or {},
+                "tool_response": event_data.get("tool_response"),
+            }
+        )
+        subprocess.run(
+            [cli_command(), "editor", "audience", "--record-answer", "-"],
+            cwd=project_dir,
+            input=payload.encode("utf-8"),
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            timeout=AUDIENCE_RECORD_TIMEOUT_S,
+        )
+    except Exception:
+        pass
+
+
+def _log_question_copy(project_dir, event_data, in_cycle=True):
     """Append one line per question asked, to .codeyam/logs/question-copy.jsonl.
+
+    `in_cycle=False` is a question asked outside an editor session. It is
+    logged with a null slug and step — the ad-hoc shape — even when a stale
+    `editor-step.json` from an earlier cycle is still on disk, because no
+    step was in flight when it was asked.
 
     Written under `.codeyam/logs/` deliberately: that directory is already
     gitignored, so the log needs no new ignore rule and therefore no
@@ -244,11 +287,12 @@ def _log_question_copy(project_dir, event_data):
         slug = None
         step = None
         try:
-            state_path = os.path.join(project_dir, ".codeyam", "editor-step.json")
-            with open(state_path, "r") as f:
-                state = json.load(f)
-            slug = state.get("slug")
-            step = state.get("step")
+            if in_cycle:
+                state_path = os.path.join(project_dir, ".codeyam", "editor-step.json")
+                with open(state_path, "r") as f:
+                    state = json.load(f)
+                slug = state.get("slug")
+                step = state.get("step")
         except Exception:
             pass
 
@@ -260,10 +304,15 @@ def _log_question_copy(project_dir, event_data):
         with open(log_path, "a") as f:
             for question in questions:
                 text = question.get("question", "") or ""
-                labels = [
-                    (option or {}).get("label", "")
-                    for option in (question.get("options", []) or [])
+                options = [
+                    option or {} for option in (question.get("options", []) or [])
                 ]
+                labels = [option.get("label", "") or "" for option in options]
+                # Descriptions are recorded index-aligned with the labels:
+                # `question-copy-query` judges each option on its label and
+                # description together, and descriptions are where
+                # identifiers leaked most.
+                descriptions = [option.get("description", "") or "" for option in options]
                 # Check the labels alongside the question: an option label
                 # is a question the user has to answer too, and it is where
                 # jargon leaks most.
@@ -273,10 +322,13 @@ def _log_question_copy(project_dir, event_data):
                             "ts": now,
                             "slug": slug,
                             "step": step,
+                            "header": question.get("header", "") or "",
                             "question": text,
                             "optionLabels": labels,
+                            "optionDescriptions": descriptions,
                             "flaggedTerms": _flagged_terms(
-                                project_dir, " ".join([text] + labels)
+                                project_dir,
+                                " ".join([text] + labels + descriptions),
                             ),
                         }
                     )
@@ -545,23 +597,31 @@ def _observe_task_tool_capability(project_dir, tool_name, tool_input, tool_respo
 
 
 # How long `wedge-check` is allowed to take. It is a directory listing and a
-# handful of small reads, so anything approaching this is itself a malfunction —
-# and a hook that hung would freeze the very turn-end it is instrumenting.
+# handful of small reads, plus — only when a command was launched seconds ago —
+# a wait of at most 6s for it to get past its pre-flight (the editor's
+# `EARLY_BAIL_WAIT_BUDGET`, which must stay below this). Anything approaching
+# this is itself a malfunction — and a hook that hung would freeze the very
+# turn-end it is instrumenting.
 _WEDGE_CHECK_TIMEOUT_SECS = 10
 
 
 def _wedge_notice(project_dir):
     """Ask the editor whether this turn is ending on something worth saying.
 
-    `wedge-check` composes three verdicts and this call is blind to which one
+    `wedge-check` composes five verdicts and this call is blind to which one
     came back, deliberately — the hook's job is to put the text in front of the
     agent, and the editor owns what the text says:
+      * a background command already FAILED moments ago — typically a
+        precondition refusal seconds after launch — so the long wait the turn
+        is ending on is not happening;
       * a background task is demonstrably STRANDED — its result is not coming;
       * a background task is HEALTHY but has been running past the reporting
         threshold — waiting is correct, and the user should be told rather than
         left to ask;
       * the turn is ending mid-workflow with NOTHING pending and no question
-        outstanding, so nothing will re-invoke the agent.
+        outstanding, so nothing will re-invoke the agent;
+      * a cycle just CLOSED and no closing question has been asked since, so
+        the user was never alerted that the session finished.
 
     Returns the notice text, or "" for the overwhelmingly common case of
     nothing being wrong. Every failure mode collapses to "" on purpose: the
@@ -634,11 +694,25 @@ def emit_wedge_block(project_dir, event_data):
 
 
 def main():
-    # Only run in editor Build sessions
+    project_dir = os.environ.get("CLAUDE_PROJECT_DIR", os.getcwd())
+
+    # Only run in editor Build sessions — except for the question-copy
+    # observer. A question asked in a plain session on a codeyam project
+    # (plan authoring through a skill, say) reaches a user exactly as one
+    # asked mid-cycle does, and returning here first left the log blind to
+    # it: no reviewed VM had a log, because the ad-hoc path never set the
+    # flag. `.codeyam/` must exist so a non-codeyam checkout never grows one.
     if not os.environ.get("CODEYAM_EDITOR_ACTIVE"):
+        if os.path.isdir(os.path.join(project_dir, ".codeyam")):
+            event_type, event_data = detect_event()
+            if (
+                event_type == "post_tool_use"
+                and event_data.get("tool_name") == "AskUserQuestion"
+            ):
+                _log_question_copy(project_dir, event_data, in_cycle=False)
+                _record_audience_answer(project_dir, event_data)
         return
 
-    project_dir = os.environ.get("CLAUDE_PROJECT_DIR", os.getcwd())
     state_path = os.path.join(project_dir, ".codeyam", "editor-step.json")
     prompt_path = os.path.join(project_dir, ".codeyam", "editor-user-prompt.txt")
 
@@ -705,6 +779,7 @@ def main():
     # observer prints nothing and changes no control flow.
     if event_type == "post_tool_use" and event_data.get("tool_name") == "AskUserQuestion":
         _log_question_copy(project_dir, event_data)
+        _record_audience_answer(project_dir, event_data)
 
     if not os.path.exists(state_path):
         # No editor-step.json — a stateless session entry. This is the exact
@@ -726,6 +801,13 @@ def main():
                     "when it really is one — so do not judge build-vs-not yourself here."
                 )
                 print("</user-prompt-submit-hook>")
+        # A cycle that just closed has already wiped its step state, but its
+        # closing question may still be owed. Gated on the editor's owed
+        # marker so an ordinary stateless turn end pays no subprocess.
+        if event_type == "stop" and os.path.exists(
+            os.path.join(project_dir, ".codeyam", "run", "closing-question-owed.json")
+        ):
+            emit_wedge_block(project_dir, event_data)
         return
 
     try:

@@ -58,8 +58,8 @@ Do not check out anything until the user picks Full.
    ```
    Covered / uncovered / no-UI-impact buckets. The uncovered bucket is where
    you propose new `pr-review-` captures.
-5. Blast radius: `codeyam-editor editor deps-transitive-dependents <file>`
-   over each changed file (every file that directly or indirectly imports it).
+5. Blast radius: `codeyam-editor editor deps-query` subcommands over the
+   changed files (transitive dependents).
 6. Test delta with descriptions — diff `.codeyam/test-registry.json` between
    merge-base and head:
    ```bash
