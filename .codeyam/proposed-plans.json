@@ -18,7 +18,8 @@
       "body": "## Summary\n\nThe lockfile-sync hook required an `.nvmrc`, which now says 24 (the local Node). The deploy workflow uses `withastro/action@v3` without `node-version`, so CI builds on the action's default Node. Pin it so CI and local installs agree.\n\n## Key Decisions\n\n- Set `with: node-version: 24` on the `withastro/action@v3` step, with a comment tying it to `.nvmrc`.\n\n## Implementation\n\n- `.github/workflows/deploy.yml`: replace the commented-out `with:` block under \"Build Astro site\".\n- Push and confirm the run's \"Build Astro site\" step logs Node 24.",
       "reason": "`.nvmrc` pins Node 24, but `.github/workflows/deploy.yml` still builds with the Astro action's default Node.",
       "source": "session-review",
-      "status": "pending",
+      "status": "written",
+      "planSlug": "pin-node-24-in-the-github-pages-deploy-workflow",
       "proposedAt": "2026-10-04T16:04:54.920585619+00:00"
     },
     {
