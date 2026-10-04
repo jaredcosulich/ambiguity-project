@@ -85,7 +85,8 @@
       "body": "## Summary\n\nThe coverage plan for `src/components/MissionLine.astro` lists four code paths, and only the rotating-word paths have screenshots (`missionline-default`, `missionline-reduced-motion`). An editor can clear the mission prefix or suffix, or enter a single mission word, in Site Settings; none of those states has a scenario, so a layout break there would go unnoticed.\n\n## Key Decisions\n\n- Use the existing `?typewriter=static` flag so the new captures stay steady.\n- Seed through new `.codeyam/seeds/*.json` variants of `home-full.json` rather than new props, since MissionLine reads its text from `settings.json`.\n\n## Implementation\n\n1. Add seeds with an empty `missionPrefix`, an empty `missionSuffix`, and a single-word `missionWords`.\n2. Register `MissionLine - No Prefix Or Suffix` and `MissionLine - Single Word` component scenarios at `/isolated-components/MissionLine?typewriter=static`.\n3. Mark the matching states covered in `.codeyam/scenarios/coverage-plan/missionline.json` via the scenario taxonomy.",
       "reason": "MissionLine has code paths for a missing prefix or suffix and a single rotating word that no screenshot shows yet.",
       "source": "session-review",
-      "status": "pending",
+      "status": "written",
+      "planSlug": "cover-the-mission-line-s-prefix-suffix-and-single-word-states",
       "proposedAt": "2026-10-04T20:26:55.268668606+00:00"
     }
   ]
