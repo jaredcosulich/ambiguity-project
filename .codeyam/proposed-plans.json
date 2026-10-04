@@ -67,6 +67,16 @@
       "status": "written",
       "planSlug": "seeds-reset-site-data-files-they-don-t-mention",
       "proposedAt": "2026-10-04T19:03:25.996336144+00:00"
+    },
+    {
+      "id": "keep-the-isolate-command-from-re-ignoring-the-committed-preview-pages",
+      "title": "Keep the isolate command from re-ignoring the committed preview pages",
+      "mode": "backend",
+      "body": "## Summary\n\n`codeyam-editor editor isolate` is what originally added `/src/pages/isolated-components/` to `.gitignore`, and the Prepare step tells sessions to run `isolate --all` whenever an isolation route 404s. On this Astro stack the isolation pages are hand-written and now committed, so a future `isolate` run could re-add the ignore rule or overwrite a hand-tuned page (navy backgrounds, slotted content) without anyone noticing.\n\n## Key Decisions\n\n- Find out exactly what `isolate` writes on this stack (`.gitignore` block, page files) before changing anything.\n- Prevent the regression: either a check that fails when `.gitignore` ignores `src/pages/isolated-components/`, or a project setting that tells `isolate` the pages are committed and hand-owned.\n\n## Implementation\n\n- Run `isolate` for one existing component on a scratch branch and diff `.gitignore` and `src/pages/isolated-components/`.\n- Add a guard: a unit test next to `src/lib/isolationPages.test.ts` asserting `git check-ignore src/pages/isolated-components/SiteHeader.astro` reports not-ignored, or the equivalent stack setting.\n- Keep `src/lib/isolationPages.ts` (the build-time exclusion) unchanged.",
+      "reason": "The tool that first gitignored these pages is still the recommended recovery step, so it could undo this fix silently.",
+      "source": "session-review",
+      "status": "pending",
+      "proposedAt": "2026-10-04T19:12:53.760700705+00:00"
     }
   ]
 }
