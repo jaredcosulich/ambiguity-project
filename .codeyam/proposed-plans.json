@@ -1,0 +1,46 @@
+{
+  "proposals": [
+    {
+      "id": "commit-the-isolation-pages-so-component-scenarios-survive-a-fresh-clone",
+      "title": "Commit the isolation pages so component scenarios survive a fresh clone",
+      "mode": "ui",
+      "body": "## Summary\n\n`codeyam-editor editor isolate` added `/src/pages/isolated-components/` to `.gitignore`. On this Astro stack those pages are hand-written (real props, navy backgrounds for the white-on-navy parts, slotted content for SectionAnchor), not regenerated from the glossary, so a fresh clone has none of them and every component scenario 404s on capture. Keep the pages in the repo without shipping them in the production build.\n\n## Key Decisions\n\n- Commit `src/pages/isolated-components/*.astro` and remove the ignore rule.\n- Keep them out of `dist/`: guard each page (or a shared layout) so `astro build` emits nothing for `/isolated-components/*` — e.g. `getStaticPaths` returning no paths in production, or filtering the routes in an Astro integration hook.\n- Confirm with `astro build` that `dist/isolated-components` does not exist, and with `probe-isolation-routes` that dev still serves all of them.\n\n## Implementation\n\n- `.gitignore`: drop `/src/pages/isolated-components/`.\n- `src/pages/isolated-components/*.astro` (BracketLogo, FooterNav, LogoLink, MainNav, MenuToggle, NotFound, SectionAnchor, SiteFooter, SiteHeader): add the production guard.\n- Re-run `recapture-stale` and verify the scenarios still capture.",
+      "reason": "`isolate` gitignored src/pages/isolated-components/, so a fresh clone loses the hand-written isolation pages the 10 component scenarios capture.",
+      "source": "session-review",
+      "status": "pending",
+      "proposedAt": "2026-10-04T16:04:54.920585619+00:00"
+    },
+    {
+      "id": "pin-node-24-in-the-github-pages-deploy-workflow",
+      "title": "Pin Node 24 in the GitHub Pages deploy workflow",
+      "mode": "backend",
+      "body": "## Summary\n\nThe lockfile-sync hook required an `.nvmrc`, which now says 24 (the local Node). The deploy workflow uses `withastro/action@v3` without `node-version`, so CI builds on the action's default Node. Pin it so CI and local installs agree.\n\n## Key Decisions\n\n- Set `with: node-version: 24` on the `withastro/action@v3` step, with a comment tying it to `.nvmrc`.\n\n## Implementation\n\n- `.github/workflows/deploy.yml`: replace the commented-out `with:` block under \"Build Astro site\".\n- Push and confirm the run's \"Build Astro site\" step logs Node 24.",
+      "reason": "`.nvmrc` pins Node 24, but `.github/workflows/deploy.yml` still builds with the Astro action's default Node.",
+      "source": "session-review",
+      "status": "pending",
+      "proposedAt": "2026-10-04T16:04:54.920585619+00:00"
+    },
+    {
+      "id": "the-blog-section-shows-recent-substack-posts-wanted-soon-likely-a-later-session",
+      "title": "The Blog section shows recent Substack posts (wanted soon, likely a later session)",
+      "mode": "backend",
+      "body": "## Summary\n\nThe Blog section shows recent Substack posts (wanted soon, likely a later session)\n\nThis was deferred from the project's deliverables in an earlier build cycle. Investigate the current code before planning the implementation.",
+      "reason": "Deferred from this project's deliverables.",
+      "source": "deferred-deliverable",
+      "deliverableId": "the-blog-section-shows-recent-substack-posts",
+      "status": "pending",
+      "proposedAt": "2026-10-04T16:04:54.920585619+00:00"
+    },
+    {
+      "id": "support-us-section-with-working-newsletter-signup-and-donations-not-a-priority-yet",
+      "title": "Support Us section with working newsletter signup and donations (not a priority yet)",
+      "mode": "backend",
+      "body": "## Summary\n\nSupport Us section with working newsletter signup and donations (not a priority yet)\n\nThis was deferred from the project's deliverables in an earlier build cycle. Investigate the current code before planning the implementation.",
+      "reason": "Deferred from this project's deliverables.",
+      "source": "deferred-deliverable",
+      "deliverableId": "support-us-section-with-working-newsletter",
+      "status": "pending",
+      "proposedAt": "2026-10-04T16:04:54.920585619+00:00"
+    }
+  ]
+}

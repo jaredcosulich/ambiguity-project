@@ -6,32 +6,32 @@
     {
       "id": "the-home-page-from-the-mockup-rebuilt-as-a-real",
       "text": "The home page from the mockup rebuilt as a real Astro site with the same header, footer, colors and fonts",
-      "status": "open",
-      "resolvedAt": null,
-      "resolvedInFeature": null,
+      "status": "delivered",
+      "resolvedAt": "2026-10-04T16:03:51.704703259+00:00",
+      "resolvedInFeature": "Astro Site Foundation",
       "planSlug": null,
-      "note": null,
-      "decidedBy": null
+      "note": "Header, footer, tokens, fonts ported; section content comes in follow-up plans",
+      "decidedBy": "user"
     },
     {
       "id": "editors-sign-in-at-admin-and-change-the-site",
       "text": "Editors sign in at /admin and change the site title, menu, footer and home page text without touching code",
-      "status": "open",
-      "resolvedAt": null,
-      "resolvedInFeature": null,
+      "status": "delivered",
+      "resolvedAt": "2026-10-04T16:03:51.725035787+00:00",
+      "resolvedInFeature": "Astro Site Foundation",
       "planSlug": null,
-      "note": null,
-      "decidedBy": null
+      "note": "Title, footer, menu editable at /admin; home section text comes with the home-page-sections plan",
+      "decidedBy": "user"
     },
     {
       "id": "every-push-to-main-publishes-the-site-live-on",
       "text": "Every push to main publishes the site live on GitHub Pages at jaredcosulich.github.io/ambiguity-project/ (publishing work, handled at push)",
-      "status": "open",
-      "resolvedAt": null,
-      "resolvedInFeature": null,
+      "status": "delivered",
+      "resolvedAt": "2026-10-04T16:03:51.685276519+00:00",
+      "resolvedInFeature": "Astro Site Foundation",
       "planSlug": null,
-      "note": null,
-      "decidedBy": null
+      "note": "Pages switched to Actions; deploy workflow runs on push to main",
+      "decidedBy": "user"
     },
     {
       "id": "the-blog-section-shows-recent-substack-posts",
