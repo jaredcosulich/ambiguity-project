@@ -42,7 +42,8 @@
       "reason": "Deferred from this project's deliverables.",
       "source": "deferred-deliverable",
       "deliverableId": "support-us-section-with-working-newsletter",
-      "status": "pending",
+      "status": "written",
+      "planSlug": "support-us-section-with-working-newsletter-signup-and-donations-not-a-priority-yet",
       "proposedAt": "2026-10-04T16:04:54.920585619+00:00"
     }
   ]

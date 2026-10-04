@@ -47,9 +47,9 @@
       "id": "support-us-section-with-working-newsletter",
       "text": "Support Us section with working newsletter signup and donations (not a priority yet)",
       "status": "deferred",
-      "resolvedAt": "2026-10-04T15:32:45.713095814+00:00",
-      "resolvedInFeature": "Astro Site Foundation",
-      "planSlug": null,
+      "resolvedAt": "2026-10-04T16:05:40.180841473+00:00",
+      "resolvedInFeature": null,
+      "planSlug": "support-us-section-with-working-newsletter-signup-and-donations-not-a-priority-yet",
       "note": "User: not worried about support yet",
       "decidedBy": "user"
     }
