@@ -87,7 +87,9 @@
       ]
     },
     "astro.config.mjs": {
-      "imports": [],
+      "imports": [
+        "src/lib/isolationPages.ts"
+      ],
       "importedBy": []
     },
     "design/mockup/index.html": {
@@ -400,6 +402,19 @@
         "src/lib/site.ts",
         "src/lib/watchedCollectionLoader.ts",
         "scripts/sync-substack.mjs"
+      ]
+    },
+    "src/lib/isolationPages.test.ts": {
+      "imports": [
+        "src/lib/isolationPages.ts"
+      ],
+      "importedBy": []
+    },
+    "src/lib/isolationPages.ts": {
+      "imports": [],
+      "importedBy": [
+        "src/lib/isolationPages.test.ts",
+        "astro.config.mjs"
       ]
     },
     "src/lib/missionWords.test.ts": {
@@ -942,6 +957,15 @@
       ],
       "importedBy": []
     },
+    "astro.config.mjs::__file_root__": {
+      "filePath": "astro.config.mjs",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/isolationPages.ts::excludeIsolationPages",
+        "src/lib/isolationPages.ts::isIsolationPath"
+      ],
+      "importedBy": []
+    },
     "scripts/sync-substack.mjs::__file_root__": {
       "filePath": "scripts/sync-substack.mjs",
       "name": "__file_root__",
@@ -1253,6 +1277,33 @@
       "imports": [],
       "importedBy": [
         "scripts/sync-substack.mjs::__file_root__"
+      ]
+    },
+    "src/lib/isolationPages.test.ts::__file_root__": {
+      "filePath": "src/lib/isolationPages.test.ts",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/isolationPages.ts::excludeIsolationPages",
+        "src/lib/isolationPages.ts::isIsolationPath"
+      ],
+      "importedBy": []
+    },
+    "src/lib/isolationPages.ts::excludeIsolationPages": {
+      "filePath": "src/lib/isolationPages.ts",
+      "name": "excludeIsolationPages",
+      "imports": [],
+      "importedBy": [
+        "src/lib/isolationPages.test.ts::__file_root__",
+        "astro.config.mjs::__file_root__"
+      ]
+    },
+    "src/lib/isolationPages.ts::isIsolationPath": {
+      "filePath": "src/lib/isolationPages.ts",
+      "name": "isIsolationPath",
+      "imports": [],
+      "importedBy": [
+        "src/lib/isolationPages.test.ts::__file_root__",
+        "astro.config.mjs::__file_root__"
       ]
     },
     "src/lib/missionWords.test.ts::__file_root__": {
@@ -1896,5 +1947,5 @@
       ]
     }
   },
-  "lastUpdated": "2026-10-04T19:01:48Z"
+  "lastUpdated": "2026-10-04T19:11:56Z"
 }

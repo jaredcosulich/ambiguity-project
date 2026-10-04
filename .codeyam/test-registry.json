@@ -55,6 +55,24 @@
       "runner": "tests"
     },
     {
+      "description": "A build with no isolation pages (or a second run) must not fail.",
+      "file": "src/lib/isolationPages.test.ts",
+      "format": "vitest",
+      "key": "excludeIsolationPages › is a no-op when the folder is absent",
+      "line": 55,
+      "registeredAt": "2026-10-04T19:09:23Z",
+      "runner": "tests"
+    },
+    {
+      "description": "The build hook deletes the isolation output and leaves every other page in place.",
+      "file": "src/lib/isolationPages.test.ts",
+      "format": "vitest",
+      "key": "excludeIsolationPages › removes the isolated-components folder from the build output",
+      "line": 41,
+      "registeredAt": "2026-10-04T19:09:23Z",
+      "runner": "tests"
+    },
+    {
       "description": "The feed lives at /feed under the Substack home URL.",
       "file": "src/lib/substack.test.ts",
       "format": "vitest",
@@ -142,6 +160,51 @@
       "key": "initialTypewriterState › starts on the first word, ready to delete it",
       "line": 19,
       "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Only a whole path segment counts, so a page whose slug merely contains the word is kept.",
+      "file": "src/lib/isolationPages.test.ts",
+      "format": "vitest",
+      "key": "isIsolationPath › does not match a segment that only contains the directory name",
+      "line": 29,
+      "registeredAt": "2026-10-04T19:09:23Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Real site pages must stay in the sitemap.",
+      "file": "src/lib/isolationPages.test.ts",
+      "format": "vitest",
+      "key": "isIsolationPath › does not match ordinary pages",
+      "line": 23,
+      "registeredAt": "2026-10-04T19:09:23Z",
+      "runner": "tests"
+    },
+    {
+      "description": "A bare isolation route is recognised whatever the trailing slash.",
+      "file": "src/lib/isolationPages.test.ts",
+      "format": "vitest",
+      "key": "isIsolationPath › matches a bare isolation pathname",
+      "line": 10,
+      "registeredAt": "2026-10-04T19:09:23Z",
+      "runner": "tests"
+    },
+    {
+      "description": "The sitemap filter receives absolute URLs, including ones under a Pages base path.",
+      "file": "src/lib/isolationPages.test.ts",
+      "format": "vitest",
+      "key": "isIsolationPath › matches an absolute URL under a base path",
+      "line": 16,
+      "registeredAt": "2026-10-04T19:09:23Z",
+      "runner": "tests"
+    },
+    {
+      "description": "An empty string is not an isolation page.",
+      "file": "src/lib/isolationPages.test.ts",
+      "format": "vitest",
+      "key": "isIsolationPath › returns false for an empty string",
+      "line": 34,
+      "registeredAt": "2026-10-04T19:09:23Z",
       "runner": "tests"
     },
     {

@@ -1,0 +1,177 @@
+{
+  "timestamp": "2026-10-04T19:11:17Z",
+  "title": "Commit the isolation pages so component scenarios survive a fresh clone",
+  "type": "feature",
+  "userRequest": "## Summary\n\n`codeyam-editor editor isolate` added `/src/pages/isolated-components/` to `.gitignore`. On this Astro stack those pages are hand-written (real props, navy backgrounds for the white-on-navy parts, slotted content for SectionAnchor), not regenerated from the glossary, so a fresh clone has none of them and every component scenario 404s on capture. Keep the pages in the repo without shipping them in the production build.\n\n## Key Decisions\n\n- Commit `src/pages/isolated-components/*.astro` and remove the ignore rule.\n- Keep them out of `dist/`: guard each page (or a shared layout) so `astro build` emits nothing for `/isolated-components/*` — e.g. `getStaticPaths` returning no paths in production, or filtering the routes in an Astro integration hook.\n- Confirm with `astro build` that `dist/isolated-components` does not exist, and with `probe-isolation-routes` that dev still serves all of them.\n\n## Implementation\n\n- `.gitignore`: drop `/src/pages/isolated-components/`.\n- `src/pages/isolated-components/*.astro` (BracketLogo, FooterNav, LogoLink, MainNav, MenuToggle, NotFound, SectionAnchor, SiteFooter, SiteHeader): add the production guard.\n- Re-run `recapture-stale` and verify the scenarios still capture.",
+  "description": "The 23 hand-written /isolated-components/* capture pages are now committed instead of gitignored, so a fresh clone can capture every component scenario. A new Astro integration (src/lib/isolationPages.ts) deletes their output from dist/ at build time and the sitemap filter skips them, so they never ship to the public site; dev still serves all 23 (probe: 23/23 OK). Scope verdict: infrastructure-only, no project deliverable delivered or deferred by this cycle.",
+  "modifiedFiles": [
+    {
+      "path": ".codeyam/dependency-graph.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/glossary.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/per-test-evidence.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/plans/commit-the-isolation-pages-so-component-scenarios-survive-a-fresh-clone.md\t.codeyam/plans/completed/commit-the-isolation-pages-so-component-scenarios-survive-a-fresh-clone.md",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/all.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/4eb9ef320fd8deee3d67fea04a11be779dd5adcfa55c575de64ab743b820825e.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/51df3b254252f98d7c4516faf8c5eaef42c4402c9a80a8273befe5357680e8c5.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-registry.json",
+      "status": "modified"
+    },
+    {
+      "path": ".gitignore",
+      "status": "modified"
+    },
+    {
+      "path": "astro.config.mjs",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/106b74759bc11c94e3f072e38260e411c01b729dc651bc833c8f5688255772d0.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/d70158ef666452d20c60bbb52e6dc12231d9c25fd4f8b794fa1e0fdb1ef22899.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/dfb81d45895b30ad875a2f8194f35d753cef8e6d99db0dfa2152ff62576146a4.json",
+      "status": "added"
+    },
+    {
+      "path": "src/lib/isolationPages.test.ts",
+      "status": "added"
+    },
+    {
+      "path": "src/lib/isolationPages.ts",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/BlogEmptyCard.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/BlogSection.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/BookCover.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/BookFeature.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/BooksSection.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/BracketLogo.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/ContentPage.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/FooterNav.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/Hero.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/HeroQuote.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/LearnMore.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/LogoLink.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/MainNav.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/MenuToggle.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/MissionLine.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/NotFound.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/PostCard.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/PostCover.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/SectionAnchor.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/SiteFooter.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/SiteHeader.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/ToolCard.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/ToolsSection.astro",
+      "status": "added"
+    }
+  ],
+  "testResults": {
+    "total": 7,
+    "passed": 7,
+    "failed": 0,
+    "runners": [
+      {
+        "name": "tests",
+        "total": 7,
+        "passed": 7
+      }
+    ]
+  }
+}

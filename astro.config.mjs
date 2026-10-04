@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import codeyamCms from '@codeyam/cms';
+import { excludeIsolationPages, isIsolationPath } from './src/lib/isolationPages.ts';
 
 // Astro static-site config for free GitHub Pages hosting.
 //
@@ -22,7 +23,14 @@ export default defineConfig({
   output: 'static',
   site,
   base,
-  integrations: [react(), sitemap(), codeyamCms()],
+  // The committed /isolated-components/* capture pages are dev-only: the build
+  // deletes their output and the sitemap never lists them.
+  integrations: [
+    react(),
+    sitemap({ filter: (page) => !isIsolationPath(page) }),
+    codeyamCms(),
+    excludeIsolationPages(),
+  ],
   vite: {
     // Dev only: pre-bundle the CMS admin's markdown deps so /admin hydrates
     // without Vite discovering them mid-request and forcing a reload.

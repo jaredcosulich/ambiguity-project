@@ -1,0 +1,27 @@
+---
+import Component from '../../components/PostCover.astro';
+import '../../styles/global.css';
+
+// Isolation page for PostCover — codeyam screenshots the #codeyam-capture wrapper by
+// navigating to /isolated-components/PostCover. A real cover image beside the ochre
+// site-name panel used when a post has no cover, each at a blog card's width.
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Isolated: PostCover</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap" />
+  </head>
+  <body style="margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+    <div id="codeyam-capture" style="padding: 48px;">
+      <div style="display: flex; gap: 26px;">
+        <div style="width: 360px; display: flex;"><Component image="https://picsum.photos/seed/ambiguity-2/800/450" siteTitle="The Ambiguity Project" /></div>
+        <div style="width: 360px; display: flex;"><Component siteTitle="The Ambiguity Project" /></div>
+      </div>
+    </div>
+  </body>
+</html>

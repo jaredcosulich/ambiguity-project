@@ -1,0 +1,25 @@
+---
+import Component from '../../components/LearnMore.astro';
+import '../../styles/global.css';
+import { getSettings } from '../../lib/site';
+const s = getSettings();
+
+// Isolation page for LearnMore — codeyam screenshots the #codeyam-capture wrapper by
+// navigating to /isolated-components/LearnMore. Copy comes from the seeded settings.
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Isolated: LearnMore</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap" />
+  </head>
+  <body style="margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+    <div id="codeyam-capture" style="width: 100%;">
+      <Component heading={s.learnHeading} buttonLabel={s.learnButtonLabel} buttonUrl={s.learnButtonUrl} />
+    </div>
+  </body>
+</html>

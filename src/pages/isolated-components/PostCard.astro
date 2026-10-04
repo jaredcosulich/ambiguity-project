@@ -1,0 +1,49 @@
+---
+import Component from '../../components/PostCard.astro';
+import '../../styles/global.css';
+import type { SubstackPost } from '../../lib/substack';
+
+// Isolation page for PostCard — codeyam screenshots the #codeyam-capture wrapper by
+// navigating to /isolated-components/PostCard. Three cards at the home grid's column
+// width: a full post, one with no cover image, and a very long title with no category.
+const posts: SubstackPost[] = [
+  {
+    title: 'Why we stopped trying to resolve every disagreement',
+    url: 'https://ambiguityproject.substack.com/p/why-we-stopped',
+    date: '2026-09-28T14:00:00.000Z',
+    image: 'https://picsum.photos/seed/ambiguity-1/800/450',
+    category: 'Essays',
+  },
+  {
+    title: 'Ambiguity Everywhere is now available in paperback',
+    url: 'https://ambiguityproject.substack.com/p/paperback',
+    date: '2026-09-03T14:00:00.000Z',
+    category: 'Books',
+  },
+  {
+    title:
+      'What a medieval map, a supreme court judge, and a room full of engineers taught us about deciding well when nobody in the room can say for certain what happens next',
+    url: 'https://ambiguityproject.substack.com/p/long',
+    date: '2026-08-21T14:00:00.000Z',
+    image: 'https://picsum.photos/seed/ambiguity-4/800/450',
+  },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Isolated: PostCard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap" />
+  </head>
+  <body style="margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+    <div id="codeyam-capture" style="width: 100%; max-width: 1180px; padding: 48px;">
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px;">
+        {posts.map((post) => <Component post={post} siteTitle="The Ambiguity Project" />)}
+      </div>
+    </div>
+  </body>
+</html>

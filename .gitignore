@@ -119,9 +119,6 @@ blob-report/
 docker-compose.cloud.yml
 # codeyam-editor:end
 
-# CodeYam - local runtime state
-/src/pages/isolated-components/
-
 # Added by the app template
 dist/
 .astro/

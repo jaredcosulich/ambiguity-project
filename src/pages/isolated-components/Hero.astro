@@ -1,0 +1,29 @@
+---
+import Component from '../../components/Hero.astro';
+import '../../styles/global.css';
+import { getSettings } from '../../lib/site';
+import { getCollection } from 'astro:content';
+import { publishedEntries } from '@codeyam/cms/content';
+import { sortByOrder, pickFirstByOrder } from '../../lib/contentOrder';
+const settings = getSettings();
+const quote = pickFirstByOrder(await getCollection('quotes'));
+
+// Isolation page for Hero — codeyam screenshots the #codeyam-capture wrapper by
+// navigating to /isolated-components/Hero. Settings and the first quote come from the seeded sandbox.
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Isolated: Hero</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap" />
+  </head>
+  <body style="margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+    <div id="codeyam-capture" style="width: 100%;">
+      <Component settings={settings} quote={quote?.data} />
+    </div>
+  </body>
+</html>

@@ -53,3 +53,74 @@ Every push to `main` builds and publishes through
 `.github/workflows/deploy.yml`. Internal links go through `withBase()` so the
 site works under the `/ambiguity-project/` subpath today and at the root of a
 custom domain later. See `DEPLOY_SETUP.md`.
+
+<!-- codeyam:run-and-edit:start d=3a7aa108d126 -->
+## Develop this project with codeyam-editor
+
+This project is built with [codeyam-editor](https://codeyam.com) — code and runnable data scenarios are authored side by side against a live preview.
+
+```bash
+# Clone the repo
+git clone https://github.com/jaredcosulich/ambiguity-project && cd ambiguity-project
+
+# Install codeyam-editor
+npm install -g @codeyam-editor/codeyam-editor@latest
+
+# Launch the editor (split-screen terminal + live preview)
+codeyam-editor start
+```
+<!-- codeyam:run-and-edit:end -->
+
+<!-- codeyam:scenario-gallery:start d=31bc91a177ba -->
+## Scenario gallery
+
+States captured as runnable scenarios with codeyam-editor:
+
+### About Page
+
+<img src=".codeyam/scenarios/screenshots/about-page--desktop.png" alt="About Page" width="280">
+
+The About page that the Learn More button opens, rendered from the pages collection with the shared header and footer.
+
+### Home - Blog Latest Posts Mobile
+
+<img src=".codeyam/scenarios/screenshots/home-blog-latest-posts-mobile--mobile.png" alt="Home - Blog Latest Posts Mobile" width="280">
+
+At phone width the Blog section stacks the newest posts in a single column, with the All posts link wrapping under the heading.
+
+### Home - Blog Latest Posts Tablet
+
+<img src=".codeyam/scenarios/screenshots/home-blog-latest-posts-tablet--tablet.png" alt="Home - Blog Latest Posts Tablet" width="280">
+
+At tablet width the Blog section shows two cards side by side and hides the third, matching the mockup's two-column layout.
+
+### Admin Dashboard - Pages And Site Settings
+
+<img src=".codeyam/scenarios/screenshots/admin-dashboard-pages-and-site-settings--desktop.png" alt="Admin Dashboard - Pages And Site Settings" width="280">
+
+CodeYam CMS dashboard at /admin showing the pages collection and the Site settings entry point.
+
+### Home Shell - Mobile Menu Open
+
+<img src=".codeyam/scenarios/screenshots/home-shell-mobile-menu-open--mobile.png" alt="Home Shell - Mobile Menu Open" width="280">
+
+Home page at mobile width after tapping Menu: the nav drops down as divided rows with a full-width Support Us button and the toggle reads Close.
+
+### Home - Blog Latest Posts
+
+<img src=".codeyam/scenarios/screenshots/home-blog-latest-posts--desktop.png" alt="Home - Blog Latest Posts" width="280">
+
+Home page scrolled to the Blog section with ten synced Substack posts: only the newest three show as cards, one without a cover image falls back to the ochre site-name panel.
+
+### Home - Full Content Mobile
+
+<img src=".codeyam/scenarios/screenshots/home-full-content-mobile--mobile.png" alt="Home - Full Content Mobile" width="280">
+
+Full CMS-driven home page at phone width: hero stacks above the quote, the book stacks above its copy, tool cards fill the width.
+
+### Home Shell - Desktop
+
+<img src=".codeyam/scenarios/screenshots/home-shell-desktop--desktop.png" alt="Home Shell - Desktop" width="280">
+
+Home page at desktop width with the committed launch content, scrolled to Learn More: with no tools published the Technology section is hidden, so the Books band runs straight into Learn More and the footer.
+<!-- codeyam:scenario-gallery:end -->

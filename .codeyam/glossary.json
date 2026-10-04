@@ -311,6 +311,15 @@
     "testFile": "src/lib/substack.test.ts"
   },
   {
+    "description": "Astro integration whose build-done hook deletes the isolated-components folder from the build output so the committed capture pages never ship.",
+    "filePath": "src/lib/isolationPages.ts",
+    "name": "excludeIsolationPages",
+    "tags": [
+      "build"
+    ],
+    "testFile": "src/lib/isolationPages.test.ts"
+  },
+  {
     "description": "The RSS feed URL for a Substack home URL from the substackUrl setting, appending /feed and stripping trailing slashes.",
     "filePath": "src/lib/substack.ts",
     "name": "feedUrlFor",
@@ -370,6 +379,15 @@
       "home-sections"
     ],
     "testFile": "src/lib/typewriter.test.ts"
+  },
+  {
+    "description": "True when a URL or pathname has an isolated-components path segment; used by the sitemap filter to drop dev-only capture pages.",
+    "filePath": "src/lib/isolationPages.ts",
+    "name": "isIsolationPath",
+    "tags": [
+      "build"
+    ],
+    "testFile": "src/lib/isolationPages.test.ts"
   },
   {
     "description": "True inside astro build, so a production build always resolves committed content and ignores any sandbox override in the environment.",

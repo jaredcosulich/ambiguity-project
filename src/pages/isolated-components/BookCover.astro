@@ -1,0 +1,29 @@
+---
+import Component from '../../components/BookCover.astro';
+import '../../styles/global.css';
+import { getCollection } from 'astro:content';
+import { publishedEntries } from '@codeyam/cms/content';
+import { sortByOrder, pickFirstByOrder } from '../../lib/contentOrder';
+const books = sortByOrder(publishedEntries(await getCollection('books')));
+
+// Isolation page for BookCover — codeyam screenshots the #codeyam-capture wrapper by
+// navigating to /isolated-components/BookCover. Every seeded book's cover side by side, so a missing cover shows its fallback card.
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Isolated: BookCover</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap" />
+  </head>
+  <body style="margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+    <div id="codeyam-capture" style="width: 100%; padding: 64px; background: var(--salmon-tint);">
+      <div style="display: flex; gap: 64px; justify-content: center;">
+        {books.map((b) => <Component title={b.data.title} cover={b.data.cover} coverAlt={b.data.coverAlt} />)}
+      </div>
+    </div>
+  </body>
+</html>
