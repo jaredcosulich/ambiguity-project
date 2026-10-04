@@ -1,0 +1,21 @@
+{
+  "name": "SiteHeader - Mobile Menu Open",
+  "id": "b9ec4abe-c5f9-4ce0-b4b8-8f74f67bcce9",
+  "url": "/isolated-components/SiteHeader",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/site-default.json"
+  },
+  "componentName": "SiteHeader",
+  "scenarioType": "component",
+  "description": "Header at mobile width after tapping Menu: the nav drops down as divided rows with a full-width Support Us button and the toggle reads Close.",
+  "interactions": [
+    {
+      "action": "click",
+      "selector": ".menu-btn"
+    }
+  ]
+}

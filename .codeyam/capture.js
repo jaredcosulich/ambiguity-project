@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // codeyam-generated — DO NOT EDIT.
-// codeyam-editor: 0.1.7  build: 6efbd3cb6dd4d850013c04fdceb0f868c3bcf2a5  source-sha256: c5d6ec4e43d4ec78890d4ea3baa8bf1b35fb44dbe3a40424b9f03b54e9030e7e
+// codeyam-editor: 0.1.7  build: c9425b4a869a637747dc3195a193b5119a7cbf2a  source-sha256: 9f04a84846d56b79ddb0e22318f5c6ac77fa235210bc7766c9b1eaf058c70342
 
 // Render environment (colorScheme, deviceScaleFactor, userAgent, locale,
 // timezoneId, reduceMotion, forcedColors) is read from config when present
@@ -671,6 +671,42 @@ async function applyBrowserState(context, config) {
   if (Object.keys(headers).length > 0) {
     await context.setExtraHTTPHeaders(headers);
   }
+
+  // Tell the page it is under capture, before any app script runs. Browsers do
+  // not let page JS set headers on a WebSocket handshake, so the
+  // `X-Codeyam-Capture` header above cannot reach `/ws/terminal` — this flag is
+  // how a chat surface learns to render a placeholder instead of opening a
+  // socket, and how it knows to mark the socket it does open. Landing first
+  // also means app code cannot spoof it.
+  //
+  // `liveSocket` mirrors `scenarioScriptsLiveSocket`: the page's WebSocket is
+  // only left un-stubbed when the scenario scripts a transcript or a stream.
+  // The page needs BOTH bits, because the right behavior differs:
+  //
+  //   liveSocket true  — connect. The server replays the scripted transcript
+  //                      (a real conversation in the screenshot), or refuses
+  //                      the spawn if none matched. These are the scenarios
+  //                      that could reach a real agent, so they are the ones
+  //                      the server-side refusal actually guards.
+  //   liveSocket false — the harness stubs the socket, so a connect can never
+  //                      reach the server and never gets refused; it just
+  //                      retries and bakes a varying "Reconnecting… (attempt N
+  //                      of 15)" counter into the screenshot. Don't connect.
+  //
+  // Registered UNCONDITIONALLY, not inside the storage branch below: every
+  // capture needs it, for the same reason `codeyamHeaders` is always present.
+  await context.addInitScript(
+    (liveSocket) => {
+      try {
+        window.__codeyamCapture = true;
+        window.__codeyamCaptureLiveSocket = liveSocket;
+      } catch (_) {
+        // Never fail a capture over the marker; the server-side refusal is the
+        // load-bearing half and does not depend on this.
+      }
+    },
+    scenarioScriptsLiveSocket(config),
+  );
 
   // Strip the codeyam capture markers (and any scenario request headers) from
   // CROSS-ORIGIN requests. setExtraHTTPHeaders applies context-wide, so the
@@ -1633,10 +1669,13 @@ async function runScenarioCheck(
         createIssue(
           "navigation",
           "Captured the editor's dev-server placeholder, not the app. The proxy " +
-            `answered with \`${DEV_SERVER_DOWN_HEADER}\`, which means the app's dev ` +
-            "server was not serving this request. The screenshot would be of " +
-            "codeyam's own placeholder card. Start the app's dev server and re-run " +
-            "the capture.",
+            `answered with \`${DEV_SERVER_DOWN_HEADER}\`, which means the proxy ` +
+            "could not reach the app for this request. That happens two ways: the " +
+            "app's dev server is not running, or it is running and the proxy could " +
+            "not reach it this time. The screenshot would be of codeyam's own " +
+            "placeholder card. Re-run the capture first — it is the cheaper check, " +
+            "and a transient miss clears. If the same capture fails this way again, " +
+            "confirm the app's dev server is up and accepting connections.",
           { url, devServerDown: true },
         ),
       );

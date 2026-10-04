@@ -1,0 +1,239 @@
+{
+  "tests": [
+    {
+      "description": "Choosing a section closes the menu so the page content is visible again.",
+      "file": "src/lib/mobileMenu.test.ts",
+      "format": "vitest",
+      "key": "bindMobileMenu › closes the open menu when a nav link is followed",
+      "line": 59,
+      "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "Following a link while closed leaves the menu closed.",
+      "file": "src/lib/mobileMenu.test.ts",
+      "format": "vitest",
+      "key": "bindMobileMenu › keeps the menu closed when a link is followed while closed",
+      "line": 69,
+      "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "Each click on the toggle flips the menu between open and closed.",
+      "file": "src/lib/mobileMenu.test.ts",
+      "format": "vitest",
+      "key": "bindMobileMenu › toggles the menu on each button click",
+      "line": 49,
+      "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "The toggle offers the action that clicking it would take.",
+      "file": "src/lib/mobileMenu.test.ts",
+      "format": "vitest",
+      "key": "menuLabel › reads Close when open and Menu when closed",
+      "line": 16,
+      "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "With no override present (a real production build, or any process outside an editor session), the site reads its committed `src/content`.",
+      "file": "src/lib/contentRoot.test.ts",
+      "format": "vitest",
+      "key": "resolveContentRoot › defaults to _projectRoot_/src/content when no override is present",
+      "line": 55,
+      "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "The regression guard for the whole change: a real `.codeyam/tmp/content-root` file on disk must be IGNORED. Reading it redirected every process whose cwd was the project — including the developer's own `npm run dev` — and nothing ever deleted it, so one editor session made a checkout render scenario data forever. Red if the sidecar branch is reintroduced.",
+      "file": "src/lib/contentRoot.test.ts",
+      "format": "vitest",
+      "key": "resolveContentRoot › ignores a real .codeyam/tmp/content-root sidecar on disk",
+      "line": 39,
+      "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "A production build resolves committed source even with the override set. This is what makes the deploy guarantee structural rather than dependent on `.codeyam/tmp/` being gitignored and CI building from a clean checkout.",
+      "file": "src/lib/contentRoot.test.ts",
+      "format": "vitest",
+      "key": "resolveContentRoot › ignores the env override during a production build",
+      "line": 47,
+      "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "The env override wins outright — this is the only redirect channel, and it reaches the app through the environment of the dev server the editor spawns.",
+      "file": "src/lib/contentRoot.test.ts",
+      "format": "vitest",
+      "key": "resolveContentRoot › prefers the CODEYAM_CONTENT_ROOT env override",
+      "line": 29,
+      "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "With no override present the site reads its committed `src/data`.",
+      "file": "src/lib/contentRoot.test.ts",
+      "format": "vitest",
+      "key": "resolveDataRoot › defaults to _projectRoot_/src/data when no override is present",
+      "line": 89,
+      "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "The sidecar refusal covers the data root too — both ambient files the editor used to write are inert now, not just the content one.",
+      "file": "src/lib/contentRoot.test.ts",
+      "format": "vitest",
+      "key": "resolveDataRoot › ignores a real .codeyam/tmp/data-root sidecar on disk",
+      "line": 75,
+      "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "A production build resolves committed source even with the override set. This is what makes the deploy guarantee structural rather than dependent on `.codeyam/tmp/` being gitignored and CI building from a clean checkout.",
+      "file": "src/lib/contentRoot.test.ts",
+      "format": "vitest",
+      "key": "resolveDataRoot › ignores the env override during a production build",
+      "line": 47,
+      "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "The data root honors its own env override — the singleton half of the sandbox redirect, proving the two roots are wired independently.",
+      "file": "src/lib/contentRoot.test.ts",
+      "format": "vitest",
+      "key": "resolveDataRoot › prefers the CODEYAM_DATA_ROOT env override",
+      "line": 68,
+      "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "Closing reverses every change opening made.",
+      "file": "src/lib/mobileMenu.test.ts",
+      "format": "vitest",
+      "key": "setMenuOpen › closes the nav and restores the button",
+      "line": 37,
+      "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "Opening sets the class the CSS shows the nav on, plus the a11y state.",
+      "file": "src/lib/mobileMenu.test.ts",
+      "format": "vitest",
+      "key": "setMenuOpen › opens the nav and updates the button",
+      "line": 28,
+      "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "External links pass through unchanged so a nav item can point off-site.",
+      "file": "src/lib/navLinks.test.ts",
+      "format": "vitest",
+      "key": "toNavLinks › keeps external urls untouched",
+      "line": 51,
+      "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "The site's real nav: five section anchors, the last one the CTA button.",
+      "file": "src/lib/navLinks.test.ts",
+      "format": "vitest",
+      "key": "toNavLinks › maps every item and flags only the last as the call-to-action",
+      "line": 8,
+      "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "An empty nav renders no links rather than throwing.",
+      "file": "src/lib/navLinks.test.ts",
+      "format": "vitest",
+      "key": "toNavLinks › returns an empty list for an empty nav",
+      "line": 25,
+      "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "Dropdown-only parents have no URL and are skipped; the CTA is the last linked item.",
+      "file": "src/lib/navLinks.test.ts",
+      "format": "vitest",
+      "key": "toNavLinks › skips items without a url when choosing the call-to-action",
+      "line": 37,
+      "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "A single item is both the only link and the CTA.",
+      "file": "src/lib/navLinks.test.ts",
+      "format": "vitest",
+      "key": "toNavLinks › treats a single item as the call-to-action",
+      "line": 30,
+      "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "Nav section anchors point at the home page so they work from any page.",
+      "file": "src/lib/base.test.ts",
+      "format": "vitest",
+      "key": "withBase › anchors a hash link to the home page under the base",
+      "line": 24,
+      "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "On a custom domain the base is the root, so paths come back unchanged.",
+      "file": "src/lib/base.test.ts",
+      "format": "vitest",
+      "key": "withBase › leaves paths root-relative when the base is the domain root",
+      "line": 34,
+      "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "The home link resolves to the base itself, with its trailing slash.",
+      "file": "src/lib/base.test.ts",
+      "format": "vitest",
+      "key": "withBase › maps the root path to the base",
+      "line": 18,
+      "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "A bare relative path is treated the same as a root-absolute one.",
+      "file": "src/lib/base.test.ts",
+      "format": "vitest",
+      "key": "withBase › prefixes a relative path with the base",
+      "line": 11,
+      "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "A root-absolute internal path lands under the Pages subpath.",
+      "file": "src/lib/base.test.ts",
+      "format": "vitest",
+      "key": "withBase › prefixes a root-absolute path with the base",
+      "line": 6,
+      "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "External links must never be rewritten under the site base.",
+      "file": "src/lib/base.test.ts",
+      "format": "vitest",
+      "key": "withBase › returns external and protocol-relative URLs unchanged",
+      "line": 40,
+      "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "Astro may report the base without a trailing slash; links still join cleanly.",
+      "file": "src/lib/base.test.ts",
+      "format": "vitest",
+      "key": "withBase › tolerates a base without a trailing slash",
+      "line": 29,
+      "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    }
+  ],
+  "version": 2
+}

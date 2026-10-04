@@ -1,0 +1,15 @@
+{
+  "name": "Home Shell - Single Nav Item",
+  "id": "d0e9096a-531d-4eae-8ab1-ff4af76060e0",
+  "url": "/",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/site-single-nav-item.json"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "src/pages/index.astro",
+  "description": "Home page with a one-item menu: that lone item becomes the header's white call-to-action button."
+}

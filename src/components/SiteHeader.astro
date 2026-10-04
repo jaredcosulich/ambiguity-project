@@ -1,0 +1,40 @@
+---
+// The navy header band from the mockup: the bracket-logo home link, the main
+// nav (from the editable `nav.json`), and the mobile Menu/Close toggle.
+import LogoLink from './LogoLink.astro';
+import MenuToggle from './MenuToggle.astro';
+import MainNav from './MainNav.astro';
+import { getSettings, getNav } from '../lib/site';
+import { toNavLinks } from '../lib/navLinks';
+const settings = getSettings();
+const nav = getNav();
+
+const links = toNavLinks(nav.items);
+---
+
+<div class="header-band">
+  <header class="site-header wrap">
+    <LogoLink siteTitle={settings.siteTitle} />
+    {
+      links.length > 0 && (
+        <>
+          <MenuToggle controls="main-nav" />
+          <MainNav id="main-nav" links={links} />
+        </>
+      )
+    }
+  </header>
+</div>
+
+<script>
+  import { bindMobileMenu } from '../lib/mobileMenu';
+
+  const button = document.querySelector<HTMLElement>('.site-header .menu-btn');
+  const nav = document.getElementById('main-nav');
+  if (button && nav) bindMobileMenu(button, nav);
+</script>
+
+<style>
+  .header-band { position: relative; z-index: 10; background: var(--navy); color: #fff; }
+  .site-header { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 64px; border-bottom: 1px solid rgba(255,255,255,0.18); }
+</style>

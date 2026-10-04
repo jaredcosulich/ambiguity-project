@@ -1,0 +1,31 @@
+---
+// The header's main nav. Plain links on the navy band; the call-to-action
+// link (the last nav item) renders as the white button. Below 860px it is a
+// dropdown panel shown when the Menu toggle adds `.open`.
+import type { NavLink } from '../lib/navLinks';
+
+interface Props {
+  id: string;
+  links: NavLink[];
+}
+
+const { id, links } = Astro.props;
+---
+
+<nav class="nav" id={id} aria-label="Main">
+  {links.map((link) => <a class={link.isCta ? 'btn' : undefined} href={link.href}>{link.label}</a>)}
+</nav>
+
+<style>
+  .nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 8px 29px; padding-block: 10px; font-family: var(--sans); font-size: 14px; font-weight: 600; }
+  .nav a:not(.btn) { color: #fff; text-decoration: none; opacity: .88; }
+  .nav a:not(.btn):hover { opacity: 1; text-decoration: underline; text-underline-offset: 6px; }
+  .nav .btn { background: #fff; color: var(--navy); }
+
+  @media (max-width: 860px) {
+    .nav { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; flex-wrap: nowrap; align-items: stretch; gap: 0; padding: 8px var(--gutter) 20px; background: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.18); }
+    .nav.open { display: flex; }
+    .nav a:not(.btn) { padding: 12px 0; font-size: 16px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .nav .btn { margin-top: 14px; }
+  }
+</style>

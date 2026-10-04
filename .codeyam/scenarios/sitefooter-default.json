@@ -1,0 +1,15 @@
+{
+  "name": "SiteFooter - Default",
+  "id": "cf6cc99c-8122-4438-8ec0-6a2bc4fe8253",
+  "url": "/isolated-components/SiteFooter",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/site-default.json"
+  },
+  "componentName": "SiteFooter",
+  "scenarioType": "component",
+  "description": "Footer with the navy bracket logo, the five-section footer nav, and the copyright line."
+}

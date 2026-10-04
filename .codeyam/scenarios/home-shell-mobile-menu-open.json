@@ -1,0 +1,21 @@
+{
+  "name": "Home Shell - Mobile Menu Open",
+  "id": "9173df44-02a8-4245-9b84-ef91e0b22ad0",
+  "url": "/",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/site-default.json"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "src/pages/index.astro",
+  "description": "Home page at mobile width after tapping Menu: the nav drops down as divided rows with a full-width Support Us button and the toggle reads Close.",
+  "interactions": [
+    {
+      "action": "click",
+      "selector": ".menu-btn"
+    }
+  ]
+}

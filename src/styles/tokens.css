@@ -1,0 +1,25 @@
+/* Design tokens, ported from the mockup's :root (design/mockup/index.html).
+   The stack.json `styling.tokenFile` field points here, so codeyam treats this
+   file as the project's token source. Edit these to restyle the whole site. */
+:root {
+  --navy: #0C1F47;
+  --ink: #16161A;
+  --ivory: #FBFAF7;
+  --muted: #4A4F5C;
+  --body: #3A3D45;
+  --salmon: #F2A98C;
+  --salmon-tint: #FAEBE3;
+  --plum: #2B1D33;
+  --ochre: #D9A441;
+  --ochre-line: #B8841F;
+  --ochre-text: #7A5210;
+  --ochre-tint: #F6EBD2;
+  --sage: #3F6B61;
+  --sage-text: #2F564D;
+  --sage-tint: #E5EEEA;
+  --peri-tint: #E8EDF7;
+  --serif: 'Libre Caslon Text', Georgia, serif;
+  --sans: 'Source Sans 3', system-ui, sans-serif;
+  --gutter: clamp(20px, 5.5vw, 96px);
+  --section-y: clamp(56px, 7vw, 104px);
+}

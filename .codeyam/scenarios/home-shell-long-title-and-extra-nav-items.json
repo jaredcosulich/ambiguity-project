@@ -1,0 +1,15 @@
+{
+  "name": "Home Shell - Long Title And Extra Nav Items",
+  "id": "c0cdd356-c7f1-4d13-b5f6-39d0119fd10b",
+  "url": "/",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/site-long-title-extra-nav.json"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "src/pages/index.astro",
+  "description": "Home page with a long site title, extra nav items, and long footer text; header and footer stay intact."
+}

@@ -1,0 +1,1 @@
+{"schemaVersion":6,"version":4,"partition":"all","hash":"ed649414d277d538","runners":[{"name":"tests","format":"vitest-json","output":"","invoked_command":"npx vitest run --reporter=json","exit_code":0}],"runnerBlobs":{"tests":{"output":"d3834e2437624f6d52d30b5982ddaeb8220c9280e83c135642ea45dfc1ae6c82","tests":"daa00aecd3ae2fc205ea32f3a4abadaa30f87b96c733e200423b11bc0e27d634"}}}

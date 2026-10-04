@@ -1,0 +1,39 @@
+[
+  {
+    "name": "SiteSettings",
+    "description": "Site-wide editable settings singleton (src/data/settings.json), edited on the CMS Settings screen.",
+    "category": "datastore",
+    "order": 1,
+    "fields": [
+      { "name": "siteTitle", "type": "string", "required": true },
+      { "name": "description", "type": "string", "required": true },
+      { "name": "contactEmail", "type": "string", "required": false },
+      { "name": "footerText", "type": "string", "required": true },
+      { "name": "socials", "type": "array", "required": false },
+      { "name": "substackUrl", "type": "string", "required": false }
+    ]
+  },
+  {
+    "name": "SiteNav",
+    "description": "Header and footer navigation singleton (src/data/nav.json); items link to home page section anchors.",
+    "category": "datastore",
+    "order": 2,
+    "fields": [
+      { "name": "items", "type": "array", "required": true }
+    ]
+  },
+  {
+    "name": "Page",
+    "description": "Free-form site pages in the `pages` content collection (src/content/pages/*.md).",
+    "category": "datastore",
+    "order": 2,
+    "fields": [
+      { "name": "slug", "type": "string", "isId": true, "required": true },
+      { "name": "title", "type": "string", "required": true },
+      { "name": "description", "type": "string", "required": false },
+      { "name": "order", "type": "number", "required": false },
+      { "name": "draft", "type": "boolean", "required": false },
+      { "name": "body", "type": "string", "required": false }
+    ]
+  }
+]

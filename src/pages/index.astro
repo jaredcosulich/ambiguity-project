@@ -1,0 +1,19 @@
+---
+// Home page shell. Each section anchor is filled by a follow-up plan (books,
+// blog, technology, learn more, support); the ids match the nav links in
+// `nav.json`.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HiddenPageTitle from '../components/HiddenPageTitle.astro';
+import SectionAnchor from '../components/SectionAnchor.astro';
+import { getSettings } from '../lib/site';
+const settings = getSettings();
+---
+
+<BaseLayout description={settings.description}>
+  <HiddenPageTitle text={settings.siteTitle} />
+  <SectionAnchor id="books" label="Books" />
+  <SectionAnchor id="blog" label="Blog" />
+  <SectionAnchor id="technology" label="Technology" />
+  <SectionAnchor id="learn" label="Learn more" />
+  <SectionAnchor id="support" label="Support us" />
+</BaseLayout>

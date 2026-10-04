@@ -1,5 +1,5 @@
 // codeyam-generated — DO NOT EDIT.
-// codeyam-editor: 0.1.7  build: 6efbd3cb6dd4d850013c04fdceb0f868c3bcf2a5  source-sha256: 50fed448c040f57ee3c0f38128628b8bd752a12b249342024537a56d6cc0d860
+// codeyam-editor: 0.1.7  build: c9425b4a869a637747dc3195a193b5119a7cbf2a  source-sha256: 2431d28107b19e7ef2603ae172dc62e931a2d1ce67f7a0a62aa04da89e956f7e
 const {
   hasLoadingMarkers,
   shouldStopWaitingForImages,
@@ -100,6 +100,9 @@ function escapeHtmlAttribute(value) {
 // Preview. Callers (via scenario-check.js) pass a concrete color when the
 // UI has detected a background it wants the capture to paint behind the
 // iframe, e.g. `var(--bg-deep)` from the editor shell.
+// The iframe is named `codeyam-preview` (CODEYAM_PREVIEW_FRAME_NAME in
+// ui/src/helpers/previewMockPolicy.ts) so a framed editor page knows it is
+// inside codeyam's own capture, not a hosting IDE's pane.
 function buildIframeHarness(url, { background = "transparent" } = {}) {
   const escapedUrl = escapeHtmlAttribute(url);
   const bg = String(background);
@@ -126,7 +129,7 @@ function buildIframeHarness(url, { background = "transparent" } = {}) {
     </style>
   </head>
   <body>
-    <iframe id="scenario-frame" title="Scenario Preview" src="${escapedUrl}"></iframe>
+    <iframe id="scenario-frame" name="codeyam-preview" title="Scenario Preview" src="${escapedUrl}"></iframe>
   </body>
 </html>`;
 }

@@ -1,0 +1,15 @@
+{
+  "name": "LogoLink - Default",
+  "id": "1c163f04-c13f-4d4f-9203-f4b6337aa4a9",
+  "url": "/isolated-components/LogoLink",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/site-default.json"
+  },
+  "componentName": "LogoLink",
+  "scenarioType": "component",
+  "description": "The header's home link: the white bracket logo on navy."
+}

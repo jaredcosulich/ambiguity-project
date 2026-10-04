@@ -1,0 +1,37 @@
+{
+  "title": "Quick questions before I design this",
+  "lede": "This is the home page for The Ambiguity Project, a non-profit with a new book (Ambiguity Everywhere), a Substack blog, a few tools, and a way to sign up or donate. You already have a navy, ivory and salmon design for it.",
+  "questions": [
+    { "id": "approach", "type": "single", "title": "How far from your current design should I go?",
+      "why": "Your plans say to carry the current page design over as-is, so I want to know if you're after small refinements or new ideas.",
+      "options": [
+        { "label": "Refine the current look", "detail": "Same navy, ivory and salmon, with better layouts and details" },
+        { "label": "A mix", "detail": "A couple close to today's design, the rest new directions" },
+        { "label": "Start fresh", "detail": "New directions, keeping only the logo and the book" }
+      ] },
+    { "id": "lead", "type": "multi", "max": 2, "title": "What should a first-time visitor notice first?",
+      "why": "Right now the page opens on the mission and a quote, and the book comes second.",
+      "options": [ { "label": "The mission" }, { "label": "The book pre-order" }, { "label": "The blog" }, { "label": "Donating" }, { "label": "The tools" } ] },
+    { "id": "look", "type": "personality", "title": "What should it feel like?",
+      "why": "Ambiguity is a serious subject, but the book cover is playful with its puzzle pieces. I'd like to know where you want to land between those.",
+      "sliders": [ ["Playful", "Serious", 55], ["Bookish", "Modern", 40], ["Quiet", "Bold", 45] ],
+      "moreSliders": [ ["Warm", "Cool"], ["Airy", "Dense"] ],
+      "words": ["Curious", "Thoughtful", "Trustworthy", "Open", "Literary"],
+      "moreWords": ["Hopeful", "Calm", "Academic", "Approachable", "Puzzling"],
+      "maxWords": 6,
+      "textPlaceholder": "e.g. Like a good university press, but warmer" },
+    { "id": "accent", "type": "palette", "title": "Which color should lead?",
+      "why": "These are the colors already in your logo, mockup and book cover.",
+      "options": [
+        { "label": "Navy", "hex": "#0C1F47", "detail": "Your logo and current header" },
+        { "label": "Salmon", "hex": "#F2A98C", "detail": "The book cover" },
+        { "label": "Deep plum", "hex": "#2B1D33", "detail": "The cover's missing puzzle pieces" },
+        { "label": "Ochre", "hex": "#D9A441", "detail": "Your blog accent" }
+      ] },
+    { "id": "count", "type": "single", "title": "How many directions should I design?",
+      "why": "More directions give you more range to compare. Fewer are quicker to compare.",
+      "options": [ { "label": "2" }, { "label": "4" }, { "label": "6", "detail": "Recommended" }, { "label": "8" } ] },
+    { "id": "extra", "type": "free", "title": "Anything else I should know?", "why": "Optional. Sites you admire, things you dislike in the current design, and so on.", "placeholder": "e.g. I like how the book cover tilts" }
+  ],
+  "defaults": { "approach": "A mix", "lead": ["The mission", "The book pre-order"], "look": { "words": ["Curious", "Thoughtful", "Trustworthy"] }, "accent": "Navy", "count": "6" }
+}

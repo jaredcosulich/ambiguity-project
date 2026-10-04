@@ -1,0 +1,15 @@
+{
+  "name": "FooterNav - Default",
+  "id": "00a40798-88c5-40d8-99ab-7973b48bdcef",
+  "url": "/isolated-components/FooterNav",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/site-default.json"
+  },
+  "componentName": "FooterNav",
+  "scenarioType": "component",
+  "description": "Footer nav row mirroring the main nav as plain ink links."
+}

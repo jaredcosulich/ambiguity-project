@@ -1,0 +1,12 @@
+{
+  "collections": [],
+  "settings": [
+    {
+      "name": "substackUrl",
+      "label": "Substack URL",
+      "type": "text",
+      "optional": true,
+      "hint": "The publication's address, e.g. https://ambiguityproject.substack.com. The blog and newsletter signup read it."
+    }
+  ]
+}

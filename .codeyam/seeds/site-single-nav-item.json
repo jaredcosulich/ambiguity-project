@@ -1,0 +1,21 @@
+{
+  "seed": {
+    "settings": {
+      "siteTitle": "The Ambiguity Project",
+      "description": "The Ambiguity Project is a 501(c)(3) non-profit helping people better recognize, live with, and navigate ambiguity.",
+      "contactEmail": "",
+      "footerText": "\u00a9 2026 The Ambiguity Project",
+      "socials": [],
+      "substackUrl": ""
+    },
+    "nav": {
+      "items": [
+        {
+          "label": "Support Us",
+          "url": "#support"
+        }
+      ]
+    },
+    "pages": []
+  }
+}

@@ -1,0 +1,19 @@
+---
+// The Menu/Close button that reveals the main nav below 860px. Behavior is
+// wired by `bindMobileMenu` (src/lib/mobileMenu.ts) from the site header.
+interface Props {
+  controls: string;
+}
+
+const { controls } = Astro.props;
+---
+
+<button class="menu-btn" type="button" aria-expanded="false" aria-controls={controls}>Menu</button>
+
+<style>
+  .menu-btn { display: none; min-height: 44px; padding: 0 14px; font-family: var(--sans); font-size: 14px; font-weight: 600; color: #fff; background: transparent; border: 2px solid rgba(255,255,255,0.5); border-radius: 3px; cursor: pointer; }
+
+  @media (max-width: 860px) {
+    .menu-btn { display: inline-flex; align-items: center; }
+  }
+</style>

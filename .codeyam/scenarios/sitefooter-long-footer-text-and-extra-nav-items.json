@@ -1,0 +1,15 @@
+{
+  "name": "SiteFooter - Long Footer Text And Extra Nav Items",
+  "id": "55a9f25f-2a0c-4392-bff4-c328079e066f",
+  "url": "/isolated-components/SiteFooter",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/site-long-title-extra-nav.json"
+  },
+  "componentName": "SiteFooter",
+  "scenarioType": "component",
+  "description": "Footer with a long copyright line and seven nav items; links and text wrap cleanly."
+}

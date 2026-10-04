@@ -1,0 +1,919 @@
+{
+  "files": {
+    ".claude/hooks/_step_metadata.py": {
+      "imports": [],
+      "importedBy": []
+    },
+    ".claude/hooks/editor-pretool-hook.py": {
+      "imports": [],
+      "importedBy": []
+    },
+    ".claude/hooks/editor-step-hook.py": {
+      "imports": [],
+      "importedBy": []
+    },
+    ".claude/skills/review-session/scripts/extract-session-helpers.mjs": {
+      "imports": [],
+      "importedBy": [
+        ".claude/skills/review-session/scripts/extract-session.mjs"
+      ]
+    },
+    ".claude/skills/review-session/scripts/extract-session.mjs": {
+      "imports": [
+        ".claude/skills/review-session/scripts/extract-session-helpers.mjs"
+      ],
+      "importedBy": []
+    },
+    ".claude/skills/review-session/scripts/find-last-session-helpers.mjs": {
+      "imports": [],
+      "importedBy": [
+        ".claude/skills/review-session/scripts/find-last-session.mjs"
+      ]
+    },
+    ".claude/skills/review-session/scripts/find-last-session.mjs": {
+      "imports": [
+        ".claude/skills/review-session/scripts/find-last-session-helpers.mjs"
+      ],
+      "importedBy": []
+    },
+    ".codeyam/capture.js": {
+      "imports": [
+        ".codeyam/scenario-metrics.js",
+        ".codeyam/scenario-issues.js",
+        ".codeyam/scenario-mocks.js",
+        ".codeyam/scenario-playwright.js",
+        ".codeyam/scenario-handlers.js",
+        ".codeyam/scenario-interactivity.js"
+      ],
+      "importedBy": []
+    },
+    ".codeyam/scenario-handlers.js": {
+      "imports": [],
+      "importedBy": [
+        ".codeyam/capture.js"
+      ]
+    },
+    ".codeyam/scenario-interactivity.js": {
+      "imports": [],
+      "importedBy": [
+        ".codeyam/capture.js"
+      ]
+    },
+    ".codeyam/scenario-issues.js": {
+      "imports": [],
+      "importedBy": [
+        ".codeyam/capture.js"
+      ]
+    },
+    ".codeyam/scenario-metrics.js": {
+      "imports": [],
+      "importedBy": [
+        ".codeyam/capture.js",
+        ".codeyam/scenario-playwright.js"
+      ]
+    },
+    ".codeyam/scenario-mocks.js": {
+      "imports": [],
+      "importedBy": [
+        ".codeyam/capture.js"
+      ]
+    },
+    ".codeyam/scenario-playwright.js": {
+      "imports": [
+        ".codeyam/scenario-metrics.js"
+      ],
+      "importedBy": [
+        ".codeyam/capture.js"
+      ]
+    },
+    "astro.config.mjs": {
+      "imports": [],
+      "importedBy": []
+    },
+    "design/mockup/index.html": {
+      "imports": [],
+      "importedBy": []
+    },
+    "src/components/BracketLogo.astro": {
+      "imports": [],
+      "importedBy": [
+        "src/pages/isolated-components/BracketLogo.astro",
+        "src/components/LogoLink.astro",
+        "src/components/SiteFooter.astro"
+      ]
+    },
+    "src/components/FooterNav.astro": {
+      "imports": [
+        "src/lib/navLinks.ts"
+      ],
+      "importedBy": [
+        "src/pages/isolated-components/FooterNav.astro",
+        "src/components/SiteFooter.astro"
+      ]
+    },
+    "src/components/HiddenPageTitle.astro": {
+      "imports": [],
+      "importedBy": [
+        "src/pages/index.astro"
+      ]
+    },
+    "src/components/LogoLink.astro": {
+      "imports": [
+        "src/components/BracketLogo.astro",
+        "src/lib/base.ts"
+      ],
+      "importedBy": [
+        "src/pages/isolated-components/LogoLink.astro",
+        "src/components/SiteHeader.astro"
+      ]
+    },
+    "src/components/MainNav.astro": {
+      "imports": [
+        "src/lib/navLinks.ts"
+      ],
+      "importedBy": [
+        "src/pages/isolated-components/MainNav.astro",
+        "src/components/SiteHeader.astro"
+      ]
+    },
+    "src/components/MenuToggle.astro": {
+      "imports": [],
+      "importedBy": [
+        "src/pages/isolated-components/MenuToggle.astro",
+        "src/components/SiteHeader.astro"
+      ]
+    },
+    "src/components/NotFound.astro": {
+      "imports": [
+        "src/lib/base.ts"
+      ],
+      "importedBy": [
+        "src/pages/404.astro",
+        "src/pages/isolated-components/NotFound.astro"
+      ]
+    },
+    "src/components/SEO.astro": {
+      "imports": [
+        "src/lib/site.ts"
+      ],
+      "importedBy": [
+        "src/layouts/BaseLayout.astro"
+      ]
+    },
+    "src/components/SectionAnchor.astro": {
+      "imports": [],
+      "importedBy": [
+        "src/pages/index.astro",
+        "src/pages/isolated-components/SectionAnchor.astro"
+      ]
+    },
+    "src/components/SiteFooter.astro": {
+      "imports": [
+        "src/components/BracketLogo.astro",
+        "src/components/FooterNav.astro",
+        "src/lib/site.ts",
+        "src/lib/navLinks.ts"
+      ],
+      "importedBy": [
+        "src/pages/isolated-components/SiteFooter.astro",
+        "src/layouts/BaseLayout.astro"
+      ]
+    },
+    "src/components/SiteHeader.astro": {
+      "imports": [
+        "src/components/LogoLink.astro",
+        "src/components/MenuToggle.astro",
+        "src/components/MainNav.astro",
+        "src/lib/site.ts",
+        "src/lib/navLinks.ts"
+      ],
+      "importedBy": [
+        "src/pages/isolated-components/SiteHeader.astro",
+        "src/layouts/BaseLayout.astro"
+      ]
+    },
+    "src/content/config.ts": {
+      "imports": [],
+      "importedBy": []
+    },
+    "src/layouts/BaseLayout.astro": {
+      "imports": [
+        "src/styles/global.css",
+        "src/components/SEO.astro",
+        "src/components/SiteHeader.astro",
+        "src/components/SiteFooter.astro",
+        "src/lib/base.ts"
+      ],
+      "importedBy": [
+        "src/pages/index.astro",
+        "src/pages/404.astro"
+      ]
+    },
+    "src/lib/base.test.ts": {
+      "imports": [
+        "src/lib/base.ts"
+      ],
+      "importedBy": []
+    },
+    "src/lib/base.ts": {
+      "imports": [],
+      "importedBy": [
+        "src/lib/navLinks.ts",
+        "src/lib/base.test.ts",
+        "src/layouts/BaseLayout.astro",
+        "src/components/NotFound.astro",
+        "src/components/LogoLink.astro"
+      ]
+    },
+    "src/lib/contentRoot.test.ts": {
+      "imports": [
+        "src/lib/contentRoot.ts"
+      ],
+      "importedBy": []
+    },
+    "src/lib/contentRoot.ts": {
+      "imports": [],
+      "importedBy": [
+        "src/lib/contentRoot.test.ts",
+        "src/lib/site.ts"
+      ]
+    },
+    "src/lib/mobileMenu.test.ts": {
+      "imports": [
+        "src/lib/mobileMenu.ts"
+      ],
+      "importedBy": []
+    },
+    "src/lib/mobileMenu.ts": {
+      "imports": [],
+      "importedBy": [
+        "src/lib/mobileMenu.test.ts"
+      ]
+    },
+    "src/lib/navLinks.test.ts": {
+      "imports": [
+        "src/lib/navLinks.ts"
+      ],
+      "importedBy": []
+    },
+    "src/lib/navLinks.ts": {
+      "imports": [
+        "src/lib/base.ts",
+        "src/lib/site.ts"
+      ],
+      "importedBy": [
+        "src/lib/navLinks.test.ts",
+        "src/pages/isolated-components/MainNav.astro",
+        "src/pages/isolated-components/FooterNav.astro",
+        "src/components/MainNav.astro",
+        "src/components/FooterNav.astro",
+        "src/components/SiteFooter.astro",
+        "src/components/SiteHeader.astro"
+      ]
+    },
+    "src/lib/site.ts": {
+      "imports": [
+        "src/lib/contentRoot.ts"
+      ],
+      "importedBy": [
+        "src/lib/navLinks.ts",
+        "src/pages/index.astro",
+        "src/pages/isolated-components/BracketLogo.astro",
+        "src/pages/isolated-components/MainNav.astro",
+        "src/pages/isolated-components/FooterNav.astro",
+        "src/pages/isolated-components/LogoLink.astro",
+        "src/components/SEO.astro",
+        "src/components/SiteFooter.astro",
+        "src/components/SiteHeader.astro"
+      ]
+    },
+    "src/pages/404.astro": {
+      "imports": [
+        "src/layouts/BaseLayout.astro",
+        "src/components/NotFound.astro"
+      ],
+      "importedBy": []
+    },
+    "src/pages/index.astro": {
+      "imports": [
+        "src/layouts/BaseLayout.astro",
+        "src/components/HiddenPageTitle.astro",
+        "src/components/SectionAnchor.astro",
+        "src/lib/site.ts"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/BracketLogo.astro": {
+      "imports": [
+        "src/components/BracketLogo.astro",
+        "src/lib/site.ts",
+        "src/styles/global.css"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/FooterNav.astro": {
+      "imports": [
+        "src/components/FooterNav.astro",
+        "src/lib/site.ts",
+        "src/lib/navLinks.ts",
+        "src/styles/global.css"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/LogoLink.astro": {
+      "imports": [
+        "src/components/LogoLink.astro",
+        "src/lib/site.ts",
+        "src/styles/global.css"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/MainNav.astro": {
+      "imports": [
+        "src/components/MainNav.astro",
+        "src/lib/site.ts",
+        "src/lib/navLinks.ts",
+        "src/styles/global.css"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/MenuToggle.astro": {
+      "imports": [
+        "src/components/MenuToggle.astro",
+        "src/styles/global.css"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/NotFound.astro": {
+      "imports": [
+        "src/components/NotFound.astro",
+        "src/styles/global.css"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/SectionAnchor.astro": {
+      "imports": [
+        "src/components/SectionAnchor.astro",
+        "src/styles/global.css"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/SiteFooter.astro": {
+      "imports": [
+        "src/components/SiteFooter.astro",
+        "src/styles/global.css"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/SiteHeader.astro": {
+      "imports": [
+        "src/components/SiteHeader.astro",
+        "src/styles/global.css"
+      ],
+      "importedBy": []
+    },
+    "src/styles/global.css": {
+      "imports": [],
+      "importedBy": [
+        "src/pages/isolated-components/SectionAnchor.astro",
+        "src/pages/isolated-components/BracketLogo.astro",
+        "src/pages/isolated-components/NotFound.astro",
+        "src/pages/isolated-components/MainNav.astro",
+        "src/pages/isolated-components/MenuToggle.astro",
+        "src/pages/isolated-components/FooterNav.astro",
+        "src/pages/isolated-components/LogoLink.astro",
+        "src/pages/isolated-components/SiteFooter.astro",
+        "src/pages/isolated-components/SiteHeader.astro",
+        "src/layouts/BaseLayout.astro"
+      ]
+    },
+    "vitest.config.ts": {
+      "imports": [],
+      "importedBy": []
+    }
+  },
+  "entities": {
+    ".claude/skills/review-session/scripts/extract-session-helpers.mjs::buildConversationTurns": {
+      "filePath": ".claude/skills/review-session/scripts/extract-session-helpers.mjs",
+      "name": "buildConversationTurns",
+      "imports": [],
+      "importedBy": [
+        ".claude/skills/review-session/scripts/extract-session.mjs::__file_root__"
+      ]
+    },
+    ".claude/skills/review-session/scripts/extract-session-helpers.mjs::detectFormat": {
+      "filePath": ".claude/skills/review-session/scripts/extract-session-helpers.mjs",
+      "name": "detectFormat",
+      "imports": [],
+      "importedBy": [
+        ".claude/skills/review-session/scripts/extract-session.mjs::__file_root__"
+      ]
+    },
+    ".claude/skills/review-session/scripts/extract-session-helpers.mjs::detectFormatFromPath": {
+      "filePath": ".claude/skills/review-session/scripts/extract-session-helpers.mjs",
+      "name": "detectFormatFromPath",
+      "imports": [],
+      "importedBy": [
+        ".claude/skills/review-session/scripts/extract-session.mjs::__file_root__"
+      ]
+    },
+    ".claude/skills/review-session/scripts/extract-session.mjs::__file_root__": {
+      "filePath": ".claude/skills/review-session/scripts/extract-session.mjs",
+      "name": "__file_root__",
+      "imports": [
+        ".claude/skills/review-session/scripts/extract-session-helpers.mjs::buildConversationTurns",
+        ".claude/skills/review-session/scripts/extract-session-helpers.mjs::detectFormat",
+        ".claude/skills/review-session/scripts/extract-session-helpers.mjs::detectFormatFromPath"
+      ],
+      "importedBy": []
+    },
+    ".claude/skills/review-session/scripts/find-last-session-helpers.mjs::claudeProjectHashFromPath": {
+      "filePath": ".claude/skills/review-session/scripts/find-last-session-helpers.mjs",
+      "name": "claudeProjectHashFromPath",
+      "imports": [],
+      "importedBy": [
+        ".claude/skills/review-session/scripts/find-last-session.mjs::__file_root__"
+      ]
+    },
+    ".claude/skills/review-session/scripts/find-last-session-helpers.mjs::readBuildSessionIds": {
+      "filePath": ".claude/skills/review-session/scripts/find-last-session-helpers.mjs",
+      "name": "readBuildSessionIds",
+      "imports": [],
+      "importedBy": [
+        ".claude/skills/review-session/scripts/find-last-session.mjs::__file_root__"
+      ]
+    },
+    ".claude/skills/review-session/scripts/find-last-session-helpers.mjs::sessionSourceLabel": {
+      "filePath": ".claude/skills/review-session/scripts/find-last-session-helpers.mjs",
+      "name": "sessionSourceLabel",
+      "imports": [],
+      "importedBy": [
+        ".claude/skills/review-session/scripts/find-last-session.mjs::__file_root__"
+      ]
+    },
+    ".claude/skills/review-session/scripts/find-last-session.mjs::__file_root__": {
+      "filePath": ".claude/skills/review-session/scripts/find-last-session.mjs",
+      "name": "__file_root__",
+      "imports": [
+        ".claude/skills/review-session/scripts/find-last-session-helpers.mjs::claudeProjectHashFromPath",
+        ".claude/skills/review-session/scripts/find-last-session-helpers.mjs::readBuildSessionIds",
+        ".claude/skills/review-session/scripts/find-last-session-helpers.mjs::sessionSourceLabel"
+      ],
+      "importedBy": []
+    },
+    ".codeyam/capture.js::{\n  assertAppPortReachable,\n  defaultReadServerState,\n  loadScenarioInIframe,\n  loadScenarioTopLevel,\n  resolveHarnessOrigin,\n  waitForStablePage,\n  createNetworkTracker,\n  waitForNetworkQuiet,\n  collectContentState,\n  scrollThroughDocument,\n  collectVisibleTextLength,\n  forceFinalVisualState,\n  centerCaptureWrapper,\n  performInteraction,\n  waitForPredicate,\n  performInteractionSequence,\n}": {
+      "filePath": ".codeyam/capture.js",
+      "name": "{\n  assertAppPortReachable,\n  defaultReadServerState,\n  loadScenarioInIframe,\n  loadScenarioTopLevel,\n  resolveHarnessOrigin,\n  waitForStablePage,\n  createNetworkTracker,\n  waitForNetworkQuiet,\n  collectContentState,\n  scrollThroughDocument,\n  collectVisibleTextLength,\n  forceFinalVisualState,\n  centerCaptureWrapper,\n  performInteraction,\n  waitForPredicate,\n  performInteractionSequence,\n}",
+      "imports": [
+        ".codeyam/scenario-playwright.js::__file_root__"
+      ],
+      "importedBy": []
+    },
+    ".codeyam/capture.js::{\n  attachHttpMocks,\n  isDeclaredErrorMock,\n  unmockedRouteFrom,\n}": {
+      "filePath": ".codeyam/capture.js",
+      "name": "{\n  attachHttpMocks,\n  isDeclaredErrorMock,\n  unmockedRouteFrom,\n}",
+      "imports": [
+        ".codeyam/scenario-mocks.js::__file_root__"
+      ],
+      "importedBy": []
+    },
+    ".codeyam/capture.js::{\n  buildCounterpartProbe,\n  subpathHydrationEscalation,\n  waitForHydration,\n}": {
+      "filePath": ".codeyam/capture.js",
+      "name": "{\n  buildCounterpartProbe,\n  subpathHydrationEscalation,\n  waitForHydration,\n}",
+      "imports": [
+        ".codeyam/scenario-interactivity.js::__file_root__"
+      ],
+      "importedBy": []
+    },
+    ".codeyam/capture.js::{\n  createIssue,\n  pushIssue,\n  buildResult,\n}": {
+      "filePath": ".codeyam/capture.js",
+      "name": "{\n  createIssue,\n  pushIssue,\n  buildResult,\n}",
+      "imports": [
+        ".codeyam/scenario-issues.js::__file_root__"
+      ],
+      "importedBy": []
+    },
+    ".codeyam/capture.js::{\n  findScenarioError,\n  SCENARIO_ERROR_MARKER,\n  hasRenderableContent,\n  buildSettleAdvisory,\n  describeBlankReason,\n}": {
+      "filePath": ".codeyam/capture.js",
+      "name": "{\n  findScenarioError,\n  SCENARIO_ERROR_MARKER,\n  hasRenderableContent,\n  buildSettleAdvisory,\n  describeBlankReason,\n}",
+      "imports": [
+        ".codeyam/scenario-metrics.js::__file_root__"
+      ],
+      "importedBy": []
+    },
+    ".codeyam/capture.js::{\n  getInitScript,\n  handleConsoleMessage,\n  handlePageError,\n  handleRequestFailed,\n}": {
+      "filePath": ".codeyam/capture.js",
+      "name": "{\n  getInitScript,\n  handleConsoleMessage,\n  handlePageError,\n  handleRequestFailed,\n}",
+      "imports": [
+        ".codeyam/scenario-handlers.js::__file_root__"
+      ],
+      "importedBy": []
+    },
+    ".codeyam/scenario-handlers.js::__file_root__": {
+      "filePath": ".codeyam/scenario-handlers.js",
+      "name": "__file_root__",
+      "imports": [],
+      "importedBy": [
+        ".codeyam/capture.js::{\n  getInitScript,\n  handleConsoleMessage,\n  handlePageError,\n  handleRequestFailed,\n}"
+      ]
+    },
+    ".codeyam/scenario-interactivity.js::__file_root__": {
+      "filePath": ".codeyam/scenario-interactivity.js",
+      "name": "__file_root__",
+      "imports": [],
+      "importedBy": [
+        ".codeyam/capture.js::{\n  buildCounterpartProbe,\n  subpathHydrationEscalation,\n  waitForHydration,\n}"
+      ]
+    },
+    ".codeyam/scenario-issues.js::__file_root__": {
+      "filePath": ".codeyam/scenario-issues.js",
+      "name": "__file_root__",
+      "imports": [],
+      "importedBy": [
+        ".codeyam/capture.js::{\n  createIssue,\n  pushIssue,\n  buildResult,\n}"
+      ]
+    },
+    ".codeyam/scenario-metrics.js::__file_root__": {
+      "filePath": ".codeyam/scenario-metrics.js",
+      "name": "__file_root__",
+      "imports": [],
+      "importedBy": [
+        ".codeyam/capture.js::{\n  findScenarioError,\n  SCENARIO_ERROR_MARKER,\n  hasRenderableContent,\n  buildSettleAdvisory,\n  describeBlankReason,\n}",
+        ".codeyam/scenario-playwright.js::{\n  hasLoadingMarkers,\n  shouldStopWaitingForImages,\n}"
+      ]
+    },
+    ".codeyam/scenario-mocks.js::__file_root__": {
+      "filePath": ".codeyam/scenario-mocks.js",
+      "name": "__file_root__",
+      "imports": [],
+      "importedBy": [
+        ".codeyam/capture.js::{\n  attachHttpMocks,\n  isDeclaredErrorMock,\n  unmockedRouteFrom,\n}"
+      ]
+    },
+    ".codeyam/scenario-playwright.js::{\n  hasLoadingMarkers,\n  shouldStopWaitingForImages,\n}": {
+      "filePath": ".codeyam/scenario-playwright.js",
+      "name": "{\n  hasLoadingMarkers,\n  shouldStopWaitingForImages,\n}",
+      "imports": [
+        ".codeyam/scenario-metrics.js::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "src/components/BracketLogo.astro::__file_root__": {
+      "filePath": "src/components/BracketLogo.astro",
+      "name": "__file_root__",
+      "imports": [],
+      "importedBy": [
+        "src/components/LogoLink.astro::__file_root__",
+        "src/components/SiteFooter.astro::__file_root__"
+      ]
+    },
+    "src/components/FooterNav.astro::__file_root__": {
+      "filePath": "src/components/FooterNav.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/navLinks.ts::NavLink"
+      ],
+      "importedBy": [
+        "src/components/SiteFooter.astro::__file_root__"
+      ]
+    },
+    "src/components/LogoLink.astro::__file_root__": {
+      "filePath": "src/components/LogoLink.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/BracketLogo.astro::__file_root__",
+        "src/lib/base.ts::withBase"
+      ],
+      "importedBy": [
+        "src/components/SiteHeader.astro::__file_root__"
+      ]
+    },
+    "src/components/MainNav.astro::__file_root__": {
+      "filePath": "src/components/MainNav.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/navLinks.ts::NavLink"
+      ],
+      "importedBy": [
+        "src/components/SiteHeader.astro::__file_root__"
+      ]
+    },
+    "src/components/MenuToggle.astro::__file_root__": {
+      "filePath": "src/components/MenuToggle.astro",
+      "name": "__file_root__",
+      "imports": [],
+      "importedBy": [
+        "src/components/SiteHeader.astro::__file_root__"
+      ]
+    },
+    "src/components/NotFound.astro::__file_root__": {
+      "filePath": "src/components/NotFound.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/base.ts::withBase"
+      ],
+      "importedBy": []
+    },
+    "src/components/SEO.astro::__file_root__": {
+      "filePath": "src/components/SEO.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/site.ts::getSettings"
+      ],
+      "importedBy": []
+    },
+    "src/components/SiteFooter.astro::__file_root__": {
+      "filePath": "src/components/SiteFooter.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/BracketLogo.astro::__file_root__",
+        "src/components/FooterNav.astro::__file_root__",
+        "src/lib/site.ts::getNav",
+        "src/lib/site.ts::getSettings",
+        "src/lib/navLinks.ts::toNavLinks"
+      ],
+      "importedBy": []
+    },
+    "src/components/SiteHeader.astro::__file_root__": {
+      "filePath": "src/components/SiteHeader.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/LogoLink.astro::__file_root__",
+        "src/components/MenuToggle.astro::__file_root__",
+        "src/components/MainNav.astro::__file_root__",
+        "src/lib/site.ts::getNav",
+        "src/lib/site.ts::getSettings",
+        "src/lib/navLinks.ts::toNavLinks"
+      ],
+      "importedBy": []
+    },
+    "src/layouts/BaseLayout.astro::__file_root__": {
+      "filePath": "src/layouts/BaseLayout.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/styles/global.css::__file_root__",
+        "src/components/SEO.astro::__file_root__",
+        "src/components/SiteHeader.astro::__file_root__",
+        "src/components/SiteFooter.astro::__file_root__",
+        "src/lib/base.ts::withBase"
+      ],
+      "importedBy": []
+    },
+    "src/lib/base.test.ts::__file_root__": {
+      "filePath": "src/lib/base.test.ts",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/base.ts::withBase"
+      ],
+      "importedBy": []
+    },
+    "src/lib/base.ts::withBase": {
+      "filePath": "src/lib/base.ts",
+      "name": "withBase",
+      "imports": [],
+      "importedBy": [
+        "src/layouts/BaseLayout.astro::__file_root__",
+        "src/components/NotFound.astro::__file_root__",
+        "src/components/LogoLink.astro::__file_root__"
+      ]
+    },
+    "src/lib/contentRoot.test.ts::__file_root__": {
+      "filePath": "src/lib/contentRoot.test.ts",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/contentRoot.ts::resolveContentRoot",
+        "src/lib/contentRoot.ts::resolveDataRoot"
+      ],
+      "importedBy": []
+    },
+    "src/lib/mobileMenu.test.ts::__file_root__": {
+      "filePath": "src/lib/mobileMenu.test.ts",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/mobileMenu.ts::bindMobileMenu",
+        "src/lib/mobileMenu.ts::menuLabel",
+        "src/lib/mobileMenu.ts::setMenuOpen"
+      ],
+      "importedBy": []
+    },
+    "src/lib/mobileMenu.ts::bindMobileMenu": {
+      "filePath": "src/lib/mobileMenu.ts",
+      "name": "bindMobileMenu",
+      "imports": [],
+      "importedBy": [
+        "src/lib/mobileMenu.test.ts::__file_root__"
+      ]
+    },
+    "src/lib/mobileMenu.ts::menuLabel": {
+      "filePath": "src/lib/mobileMenu.ts",
+      "name": "menuLabel",
+      "imports": [],
+      "importedBy": [
+        "src/lib/mobileMenu.test.ts::__file_root__"
+      ]
+    },
+    "src/lib/mobileMenu.ts::setMenuOpen": {
+      "filePath": "src/lib/mobileMenu.ts",
+      "name": "setMenuOpen",
+      "imports": [],
+      "importedBy": [
+        "src/lib/mobileMenu.test.ts::__file_root__"
+      ]
+    },
+    "src/lib/navLinks.test.ts::__file_root__": {
+      "filePath": "src/lib/navLinks.test.ts",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/navLinks.ts::toNavLinks"
+      ],
+      "importedBy": []
+    },
+    "src/lib/navLinks.ts::NavLink": {
+      "filePath": "src/lib/navLinks.ts",
+      "name": "NavLink",
+      "imports": [],
+      "importedBy": [
+        "src/components/MainNav.astro::__file_root__",
+        "src/components/FooterNav.astro::__file_root__"
+      ]
+    },
+    "src/lib/navLinks.ts::__file_root__": {
+      "filePath": "src/lib/navLinks.ts",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/base.ts::withBase",
+        "src/lib/site.ts::NavItem"
+      ],
+      "importedBy": []
+    },
+    "src/lib/navLinks.ts::toNavLinks": {
+      "filePath": "src/lib/navLinks.ts",
+      "name": "toNavLinks",
+      "imports": [],
+      "importedBy": [
+        "src/lib/navLinks.test.ts::__file_root__",
+        "src/pages/isolated-components/MainNav.astro::__file_root__",
+        "src/pages/isolated-components/FooterNav.astro::__file_root__",
+        "src/components/SiteFooter.astro::__file_root__",
+        "src/components/SiteHeader.astro::__file_root__"
+      ]
+    },
+    "src/lib/site.ts::__file_root__": {
+      "filePath": "src/lib/site.ts",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/contentRoot.ts::resolveDataRoot"
+      ],
+      "importedBy": []
+    },
+    "src/lib/site.ts::getNav": {
+      "filePath": "src/lib/site.ts",
+      "name": "getNav",
+      "imports": [],
+      "importedBy": [
+        "src/pages/isolated-components/MainNav.astro::__file_root__",
+        "src/pages/isolated-components/FooterNav.astro::__file_root__",
+        "src/components/SiteFooter.astro::__file_root__",
+        "src/components/SiteHeader.astro::__file_root__"
+      ]
+    },
+    "src/lib/site.ts::getSettings": {
+      "filePath": "src/lib/site.ts",
+      "name": "getSettings",
+      "imports": [],
+      "importedBy": [
+        "src/pages/index.astro::__file_root__",
+        "src/pages/isolated-components/BracketLogo.astro::__file_root__",
+        "src/pages/isolated-components/LogoLink.astro::__file_root__",
+        "src/components/SEO.astro::__file_root__",
+        "src/components/SiteFooter.astro::__file_root__",
+        "src/components/SiteHeader.astro::__file_root__"
+      ]
+    },
+    "src/pages/404.astro::__file_root__": {
+      "filePath": "src/pages/404.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/layouts/BaseLayout.astro::__file_root__",
+        "src/components/NotFound.astro::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "src/pages/index.astro::__file_root__": {
+      "filePath": "src/pages/index.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/layouts/BaseLayout.astro::__file_root__",
+        "src/components/HiddenPageTitle.astro::__file_root__",
+        "src/components/SectionAnchor.astro::__file_root__",
+        "src/lib/site.ts::getSettings"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/BracketLogo.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/BracketLogo.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/BracketLogo.astro::__file_root__",
+        "src/lib/site.ts::getSettings",
+        "src/styles/global.css::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/FooterNav.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/FooterNav.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/FooterNav.astro::__file_root__",
+        "src/lib/site.ts::getNav",
+        "src/lib/navLinks.ts::toNavLinks",
+        "src/styles/global.css::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/LogoLink.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/LogoLink.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/LogoLink.astro::__file_root__",
+        "src/lib/site.ts::getSettings",
+        "src/styles/global.css::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/MainNav.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/MainNav.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/MainNav.astro::__file_root__",
+        "src/lib/site.ts::getNav",
+        "src/lib/navLinks.ts::toNavLinks",
+        "src/styles/global.css::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/MenuToggle.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/MenuToggle.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/MenuToggle.astro::__file_root__",
+        "src/styles/global.css::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/NotFound.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/NotFound.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/NotFound.astro::__file_root__",
+        "src/styles/global.css::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/SectionAnchor.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/SectionAnchor.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/SectionAnchor.astro::__file_root__",
+        "src/styles/global.css::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/SiteFooter.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/SiteFooter.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/SiteFooter.astro::__file_root__",
+        "src/styles/global.css::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/SiteHeader.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/SiteHeader.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/SiteHeader.astro::__file_root__",
+        "src/styles/global.css::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "src/styles/global.css::__file_root__": {
+      "filePath": "src/styles/global.css",
+      "name": "__file_root__",
+      "imports": [],
+      "importedBy": [
+        "src/pages/isolated-components/SectionAnchor.astro::__file_root__",
+        "src/pages/isolated-components/BracketLogo.astro::__file_root__",
+        "src/pages/isolated-components/NotFound.astro::__file_root__",
+        "src/pages/isolated-components/MainNav.astro::__file_root__",
+        "src/pages/isolated-components/MenuToggle.astro::__file_root__",
+        "src/pages/isolated-components/FooterNav.astro::__file_root__",
+        "src/pages/isolated-components/LogoLink.astro::__file_root__",
+        "src/pages/isolated-components/SiteFooter.astro::__file_root__",
+        "src/pages/isolated-components/SiteHeader.astro::__file_root__",
+        "src/layouts/BaseLayout.astro::__file_root__"
+      ]
+    }
+  },
+  "lastUpdated": "2026-10-04T16:01:13Z"
+}

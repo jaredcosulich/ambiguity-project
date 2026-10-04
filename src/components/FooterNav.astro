@@ -1,0 +1,20 @@
+---
+// The footer's nav row, mirroring the main nav's links as plain text links.
+import type { NavLink } from '../lib/navLinks';
+
+interface Props {
+  links: NavLink[];
+}
+
+const { links } = Astro.props;
+---
+
+<nav class="footer-nav" aria-label="Footer">
+  {links.map((link) => <a href={link.href}>{link.label}</a>)}
+</nav>
+
+<style>
+  .footer-nav { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+  .footer-nav a { color: var(--ink); text-decoration: none; }
+  .footer-nav a:hover { color: var(--navy); text-decoration: underline; text-underline-offset: 5px; }
+</style>

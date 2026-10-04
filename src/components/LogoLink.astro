@@ -1,0 +1,19 @@
+---
+// The header's home link: the white bracket logo, linking to the site root.
+import BracketLogo from './BracketLogo.astro';
+import { withBase } from '../lib/base';
+
+interface Props {
+  siteTitle: string;
+}
+
+const { siteTitle } = Astro.props;
+---
+
+<a class="logo" href={withBase('/')} aria-label={`${siteTitle} home`}>
+  <BracketLogo tone="light" width={58} height={35} label={siteTitle} />
+</a>
+
+<style>
+  .logo { display: block; flex-shrink: 0; line-height: 0; }
+</style>

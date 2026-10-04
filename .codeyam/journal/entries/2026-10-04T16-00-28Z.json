@@ -1,0 +1,1023 @@
+{
+  "timestamp": "2026-10-04T16:00:28Z",
+  "title": "Astro site foundation with CodeYam CMS and GitHub Pages deploy",
+  "type": "feature",
+  "userRequest": "## Summary\n\nTurn this repo from a single hand-written `index.html` mockup into a real Astro\nstatic site, managed with `@codeyam/cms` and deployed to GitHub Pages. This plan\nlays the foundation every later plan builds on. It covers the Astro scaffold, the\nCMS at `/admin`, the design tokens and fonts from the mockup, and the shared site\nshell (navy header with the bracket logo and mobile menu, plus the footer). It\nalso adds a GitHub Actions deploy to the current Pages subpath\n(`https://jaredcosulich.github.io/ambiguity-project/`). When it's done, visitors\nsee the same header and footer as the mockup, and editors can sign in at\n`/admin` and change the site title, nav, and footer without touching code. The\nhome page sections themselves (hero, book, blog, tools, learn more, support) are\nbuilt by the follow-up plans.\n\n## Key Decisions\n\n- **Start from codeyam's `astro-github-pages` template.** It already carries the\n  static output, the content-collection seed adapter and sandbox that scenarios\n  need, the isolated-components route, and a Pages deploy workflow. Scaffold it\n  in the Prepare step with `codeyam-editor editor template astro-github-pages`.\n- **Replace the template's Sveltia editor with `@codeyam/cms` (published on npm,\n  currently 0.14.0).** Run `npm install @codeyam/cms` then\n  `npx codeyam-cms integrate`, and delete the template's `public/admin/`\n  (Sveltia `index.html` + `config.yml`) and its Sveltia `CMS_SETUP.md`\n  guidance. This is the same migration harvardintech already made (its\n  completed plan \"Adopt CodeYam CMS And Retire Sveltia\" is a good reference).\n  Keep the template's Astro 5 / `@astrojs/react` 4 pairing; the CMS supports\n  it, and `integrate` picks the matching React major.\n- **Sign-in stays zero-infrastructure.** Keep `src/data/cms.json` on\n  `auth.token: true` (each editor pastes a fine-grained GitHub token with\n  Contents read/write on `jaredcosulich/ambiguity-project`). No\n  `cms-auth-worker` and no Cloudflare account.\n- **Drop the template's sample content.** Remove the template's `welcome` blog\n  post, the `team`/`events` samples, and the `blog`/`team`/`events`\n  collections. This site's blog comes from Substack (a later plan), and it has\n  no team or events pages yet. Keep the `pages` collection, which the Learn More\n  plan uses for an About page.\n- **Env-driven `base`/`site`, so the domain switch is a config change.** Follow\n  harvardintech's `astro.config.mjs`: `base` comes from `DEPLOY_BASE_PATH`\n  (default `/`) and `site` from `PAGES_SITE`. The deploy workflow sets\n  `DEPLOY_BASE_PATH=/ambiguity-project` and\n  `PAGES_SITE=https://jaredcosulich.github.io` for now. Every internal link and\n  asset URL goes through a `withBase()` helper, so it resolves under the subpath\n  and later at the root of `ambiguityproject.org`. Moving to the custom domain\n  later means: unset the base path, add `public/CNAME`, and set `siteUrl` in\n  `cms.json`. Write that recipe into `DEPLOY_SETUP.md`. Nothing else should\n  change.\n- **Switch Pages to Actions in the same push that removes the root\n  `index.html`.** Pages currently builds in legacy mode from `main` `/`\n  (`build_type: legacy`), serving the mockup directly. Once the mockup leaves\n  the root, a legacy build would serve nothing. At push time, run\n  `gh api -X PUT repos/jaredcosulich/ambiguity-project/pages -f build_type=workflow`\n  (or have the user flip Settings → Pages → Source to \"GitHub Actions\"). Then\n  confirm the deploy workflow publishes.\n- **Keep the mockup as the design reference, out of the web root.** Move\n  `index.html` to `design/mockup/index.html` and keep a copy of\n  `images/book-cover.png` beside it at `design/mockup/images/`, so the mockup\n  still opens standalone. The follow-up plans port sections from that file.\n  Ship `favicon.svg`, `apple-touch-icon.png`, and `images/book-cover.png` from\n  `public/`. Delete the root `.nojekyll`; the template already ships\n  `public/.nojekyll`.\n- **Port the design faithfully.** Move the mockup's `:root` custom properties\n  (navy, ivory, salmon, plum, ochre, sage, the tint colors, `--gutter`,\n  `--section-y`, the serif/sans stacks) into `src/styles/tokens.css`. Move the\n  shared rules (`.wrap`, `.btn`, `.more`, the bracket `.label`, `.eyebrow`,\n  `.card`, `.sr-only`) into a global stylesheet. Section-specific CSS moves\n  with its section's component in later plans. Load the Libre Caslon Text +\n  Source Sans 3 Google Fonts in `BaseLayout`, as the mockup does.\n- **Declare site-wide settings the later plans read.** Add a `settings` block to\n  `src/data/collections.json`. The only field this plan needs is\n  `substackUrl`; the other plans add their own settings.\n\n## Implementation\n\n### 1. Scaffold and install the CMS\n\nRun `codeyam-editor editor template astro-github-pages`. Then install\n`@codeyam/cms`, run `npx codeyam-cms integrate`, remove the Sveltia\n`public/admin/` scaffold, and update `CMS_SETUP.md` to describe the\ntoken sign-in path only. Point `src/data/cms.json` at\n`{ \"owner\": \"jaredcosulich\", \"repo\": \"ambiguity-project\", \"branch\": \"main\" }`.\nMove the content collections onto the package's `collectionLoader` /\n`draftField` / `seoFields` (from `@codeyam/cms/content`), keeping only `pages`.\n\n### 2. Relocate the mockup and static assets\n\n**File**: `index.html`\n\nMove it to `design/mockup/index.html` (with `design/mockup/images/book-cover.png`).\nMove `favicon.svg`, `apple-touch-icon.png`, and `images/book-cover.png` into\n`public/`. Delete the root `.nojekyll`.\n\n### 3. Tokens, fonts, and the site shell\n\n**New file**: `src/components/SiteHeader.astro` renders the navy header band with\nthe inline bracket-logo SVG and the nav links from `src/data/nav.json`. The\n\"Support Us\" item is the white button. It also includes the mobile Menu/Close\ntoggle below 860px, ported from the mockup's inline script.\n**New file**: `src/components/SiteFooter.astro` renders the navy-on-ivory logo,\nthe footer nav, and a copyright line built from `settings.json`'s footer text.\nReplace the template's `src/data/settings.json` (title \"The Ambiguity Project\",\nthe mockup's meta description) and `src/data/nav.json` (Books, Blog,\nTechnology, Learn More, Support Us → `#books`, `#blog`, `#technology`,\n`#learn`, `#support`). Fill `src/styles/tokens.css` from the mockup's `:root`.\nRebuild `src/layouts/BaseLayout.astro` around the header and footer, keeping\n`SEO.astro`. `src/pages/index.astro` becomes a shell with empty section anchors\nfor the later plans to fill.\n\n### 4. Base-path-aware config and deploy\n\nRewrite `astro.config.mjs` with env-driven `base`/`site`, `codeyamCms()`, and\nharvardintech's dev-only `optimizeDeps.include` for `micromark` /\n`micromark-extension-gfm` / `debug`. Add the `withBase()` helper and its unit\ntest. Set the two env vars in `.github/workflows/deploy.yml`. Update\n`DEPLOY_SETUP.md` with the subpath → `ambiguityproject.org` switch recipe.\n\n## Reused existing code\n\n- The mockup markup and CSS in `index.html` are the visual source of truth.\n- The harvardintech repo's Astro config (a sibling codeyam project, not in this\n  repo) shows the env-driven base, the content sandbox wiring, and the\n  optimizeDeps fix for CMS admin hydration.\n- The @codeyam/cms package README (on npm, and in the codeyam-cms repo) covers\n  \"Install\", \"Declaring your own site settings\", and \"Content collections\".\n\n## Scenarios to Demonstrate\n\n- Home page shell at Desktop: navy header with logo and nav, ivory body, footer\n- Home page shell at Mobile: nav collapsed behind the Menu button, then opened\n- Site settings with a long custom site title and footer text (the header and\n  footer don't break)\n- Nav with an extra item added through `nav.json` (it wraps or collapses cleanly)\n- `/admin` dashboard renders with the `pages` collection and Site settings",
+  "description": "Turned the hand-written mockup into an Astro static site. It has the mockup's design tokens, fonts, navy header with bracket logo and mobile Menu/Close toggle, and footer. Site title, footer text, Substack URL and the menu live in src/data/settings.json and nav.json, are editable at /admin through @codeyam/cms 0.14.0 (token sign-in), and are read on every render. A GitHub Pages workflow builds under the /ambiguity-project/ subpath via env-driven base/site and withBase(); DEPLOY_SETUP.md holds the ambiguityproject.org switch recipe. The mockup moved to design/mockup/ as the design reference. Scope: delivered the real site shell from the mockup and editing at /admin; publishing to GitHub Pages is wired and happens at push (Pages must be switched to Actions mode then). Deferred by the user: the Substack-fed blog (wanted soon, likely a later session) and the Support section (not a priority yet). No agent-only deferrals.",
+  "modifiedFiles": [
+    {
+      "path": ".codeyam/capture.js",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/editor.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/plans/astro-site-foundation-with-codeyam-cms-and-github-pages-deploy.md\t.codeyam/plans/completed/astro-site-foundation-with-codeyam-cms-and-github-pages-deploy.md",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenario-playwright.js",
+      "status": "modified"
+    },
+    {
+      "path": ".nojekyll",
+      "status": "deleted"
+    },
+    {
+      "path": "index.html\tdesign/mockup/index.html",
+      "status": "modified"
+    },
+    {
+      "path": "apple-touch-icon.png\tpublic/apple-touch-icon.png",
+      "status": "modified"
+    },
+    {
+      "path": "favicon.svg\tpublic/favicon.svg",
+      "status": "modified"
+    },
+    {
+      "path": "images/book-cover.png\tpublic/images/book-cover.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/data-structure.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/dependency-graph.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/README.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/airbnb.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/airtable.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/apple.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/binance.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/bmw-m.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/bmw.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/bugatti.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/cal.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/claude.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/clay.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/clickhouse.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/cohere.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/coinbase.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/composio.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/cursor.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/dell-1996.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/elevenlabs.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/expo.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/ferrari.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/figma.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/framer.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/hashicorp.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/hp.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/ibm.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/intercom.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/kraken.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/lamborghini.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/linear.app.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/lovable.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/mastercard.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/meta.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/minimax.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/mintlify.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/miro.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/mistral.ai.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/mongodb.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/nike.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/nintendo-2001.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/notion.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/nvidia.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/ollama.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/opencode.ai.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/pinterest.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/playstation.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/posthog.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/raycast.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/renault.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/replicate.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/resend.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/revolut.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/runwayml.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/sanity.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/sentry.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/shopify.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/slack.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/spacex.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/spotify.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/starbucks.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/stripe.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/supabase.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/superhuman.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/tesla.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/theverge.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/together.ai.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/uber.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/vercel.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/vodafone.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/voltagent.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/warp.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/webflow.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/wired.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/wise.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/x.ai.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_references/zapier.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_systems/README.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_systems/atlas.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_systems/bureau-north.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_systems/clean-dashboard.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_systems/coder.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_systems/console.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_systems/editorial.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_systems/ethereal.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_systems/gardener.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_systems/gummy.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_systems/keylime.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_systems/letters-to-sean.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_systems/manifesto.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_systems/marquee.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_systems/minimalistic.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_systems/mono-brutalist.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_systems/n15.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_systems/neo-brutalist.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_systems/plinth.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/design_systems/space-odyssey.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/offer-declined",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/design/questions.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/first-build-session.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/glossary.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/mocks/catalog.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/per-test-evidence.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/project-deliverables.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/admin-dashboard-pages-and-site-settings.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/bracketlogo-light-and-dark-tones.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/coverage-plan/sitefooter.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/coverage-plan/siteheader.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/footernav-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/home-shell-desktop.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/home-shell-empty-nav.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/home-shell-long-title-and-extra-nav-items.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/home-shell-mobile-menu-open.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/home-shell-single-nav-item.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/logolink-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/mainnav-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/menutoggle-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/notfound-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/.capture-pipeline.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/admin-dashboard-pages-and-site-settings--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/admin-dashboard-pages-and-site-settings--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/bracketlogo-light-and-dark-tones--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/bracketlogo-light-and-dark-tones--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/footernav-default--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/footernav-default--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-desktop--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-desktop--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-empty-nav--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-empty-nav--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-empty-nav--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-long-title-and-extra-nav-items--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-long-title-and-extra-nav-items--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-mobile-menu-open--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-mobile-menu-open--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-single-nav-item--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-single-nav-item--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/logolink-default--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/logolink-default--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/mainnav-default--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/mainnav-default--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/menutoggle-default--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/menutoggle-default--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/notfound-default--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/notfound-default--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/sectionanchor-with-slotted-content--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/sectionanchor-with-slotted-content--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/sitefooter-default--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/sitefooter-default--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/sitefooter-long-footer-text-and-extra-nav-items--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/sitefooter-long-footer-text-and-extra-nav-items--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/siteheader-default--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/siteheader-default--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/siteheader-long-title-and-extra-nav-items--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/siteheader-long-title-and-extra-nav-items--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/siteheader-mobile-menu-open--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/siteheader-mobile-menu-open--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/sectionanchor-with-slotted-content.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/sitefooter-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/sitefooter-long-footer-text-and-extra-nav-items.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/siteheader-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/siteheader-long-title-and-extra-nav-items.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/siteheader-mobile-menu-open.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/seed-adapter.ts",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/seeds/site-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/seeds/site-empty-nav.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/seeds/site-long-title-extra-nav.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/seeds/site-single-nav-item.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/setup-answers.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/stack.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/state/claude-launch-provenance.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/state/finalize-debt.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/state/scenario-taxonomy.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/state/step-highwater-archive.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/all.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/88e9385c3807d466b573423529d9ebb8fe1aad818b8b40b758603e9873b179c5.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/9328eee5df19b0dcc81af426e7cad86df67277b78a9351174181b0f19ea667f6.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/daa00aecd3ae2fc205ea32f3a4abadaa30f87b96c733e200423b11bc0e27d634.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/dd4c62b951f40589a946ad3948ef678a3cd9cba7dc324cb9c0aeb8360b468e62.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-registry.json",
+      "status": "added"
+    },
+    {
+      "path": ".github/workflows/deploy.yml",
+      "status": "added"
+    },
+    {
+      "path": "CMS_SETUP.md",
+      "status": "added"
+    },
+    {
+      "path": "DEPLOY_SETUP.md",
+      "status": "added"
+    },
+    {
+      "path": "README.md",
+      "status": "added"
+    },
+    {
+      "path": "astro.config.mjs",
+      "status": "added"
+    },
+    {
+      "path": "design/mockup/images/book-cover.png",
+      "status": "added"
+    },
+    {
+      "path": "package-lock.json",
+      "status": "added"
+    },
+    {
+      "path": "package.json",
+      "status": "added"
+    },
+    {
+      "path": "public/.nojekyll",
+      "status": "added"
+    },
+    {
+      "path": "public/robots.txt",
+      "status": "added"
+    },
+    {
+      "path": "src/components/BracketLogo.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/FooterNav.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/HiddenPageTitle.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/LogoLink.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/MainNav.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/MenuToggle.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/NotFound.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/SEO.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/SectionAnchor.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/SiteFooter.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/SiteHeader.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/content/config.ts",
+      "status": "added"
+    },
+    {
+      "path": "src/content/pages/.gitkeep",
+      "status": "added"
+    },
+    {
+      "path": "src/data/cms.json",
+      "status": "added"
+    },
+    {
+      "path": "src/data/collections.json",
+      "status": "added"
+    },
+    {
+      "path": "src/data/nav.json",
+      "status": "added"
+    },
+    {
+      "path": "src/data/settings.json",
+      "status": "added"
+    },
+    {
+      "path": "src/layouts/BaseLayout.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/lib/base.test.ts",
+      "status": "added"
+    },
+    {
+      "path": "src/lib/base.ts",
+      "status": "added"
+    },
+    {
+      "path": "src/lib/contentRoot.test.ts",
+      "status": "added"
+    },
+    {
+      "path": "src/lib/contentRoot.ts",
+      "status": "added"
+    },
+    {
+      "path": "src/lib/mobileMenu.test.ts",
+      "status": "added"
+    },
+    {
+      "path": "src/lib/mobileMenu.ts",
+      "status": "added"
+    },
+    {
+      "path": "src/lib/navLinks.test.ts",
+      "status": "added"
+    },
+    {
+      "path": "src/lib/navLinks.ts",
+      "status": "added"
+    },
+    {
+      "path": "src/lib/site.ts",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/404.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/index.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/styles/global.css",
+      "status": "added"
+    },
+    {
+      "path": "src/styles/tokens.css",
+      "status": "added"
+    },
+    {
+      "path": "tsconfig.json",
+      "status": "added"
+    },
+    {
+      "path": "vitest.config.ts",
+      "status": "added"
+    }
+  ],
+  "scenarioScreenshots": [
+    {
+      "name": "Admin Dashboard - Pages And Site Settings",
+      "screenshotPath": "admin-dashboard-pages-and-site-settings--desktop.png"
+    },
+    {
+      "name": "Home Shell - Desktop",
+      "screenshotPath": "home-shell-desktop--desktop.png"
+    },
+    {
+      "name": "Home Shell - Empty Nav",
+      "screenshotPath": "home-shell-empty-nav--desktop.png"
+    },
+    {
+      "name": "Home Shell - Long Title And Extra Nav Items",
+      "screenshotPath": "home-shell-long-title-and-extra-nav-items--desktop.png"
+    },
+    {
+      "name": "Home Shell - Mobile Menu Open",
+      "screenshotPath": "home-shell-mobile-menu-open--mobile.png"
+    },
+    {
+      "name": "Home Shell - Single Nav Item",
+      "screenshotPath": "home-shell-single-nav-item--desktop.png"
+    },
+    {
+      "name": "BracketLogo - Light And Dark Tones",
+      "screenshotPath": "bracketlogo-light-and-dark-tones--desktop.png"
+    },
+    {
+      "name": "FooterNav - Default",
+      "screenshotPath": "footernav-default--desktop.png"
+    },
+    {
+      "name": "LogoLink - Default",
+      "screenshotPath": "logolink-default--desktop.png"
+    },
+    {
+      "name": "MainNav - Default",
+      "screenshotPath": "mainnav-default--desktop.png"
+    },
+    {
+      "name": "MenuToggle - Default",
+      "screenshotPath": "menutoggle-default--desktop.png"
+    },
+    {
+      "name": "NotFound - Default",
+      "screenshotPath": "notfound-default--desktop.png"
+    },
+    {
+      "name": "SectionAnchor - With Slotted Content",
+      "screenshotPath": "sectionanchor-with-slotted-content--desktop.png"
+    },
+    {
+      "name": "SiteFooter - Default",
+      "screenshotPath": "sitefooter-default--desktop.png"
+    },
+    {
+      "name": "SiteFooter - Long Footer Text And Extra Nav Items",
+      "screenshotPath": "sitefooter-long-footer-text-and-extra-nav-items--desktop.png"
+    },
+    {
+      "name": "SiteHeader - Default",
+      "screenshotPath": "siteheader-default--desktop.png"
+    },
+    {
+      "name": "SiteHeader - Long Title And Extra Nav Items",
+      "screenshotPath": "siteheader-long-title-and-extra-nav-items--desktop.png"
+    },
+    {
+      "name": "SiteHeader - Mobile Menu Open",
+      "screenshotPath": "siteheader-mobile-menu-open--mobile.png"
+    }
+  ],
+  "testResults": {
+    "total": 26,
+    "passed": 26,
+    "failed": 0,
+    "runners": [
+      {
+        "name": "tests",
+        "total": 26,
+        "passed": 26
+      }
+    ]
+  }
+}

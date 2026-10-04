@@ -1,0 +1,32 @@
+{
+  "views": {
+    "HomePage": {
+      "empty": {
+        "status": "added"
+      },
+      "single": {
+        "status": "added"
+      },
+      "typical": {
+        "status": "covered"
+      },
+      "many": {
+        "status": "covered"
+      },
+      "loading": {
+        "status": "n-a",
+        "reason": "static pre-rendered page; all data is read at build time, so there is no pending state"
+      },
+      "edge": {
+        "status": "covered"
+      },
+      "error": {
+        "status": "n-a",
+        "reason": "no runtime fetch can fail; a malformed settings.json fails the build, and unknown paths go to the separate 404 route"
+      },
+      "key-interaction": {
+        "status": "covered"
+      }
+    }
+  }
+}

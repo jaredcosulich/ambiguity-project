@@ -1,0 +1,45 @@
+{
+  "seed": {
+    "settings": {
+      "siteTitle": "The Ambiguity Project for Uncertain Times and Open Questions",
+      "description": "The Ambiguity Project is a 501(c)(3) non-profit helping people better recognize, live with, and navigate ambiguity.",
+      "contactEmail": "",
+      "footerText": "\u00a9 2026 The Ambiguity Project \u2014 a 501(c)(3) non-profit helping people better recognize, live with, and navigate ambiguity. EIN 00-0000000.",
+      "socials": [],
+      "substackUrl": ""
+    },
+    "nav": {
+      "items": [
+        {
+          "label": "Books",
+          "url": "#books"
+        },
+        {
+          "label": "Blog",
+          "url": "#blog"
+        },
+        {
+          "label": "Technology",
+          "url": "#technology"
+        },
+        {
+          "label": "Learn More",
+          "url": "#learn"
+        },
+        {
+          "label": "Workshops",
+          "url": "#workshops"
+        },
+        {
+          "label": "Press",
+          "url": "#press"
+        },
+        {
+          "label": "Support Us",
+          "url": "#support"
+        }
+      ]
+    },
+    "pages": []
+  }
+}

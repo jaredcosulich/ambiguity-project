@@ -1,0 +1,233 @@
+[
+  {
+    "description": "Inline SVG bracket logo with the three-line wordmark, in a light (header) or dark (footer) tone.",
+    "filePath": "src/components/BracketLogo.astro",
+    "name": "BracketLogo",
+    "scenarios": [
+      "bracketlogo-light-and-dark-tones"
+    ],
+    "tags": [
+      "site-shell"
+    ]
+  },
+  {
+    "description": "Footer nav row mirroring the main nav links as plain ink links.",
+    "filePath": "src/components/FooterNav.astro",
+    "name": "FooterNav",
+    "scenarios": [
+      "footernav-default"
+    ],
+    "tags": [
+      "site-shell"
+    ]
+  },
+  {
+    "description": "The page h1, visually hidden so it stays available to screen readers and search engines.",
+    "filePath": "src/components/HiddenPageTitle.astro",
+    "name": "HiddenPageTitle",
+    "tags": [
+      "site-shell"
+    ],
+    "untestabilityReason": {
+      "justification": "one sr-only h1 rendering a single text prop",
+      "kind": "trivial-wrapper"
+    }
+  },
+  {
+    "description": "Header home link wrapping the light bracket logo, labelled with the site title.",
+    "filePath": "src/components/LogoLink.astro",
+    "name": "LogoLink",
+    "scenarios": [
+      "logolink-default"
+    ],
+    "tags": [
+      "site-shell"
+    ]
+  },
+  {
+    "description": "Header nav links on the navy band with the call-to-action link as the white button; a dropdown panel below 860px when opened.",
+    "filePath": "src/components/MainNav.astro",
+    "name": "MainNav",
+    "scenarios": [
+      "mainnav-default"
+    ],
+    "tags": [
+      "site-shell"
+    ]
+  },
+  {
+    "description": "Outlined Menu/Close button shown below 860px that reveals the main nav.",
+    "filePath": "src/components/MenuToggle.astro",
+    "name": "MenuToggle",
+    "scenarios": [
+      "menutoggle-default"
+    ],
+    "tags": [
+      "site-shell"
+    ]
+  },
+  {
+    "description": "404 page body: bracket label, heading, and a link back to the home page.",
+    "filePath": "src/components/NotFound.astro",
+    "name": "NotFound",
+    "scenarios": [
+      "notfound-default"
+    ],
+    "tags": [
+      "site-shell"
+    ]
+  },
+  {
+    "description": "Home page section placeholder carrying the id the nav links to; later plans fill each one.",
+    "filePath": "src/components/SectionAnchor.astro",
+    "name": "SectionAnchor",
+    "scenarios": [
+      "sectionanchor-with-slotted-content"
+    ],
+    "tags": [
+      "site-shell"
+    ]
+  },
+  {
+    "description": "Site footer: navy bracket logo, footer nav from nav.json, and the copyright line from settings.footerText.",
+    "filePath": "src/components/SiteFooter.astro",
+    "name": "SiteFooter",
+    "scenarios": [
+      "sitefooter-default",
+      "sitefooter-long-footer-text-and-extra-nav-items"
+    ],
+    "tags": [
+      "site-shell"
+    ]
+  },
+  {
+    "description": "Navy header band from the mockup: bracket-logo home link, main nav from nav.json, and the mobile Menu/Close toggle wired by bindMobileMenu.",
+    "filePath": "src/components/SiteHeader.astro",
+    "name": "SiteHeader",
+    "scenarios": [
+      "siteheader-default",
+      "siteheader-long-title-and-extra-nav-items",
+      "siteheader-mobile-menu-open"
+    ],
+    "tags": [
+      "site-shell"
+    ]
+  },
+  {
+    "description": "Wires the mobile Menu/Close toggle: each button click flips the menu and following any nav link closes it.",
+    "filePath": "src/lib/mobileMenu.ts",
+    "name": "bindMobileMenu",
+    "tags": [
+      "site-shell"
+    ],
+    "testFile": "src/lib/mobileMenu.test.ts"
+  },
+  {
+    "description": "Reads the editable nav.json singleton from the active data root on every call.",
+    "filePath": "src/lib/site.ts",
+    "name": "getNav",
+    "tags": [
+      "site-data"
+    ],
+    "untestabilityReason": {
+      "justification": "filesystem read at the data root; the root resolution itself is tested via resolveDataRoot",
+      "kind": "platform-glue"
+    }
+  },
+  {
+    "description": "Reads the editable settings.json singleton from the active data root on every call, so CMS edits and seeded scenarios show without a server restart.",
+    "filePath": "src/lib/site.ts",
+    "name": "getSettings",
+    "tags": [
+      "site-data"
+    ],
+    "untestabilityReason": {
+      "justification": "filesystem read at the data root; the root resolution itself is tested via resolveDataRoot",
+      "kind": "platform-glue"
+    }
+  },
+  {
+    "description": "True inside astro build, so a production build always resolves committed content and ignores any sandbox override in the environment.",
+    "filePath": "src/lib/contentRoot.ts",
+    "name": "isProductionBuild",
+    "tags": [
+      "site-data"
+    ],
+    "testFile": "src/lib/contentRoot.test.ts"
+  },
+  {
+    "description": "Label for the mobile nav toggle: Close when the menu is open, Menu when closed.",
+    "filePath": "src/lib/mobileMenu.ts",
+    "name": "menuLabel",
+    "tags": [
+      "site-shell"
+    ],
+    "testFile": "src/lib/mobileMenu.test.ts"
+  },
+  {
+    "description": "Reads and parses one JSON singleton (settings or nav) from the active data root, fresh on every call.",
+    "filePath": "src/lib/site.ts",
+    "name": "readSingleton",
+    "tags": [
+      "site-data"
+    ],
+    "untestabilityReason": {
+      "justification": "filesystem read and JSON.parse at the data root; root resolution is tested via resolveDataRoot",
+      "kind": "platform-glue"
+    }
+  },
+  {
+    "description": "Resolves the content collection root: the CODEYAM_CONTENT_ROOT sandbox override during an editor session, committed src/content otherwise and always in a production build.",
+    "filePath": "src/lib/contentRoot.ts",
+    "name": "resolveContentRoot",
+    "tags": [
+      "site-data"
+    ],
+    "testFile": "src/lib/contentRoot.test.ts"
+  },
+  {
+    "description": "Resolves the site data root for settings.json and nav.json: the CODEYAM_DATA_ROOT sandbox override during an editor session, committed src/data otherwise and always in a production build.",
+    "filePath": "src/lib/contentRoot.ts",
+    "name": "resolveDataRoot",
+    "tags": [
+      "site-data"
+    ],
+    "testFile": "src/lib/contentRoot.test.ts"
+  },
+  {
+    "description": "Shared resolution for the content and data roots: env override during dev and tests, the committed default otherwise and always in production.",
+    "filePath": "src/lib/contentRoot.ts",
+    "name": "resolveRoot",
+    "tags": [
+      "site-data"
+    ],
+    "testFile": "src/lib/contentRoot.test.ts"
+  },
+  {
+    "description": "Opens or closes the mobile nav, keeping the nav's open class, the toggle's aria-expanded, and its label in sync.",
+    "filePath": "src/lib/mobileMenu.ts",
+    "name": "setMenuOpen",
+    "tags": [
+      "site-shell"
+    ],
+    "testFile": "src/lib/mobileMenu.test.ts"
+  },
+  {
+    "description": "Shapes editable nav.json items into header/footer links: skips items without a url, routes hrefs through withBase, and flags the last link as the call-to-action button.",
+    "filePath": "src/lib/navLinks.ts",
+    "name": "toNavLinks",
+    "tags": [
+      "site-shell"
+    ],
+    "testFile": "src/lib/navLinks.test.ts"
+  },
+  {
+    "description": "Prefixes an internal link or asset path with the active deploy base (the GitHub Pages subpath today, the domain root later); section anchors resolve to the home page and external URLs pass through unchanged.",
+    "filePath": "src/lib/base.ts",
+    "name": "withBase",
+    "tags": [
+      "site-shell"
+    ],
+    "testFile": "src/lib/base.test.ts"
+  }
+]

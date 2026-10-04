@@ -1,0 +1,12 @@
+---
+// A home page section placeholder: the anchor the nav links to (`#books`,
+// `#blog`, ...). Follow-up plans replace each with the real section.
+interface Props {
+  id: string;
+  label: string;
+}
+
+const { id, label } = Astro.props;
+---
+
+<section id={id} aria-label={label}><slot /></section>

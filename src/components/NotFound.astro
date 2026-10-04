@@ -1,0 +1,15 @@
+---
+// The 404 page body: a bracket label, a short heading, and a link home.
+import { withBase } from '../lib/base';
+---
+
+<section class="not-found wrap">
+  <p class="label">404</p>
+  <h1>We couldn't find that page.</h1>
+  <a class="more" href={withBase('/')}>Back to the home page <span class="go">→</span></a>
+</section>
+
+<style>
+  .not-found { display: flex; flex-direction: column; gap: 22px; padding-block: var(--section-y); }
+  .not-found h1 { font-size: clamp(28px, 3vw, 42px); line-height: 1.15; }
+</style>

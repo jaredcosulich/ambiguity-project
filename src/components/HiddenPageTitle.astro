@@ -1,0 +1,7 @@
+---
+// The page's <h1>, visually hidden: kept for screen readers and search engines
+// while the visible heading lives in a designed section (the home hero, later).
+const { text } = Astro.props as { text: string };
+---
+
+<h1 class="sr-only">{text}</h1>

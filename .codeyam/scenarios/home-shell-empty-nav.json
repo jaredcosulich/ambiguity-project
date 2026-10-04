@@ -1,0 +1,16 @@
+{
+  "name": "Home Shell - Empty Nav",
+  "id": "999fe43a-2b23-4df9-abf3-5006b7caf383",
+  "url": "/",
+  "dimensions": [
+    "Desktop",
+    "Mobile"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/site-empty-nav.json"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "src/pages/index.astro",
+  "description": "Home page when an editor has removed every menu item: header and footer keep the logo and copyright, and on mobile the Menu toggle is hidden rather than opening an empty panel."
+}

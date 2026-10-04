@@ -1,0 +1,15 @@
+{
+  "name": "Home Shell - Desktop",
+  "id": "ae982193-f3c6-41ea-acb7-798860379bd1",
+  "url": "/",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/site-default.json"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "src/pages/index.astro",
+  "description": "Home page shell at desktop width: navy header with logo and nav, empty ivory body awaiting the section plans, footer."
+}

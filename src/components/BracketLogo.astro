@@ -1,0 +1,26 @@
+---
+// The bracket logo from the mockup: a left bracket enclosing the three-line
+// wordmark. `tone="light"` is the all-white header version; `tone="dark"` is
+// the navy/ink footer version.
+interface Props {
+  tone: 'light' | 'dark';
+  width: number;
+  height: number;
+  label: string;
+}
+
+const { tone, width, height, label } = Astro.props;
+const stroke = tone === 'light' ? '#FFFFFF' : '#0C1F47';
+const strokeWidth = tone === 'light' ? 12 : 14;
+const primary = tone === 'light' ? '#FFFFFF' : '#0C1F47';
+const secondary = tone === 'light' ? '#FFFFFF' : '#1A1A1A';
+---
+
+<svg role="img" aria-label={label} viewBox="0 0 900 545" width={width} height={height} xmlns="http://www.w3.org/2000/svg">
+  <path d="M415 6 H10 V539 H415" fill="none" stroke={stroke} stroke-width={strokeWidth} stroke-linecap="round" stroke-linejoin="round" />
+  <g font-family="'Libre Caslon Text', Georgia, serif" font-size="140">
+    <text x="172" y="192" fill={primary}>The</text>
+    <text x="172" y="320" fill={secondary}>Ambiguity</text>
+    <text x="172" y="448" fill={primary}>Project</text>
+  </g>
+</svg>

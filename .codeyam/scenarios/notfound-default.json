@@ -1,0 +1,15 @@
+{
+  "name": "NotFound - Default",
+  "id": "eed1a6ea-a6b6-4b27-b4f0-0fba29b04874",
+  "url": "/isolated-components/NotFound",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/site-default.json"
+  },
+  "componentName": "NotFound",
+  "scenarioType": "component",
+  "description": "404 page body: bracket label, heading, and a link back home."
+}

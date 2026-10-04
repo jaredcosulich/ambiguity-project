@@ -1,0 +1,50 @@
+# Build the Astro static site and publish it to GitHub Pages.
+#
+# Setup (one time): in the repo, Settings → Pages → "Build and deployment" →
+# Source: "GitHub Actions". Then push to main and this workflow builds `dist/`
+# and deploys it.
+#
+# DEPLOY_BASE_PATH / PAGES_SITE feed `base` / `site` in astro.config.mjs. They
+# point at the project-site subpath today; DEPLOY_SETUP.md has the recipe for
+# moving to the ambiguityproject.org custom domain.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment; cancel in-progress runs for the same ref.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      DEPLOY_BASE_PATH: /ambiguity-project
+      PAGES_SITE: https://jaredcosulich.github.io
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Astro site
+        uses: withastro/action@v3
+        # with:
+        #   path: .            # root of the Astro project (default)
+        #   node-version: 20
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

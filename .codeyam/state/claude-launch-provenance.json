@@ -1,0 +1,14 @@
+{
+  "signIn": null,
+  "launch": {
+    "binary": "/usr/local/bin/claude",
+    "version": "2.1.289 (Claude Code)",
+    "configPath": "/root/.claude.json",
+    "configPresent": true,
+    "configOnboarded": true,
+    "credsPath": "/root/.claude/.credentials.json",
+    "credsPresent": true,
+    "configAction": "patched",
+    "recordedAt": "2026-10-04T15:27:16.858932838Z"
+  }
+}

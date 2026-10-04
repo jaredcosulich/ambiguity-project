@@ -1,0 +1,15 @@
+{
+  "name": "SectionAnchor - With Slotted Content",
+  "id": "14e35623-f7c1-4fec-94e0-4dc5a39ff546",
+  "url": "/isolated-components/SectionAnchor",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/site-default.json"
+  },
+  "componentName": "SectionAnchor",
+  "scenarioType": "component",
+  "description": "A home page section anchor (id books) passing slotted content through; on the live page it stays empty until a section plan fills it."
+}

@@ -1,0 +1,34 @@
+/* Site-wide base rules and shared building blocks, ported from the mockup
+   (design/mockup/index.html). Section-specific CSS lives with each section's
+   component. */
+@import './tokens.css';
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--ivory); color: var(--ink); font-family: var(--serif); -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; }
+a { color: var(--navy); }
+h1, h2, h3, p { margin: 0; font-weight: 400; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.wrap { padding-inline: var(--gutter); }
+
+/* Buttons & links */
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 22px; font-family: var(--sans); font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 3px; border: 2px solid transparent; cursor: pointer; }
+.btn-lg { min-height: 46px; padding: 0 24px; font-size: 15px; }
+.more { font-family: var(--sans); font-size: 14px; font-weight: 600; text-decoration: none; }
+.more:hover { text-decoration: underline; text-underline-offset: 4px; }
+.go { display: inline-block; transition: transform .25s ease; }
+
+/* Bracket section labels (echo the logo) */
+.label { position: relative; align-self: flex-start; padding: 6px 0 6px 18px; font-size: 24px; line-height: 1.1; }
+.label::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 42px; border: 2.5px solid currentColor; border-right: 0; border-radius: 2px 0 0 2px; color: var(--bracket, currentColor); }
+.eyebrow { font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
+
+/* Cards */
+.card { text-decoration: none; color: var(--ink); background: #fff; border-radius: 6px; transition: transform .25s ease, box-shadow .25s ease; }
+.card:hover { transform: translateY(-5px); box-shadow: 0 14px 32px rgba(12,31,71,0.14); }
+.card:hover .go { transform: translateX(5px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .go { transition: none; }
+}

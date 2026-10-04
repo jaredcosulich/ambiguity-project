@@ -1,0 +1,15 @@
+{
+  "name": "MainNav - Default",
+  "id": "48be7370-4e7b-481d-877f-5c1f005b2458",
+  "url": "/isolated-components/MainNav",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/site-default.json"
+  },
+  "componentName": "MainNav",
+  "scenarioType": "component",
+  "description": "Main nav links on the navy band, with Support Us as the white call-to-action button."
+}

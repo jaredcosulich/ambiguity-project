@@ -1,0 +1,28 @@
+---
+// The site footer from the mockup: the navy-on-ivory bracket logo, the footer
+// nav (from `nav.json`), and the copyright line from `settings.footerText`.
+import BracketLogo from './BracketLogo.astro';
+import FooterNav from './FooterNav.astro';
+import { getSettings, getNav } from '../lib/site';
+import { toNavLinks } from '../lib/navLinks';
+const settings = getSettings();
+const nav = getNav();
+
+const links = toNavLinks(nav.items);
+---
+
+<footer class="site-footer wrap">
+  <BracketLogo tone="dark" width={48} height={29} label={settings.siteTitle} />
+  {links.length > 0 && <FooterNav links={links} />}
+  <span class="footer-text">{settings.footerText}</span>
+</footer>
+
+<style>
+  .site-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px; padding-block: 40px; font-family: var(--sans); font-size: 13px; color: var(--muted); }
+  .site-footer :global(svg) { flex-shrink: 0; }
+  .footer-text { overflow-wrap: anywhere; }
+
+  @media (max-width: 640px) {
+    .site-footer { flex-direction: column; align-items: flex-start; }
+  }
+</style>

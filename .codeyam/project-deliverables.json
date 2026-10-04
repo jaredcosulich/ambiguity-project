@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "derivedFromHash": "d22c08f9607acbfd6771028d0c25084a47087890ca76c6ad019f48e98730de9e",
+  "derivedAt": "2026-10-04T15:31:57.791242986+00:00",
+  "deliverables": [
+    {
+      "id": "the-home-page-from-the-mockup-rebuilt-as-a-real",
+      "text": "The home page from the mockup rebuilt as a real Astro site with the same header, footer, colors and fonts",
+      "status": "open",
+      "resolvedAt": null,
+      "resolvedInFeature": null,
+      "planSlug": null,
+      "note": null,
+      "decidedBy": null
+    },
+    {
+      "id": "editors-sign-in-at-admin-and-change-the-site",
+      "text": "Editors sign in at /admin and change the site title, menu, footer and home page text without touching code",
+      "status": "open",
+      "resolvedAt": null,
+      "resolvedInFeature": null,
+      "planSlug": null,
+      "note": null,
+      "decidedBy": null
+    },
+    {
+      "id": "every-push-to-main-publishes-the-site-live-on",
+      "text": "Every push to main publishes the site live on GitHub Pages at jaredcosulich.github.io/ambiguity-project/ (publishing work, handled at push)",
+      "status": "open",
+      "resolvedAt": null,
+      "resolvedInFeature": null,
+      "planSlug": null,
+      "note": null,
+      "decidedBy": null
+    },
+    {
+      "id": "the-blog-section-shows-recent-substack-posts",
+      "text": "The Blog section shows recent Substack posts (wanted soon, likely a later session)",
+      "status": "deferred",
+      "resolvedAt": "2026-10-04T15:32:45.694884191+00:00",
+      "resolvedInFeature": "Astro Site Foundation",
+      "planSlug": null,
+      "note": "User wants blog soon but likely not this session; covered by blog-section-fed-from-substack plan",
+      "decidedBy": "user"
+    },
+    {
+      "id": "support-us-section-with-working-newsletter",
+      "text": "Support Us section with working newsletter signup and donations (not a priority yet)",
+      "status": "deferred",
+      "resolvedAt": "2026-10-04T15:32:45.713095814+00:00",
+      "resolvedInFeature": "Astro Site Foundation",
+      "planSlug": null,
+      "note": "User: not worried about support yet",
+      "decidedBy": "user"
+    }
+  ]
+}
