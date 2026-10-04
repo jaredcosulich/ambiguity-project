@@ -55,6 +55,16 @@
       "source": "session-review",
       "status": "pending",
       "proposedAt": "2026-10-04T18:32:37.998694817+00:00"
+    },
+    {
+      "id": "seeds-reset-site-data-files-they-don-t-mention",
+      "title": "Seeds reset site data files they don't mention",
+      "mode": "backend",
+      "body": "## Summary\n\nThe seed loader (`.codeyam/seed-adapter.ts`) rewrites a site data file such as `substackPosts.json` only when a seed names it. A seed that does not mention a file keeps whatever the previous seed wrote, so preview states change depending on load order. This surfaced while building the Blog section: older home-page states showed demo posts until every seed in `.codeyam/seeds/` was edited to set `substackPosts` explicitly. The next data file (for example the Support Us section's) will hit the same trap.\n\n## Key Decisions\n\n- Before writing a seed's data files, reset every data file in the sandbox data root to its committed copy from `src/data/`, then apply the seed on top. Seeds stay small and only state what differs.\n- Content collections already behave this way (their directories are cleared); this brings data files in line.\n- Keep the explicit `substackPosts` entries already added to seeds; they become harmless.\n\n## Implementation\n\n- `.codeyam/seed-adapter.ts`: in the singleton-writing path (`writeSingleton` and its caller), first copy each `src/data/*.json` into the data root, then write the seeded singletons.\n- Add a test seeding a payload without `substackPosts` after one with posts, and assert the sandbox file matches committed `src/data/substackPosts.json`.\n- Recapture the home-page scenarios and confirm none change.",
+      "reason": "Preview states silently inherited blog posts from whichever state loaded last; every new data file means editing every seed.",
+      "source": "session-review",
+      "status": "pending",
+      "proposedAt": "2026-10-04T19:03:25.996336144+00:00"
     }
   ]
 }
