@@ -12,6 +12,7 @@ npm install
 npm run dev        # http://127.0.0.1:4321 (CMS at /admin)
 npm run build      # type-check + static build into dist/
 npm run test       # unit tests (vitest + jsdom)
+npm run sync:substack  # refresh src/data/substackPosts.json from the Substack feed
 ```
 
 ## Layout
@@ -36,6 +37,15 @@ Site-wide text and links are content, not markup. `src/data/settings.json`
 header and footer menu; the last item is the header's button) are loaded by
 `src/lib/site.ts`. Changing them is a commit the CMS makes, never a source
 change. See `CMS_SETUP.md`.
+
+## Blog
+
+Posts are written in Substack. `scripts/sync-substack.mjs` reads the feed at
+`<Substack URL>/feed` and writes the newest posts to
+`src/data/substackPosts.json`, which the home page's Blog section shows (the
+latest three). The file is generated, so don't edit it by hand. Every deploy
+re-syncs before building, and a daily scheduled deploy picks up new posts. See
+`DEPLOY_SETUP.md`.
 
 ## Deploy
 

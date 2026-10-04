@@ -1,5 +1,31 @@
 [
   {
+    "description": "The Blog section's launch-state card inviting visitors to subscribe on Substack before the first post exists.",
+    "filePath": "src/components/BlogEmptyCard.astro",
+    "name": "BlogEmptyCard",
+    "scenarios": [
+      "blogemptycard-subscribe"
+    ],
+    "tags": [
+      "home-sections",
+      "blog"
+    ]
+  },
+  {
+    "description": "Home page Blog section: ochre bracket label, heading, All posts link, and the newest three Substack posts as cards; shows the subscribe card when there are no posts yet.",
+    "filePath": "src/components/BlogSection.astro",
+    "name": "BlogSection",
+    "scenarios": [
+      "blogsection-latest-three-posts",
+      "blogsection-one-post",
+      "blogsection-no-posts-yet"
+    ],
+    "tags": [
+      "home-sections",
+      "blog"
+    ]
+  },
+  {
     "description": "Tilted book cover image, or a salmon title card when no cover is set.",
     "filePath": "src/components/BookCover.astro",
     "name": "BookCover",
@@ -173,6 +199,30 @@
     ]
   },
   {
+    "description": "One Substack post card: cover, optional category pill, UTC date, title clamped to four lines, and Read post link to the post on Substack.",
+    "filePath": "src/components/PostCard.astro",
+    "name": "PostCard",
+    "scenarios": [
+      "postcard-cover-missing-cover-and-long-title"
+    ],
+    "tags": [
+      "home-sections",
+      "blog"
+    ]
+  },
+  {
+    "description": "A blog card cover: the post's Substack cover image, or an ochre panel with the site name when the post has none.",
+    "filePath": "src/components/PostCover.astro",
+    "name": "PostCover",
+    "scenarios": [
+      "postcover-image-and-fallback"
+    ],
+    "tags": [
+      "home-sections",
+      "blog"
+    ]
+  },
+  {
     "description": "Home page section placeholder carrying the id the nav links to; later plans fill each one.",
     "filePath": "src/components/SectionAnchor.astro",
     "name": "SectionAnchor",
@@ -234,6 +284,15 @@
     ]
   },
   {
+    "description": "Normalize an XML parser value that may be missing, a single node, or a list into an array, so feeds with zero, one or many items/enclosures/categories parse the same way.",
+    "filePath": "src/lib/substack.ts",
+    "name": "asArray",
+    "tags": [
+      "blog"
+    ],
+    "testFile": "src/lib/substack.test.ts"
+  },
+  {
     "description": "Wires the mobile Menu/Close toggle: each button click flips the menu and following any nav link closes it.",
     "filePath": "src/lib/mobileMenu.ts",
     "name": "bindMobileMenu",
@@ -241,6 +300,33 @@
       "site-shell"
     ],
     "testFile": "src/lib/mobileMenu.test.ts"
+  },
+  {
+    "description": "Decode named, decimal and hex HTML entities left undecoded inside CDATA in Substack titles and summaries; unknown entities are kept as written.",
+    "filePath": "src/lib/substack.ts",
+    "name": "decodeEntities",
+    "tags": [
+      "blog"
+    ],
+    "testFile": "src/lib/substack.test.ts"
+  },
+  {
+    "description": "The RSS feed URL for a Substack home URL from the substackUrl setting, appending /feed and stripping trailing slashes.",
+    "filePath": "src/lib/substack.ts",
+    "name": "feedUrlFor",
+    "tags": [
+      "blog"
+    ],
+    "testFile": "src/lib/substack.test.ts"
+  },
+  {
+    "description": "Format a post's ISO date as a short US date in UTC so the build machine timezone never shifts the day; empty string for an invalid date.",
+    "filePath": "src/lib/substack.ts",
+    "name": "formatPostDate",
+    "tags": [
+      "blog"
+    ],
+    "testFile": "src/lib/substack.test.ts"
   },
   {
     "description": "Reads the editable nav.json singleton from the active data root on every call.",
@@ -267,6 +353,16 @@
     }
   },
   {
+    "description": "Read synced posts from substackPosts.json under the data root on every call; a missing or malformed snapshot means no posts rather than a broken build.",
+    "filePath": "src/lib/substack.ts",
+    "name": "getSubstackPosts",
+    "tags": [
+      "blog",
+      "site-data"
+    ],
+    "testFile": "src/lib/substack.test.ts"
+  },
+  {
     "description": "Starting state of the hero typewriter: the first word on screen, ready to delete.",
     "filePath": "src/lib/typewriter.ts",
     "name": "initialTypewriterState",
@@ -283,6 +379,27 @@
       "site-data"
     ],
     "testFile": "src/lib/contentRoot.test.ts"
+  },
+  {
+    "description": "Log why the Substack sync is skipping (no URL, fetch failure, non-RSS body) and exit successfully, leaving the existing snapshot in place so the deploy still builds.",
+    "filePath": "scripts/sync-substack.mjs",
+    "name": "keep",
+    "tags": [
+      "blog"
+    ],
+    "untestabilityReason": {
+      "justification": "Logs a warning and exits the Node process; the network/filesystem boundary of the sync script.",
+      "kind": "platform-glue"
+    }
+  },
+  {
+    "description": "The newest N posts (default three) sorted newest first, without mutating the input; drives which cards the Blog section shows.",
+    "filePath": "src/lib/substack.ts",
+    "name": "latestPosts",
+    "tags": [
+      "blog"
+    ],
+    "testFile": "src/lib/substack.test.ts"
   },
   {
     "description": "Joins the mission words into a screen-reader sentence with an Oxford comma.",
@@ -303,6 +420,15 @@
     "testFile": "src/lib/missionWords.test.ts"
   },
   {
+    "description": "Whether a fetched body is an RSS feed at all (has a channel element), so the sync never overwrites the last good snapshot with an error page.",
+    "filePath": "src/lib/substack.ts",
+    "name": "looksLikeRssFeed",
+    "tags": [
+      "blog"
+    ],
+    "testFile": "src/lib/substack.test.ts"
+  },
+  {
     "description": "Label for the mobile nav toggle: Close when the menu is open, Menu when closed.",
     "filePath": "src/lib/mobileMenu.ts",
     "name": "menuLabel",
@@ -319,6 +445,15 @@
       "home-sections"
     ],
     "testFile": "src/lib/missionWords.test.ts"
+  },
+  {
+    "description": "Parse a Substack RSS feed into normalized posts (title, url, ISO date, optional summary, cover image from enclosure, first category), newest first; skips incomplete items and returns an empty list for malformed XML instead of throwing.",
+    "filePath": "src/lib/substack.ts",
+    "name": "parseSubstackFeed",
+    "tags": [
+      "blog"
+    ],
+    "testFile": "src/lib/substack.test.ts"
   },
   {
     "description": "Returns the lowest-ordered CMS entry, or undefined for an empty collection; picks the hero quote.",
@@ -385,6 +520,15 @@
       "home-sections"
     ],
     "testFile": "src/lib/contentOrder.test.ts"
+  },
+  {
+    "description": "Read a feed field as trimmed, entity-decoded text whether the parser returned a plain value or a node with #text; missing fields read as an empty string.",
+    "filePath": "src/lib/substack.ts",
+    "name": "text",
+    "tags": [
+      "blog"
+    ],
+    "testFile": "src/lib/substack.test.ts"
   },
   {
     "description": "Shapes editable nav.json items into header/footer links: skips items without a url, routes hrefs through withBase, and flags the last link as the call-to-action button.",

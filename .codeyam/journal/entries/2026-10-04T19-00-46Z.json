@@ -1,0 +1,451 @@
+{
+  "timestamp": "2026-10-04T19:00:46Z",
+  "title": "Blog Section Fed From Substack",
+  "type": "feature",
+  "userRequest": "## Summary\n\nFill the home page's Blog section (the three ochre \"[Post title]\" cards in\n`design/mockup/index.html`) with the latest posts from the\n`ambiguityproject.substack.com` Substack. Writing happens in Substack, and\nvisitors see the three most recent posts as cards: cover image, date, title,\n\"Read post →\". Each card links to the post on Substack, and \"All posts →\"\ngoes to the Substack home. New posts appear on the site automatically within a\nday, with no one touching the repo.\n\n## Key Decisions\n\n- **Fetch the RSS feed at build time, not in the browser.** The feed is\n  `https://ambiguityproject.substack.com/feed` (checked 2026-09-30: returns 200\n  `application/xml`, channel title \"The Ambiguity Project\", **zero items so\n  far**). Browser fetching would hit CORS and render the cards with a flash\n  after load. A build-time fetch keeps the site fully static and crawlable.\n- **The sync writes a data file, and the section reads only that file.** A small\n  Node script (`scripts/sync-substack.mjs`) fetches the feed and writes\n  normalized posts (`title`, `url`, `date`, `summary`, `image`, `category?`) to\n  `src/data/substackPosts.json`. The section component never touches the\n  network. This keeps the site renderable offline and in codeyam scenarios:\n  the content-collection seed adapter seeds `substackPosts.json` directly, so\n  every blog state (empty, one post, many, missing image) is a scenario, with\n  no HTTP mocking.\n- **Commit a snapshot; CI refreshes it before building.** The committed file is\n  what local dev and scenarios see. The deploy workflow runs the sync right\n  before `astro build`, so production always has the current feed. It does not\n  commit the result back. If the fetch fails in CI (Substack down), the build\n  keeps the committed snapshot and logs a warning instead of failing the deploy.\n- **A scheduled rebuild picks up new posts.** Add a daily `schedule:` cron (plus\n  the existing `workflow_dispatch`) to `.github/workflows/deploy.yml`. Substack\n  has no webhooks, and a daily delay is fine for a blog. Mention the manual\n  \"Run workflow\" button in `DEPLOY_SETUP.md` for publishing immediately.\n- **The feed URL comes from the `substackUrl` setting** (declared by the\n  foundation plan). The sync reads it from `src/data/settings.json` and\n  appends `/feed`. \"All posts →\" and the empty state's call-to-action use the\n  same setting.\n- **The feed is not CMS-editable.** `substackPosts.json` is generated, so it is\n  not declared in `collections.json`, and the file carries a \"generated — do not\n  edit\" note. Editors change posts in Substack.\n- **Parse RSS with a small tested pure function.** `parseSubstackFeed(xml)`\n  lives in `src/lib/substack.ts`, using a real XML parser dependency (e.g.\n  `fast-xml-parser`) rather than regexes. Unit tests use feed fixtures: a\n  normal feed, an empty channel (today's real state), an item with no\n  enclosure image, HTML entities in titles, and malformed XML (returns `[]`\n  and reports the error, never throws past the script). The cover image comes\n  from `<enclosure>`. The category pill shows only when the item carries a\n  `<category>`, and is otherwise omitted rather than showing \"[Category]\".\n- **The empty state is the launch state.** With no posts yet, the section keeps\n  its heading and shows one ochre card: \"Our first posts are on the way —\n  subscribe on Substack\", linking to `substackUrl`. It does not show three\n  placeholder cards.\n\n## Implementation\n\n### 1. Feed parsing and sync\n\n**New file**: `src/lib/substack.ts`, the pure parser and normalizer, plus\n`src/lib/substack.test.ts`.\n**New file**: `scripts/sync-substack.mjs` fetches the feed, parses it,\nwrites `src/data/substackPosts.json`, and keeps the snapshot on failure. Add an\n`npm run sync:substack` script.\n\n### 2. Blog section\n\n**New file**: `src/components/BlogSection.astro` holds the mockup's blog markup\nand CSS: the ochre bracket label, a 3→2→1 column grid at 1024/640px (the\nmockup hides the third card at tablet width), the card hover lift, and date\nformatting. It also handles the empty state. Mount it at `#blog` in\n`src/pages/index.astro`. Cards open Substack in the same tab.\n\n### 3. Deploy pipeline\n\nAdd the sync step before the build and the daily cron to\n`.github/workflows/deploy.yml`. Document both in `DEPLOY_SETUP.md`.\n\n## Scenarios to Demonstrate\n\n- No posts yet (the real launch state): heading plus the subscribe empty card\n- One post; two posts; three posts; ten posts (only the latest three shown)\n- A post with no cover image (the ochre placeholder panel with the site name)\n- A very long post title and summary\n- Mobile layout (single column) and tablet layout (two columns)",
+  "description": "The home page Blog section now shows the three newest posts from the ambiguityproject.substack.com feed as ochre cards (cover image or a site-name fallback panel, category pill, date, title, Read post link), and shows a subscribe card while the feed has no posts yet, which is the real state today. A tested parser plus scripts/sync-substack.mjs write src/data/substackPosts.json; the deploy workflow re-syncs before every build (keeping the committed snapshot if Substack is unreachable) and now also runs daily so new posts appear within a day. Existing home-page seeds now set their blog posts explicitly so scenarios no longer inherit posts from whichever seed ran last. Scope verdict: delivered the 'Blog section shows recent Substack posts' deliverable (user-approved); still deferred by the user: the Support Us section with newsletter signup and donations. No agent-decided deferrals.",
+  "modifiedFiles": [
+    {
+      "path": ".codeyam/data-structure.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/glossary.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/per-test-evidence.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/plans/blog-section-fed-from-substack.md\t.codeyam/plans/completed/blog-section-fed-from-substack.md",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/project-deliverables.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/.capture-pipeline.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/admin-dashboard-pages-and-site-settings--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-full-content--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-full-content-mobile--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-desktop--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-desktop--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-empty-nav--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-long-title-and-extra-nav-items--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-mobile-menu-open--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-single-nav-item--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-technology-section--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-technology-section--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/seeds/home-five-tools-long.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/seeds/home-full.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/seeds/home-long-hero.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/seeds/home-one-tool.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/seeds/home-two-books.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/seeds/site-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/seeds/site-empty-nav.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/seeds/site-long-title-extra-nav.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/seeds/site-single-nav-item.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/state/finalize-debt.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/state/scenario-taxonomy.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/all.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/a8ac459d1ce758dfe06691e1097b7d36e174fb4c8d96de39fecffcff70665f3c.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/ba9a9aa4ddffc8bfcce0a4c723ba41b23ab0a47ca07e3c19314f1456f15a6504.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-registry.json",
+      "status": "modified"
+    },
+    {
+      "path": ".github/workflows/deploy.yml",
+      "status": "modified"
+    },
+    {
+      "path": "DEPLOY_SETUP.md",
+      "status": "modified"
+    },
+    {
+      "path": "README.md",
+      "status": "modified"
+    },
+    {
+      "path": "package-lock.json",
+      "status": "modified"
+    },
+    {
+      "path": "package.json",
+      "status": "modified"
+    },
+    {
+      "path": "src/data/settings.json",
+      "status": "modified"
+    },
+    {
+      "path": "src/pages/index.astro",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/blogemptycard-subscribe.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/blogsection-latest-three-posts.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/blogsection-no-posts-yet.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/blogsection-one-post.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/coverage-plan/blogemptycard.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/coverage-plan/blogsection.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/coverage-plan/postcard.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/coverage-plan/postcover.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/home-blog-latest-posts-mobile.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/home-blog-latest-posts-tablet.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/home-blog-latest-posts.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/home-blog-no-posts-yet.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/postcard-cover-missing-cover-and-long-title.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/postcover-image-and-fallback.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/blogemptycard-subscribe--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/blogemptycard-subscribe--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/blogsection-latest-three-posts--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/blogsection-latest-three-posts--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/blogsection-no-posts-yet--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/blogsection-no-posts-yet--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/blogsection-one-post--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/blogsection-one-post--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-blog-latest-posts--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-blog-latest-posts--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-blog-latest-posts-mobile--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-blog-latest-posts-mobile--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-blog-latest-posts-tablet--tablet.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-blog-latest-posts-tablet--tablet.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-blog-no-posts-yet--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-blog-no-posts-yet--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/postcard-cover-missing-cover-and-long-title--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/postcard-cover-missing-cover-and-long-title--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/postcover-image-and-fallback--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/postcover-image-and-fallback--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/seeds/home-blog-empty.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/seeds/home-blog-one-post.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/seeds/home-blog-posts.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/4eb9ef320fd8deee3d67fea04a11be779dd5adcfa55c575de64ab743b820825e.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/914c30ccd614fc4a5501fa53a5db8c78848e80e65b5652d26136e6a5138ebebd.json",
+      "status": "added"
+    },
+    {
+      "path": "scripts/sync-substack.mjs",
+      "status": "added"
+    },
+    {
+      "path": "src/components/BlogEmptyCard.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/BlogSection.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/PostCard.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/PostCover.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/data/substackPosts.json",
+      "status": "added"
+    },
+    {
+      "path": "src/lib/substack.test.ts",
+      "status": "added"
+    },
+    {
+      "path": "src/lib/substack.ts",
+      "status": "added"
+    }
+  ],
+  "scenarioScreenshots": [
+    {
+      "name": "Admin Dashboard - Pages And Site Settings",
+      "screenshotPath": "admin-dashboard-pages-and-site-settings--desktop.png"
+    },
+    {
+      "name": "Home - Blog Latest Posts",
+      "screenshotPath": "home-blog-latest-posts--desktop.png"
+    },
+    {
+      "name": "Home - Blog Latest Posts Mobile",
+      "screenshotPath": "home-blog-latest-posts-mobile--mobile.png"
+    },
+    {
+      "name": "Home - Blog Latest Posts Tablet",
+      "screenshotPath": "home-blog-latest-posts-tablet--tablet.png"
+    },
+    {
+      "name": "Home - Blog No Posts Yet",
+      "screenshotPath": "home-blog-no-posts-yet--desktop.png"
+    },
+    {
+      "name": "Home - Full Content",
+      "screenshotPath": "home-full-content--desktop.png"
+    },
+    {
+      "name": "Home - Full Content Mobile",
+      "screenshotPath": "home-full-content-mobile--mobile.png"
+    },
+    {
+      "name": "Home - Technology Section",
+      "screenshotPath": "home-technology-section--desktop.png"
+    },
+    {
+      "name": "Home Shell - Desktop",
+      "screenshotPath": "home-shell-desktop--desktop.png"
+    },
+    {
+      "name": "Home Shell - Empty Nav",
+      "screenshotPath": "home-shell-empty-nav--desktop.png"
+    },
+    {
+      "name": "Home Shell - Long Title And Extra Nav Items",
+      "screenshotPath": "home-shell-long-title-and-extra-nav-items--desktop.png"
+    },
+    {
+      "name": "Home Shell - Mobile Menu Open",
+      "screenshotPath": "home-shell-mobile-menu-open--mobile.png"
+    },
+    {
+      "name": "Home Shell - Single Nav Item",
+      "screenshotPath": "home-shell-single-nav-item--desktop.png"
+    },
+    {
+      "name": "BlogEmptyCard - Subscribe",
+      "screenshotPath": "blogemptycard-subscribe--desktop.png"
+    },
+    {
+      "name": "BlogSection - Latest Three Posts",
+      "screenshotPath": "blogsection-latest-three-posts--desktop.png"
+    },
+    {
+      "name": "BlogSection - No Posts Yet",
+      "screenshotPath": "blogsection-no-posts-yet--desktop.png"
+    },
+    {
+      "name": "BlogSection - One Post",
+      "screenshotPath": "blogsection-one-post--desktop.png"
+    },
+    {
+      "name": "PostCard - Cover, Missing Cover And Long Title",
+      "screenshotPath": "postcard-cover-missing-cover-and-long-title--desktop.png"
+    },
+    {
+      "name": "PostCover - Image And Fallback",
+      "screenshotPath": "postcover-image-and-fallback--desktop.png"
+    }
+  ],
+  "testResults": {
+    "total": 85,
+    "passed": 85,
+    "failed": 0,
+    "runners": [
+      {
+        "name": "tests",
+        "total": 85,
+        "passed": 85
+      }
+    ]
+  }
+}

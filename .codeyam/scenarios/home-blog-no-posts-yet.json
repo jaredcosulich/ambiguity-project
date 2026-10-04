@@ -1,0 +1,21 @@
+{
+  "name": "Home - Blog No Posts Yet",
+  "id": "bb9fc5e4-12ba-4902-9eea-1b95f45d16c0",
+  "url": "/#blog",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-blog-empty.json"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "src/pages/index.astro",
+  "description": "The launch state: the Substack feed has no posts yet, so the Blog section keeps its heading and shows one subscribe card linking to Substack.",
+  "interactions": [
+    {
+      "action": "hover",
+      "selector": "#blog-h"
+    }
+  ]
+}

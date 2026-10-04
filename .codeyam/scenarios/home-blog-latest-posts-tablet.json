@@ -1,0 +1,21 @@
+{
+  "name": "Home - Blog Latest Posts Tablet",
+  "id": "50da6a85-502a-4abd-9a10-e0e8743fc554",
+  "url": "/#blog",
+  "dimensions": [
+    "Tablet"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-blog-posts.json"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "src/pages/index.astro",
+  "description": "At tablet width the Blog section shows two cards side by side and hides the third, matching the mockup's two-column layout.",
+  "interactions": [
+    {
+      "action": "hover",
+      "selector": "#blog-h"
+    }
+  ]
+}

@@ -270,5 +270,44 @@
         "required": false
       }
     ]
+  },
+  {
+    "name": "SubstackPost",
+    "description": "Generated snapshot of recent Substack posts (src/data/substackPosts.json), written by scripts/sync-substack.mjs from the substackUrl feed; not CMS-editable.",
+    "category": "datastore",
+    "order": 5,
+    "fields": [
+      {
+        "name": "title",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "url",
+        "type": "string",
+        "isId": true,
+        "required": true
+      },
+      {
+        "name": "date",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "summary",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "image",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "category",
+        "type": "string",
+        "required": false
+      }
+    ]
   }
 ]

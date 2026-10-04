@@ -1,0 +1,23 @@
+---
+// A blog card's cover: the post's Substack cover image, or an ochre panel with
+// the site name when the post has none.
+interface Props {
+  image?: string;
+  siteTitle: string;
+}
+
+const { image, siteTitle } = Astro.props;
+---
+
+{
+  image ? (
+    <img class="post-img" src={image} alt="" loading="lazy" />
+  ) : (
+    <span class="post-img post-img-empty">{siteTitle}</span>
+  )
+}
+
+<style>
+  .post-img { display: flex; align-items: center; justify-content: center; width: 100%; height: clamp(130px, 11vw, 190px); object-fit: cover; background: var(--ochre-tint); }
+  .post-img-empty { padding: 0 16px; text-align: center; font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #6E4A0E; }
+</style>

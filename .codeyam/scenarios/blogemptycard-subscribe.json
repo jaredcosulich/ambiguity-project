@@ -1,0 +1,12 @@
+{
+  "name": "BlogEmptyCard - Subscribe",
+  "id": "c66c9c3d-109b-4648-983e-6155bb768745",
+  "url": "/isolated-components/BlogEmptyCard",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "BlogEmptyCard",
+  "scenarioType": "component",
+  "description": "The launch-state card: Our first posts are on the way, with a Subscribe on Substack link."
+}

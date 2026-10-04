@@ -1,0 +1,22 @@
+---
+// The Blog section before the first Substack post: one ochre card inviting
+// visitors to subscribe, instead of placeholder post cards.
+interface Props {
+  substackUrl?: string;
+}
+
+const { substackUrl } = Astro.props;
+---
+
+<a class="card post-empty" href={substackUrl}>
+  <span class="empty-title">Our first posts are on the way.</span>
+  <span class="empty-text">Subscribe on Substack to get them in your inbox as soon as they're published.</span>
+  {substackUrl && <span class="read">Subscribe on Substack <span class="go">→</span></span>}
+</a>
+
+<style>
+  .post-empty { grid-column: 1 / -1; max-width: 560px; display: flex; flex-direction: column; gap: 12px; padding: 28px; background: var(--ochre-tint); border: 1px solid var(--ochre); }
+  .empty-title { font-size: 21px; line-height: 1.25; }
+  .empty-text { font-family: var(--sans); font-size: 15px; line-height: 1.5; color: var(--body); }
+  .read { font-family: var(--sans); font-size: 14px; font-weight: 600; color: var(--navy); }
+</style>

@@ -1,0 +1,12 @@
+{
+  "name": "PostCover - Image And Fallback",
+  "id": "0e37bee1-5bf8-4f4f-8138-978bca028bf0",
+  "url": "/isolated-components/PostCover",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "PostCover",
+  "scenarioType": "component",
+  "description": "A real Substack cover image beside the ochre site-name panel used when a post has no cover."
+}

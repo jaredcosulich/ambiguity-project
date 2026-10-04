@@ -1,0 +1,12 @@
+{
+  "name": "PostCard - Cover, Missing Cover And Long Title",
+  "id": "0d8fa1ad-ddcf-4440-a637-e3445575b1c3",
+  "url": "/isolated-components/PostCard",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "PostCard",
+  "scenarioType": "component",
+  "description": "Three cards at grid width: a full post with cover and Essays pill, a post with no cover image, and a very long title with no category that clamps to four lines."
+}

@@ -1,12 +1,13 @@
 {
   "seed": {
+    "substackPosts": { "posts": [] },
     "settings": {
       "siteTitle": "The Ambiguity Project",
       "description": "The Ambiguity Project is a 501(c)(3) non-profit helping people better recognize, live with, and navigate ambiguity.",
       "contactEmail": "",
       "footerText": "© 2026 The Ambiguity Project",
       "socials": [],
-      "substackUrl": "",
+      "substackUrl": "https://ambiguityproject.substack.com",
       "heroEyebrow": "A 501(c)(3) Non-Profit",
       "missionPrefix": "Helping",
       "missionWords": "people\nstudents\nbusinesses\ngovernments\norganizations\nschools",

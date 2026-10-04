@@ -1,8 +1,9 @@
 ---
 // The home page: hero, books, technology and learn more are built from CMS
 // content (the `books` / `tools` / `quotes` collections plus home copy in
-// `settings.json`). The blog and support anchors are filled by their own plans;
-// the ids match the nav links in `nav.json`.
+// `settings.json`); the blog shows the latest Substack posts from the synced
+// `substackPosts.json`. The support anchor is filled by its own plan; the ids
+// match the nav links in `nav.json`.
 import { getCollection } from 'astro:content';
 import { publishedEntries } from '@codeyam/cms/content';
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -11,19 +12,22 @@ import Hero from '../components/Hero.astro';
 import BooksSection from '../components/BooksSection.astro';
 import ToolsSection from '../components/ToolsSection.astro';
 import LearnMore from '../components/LearnMore.astro';
+import BlogSection from '../components/BlogSection.astro';
 import { getSettings } from '../lib/site';
+import { getSubstackPosts } from '../lib/substack';
 import { pickFirstByOrder, sortByOrder } from '../lib/contentOrder';
 
 const settings = getSettings();
 const books = sortByOrder(publishedEntries(await getCollection('books')));
 const tools = sortByOrder(publishedEntries(await getCollection('tools')));
 const quote = pickFirstByOrder(await getCollection('quotes'));
+const posts = getSubstackPosts();
 ---
 
 <BaseLayout description={settings.description}>
   <Hero settings={settings} quote={quote?.data} />
   <BooksSection books={books} />
-  <SectionAnchor id="blog" label="Blog" />
+  <BlogSection posts={posts} substackUrl={settings.substackUrl} siteTitle={settings.siteTitle} />
   <ToolsSection tools={tools} heading={settings.toolsHeading} allUrl={settings.toolsAllUrl} />
   <LearnMore
     heading={settings.learnHeading}

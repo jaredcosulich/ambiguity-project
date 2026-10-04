@@ -1,0 +1,15 @@
+{
+  "name": "BlogSection - No Posts Yet",
+  "id": "7b6569df-e73d-4ce5-8746-6b085e18630b",
+  "url": "/isolated-components/BlogSection",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-blog-empty.json"
+  },
+  "componentName": "BlogSection",
+  "scenarioType": "component",
+  "description": "The launch state: an empty feed keeps the heading, hides All posts, and shows the single subscribe card."
+}

@@ -36,11 +36,11 @@
     {
       "id": "the-blog-section-shows-recent-substack-posts",
       "text": "The Blog section shows recent Substack posts (wanted soon, likely a later session)",
-      "status": "deferred",
-      "resolvedAt": "2026-10-04T16:05:30.782070106+00:00",
-      "resolvedInFeature": null,
+      "status": "delivered",
+      "resolvedAt": "2026-10-04T19:00:39.726244957+00:00",
+      "resolvedInFeature": "Blog Section Fed From Substack",
       "planSlug": "the-blog-section-shows-recent-substack-posts-wanted-soon-likely-a-later-session",
-      "note": "User wants blog soon but likely not this session; covered by blog-section-fed-from-substack plan",
+      "note": "Built and approved at the save gate on 2026-10-04: Blog section with latest three Substack posts, launch-state subscribe card, deploy-time sync and daily rebuild.",
       "decidedBy": "user"
     },
     {

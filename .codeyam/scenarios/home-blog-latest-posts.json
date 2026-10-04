@@ -1,0 +1,21 @@
+{
+  "name": "Home - Blog Latest Posts",
+  "id": "a87555c0-57f8-4e42-ade4-3c74258f124b",
+  "url": "/#blog",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-blog-posts.json"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "src/pages/index.astro",
+  "description": "Home page scrolled to the Blog section with ten synced Substack posts: only the newest three show as cards, one without a cover image falls back to the ochre site-name panel.",
+  "interactions": [
+    {
+      "action": "hover",
+      "selector": "#blog-h"
+    }
+  ]
+}

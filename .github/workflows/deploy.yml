@@ -13,6 +13,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Substack has no webhooks, so rebuild daily to pick up new blog posts.
+  schedule:
+    - cron: '0 13 * * *'
 
 permissions:
   contents: read
@@ -32,6 +35,16 @@ jobs:
       PAGES_SITE: https://jaredcosulich.github.io
     steps:
       - uses: actions/checkout@v4
+      # Refresh the blog's Substack snapshot before building. The result is not
+      # committed back; if the fetch fails the committed snapshot is used.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - name: Sync Substack posts
+        run: |
+          npm ci --ignore-scripts
+          npm run sync:substack
       - name: Build Astro site
         uses: withastro/action@v3
         # with:

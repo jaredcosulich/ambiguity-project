@@ -1,0 +1,15 @@
+{
+  "name": "BlogSection - One Post",
+  "id": "b1aa1e1c-161f-45b7-b883-7a2b6a7f7d95",
+  "url": "/isolated-components/BlogSection",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-blog-one-post.json"
+  },
+  "componentName": "BlogSection",
+  "scenarioType": "component",
+  "description": "A single synced post renders one card in the first column of the three-column grid, with All posts still linking to Substack."
+}

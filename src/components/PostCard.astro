@@ -1,0 +1,35 @@
+---
+// One Substack post in the Blog section: cover, category pill (only when the
+// post has one), date, title and "Read post →". Opens the post on Substack.
+import type { SubstackPost } from '../lib/substack';
+import { formatPostDate } from '../lib/substack';
+import PostCover from './PostCover.astro';
+
+interface Props {
+  post: SubstackPost;
+  siteTitle: string;
+}
+
+const { post, siteTitle } = Astro.props;
+---
+
+<a class="card post" href={post.url}>
+  <PostCover image={post.image} siteTitle={siteTitle} />
+  <span class="post-body">
+    <span class="post-meta">
+      {post.category && <span class="tag">{post.category}</span>}
+      <time datetime={post.date}>{formatPostDate(post.date)}</time>
+    </span>
+    <span class="post-title">{post.title}</span>
+    <span class="read">Read post <span class="go">→</span></span>
+  </span>
+</a>
+
+<style>
+  .post { display: flex; flex-direction: column; border: 1px solid #ECE6D6; overflow: hidden; }
+  .post-body { display: flex; flex-direction: column; flex-grow: 1; gap: 10px; padding: 22px; }
+  .post-meta { display: flex; align-items: center; gap: 10px; font-family: var(--sans); font-size: 13px; color: var(--muted); }
+  .tag { padding: 2px 9px; background: var(--ochre); color: #2A1D05; font-weight: 600; border-radius: 999px; }
+  .post-title { font-size: 21px; line-height: 1.25; overflow-wrap: anywhere; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+  .read { margin-top: auto; font-family: var(--sans); font-size: 14px; font-weight: 600; color: var(--navy); }
+</style>

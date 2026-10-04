@@ -28,6 +28,105 @@
       "runner": "tests"
     },
     {
+      "description": "Named, decimal and hex entities all decode.",
+      "file": "src/lib/substack.test.ts",
+      "format": "vitest",
+      "key": "decodeEntities › decodes named and numeric entities",
+      "line": 112,
+      "registeredAt": "2026-10-04T18:48:14Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Unknown entities are left as written rather than dropped.",
+      "file": "src/lib/substack.test.ts",
+      "format": "vitest",
+      "key": "decodeEntities › leaves unknown entities untouched",
+      "line": 117,
+      "registeredAt": "2026-10-04T18:48:14Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Text without entities passes through unchanged.",
+      "file": "src/lib/substack.test.ts",
+      "format": "vitest",
+      "key": "decodeEntities › passes plain text through",
+      "line": 122,
+      "registeredAt": "2026-10-04T18:48:14Z",
+      "runner": "tests"
+    },
+    {
+      "description": "The feed lives at /feed under the Substack home URL.",
+      "file": "src/lib/substack.test.ts",
+      "format": "vitest",
+      "key": "feedUrlFor › appends /feed",
+      "line": 169,
+      "registeredAt": "2026-10-04T18:48:14Z",
+      "runner": "tests"
+    },
+    {
+      "description": "A trailing slash on the setting does not produce a double slash.",
+      "file": "src/lib/substack.test.ts",
+      "format": "vitest",
+      "key": "feedUrlFor › strips trailing slashes",
+      "line": 174,
+      "registeredAt": "2026-10-04T18:48:14Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Dates render as a short US date.",
+      "file": "src/lib/substack.test.ts",
+      "format": "vitest",
+      "key": "formatPostDate › formats an ISO date",
+      "line": 151,
+      "registeredAt": "2026-10-04T18:48:14Z",
+      "runner": "tests"
+    },
+    {
+      "description": "A post published late in the UTC day keeps its UTC calendar date on any build machine.",
+      "file": "src/lib/substack.test.ts",
+      "format": "vitest",
+      "key": "formatPostDate › formats in UTC",
+      "line": 156,
+      "registeredAt": "2026-10-04T18:48:14Z",
+      "runner": "tests"
+    },
+    {
+      "description": "An unparseable date renders nothing instead of \"Invalid Date\".",
+      "file": "src/lib/substack.test.ts",
+      "format": "vitest",
+      "key": "formatPostDate › returns an empty string for an invalid date",
+      "line": 162,
+      "registeredAt": "2026-10-04T18:48:14Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Posts are read from the synced snapshot under the data root.",
+      "file": "src/lib/substack.test.ts",
+      "format": "vitest",
+      "key": "getSubstackPosts › reads posts from the snapshot",
+      "line": 189,
+      "registeredAt": "2026-10-04T18:48:14Z",
+      "runner": "tests"
+    },
+    {
+      "description": "A corrupt snapshot or one without a posts array also means no posts.",
+      "file": "src/lib/substack.test.ts",
+      "format": "vitest",
+      "key": "getSubstackPosts › returns an empty list for unreadable or malformed snapshots",
+      "line": 201,
+      "registeredAt": "2026-10-04T18:48:14Z",
+      "runner": "tests"
+    },
+    {
+      "description": "No snapshot yet means no posts, not a broken build.",
+      "file": "src/lib/substack.test.ts",
+      "format": "vitest",
+      "key": "getSubstackPosts › returns an empty list when the file is missing",
+      "line": 196,
+      "registeredAt": "2026-10-04T18:48:14Z",
+      "runner": "tests"
+    },
+    {
       "description": "No words means an empty slot.",
       "file": "src/lib/typewriter.test.ts",
       "format": "vitest",
@@ -43,6 +142,33 @@
       "key": "initialTypewriterState › starts on the first word, ready to delete it",
       "line": 19,
       "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "No posts gives an empty list, and the input array is not mutated.",
+      "file": "src/lib/substack.test.ts",
+      "format": "vitest",
+      "key": "latestPosts › handles empty input without mutating",
+      "line": 141,
+      "registeredAt": "2026-10-04T18:48:14Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Fewer posts than the limit are all returned, newest first.",
+      "file": "src/lib/substack.test.ts",
+      "format": "vitest",
+      "key": "latestPosts › returns all posts when under the limit",
+      "line": 136,
+      "registeredAt": "2026-10-04T18:48:14Z",
+      "runner": "tests"
+    },
+    {
+      "description": "The Blog section shows the newest three.",
+      "file": "src/lib/substack.test.ts",
+      "format": "vitest",
+      "key": "latestPosts › returns the newest three by default",
+      "line": 131,
+      "registeredAt": "2026-10-04T18:48:14Z",
       "runner": "tests"
     },
     {
@@ -100,6 +226,33 @@
       "runner": "tests"
     },
     {
+      "description": "A real feed, even an empty one, carries a channel element.",
+      "file": "src/lib/substack.test.ts",
+      "format": "vitest",
+      "key": "looksLikeRssFeed › accepts a document with a channel",
+      "line": 94,
+      "registeredAt": "2026-10-04T18:48:14Z",
+      "runner": "tests"
+    },
+    {
+      "description": "An element merely starting with \"channel\" is not a channel.",
+      "file": "src/lib/substack.test.ts",
+      "format": "vitest",
+      "key": "looksLikeRssFeed › does not match a channel-prefixed element name",
+      "line": 105,
+      "registeredAt": "2026-10-04T18:48:14Z",
+      "runner": "tests"
+    },
+    {
+      "description": "An error page or empty body must not be treated as a feed, so the sync keeps the old snapshot.",
+      "file": "src/lib/substack.test.ts",
+      "format": "vitest",
+      "key": "looksLikeRssFeed › rejects an error page or empty body",
+      "line": 99,
+      "registeredAt": "2026-10-04T18:48:14Z",
+      "runner": "tests"
+    },
+    {
       "description": "The toggle offers the action that clicking it would take.",
       "file": "src/lib/mobileMenu.test.ts",
       "format": "vitest",
@@ -142,6 +295,69 @@
       "key": "parseMissionWords › trims whitespace and handles CRLF line endings",
       "line": 11,
       "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "HTML entities decode both in plain text and inside CDATA, where the XML parser leaves them alone.",
+      "file": "src/lib/substack.test.ts",
+      "format": "vitest",
+      "key": "parseSubstackFeed › decodes HTML entities in titles",
+      "line": 57,
+      "registeredAt": "2026-10-04T18:48:14Z",
+      "runner": "tests"
+    },
+    {
+      "description": "A normal Substack item maps every field: title, link, date, summary, cover and category.",
+      "file": "src/lib/substack.test.ts",
+      "format": "vitest",
+      "key": "parseSubstackFeed › normalizes a full item",
+      "line": 24,
+      "registeredAt": "2026-10-04T18:48:14Z",
+      "runner": "tests"
+    },
+    {
+      "description": "An item without an enclosure or category omits those keys rather than inventing placeholders.",
+      "file": "src/lib/substack.test.ts",
+      "format": "vitest",
+      "key": "parseSubstackFeed › omits image and category when the item has none",
+      "line": 50,
+      "registeredAt": "2026-10-04T18:48:14Z",
+      "runner": "tests"
+    },
+    {
+      "description": "The real feed today: a channel with no items yields no posts.",
+      "file": "src/lib/substack.test.ts",
+      "format": "vitest",
+      "key": "parseSubstackFeed › returns an empty list for an empty channel",
+      "line": 45,
+      "registeredAt": "2026-10-04T18:48:14Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Malformed XML or a non-RSS document yields no posts and never throws.",
+      "file": "src/lib/substack.test.ts",
+      "format": "vitest",
+      "key": "parseSubstackFeed › returns an empty list for malformed input",
+      "line": 85,
+      "registeredAt": "2026-10-04T18:48:14Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Items missing a title, link or a parseable date are skipped instead of rendering a broken card.",
+      "file": "src/lib/substack.test.ts",
+      "format": "vitest",
+      "key": "parseSubstackFeed › skips incomplete items",
+      "line": 75,
+      "registeredAt": "2026-10-04T18:48:14Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Posts come back newest first regardless of feed order.",
+      "file": "src/lib/substack.test.ts",
+      "format": "vitest",
+      "key": "parseSubstackFeed › sorts posts newest first",
+      "line": 66,
+      "registeredAt": "2026-10-04T18:48:14Z",
       "runner": "tests"
     },
     {

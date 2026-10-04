@@ -1,5 +1,34 @@
 {
   "views": {
+    "BlogSection": {
+      "empty": {
+        "status": "covered"
+      },
+      "single": {
+        "status": "covered"
+      },
+      "typical": {
+        "status": "covered"
+      },
+      "many": {
+        "status": "covered"
+      },
+      "loading": {
+        "status": "n-a",
+        "reason": "Posts are read from a build-time snapshot and rendered statically; there is no client fetch, so no pending state ever reaches a visitor."
+      },
+      "edge": {
+        "status": "covered"
+      },
+      "error": {
+        "status": "n-a",
+        "reason": "A failed or malformed feed never reaches the page: the sync keeps the last good snapshot and a missing or corrupt snapshot reads as no posts, which is the empty state."
+      },
+      "key-interaction": {
+        "status": "n-a",
+        "reason": "The only interaction is following a link out to Substack; there is no in-page state change to capture."
+      }
+    },
     "HomePage": {
       "empty": {
         "status": "added"

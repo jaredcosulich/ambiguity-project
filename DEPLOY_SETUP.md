@@ -36,6 +36,21 @@ Either:
 Then push to `main` (or run the workflow from the repo's **Actions** tab →
 **Deploy to GitHub Pages** → **Run workflow**) and confirm it publishes.
 
+## Blog posts from Substack
+
+The home page's Blog section shows the three newest posts from the Substack
+set as **Substack URL** in the CMS Settings screen. Every deploy fetches that
+Substack's feed just before building, and the workflow also runs once a day
+on its own, so a new post appears on the site within a day with nobody
+touching the repo.
+
+To publish a new post right away: on github.com, open the repo's **Actions**
+tab → **Deploy to GitHub Pages** → **Run workflow**.
+
+If Substack can't be reached during a deploy, the site still builds, using the
+posts saved in `src/data/substackPosts.json`. That file is generated, so don't
+edit it by hand. To refresh it locally, run `npm run sync:substack`.
+
 ## Later: move to ambiguityproject.org
 
 Nothing in the code changes. Four config edits:

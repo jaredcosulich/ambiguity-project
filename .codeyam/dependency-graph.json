@@ -94,6 +94,32 @@
       "imports": [],
       "importedBy": []
     },
+    "scripts/sync-substack.mjs": {
+      "imports": [
+        "src/lib/substack.ts",
+        "src/lib/contentRoot.ts"
+      ],
+      "importedBy": []
+    },
+    "src/components/BlogEmptyCard.astro": {
+      "imports": [],
+      "importedBy": [
+        "src/pages/isolated-components/BlogEmptyCard.astro",
+        "src/components/BlogSection.astro"
+      ]
+    },
+    "src/components/BlogSection.astro": {
+      "imports": [
+        "src/lib/substack.ts",
+        "src/lib/substack.ts",
+        "src/components/PostCard.astro",
+        "src/components/BlogEmptyCard.astro"
+      ],
+      "importedBy": [
+        "src/pages/index.astro",
+        "src/pages/isolated-components/BlogSection.astro"
+      ]
+    },
     "src/components/BookCover.astro": {
       "imports": [
         "src/lib/base.ts"
@@ -219,6 +245,24 @@
       "importedBy": [
         "src/pages/404.astro",
         "src/pages/isolated-components/NotFound.astro"
+      ]
+    },
+    "src/components/PostCard.astro": {
+      "imports": [
+        "src/lib/substack.ts",
+        "src/lib/substack.ts",
+        "src/components/PostCover.astro"
+      ],
+      "importedBy": [
+        "src/pages/isolated-components/PostCard.astro",
+        "src/components/BlogSection.astro"
+      ]
+    },
+    "src/components/PostCover.astro": {
+      "imports": [],
+      "importedBy": [
+        "src/pages/isolated-components/PostCover.astro",
+        "src/components/PostCard.astro"
       ]
     },
     "src/components/SEO.astro": {
@@ -351,9 +395,11 @@
     "src/lib/contentRoot.ts": {
       "imports": [],
       "importedBy": [
+        "src/lib/substack.ts",
         "src/lib/contentRoot.test.ts",
         "src/lib/site.ts",
-        "src/lib/watchedCollectionLoader.ts"
+        "src/lib/watchedCollectionLoader.ts",
+        "scripts/sync-substack.mjs"
       ]
     },
     "src/lib/missionWords.test.ts": {
@@ -415,12 +461,35 @@
         "src/pages/isolated-components/Hero.astro",
         "src/pages/isolated-components/LearnMore.astro",
         "src/pages/isolated-components/FooterNav.astro",
+        "src/pages/isolated-components/BlogSection.astro",
         "src/pages/isolated-components/LogoLink.astro",
         "src/pages/isolated-components/ToolsSection.astro",
         "src/components/SEO.astro",
         "src/components/Hero.astro",
         "src/components/SiteFooter.astro",
         "src/components/SiteHeader.astro"
+      ]
+    },
+    "src/lib/substack.test.ts": {
+      "imports": [
+        "src/lib/substack.ts"
+      ],
+      "importedBy": []
+    },
+    "src/lib/substack.ts": {
+      "imports": [
+        "src/lib/contentRoot.ts"
+      ],
+      "importedBy": [
+        "src/lib/substack.test.ts",
+        "src/pages/index.astro",
+        "src/pages/isolated-components/BlogSection.astro",
+        "src/pages/isolated-components/PostCard.astro",
+        "src/components/BlogSection.astro",
+        "src/components/BlogSection.astro",
+        "src/components/PostCard.astro",
+        "src/components/PostCard.astro",
+        "scripts/sync-substack.mjs"
       ]
     },
     "src/lib/typewriter.test.ts": {
@@ -485,8 +554,26 @@
         "src/components/BooksSection.astro",
         "src/components/ToolsSection.astro",
         "src/components/LearnMore.astro",
+        "src/components/BlogSection.astro",
         "src/lib/site.ts",
+        "src/lib/substack.ts",
         "src/lib/contentOrder.ts"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/BlogEmptyCard.astro": {
+      "imports": [
+        "src/components/BlogEmptyCard.astro",
+        "src/styles/global.css"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/BlogSection.astro": {
+      "imports": [
+        "src/components/BlogSection.astro",
+        "src/styles/global.css",
+        "src/lib/site.ts",
+        "src/lib/substack.ts"
       ],
       "importedBy": []
     },
@@ -602,6 +689,21 @@
       ],
       "importedBy": []
     },
+    "src/pages/isolated-components/PostCard.astro": {
+      "imports": [
+        "src/components/PostCard.astro",
+        "src/styles/global.css",
+        "src/lib/substack.ts"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/PostCover.astro": {
+      "imports": [
+        "src/components/PostCover.astro",
+        "src/styles/global.css"
+      ],
+      "importedBy": []
+    },
     "src/pages/isolated-components/SectionAnchor.astro": {
       "imports": [
         "src/components/SectionAnchor.astro",
@@ -654,10 +756,14 @@
         "src/pages/isolated-components/Hero.astro",
         "src/pages/isolated-components/BookCover.astro",
         "src/pages/isolated-components/MenuToggle.astro",
+        "src/pages/isolated-components/BlogEmptyCard.astro",
         "src/pages/isolated-components/BooksSection.astro",
         "src/pages/isolated-components/LearnMore.astro",
+        "src/pages/isolated-components/PostCover.astro",
         "src/pages/isolated-components/FooterNav.astro",
+        "src/pages/isolated-components/BlogSection.astro",
         "src/pages/isolated-components/LogoLink.astro",
+        "src/pages/isolated-components/PostCard.astro",
         "src/pages/isolated-components/ToolsSection.astro",
         "src/pages/isolated-components/SiteFooter.astro",
         "src/pages/isolated-components/HeroQuote.astro",
@@ -836,6 +942,36 @@
       ],
       "importedBy": []
     },
+    "scripts/sync-substack.mjs::__file_root__": {
+      "filePath": "scripts/sync-substack.mjs",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/substack.ts::feedUrlFor",
+        "src/lib/substack.ts::looksLikeRssFeed",
+        "src/lib/substack.ts::parseSubstackFeed",
+        "src/lib/contentRoot.ts::resolveDataRoot"
+      ],
+      "importedBy": []
+    },
+    "src/components/BlogEmptyCard.astro::__file_root__": {
+      "filePath": "src/components/BlogEmptyCard.astro",
+      "name": "__file_root__",
+      "imports": [],
+      "importedBy": [
+        "src/components/BlogSection.astro::__file_root__"
+      ]
+    },
+    "src/components/BlogSection.astro::__file_root__": {
+      "filePath": "src/components/BlogSection.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/substack.ts::SubstackPost",
+        "src/lib/substack.ts::latestPosts",
+        "src/components/PostCard.astro::__file_root__",
+        "src/components/BlogEmptyCard.astro::__file_root__"
+      ],
+      "importedBy": []
+    },
     "src/components/BookCover.astro::__file_root__": {
       "filePath": "src/components/BookCover.astro",
       "name": "__file_root__",
@@ -948,6 +1084,24 @@
         "src/lib/base.ts::withBase"
       ],
       "importedBy": []
+    },
+    "src/components/PostCard.astro::__file_root__": {
+      "filePath": "src/components/PostCard.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/substack.ts::SubstackPost",
+        "src/lib/substack.ts::formatPostDate",
+        "src/components/PostCover.astro::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "src/components/PostCover.astro::__file_root__": {
+      "filePath": "src/components/PostCover.astro",
+      "name": "__file_root__",
+      "imports": [],
+      "importedBy": [
+        "src/components/PostCard.astro::__file_root__"
+      ]
     },
     "src/components/SEO.astro::__file_root__": {
       "filePath": "src/components/SEO.astro",
@@ -1092,6 +1246,14 @@
         "src/lib/contentRoot.ts::resolveDataRoot"
       ],
       "importedBy": []
+    },
+    "src/lib/contentRoot.ts::resolveDataRoot": {
+      "filePath": "src/lib/contentRoot.ts",
+      "name": "resolveDataRoot",
+      "imports": [],
+      "importedBy": [
+        "scripts/sync-substack.mjs::__file_root__"
+      ]
     },
     "src/lib/missionWords.test.ts::__file_root__": {
       "filePath": "src/lib/missionWords.test.ts",
@@ -1248,11 +1410,109 @@
         "src/pages/isolated-components/MissionLine.astro::__file_root__",
         "src/pages/isolated-components/Hero.astro::__file_root__",
         "src/pages/isolated-components/LearnMore.astro::__file_root__",
+        "src/pages/isolated-components/BlogSection.astro::__file_root__",
         "src/pages/isolated-components/LogoLink.astro::__file_root__",
         "src/pages/isolated-components/ToolsSection.astro::__file_root__",
         "src/components/SEO.astro::__file_root__",
         "src/components/SiteFooter.astro::__file_root__",
         "src/components/SiteHeader.astro::__file_root__"
+      ]
+    },
+    "src/lib/substack.test.ts::__file_root__": {
+      "filePath": "src/lib/substack.test.ts",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/substack.ts::SubstackPost",
+        "src/lib/substack.ts::decodeEntities",
+        "src/lib/substack.ts::feedUrlFor",
+        "src/lib/substack.ts::formatPostDate",
+        "src/lib/substack.ts::getSubstackPosts",
+        "src/lib/substack.ts::latestPosts",
+        "src/lib/substack.ts::looksLikeRssFeed",
+        "src/lib/substack.ts::parseSubstackFeed"
+      ],
+      "importedBy": []
+    },
+    "src/lib/substack.ts::SubstackPost": {
+      "filePath": "src/lib/substack.ts",
+      "name": "SubstackPost",
+      "imports": [],
+      "importedBy": [
+        "src/lib/substack.test.ts::__file_root__",
+        "src/pages/isolated-components/PostCard.astro::__file_root__",
+        "src/components/BlogSection.astro::__file_root__",
+        "src/components/PostCard.astro::__file_root__"
+      ]
+    },
+    "src/lib/substack.ts::__file_root__": {
+      "filePath": "src/lib/substack.ts",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/contentRoot.ts::resolveDataRoot"
+      ],
+      "importedBy": []
+    },
+    "src/lib/substack.ts::decodeEntities": {
+      "filePath": "src/lib/substack.ts",
+      "name": "decodeEntities",
+      "imports": [],
+      "importedBy": [
+        "src/lib/substack.test.ts::__file_root__"
+      ]
+    },
+    "src/lib/substack.ts::feedUrlFor": {
+      "filePath": "src/lib/substack.ts",
+      "name": "feedUrlFor",
+      "imports": [],
+      "importedBy": [
+        "src/lib/substack.test.ts::__file_root__",
+        "scripts/sync-substack.mjs::__file_root__"
+      ]
+    },
+    "src/lib/substack.ts::formatPostDate": {
+      "filePath": "src/lib/substack.ts",
+      "name": "formatPostDate",
+      "imports": [],
+      "importedBy": [
+        "src/lib/substack.test.ts::__file_root__",
+        "src/components/PostCard.astro::__file_root__"
+      ]
+    },
+    "src/lib/substack.ts::getSubstackPosts": {
+      "filePath": "src/lib/substack.ts",
+      "name": "getSubstackPosts",
+      "imports": [],
+      "importedBy": [
+        "src/lib/substack.test.ts::__file_root__",
+        "src/pages/index.astro::__file_root__",
+        "src/pages/isolated-components/BlogSection.astro::__file_root__"
+      ]
+    },
+    "src/lib/substack.ts::latestPosts": {
+      "filePath": "src/lib/substack.ts",
+      "name": "latestPosts",
+      "imports": [],
+      "importedBy": [
+        "src/lib/substack.test.ts::__file_root__",
+        "src/components/BlogSection.astro::__file_root__"
+      ]
+    },
+    "src/lib/substack.ts::looksLikeRssFeed": {
+      "filePath": "src/lib/substack.ts",
+      "name": "looksLikeRssFeed",
+      "imports": [],
+      "importedBy": [
+        "src/lib/substack.test.ts::__file_root__",
+        "scripts/sync-substack.mjs::__file_root__"
+      ]
+    },
+    "src/lib/substack.ts::parseSubstackFeed": {
+      "filePath": "src/lib/substack.ts",
+      "name": "parseSubstackFeed",
+      "imports": [],
+      "importedBy": [
+        "src/lib/substack.test.ts::__file_root__",
+        "scripts/sync-substack.mjs::__file_root__"
       ]
     },
     "src/lib/typewriter.test.ts::__file_root__": {
@@ -1362,9 +1622,31 @@
         "src/components/BooksSection.astro::__file_root__",
         "src/components/ToolsSection.astro::__file_root__",
         "src/components/LearnMore.astro::__file_root__",
+        "src/components/BlogSection.astro::__file_root__",
         "src/lib/site.ts::getSettings",
+        "src/lib/substack.ts::getSubstackPosts",
         "src/lib/contentOrder.ts::pickFirstByOrder",
         "src/lib/contentOrder.ts::sortByOrder"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/BlogEmptyCard.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/BlogEmptyCard.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/BlogEmptyCard.astro::__file_root__",
+        "src/styles/global.css::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/BlogSection.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/BlogSection.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/BlogSection.astro::__file_root__",
+        "src/styles/global.css::__file_root__",
+        "src/lib/site.ts::getSettings",
+        "src/lib/substack.ts::getSubstackPosts"
       ],
       "importedBy": []
     },
@@ -1513,6 +1795,25 @@
       ],
       "importedBy": []
     },
+    "src/pages/isolated-components/PostCard.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/PostCard.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/PostCard.astro::__file_root__",
+        "src/styles/global.css::__file_root__",
+        "src/lib/substack.ts::SubstackPost"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/PostCover.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/PostCover.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/PostCover.astro::__file_root__",
+        "src/styles/global.css::__file_root__"
+      ],
+      "importedBy": []
+    },
     "src/pages/isolated-components/SectionAnchor.astro::__file_root__": {
       "filePath": "src/pages/isolated-components/SectionAnchor.astro",
       "name": "__file_root__",
@@ -1579,10 +1880,14 @@
         "src/pages/isolated-components/Hero.astro::__file_root__",
         "src/pages/isolated-components/BookCover.astro::__file_root__",
         "src/pages/isolated-components/MenuToggle.astro::__file_root__",
+        "src/pages/isolated-components/BlogEmptyCard.astro::__file_root__",
         "src/pages/isolated-components/BooksSection.astro::__file_root__",
         "src/pages/isolated-components/LearnMore.astro::__file_root__",
+        "src/pages/isolated-components/PostCover.astro::__file_root__",
         "src/pages/isolated-components/FooterNav.astro::__file_root__",
+        "src/pages/isolated-components/BlogSection.astro::__file_root__",
         "src/pages/isolated-components/LogoLink.astro::__file_root__",
+        "src/pages/isolated-components/PostCard.astro::__file_root__",
         "src/pages/isolated-components/ToolsSection.astro::__file_root__",
         "src/pages/isolated-components/SiteFooter.astro::__file_root__",
         "src/pages/isolated-components/HeroQuote.astro::__file_root__",
@@ -1591,5 +1896,5 @@
       ]
     }
   },
-  "lastUpdated": "2026-10-04T18:31:02Z"
+  "lastUpdated": "2026-10-04T19:01:48Z"
 }

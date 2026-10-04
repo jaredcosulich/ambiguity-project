@@ -1,0 +1,15 @@
+{
+  "name": "BlogSection - Latest Three Posts",
+  "id": "7aae1d8d-d926-4f09-bcc2-4f22e2c213c2",
+  "url": "/isolated-components/BlogSection",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-blog-posts.json"
+  },
+  "componentName": "BlogSection",
+  "scenarioType": "component",
+  "description": "Ten synced posts: only the newest three show as cards, with the All posts link to Substack; the paperback post has no cover and shows the ochre site-name panel."
+}

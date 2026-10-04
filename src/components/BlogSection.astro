@@ -1,0 +1,56 @@
+---
+// The home Blog section: the three newest Substack posts as ochre cards, from
+// the synced `substackPosts.json` snapshot. Before the first post it keeps its
+// heading and shows one subscribe card instead of placeholder cards. Cards
+// link out to Substack in the same tab.
+import type { SubstackPost } from '../lib/substack';
+import { latestPosts } from '../lib/substack';
+import PostCard from './PostCard.astro';
+import BlogEmptyCard from './BlogEmptyCard.astro';
+
+interface Props {
+  posts: SubstackPost[];
+  substackUrl?: string;
+  siteTitle: string;
+}
+
+const { posts, substackUrl, siteTitle } = Astro.props;
+const shown = latestPosts(posts, 3);
+---
+
+<section id="blog" class="section blog wrap" aria-labelledby="blog-h">
+  <div class="section-head">
+    <div>
+      <p class="label">Blog</p>
+      <h2 id="blog-h">Follow our progress and learn more about work done around ambiguity.</h2>
+    </div>
+    {substackUrl && shown.length > 0 && <a class="more" href={substackUrl}>All posts →</a>}
+  </div>
+  <div class="blog-grid">
+    {
+      shown.length === 0 ? (
+        <BlogEmptyCard substackUrl={substackUrl} />
+      ) : (
+        shown.map((post) => <PostCard post={post} siteTitle={siteTitle} />)
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .blog { padding-block: var(--section-y); }
+  .blog .label { color: var(--ochre-text); --bracket: var(--ochre-line); }
+  .blog .more { color: var(--ochre-text); }
+  .section-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px 32px; margin-bottom: clamp(28px, 3vw, 38px); }
+  .section-head > div { display: flex; flex-direction: column; gap: 19px; max-width: 720px; }
+  .blog h2 { font-size: clamp(26px, 2.5vw, 35px); line-height: 1.18; }
+  .blog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 26px); }
+  @media (max-width: 1024px) {
+    .blog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .blog-grid > :global(.post:nth-child(3)) { display: none; }
+  }
+  @media (max-width: 640px) {
+    .blog-grid { grid-template-columns: 1fr; }
+    .blog-grid > :global(.post:nth-child(3)) { display: flex; }
+  }
+</style>

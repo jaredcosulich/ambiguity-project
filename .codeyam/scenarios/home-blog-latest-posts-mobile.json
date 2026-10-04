@@ -1,0 +1,21 @@
+{
+  "name": "Home - Blog Latest Posts Mobile",
+  "id": "b1cc5f58-b6fd-40a6-9f57-9d540b5b08ba",
+  "url": "/#blog",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-blog-posts.json"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "src/pages/index.astro",
+  "description": "At phone width the Blog section stacks the newest posts in a single column, with the All posts link wrapping under the heading.",
+  "interactions": [
+    {
+      "action": "hover",
+      "selector": "#blog-h"
+    }
+  ]
+}

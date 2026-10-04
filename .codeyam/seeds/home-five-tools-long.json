@@ -1,5 +1,6 @@
 {
   "seed": {
+    "substackPosts": { "posts": [] },
     "settings": {
       "siteTitle": "The Ambiguity Project",
       "description": "The Ambiguity Project is a 501(c)(3) non-profit helping people better recognize, live with, and navigate ambiguity.",
