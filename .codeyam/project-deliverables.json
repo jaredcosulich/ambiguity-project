@@ -37,9 +37,9 @@
       "id": "the-blog-section-shows-recent-substack-posts",
       "text": "The Blog section shows recent Substack posts (wanted soon, likely a later session)",
       "status": "deferred",
-      "resolvedAt": "2026-10-04T15:32:45.694884191+00:00",
-      "resolvedInFeature": "Astro Site Foundation",
-      "planSlug": null,
+      "resolvedAt": "2026-10-04T16:05:30.782070106+00:00",
+      "resolvedInFeature": null,
+      "planSlug": "the-blog-section-shows-recent-substack-posts-wanted-soon-likely-a-later-session",
       "note": "User wants blog soon but likely not this session; covered by blog-section-fed-from-substack plan",
       "decidedBy": "user"
     },

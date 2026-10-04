@@ -30,7 +30,8 @@
       "reason": "Deferred from this project's deliverables.",
       "source": "deferred-deliverable",
       "deliverableId": "the-blog-section-shows-recent-substack-posts",
-      "status": "pending",
+      "status": "written",
+      "planSlug": "the-blog-section-shows-recent-substack-posts-wanted-soon-likely-a-later-session",
       "proposedAt": "2026-10-04T16:04:54.920585619+00:00"
     },
     {
