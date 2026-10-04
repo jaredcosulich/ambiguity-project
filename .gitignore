@@ -120,3 +120,17 @@ docker-compose.cloud.yml
 # codeyam-editor:end
 
 # CodeYam - local runtime state
+/src/pages/isolated-components/
+
+# Added by the app template
+dist/
+.astro/
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
+.env.production
+.vscode/*
+!.vscode/extensions.json
+.idea/
