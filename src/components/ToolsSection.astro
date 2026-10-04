@@ -1,0 +1,57 @@
+---
+// The home Technology section on the sage band: an intro and the first three
+// published tools as cards. With no tools the section is hidden rather than
+// showing placeholders; the empty `#technology` anchor stays so the nav link
+// does not break.
+import type { CollectionEntry } from 'astro:content';
+import ToolCard from './ToolCard.astro';
+import { withBase } from '../lib/base';
+import { visibleTools } from '../lib/visibleTools';
+
+interface Props {
+  tools: CollectionEntry<'tools'>[];
+  heading?: string;
+  allUrl?: string;
+}
+
+const { tools, heading, allUrl } = Astro.props;
+const shown = visibleTools(tools);
+---
+
+{
+  shown.length === 0 ? (
+    <section id="technology" aria-label="Technology" />
+  ) : (
+    <section id="technology" class="tech wrap" aria-labelledby="tech-h">
+      <div class="tech-inner">
+        <div class="tech-intro">
+          <p class="label">Technology</p>
+          <h2 id="tech-h" data-cms-setting="toolsHeading">{heading}</h2>
+          {allUrl && (
+            <a class="more" href={withBase(allUrl)} data-cms-setting-href="toolsAllUrl">
+              All tools →
+            </a>
+          )}
+        </div>
+        <div class="tools">
+          {shown.map((tool) => (
+            <ToolCard id={tool.id} name={tool.data.name} description={tool.data.description} url={tool.data.url} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .tech { padding-block: var(--section-y); background: var(--sage-tint); }
+  .tech h2 { font-size: clamp(26px, 2.5vw, 35px); line-height: 1.18; }
+  .tech-inner { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
+  .tech-intro { display: flex; flex-direction: column; gap: 19px; }
+  .tech .label { color: var(--sage-text); --bracket: var(--sage); }
+  .tech .more { color: var(--sage-text); }
+  .tools { display: flex; flex-direction: column; gap: 13px; }
+  @media (max-width: 1024px) {
+    .tech-inner { grid-template-columns: 1fr; }
+  }
+</style>

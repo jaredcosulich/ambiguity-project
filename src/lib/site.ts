@@ -38,6 +38,16 @@ export interface SiteSettings {
   footerText: string;
   socials: SocialLink[];
   substackUrl?: string;
+  // Home page copy (declared in collections.json `settings`).
+  heroEyebrow?: string;
+  missionPrefix?: string;
+  missionWords?: string;
+  missionSuffix?: string;
+  toolsHeading?: string;
+  toolsAllUrl?: string;
+  learnHeading?: string;
+  learnButtonLabel?: string;
+  learnButtonUrl?: string;
 }
 
 export interface NavItem {

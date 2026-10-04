@@ -1,0 +1,15 @@
+{
+  "name": "ToolsSection - One Tool",
+  "id": "5a0420b8-f202-430d-803f-533812c43d70",
+  "url": "/isolated-components/ToolsSection",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-one-tool.json"
+  },
+  "componentName": "ToolsSection",
+  "scenarioType": "component",
+  "description": "Technology band with a single tool card."
+}

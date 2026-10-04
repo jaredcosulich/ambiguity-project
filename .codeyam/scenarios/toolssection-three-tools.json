@@ -1,0 +1,15 @@
+{
+  "name": "ToolsSection - Three Tools",
+  "id": "cde6143a-de85-406c-9424-42913310fcc5",
+  "url": "/isolated-components/ToolsSection",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-full.json"
+  },
+  "componentName": "ToolsSection",
+  "scenarioType": "component",
+  "description": "Technology band with the intro heading and three tool cards."
+}

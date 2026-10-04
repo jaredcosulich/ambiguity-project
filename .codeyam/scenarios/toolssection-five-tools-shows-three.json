@@ -1,0 +1,15 @@
+{
+  "name": "ToolsSection - Five Tools Shows Three",
+  "id": "858db67a-f662-417d-8fdb-b45c17d2d622",
+  "url": "/isolated-components/ToolsSection",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-five-tools-long.json"
+  },
+  "componentName": "ToolsSection",
+  "scenarioType": "component",
+  "description": "Five published tools: only the first three render, the All tools link appears, and a long description wraps."
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Hero - Default",
+  "id": "31f81740-99ff-4f8f-8974-1ed5e65e181c",
+  "url": "/isolated-components/Hero",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-full.json"
+  },
+  "componentName": "Hero",
+  "scenarioType": "component",
+  "description": "Navy hero from CMS settings: eyebrow, site title, the mission line with its rotating word, and the Voltaire quote."
+}

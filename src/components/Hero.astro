@@ -1,0 +1,36 @@
+---
+// The home hero on the navy band: eyebrow, site title, the mission line with a
+// rotating word, and one quote. Every string is CMS content: the eyebrow and
+// mission come from `settings.json`, the quote from `quotes`.
+import type { SiteSettings } from '../lib/site';
+import MissionLine from './MissionLine.astro';
+import HeroQuote from './HeroQuote.astro';
+
+interface Props {
+  settings: SiteSettings;
+  quote?: { text: string; attribution?: string };
+}
+
+const { settings, quote } = Astro.props;
+---
+
+<div class="hero-band">
+  <section class="hero wrap">
+    <div class="hero-main">
+      {settings.heroEyebrow && <p class="eyebrow" data-cms-setting="heroEyebrow">{settings.heroEyebrow}</p>}
+      <h1 data-cms-setting="siteTitle">{settings.siteTitle}</h1>
+      <MissionLine prefix={settings.missionPrefix} words={settings.missionWords} suffix={settings.missionSuffix} />
+    </div>
+    {quote && <HeroQuote text={quote.text} attribution={quote.attribution} />}
+  </section>
+</div>
+
+<style>
+  .hero-band { position: relative; background: var(--navy); color: #fff; overflow: hidden; }
+  .hero { position: relative; display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr); gap: clamp(40px, 6vw, 120px); align-items: center; padding-block: clamp(51px, 7.2vw, 102px) clamp(58px, 8vw, 112px); }
+  .hero .eyebrow { color: rgba(255,255,255,0.78); }
+  .hero h1 { margin-top: 16px; font-size: clamp(32px, 4.32vw, 62px); line-height: 1.02; letter-spacing: -0.02em; }
+  @media (max-width: 960px) {
+    .hero { grid-template-columns: 1fr; }
+  }
+</style>

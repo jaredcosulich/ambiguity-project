@@ -1,0 +1,29 @@
+---
+// The home Learn More band (periwinkle): a heading and one button, both from
+// `settings.json`. The button defaults to the About page.
+import { withBase } from '../lib/base';
+
+interface Props {
+  heading?: string;
+  buttonLabel?: string;
+  buttonUrl?: string;
+}
+
+const { heading, buttonLabel, buttonUrl } = Astro.props;
+---
+
+<section id="learn" class="section learn wrap" aria-labelledby="learn-h">
+  <p class="label">Learn More</p>
+  <h2 id="learn-h" data-cms-setting="learnHeading">{heading}</h2>
+  <a class="btn btn-lg" href={withBase(buttonUrl || '/about')} data-cms-setting="learnButtonLabel" data-cms-setting-href="learnButtonUrl">
+    {buttonLabel || 'About The Ambiguity Project'}
+  </a>
+</section>
+
+<style>
+  .learn { display: flex; flex-direction: column; align-items: center; gap: 22px; padding-block: var(--section-y); text-align: center; background: var(--peri-tint); }
+  .learn .label { align-self: center; color: var(--navy); }
+  .learn h2 { font-size: clamp(28px, 3vw, 42px); line-height: 1.15; }
+  .learn .btn { border-color: var(--navy); color: var(--navy); background: transparent; }
+  .learn .btn:hover { background: var(--navy); color: #fff; }
+</style>

@@ -1,0 +1,15 @@
+{
+  "name": "ToolCard - Default",
+  "id": "cdb03d6f-131f-4b1b-a931-8cfadc7e5594",
+  "url": "/isolated-components/ToolCard",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-full.json"
+  },
+  "componentName": "ToolCard",
+  "scenarioType": "component",
+  "description": "A single tool card: bracket icon, name, description and arrow on white."
+}

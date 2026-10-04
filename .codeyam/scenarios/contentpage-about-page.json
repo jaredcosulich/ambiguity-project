@@ -1,0 +1,15 @@
+{
+  "name": "ContentPage - About Page",
+  "id": "481fc610-3e49-4d3c-81a7-7112d5808197",
+  "url": "/isolated-components/ContentPage",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-full.json"
+  },
+  "componentName": "ContentPage",
+  "scenarioType": "component",
+  "description": "The About page entry: navy title over its markdown body."
+}

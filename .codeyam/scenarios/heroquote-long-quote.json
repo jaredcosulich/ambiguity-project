@@ -1,0 +1,15 @@
+{
+  "name": "HeroQuote - Long Quote",
+  "id": "27a83065-4299-4736-a946-dad6698c174d",
+  "url": "/isolated-components/HeroQuote",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-long-hero.json"
+  },
+  "componentName": "HeroQuote",
+  "scenarioType": "component",
+  "description": "A long multi-sentence quote with a long attribution wraps cleanly on navy."
+}

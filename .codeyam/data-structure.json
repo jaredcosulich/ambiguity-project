@@ -5,12 +5,76 @@
     "category": "datastore",
     "order": 1,
     "fields": [
-      { "name": "siteTitle", "type": "string", "required": true },
-      { "name": "description", "type": "string", "required": true },
-      { "name": "contactEmail", "type": "string", "required": false },
-      { "name": "footerText", "type": "string", "required": true },
-      { "name": "socials", "type": "array", "required": false },
-      { "name": "substackUrl", "type": "string", "required": false }
+      {
+        "name": "siteTitle",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "description",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "contactEmail",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "footerText",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "socials",
+        "type": "array",
+        "required": false
+      },
+      {
+        "name": "substackUrl",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "heroEyebrow",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "missionPrefix",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "missionWords",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "missionSuffix",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "toolsHeading",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "toolsAllUrl",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "learnHeading",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "learnButtonLabel",
+        "type": "string",
+        "required": false
+      }
     ]
   },
   {
@@ -19,7 +83,11 @@
     "category": "datastore",
     "order": 2,
     "fields": [
-      { "name": "items", "type": "array", "required": true }
+      {
+        "name": "items",
+        "type": "array",
+        "required": true
+      }
     ]
   },
   {
@@ -28,12 +96,179 @@
     "category": "datastore",
     "order": 2,
     "fields": [
-      { "name": "slug", "type": "string", "isId": true, "required": true },
-      { "name": "title", "type": "string", "required": true },
-      { "name": "description", "type": "string", "required": false },
-      { "name": "order", "type": "number", "required": false },
-      { "name": "draft", "type": "boolean", "required": false },
-      { "name": "body", "type": "string", "required": false }
+      {
+        "name": "slug",
+        "type": "string",
+        "isId": true,
+        "required": true
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "description",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "order",
+        "type": "number",
+        "required": false
+      },
+      {
+        "name": "draft",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "body",
+        "type": "string",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "Book",
+    "description": "Books shown in the home page Books section (`books` content collection, src/content/books/*). First non-draft by order is featured; several stack.",
+    "category": "datastore",
+    "order": 3,
+    "fields": [
+      {
+        "name": "slug",
+        "type": "string",
+        "required": true,
+        "isId": true
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "subtitle",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "eyebrow",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "cover",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "coverAlt",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "blurb",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "primaryLabel",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "primaryUrl",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "secondaryLabel",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "secondaryUrl",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "order",
+        "type": "number",
+        "required": false
+      },
+      {
+        "name": "draft",
+        "type": "boolean",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "Tool",
+    "description": "Technology section entries (`tools` content collection, src/content/tools/*). Home shows the first three by order; zero hides the section.",
+    "category": "datastore",
+    "order": 3,
+    "fields": [
+      {
+        "name": "slug",
+        "type": "string",
+        "required": true,
+        "isId": true
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "description",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "url",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "order",
+        "type": "number",
+        "required": false
+      },
+      {
+        "name": "draft",
+        "type": "boolean",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "Quote",
+    "description": "Hero quotes (`quotes` content collection, src/content/quotes/*). The hero shows the first by order.",
+    "category": "datastore",
+    "order": 3,
+    "fields": [
+      {
+        "name": "slug",
+        "type": "string",
+        "required": true,
+        "isId": true
+      },
+      {
+        "name": "text",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "attribution",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "order",
+        "type": "number",
+        "required": false
+      }
     ]
   }
 ]

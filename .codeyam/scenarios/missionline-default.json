@@ -1,0 +1,15 @@
+{
+  "name": "MissionLine - Default",
+  "id": "2e385acd-d36d-4097-aaee-20cc4070e9e1",
+  "url": "/isolated-components/MissionLine",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-full.json"
+  },
+  "componentName": "MissionLine",
+  "scenarioType": "component",
+  "description": "Mission sentence with the salmon underlined rotating-word slot sized to the longest word, organizations."
+}

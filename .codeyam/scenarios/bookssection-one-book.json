@@ -1,0 +1,15 @@
+{
+  "name": "BooksSection - One Book",
+  "id": "34bd4635-73ea-4c05-82f3-74ff5fe28624",
+  "url": "/isolated-components/BooksSection",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-full.json"
+  },
+  "componentName": "BooksSection",
+  "scenarioType": "component",
+  "description": "Books band with the single published book, Ambiguity Everywhere: tilted cover, copy, pre-order button and About the book link."
+}

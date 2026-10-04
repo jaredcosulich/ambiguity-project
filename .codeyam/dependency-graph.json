@@ -94,12 +94,47 @@
       "imports": [],
       "importedBy": []
     },
+    "src/components/BookCover.astro": {
+      "imports": [
+        "src/lib/base.ts"
+      ],
+      "importedBy": [
+        "src/pages/isolated-components/BookCover.astro",
+        "src/components/BookFeature.astro"
+      ]
+    },
+    "src/components/BookFeature.astro": {
+      "imports": [
+        "src/components/BookCover.astro",
+        "src/lib/base.ts"
+      ],
+      "importedBy": [
+        "src/pages/isolated-components/BookFeature.astro",
+        "src/components/BooksSection.astro"
+      ]
+    },
+    "src/components/BooksSection.astro": {
+      "imports": [
+        "src/components/BookFeature.astro"
+      ],
+      "importedBy": [
+        "src/pages/index.astro",
+        "src/pages/isolated-components/BooksSection.astro"
+      ]
+    },
     "src/components/BracketLogo.astro": {
       "imports": [],
       "importedBy": [
         "src/pages/isolated-components/BracketLogo.astro",
         "src/components/LogoLink.astro",
         "src/components/SiteFooter.astro"
+      ]
+    },
+    "src/components/ContentPage.astro": {
+      "imports": [],
+      "importedBy": [
+        "src/pages/isolated-components/ContentPage.astro",
+        "src/pages/[slug].astro"
       ]
     },
     "src/components/FooterNav.astro": {
@@ -111,10 +146,35 @@
         "src/components/SiteFooter.astro"
       ]
     },
-    "src/components/HiddenPageTitle.astro": {
+    "src/components/Hero.astro": {
+      "imports": [
+        "src/lib/site.ts",
+        "src/components/MissionLine.astro",
+        "src/components/HeroQuote.astro"
+      ],
+      "importedBy": [
+        "src/pages/index.astro",
+        "src/pages/isolated-components/Hero.astro"
+      ]
+    },
+    "src/components/HeroQuote.astro": {
       "imports": [],
       "importedBy": [
-        "src/pages/index.astro"
+        "src/pages/isolated-components/HeroQuote.astro",
+        "src/components/Hero.astro"
+      ]
+    },
+    "src/components/HiddenPageTitle.astro": {
+      "imports": [],
+      "importedBy": []
+    },
+    "src/components/LearnMore.astro": {
+      "imports": [
+        "src/lib/base.ts"
+      ],
+      "importedBy": [
+        "src/pages/index.astro",
+        "src/pages/isolated-components/LearnMore.astro"
       ]
     },
     "src/components/LogoLink.astro": {
@@ -141,6 +201,15 @@
       "importedBy": [
         "src/pages/isolated-components/MenuToggle.astro",
         "src/components/SiteHeader.astro"
+      ]
+    },
+    "src/components/MissionLine.astro": {
+      "imports": [
+        "src/lib/missionWords.ts"
+      ],
+      "importedBy": [
+        "src/pages/isolated-components/MissionLine.astro",
+        "src/components/Hero.astro"
       ]
     },
     "src/components/NotFound.astro": {
@@ -192,8 +261,30 @@
         "src/layouts/BaseLayout.astro"
       ]
     },
+    "src/components/ToolCard.astro": {
+      "imports": [
+        "src/lib/base.ts"
+      ],
+      "importedBy": [
+        "src/pages/isolated-components/ToolCard.astro",
+        "src/components/ToolsSection.astro"
+      ]
+    },
+    "src/components/ToolsSection.astro": {
+      "imports": [
+        "src/components/ToolCard.astro",
+        "src/lib/base.ts",
+        "src/lib/visibleTools.ts"
+      ],
+      "importedBy": [
+        "src/pages/index.astro",
+        "src/pages/isolated-components/ToolsSection.astro"
+      ]
+    },
     "src/content/config.ts": {
-      "imports": [],
+      "imports": [
+        "src/lib/watchedCollectionLoader.ts"
+      ],
       "importedBy": []
     },
     "src/layouts/BaseLayout.astro": {
@@ -206,7 +297,8 @@
       ],
       "importedBy": [
         "src/pages/index.astro",
-        "src/pages/404.astro"
+        "src/pages/404.astro",
+        "src/pages/[slug].astro"
       ]
     },
     "src/lib/base.test.ts": {
@@ -221,8 +313,33 @@
         "src/lib/navLinks.ts",
         "src/lib/base.test.ts",
         "src/layouts/BaseLayout.astro",
+        "src/components/BookFeature.astro",
         "src/components/NotFound.astro",
-        "src/components/LogoLink.astro"
+        "src/components/ToolCard.astro",
+        "src/components/BookCover.astro",
+        "src/components/LearnMore.astro",
+        "src/components/LogoLink.astro",
+        "src/components/ToolsSection.astro"
+      ]
+    },
+    "src/lib/contentOrder.test.ts": {
+      "imports": [
+        "src/lib/contentOrder.ts"
+      ],
+      "importedBy": []
+    },
+    "src/lib/contentOrder.ts": {
+      "imports": [],
+      "importedBy": [
+        "src/lib/contentOrder.test.ts",
+        "src/pages/index.astro",
+        "src/pages/isolated-components/BookFeature.astro",
+        "src/pages/isolated-components/ToolCard.astro",
+        "src/pages/isolated-components/Hero.astro",
+        "src/pages/isolated-components/BookCover.astro",
+        "src/pages/isolated-components/BooksSection.astro",
+        "src/pages/isolated-components/ToolsSection.astro",
+        "src/pages/isolated-components/HeroQuote.astro"
       ]
     },
     "src/lib/contentRoot.test.ts": {
@@ -235,7 +352,21 @@
       "imports": [],
       "importedBy": [
         "src/lib/contentRoot.test.ts",
-        "src/lib/site.ts"
+        "src/lib/site.ts",
+        "src/lib/watchedCollectionLoader.ts"
+      ]
+    },
+    "src/lib/missionWords.test.ts": {
+      "imports": [
+        "src/lib/missionWords.ts"
+      ],
+      "importedBy": []
+    },
+    "src/lib/missionWords.ts": {
+      "imports": [],
+      "importedBy": [
+        "src/lib/missionWords.test.ts",
+        "src/components/MissionLine.astro"
       ]
     },
     "src/lib/mobileMenu.test.ts": {
@@ -280,11 +411,56 @@
         "src/pages/index.astro",
         "src/pages/isolated-components/BracketLogo.astro",
         "src/pages/isolated-components/MainNav.astro",
+        "src/pages/isolated-components/MissionLine.astro",
+        "src/pages/isolated-components/Hero.astro",
+        "src/pages/isolated-components/LearnMore.astro",
         "src/pages/isolated-components/FooterNav.astro",
         "src/pages/isolated-components/LogoLink.astro",
+        "src/pages/isolated-components/ToolsSection.astro",
         "src/components/SEO.astro",
+        "src/components/Hero.astro",
         "src/components/SiteFooter.astro",
         "src/components/SiteHeader.astro"
+      ]
+    },
+    "src/lib/typewriter.test.ts": {
+      "imports": [
+        "src/lib/typewriter.ts"
+      ],
+      "importedBy": []
+    },
+    "src/lib/typewriter.ts": {
+      "imports": [],
+      "importedBy": [
+        "src/lib/typewriter.test.ts"
+      ]
+    },
+    "src/lib/visibleTools.test.ts": {
+      "imports": [
+        "src/lib/visibleTools.ts"
+      ],
+      "importedBy": []
+    },
+    "src/lib/visibleTools.ts": {
+      "imports": [],
+      "importedBy": [
+        "src/lib/visibleTools.test.ts",
+        "src/components/ToolsSection.astro"
+      ]
+    },
+    "src/lib/watchedCollectionLoader.test.ts": {
+      "imports": [
+        "src/lib/watchedCollectionLoader.ts"
+      ],
+      "importedBy": []
+    },
+    "src/lib/watchedCollectionLoader.ts": {
+      "imports": [
+        "src/lib/contentRoot.ts"
+      ],
+      "importedBy": [
+        "src/lib/watchedCollectionLoader.test.ts",
+        "src/content/config.ts"
       ]
     },
     "src/pages/404.astro": {
@@ -294,12 +470,47 @@
       ],
       "importedBy": []
     },
+    "src/pages/[slug].astro": {
+      "imports": [
+        "src/layouts/BaseLayout.astro",
+        "src/components/ContentPage.astro"
+      ],
+      "importedBy": []
+    },
     "src/pages/index.astro": {
       "imports": [
         "src/layouts/BaseLayout.astro",
-        "src/components/HiddenPageTitle.astro",
         "src/components/SectionAnchor.astro",
-        "src/lib/site.ts"
+        "src/components/Hero.astro",
+        "src/components/BooksSection.astro",
+        "src/components/ToolsSection.astro",
+        "src/components/LearnMore.astro",
+        "src/lib/site.ts",
+        "src/lib/contentOrder.ts"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/BookCover.astro": {
+      "imports": [
+        "src/components/BookCover.astro",
+        "src/styles/global.css",
+        "src/lib/contentOrder.ts"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/BookFeature.astro": {
+      "imports": [
+        "src/components/BookFeature.astro",
+        "src/styles/global.css",
+        "src/lib/contentOrder.ts"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/BooksSection.astro": {
+      "imports": [
+        "src/components/BooksSection.astro",
+        "src/styles/global.css",
+        "src/lib/contentOrder.ts"
       ],
       "importedBy": []
     },
@@ -311,12 +522,44 @@
       ],
       "importedBy": []
     },
+    "src/pages/isolated-components/ContentPage.astro": {
+      "imports": [
+        "src/components/ContentPage.astro",
+        "src/styles/global.css"
+      ],
+      "importedBy": []
+    },
     "src/pages/isolated-components/FooterNav.astro": {
       "imports": [
         "src/components/FooterNav.astro",
         "src/lib/site.ts",
         "src/lib/navLinks.ts",
         "src/styles/global.css"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/Hero.astro": {
+      "imports": [
+        "src/components/Hero.astro",
+        "src/styles/global.css",
+        "src/lib/site.ts",
+        "src/lib/contentOrder.ts"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/HeroQuote.astro": {
+      "imports": [
+        "src/components/HeroQuote.astro",
+        "src/styles/global.css",
+        "src/lib/contentOrder.ts"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/LearnMore.astro": {
+      "imports": [
+        "src/components/LearnMore.astro",
+        "src/styles/global.css",
+        "src/lib/site.ts"
       ],
       "importedBy": []
     },
@@ -341,6 +584,14 @@
       "imports": [
         "src/components/MenuToggle.astro",
         "src/styles/global.css"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/MissionLine.astro": {
+      "imports": [
+        "src/components/MissionLine.astro",
+        "src/styles/global.css",
+        "src/lib/site.ts"
       ],
       "importedBy": []
     },
@@ -372,17 +623,44 @@
       ],
       "importedBy": []
     },
+    "src/pages/isolated-components/ToolCard.astro": {
+      "imports": [
+        "src/components/ToolCard.astro",
+        "src/styles/global.css",
+        "src/lib/contentOrder.ts"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/ToolsSection.astro": {
+      "imports": [
+        "src/components/ToolsSection.astro",
+        "src/styles/global.css",
+        "src/lib/site.ts",
+        "src/lib/contentOrder.ts"
+      ],
+      "importedBy": []
+    },
     "src/styles/global.css": {
       "imports": [],
       "importedBy": [
         "src/pages/isolated-components/SectionAnchor.astro",
         "src/pages/isolated-components/BracketLogo.astro",
+        "src/pages/isolated-components/BookFeature.astro",
         "src/pages/isolated-components/NotFound.astro",
         "src/pages/isolated-components/MainNav.astro",
+        "src/pages/isolated-components/ToolCard.astro",
+        "src/pages/isolated-components/MissionLine.astro",
+        "src/pages/isolated-components/ContentPage.astro",
+        "src/pages/isolated-components/Hero.astro",
+        "src/pages/isolated-components/BookCover.astro",
         "src/pages/isolated-components/MenuToggle.astro",
+        "src/pages/isolated-components/BooksSection.astro",
+        "src/pages/isolated-components/LearnMore.astro",
         "src/pages/isolated-components/FooterNav.astro",
         "src/pages/isolated-components/LogoLink.astro",
+        "src/pages/isolated-components/ToolsSection.astro",
         "src/pages/isolated-components/SiteFooter.astro",
+        "src/pages/isolated-components/HeroQuote.astro",
         "src/pages/isolated-components/SiteHeader.astro",
         "src/layouts/BaseLayout.astro"
       ]
@@ -558,6 +836,33 @@
       ],
       "importedBy": []
     },
+    "src/components/BookCover.astro::__file_root__": {
+      "filePath": "src/components/BookCover.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/base.ts::withBase"
+      ],
+      "importedBy": []
+    },
+    "src/components/BookFeature.astro::__file_root__": {
+      "filePath": "src/components/BookFeature.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/BookCover.astro::__file_root__",
+        "src/lib/base.ts::withBase"
+      ],
+      "importedBy": [
+        "src/components/BooksSection.astro::__file_root__"
+      ]
+    },
+    "src/components/BooksSection.astro::__file_root__": {
+      "filePath": "src/components/BooksSection.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/BookFeature.astro::__file_root__"
+      ],
+      "importedBy": []
+    },
     "src/components/BracketLogo.astro::__file_root__": {
       "filePath": "src/components/BracketLogo.astro",
       "name": "__file_root__",
@@ -576,6 +881,24 @@
       "importedBy": [
         "src/components/SiteFooter.astro::__file_root__"
       ]
+    },
+    "src/components/Hero.astro::__file_root__": {
+      "filePath": "src/components/Hero.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/site.ts::SiteSettings",
+        "src/components/MissionLine.astro::__file_root__",
+        "src/components/HeroQuote.astro::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "src/components/LearnMore.astro::__file_root__": {
+      "filePath": "src/components/LearnMore.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/base.ts::withBase"
+      ],
+      "importedBy": []
     },
     "src/components/LogoLink.astro::__file_root__": {
       "filePath": "src/components/LogoLink.astro",
@@ -604,6 +927,18 @@
       "imports": [],
       "importedBy": [
         "src/components/SiteHeader.astro::__file_root__"
+      ]
+    },
+    "src/components/MissionLine.astro::__file_root__": {
+      "filePath": "src/components/MissionLine.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/missionWords.ts::listForReaders",
+        "src/lib/missionWords.ts::longestWord",
+        "src/lib/missionWords.ts::parseMissionWords"
+      ],
+      "importedBy": [
+        "src/components/Hero.astro::__file_root__"
       ]
     },
     "src/components/NotFound.astro::__file_root__": {
@@ -647,6 +982,34 @@
       ],
       "importedBy": []
     },
+    "src/components/ToolCard.astro::__file_root__": {
+      "filePath": "src/components/ToolCard.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/base.ts::withBase"
+      ],
+      "importedBy": [
+        "src/components/ToolsSection.astro::__file_root__"
+      ]
+    },
+    "src/components/ToolsSection.astro::__file_root__": {
+      "filePath": "src/components/ToolsSection.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/ToolCard.astro::__file_root__",
+        "src/lib/base.ts::withBase",
+        "src/lib/visibleTools.ts::visibleTools"
+      ],
+      "importedBy": []
+    },
+    "src/content/config.ts::__file_root__": {
+      "filePath": "src/content/config.ts",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/watchedCollectionLoader.ts::__file_root__"
+      ],
+      "importedBy": []
+    },
     "src/layouts/BaseLayout.astro::__file_root__": {
       "filePath": "src/layouts/BaseLayout.astro",
       "name": "__file_root__",
@@ -673,8 +1036,52 @@
       "imports": [],
       "importedBy": [
         "src/layouts/BaseLayout.astro::__file_root__",
+        "src/components/BookFeature.astro::__file_root__",
         "src/components/NotFound.astro::__file_root__",
-        "src/components/LogoLink.astro::__file_root__"
+        "src/components/ToolCard.astro::__file_root__",
+        "src/components/BookCover.astro::__file_root__",
+        "src/components/LearnMore.astro::__file_root__",
+        "src/components/LogoLink.astro::__file_root__",
+        "src/components/ToolsSection.astro::__file_root__"
+      ]
+    },
+    "src/lib/contentOrder.test.ts::__file_root__": {
+      "filePath": "src/lib/contentOrder.test.ts",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/contentOrder.ts::pickFirstByOrder",
+        "src/lib/contentOrder.ts::sortByOrder"
+      ],
+      "importedBy": []
+    },
+    "src/lib/contentOrder.ts::pickFirstByOrder": {
+      "filePath": "src/lib/contentOrder.ts",
+      "name": "pickFirstByOrder",
+      "imports": [],
+      "importedBy": [
+        "src/pages/index.astro::__file_root__",
+        "src/pages/isolated-components/BookFeature.astro::__file_root__",
+        "src/pages/isolated-components/ToolCard.astro::__file_root__",
+        "src/pages/isolated-components/Hero.astro::__file_root__",
+        "src/pages/isolated-components/BookCover.astro::__file_root__",
+        "src/pages/isolated-components/BooksSection.astro::__file_root__",
+        "src/pages/isolated-components/ToolsSection.astro::__file_root__",
+        "src/pages/isolated-components/HeroQuote.astro::__file_root__"
+      ]
+    },
+    "src/lib/contentOrder.ts::sortByOrder": {
+      "filePath": "src/lib/contentOrder.ts",
+      "name": "sortByOrder",
+      "imports": [],
+      "importedBy": [
+        "src/pages/index.astro::__file_root__",
+        "src/pages/isolated-components/BookFeature.astro::__file_root__",
+        "src/pages/isolated-components/ToolCard.astro::__file_root__",
+        "src/pages/isolated-components/Hero.astro::__file_root__",
+        "src/pages/isolated-components/BookCover.astro::__file_root__",
+        "src/pages/isolated-components/BooksSection.astro::__file_root__",
+        "src/pages/isolated-components/ToolsSection.astro::__file_root__",
+        "src/pages/isolated-components/HeroQuote.astro::__file_root__"
       ]
     },
     "src/lib/contentRoot.test.ts::__file_root__": {
@@ -685,6 +1092,52 @@
         "src/lib/contentRoot.ts::resolveDataRoot"
       ],
       "importedBy": []
+    },
+    "src/lib/missionWords.test.ts::__file_root__": {
+      "filePath": "src/lib/missionWords.test.ts",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/missionWords.ts::__file_root__",
+        "src/lib/missionWords.ts::listForReaders",
+        "src/lib/missionWords.ts::longestWord",
+        "src/lib/missionWords.ts::parseMissionWords"
+      ],
+      "importedBy": []
+    },
+    "src/lib/missionWords.ts::__file_root__": {
+      "filePath": "src/lib/missionWords.ts",
+      "name": "__file_root__",
+      "imports": [],
+      "importedBy": [
+        "src/lib/missionWords.test.ts::__file_root__"
+      ]
+    },
+    "src/lib/missionWords.ts::listForReaders": {
+      "filePath": "src/lib/missionWords.ts",
+      "name": "listForReaders",
+      "imports": [],
+      "importedBy": [
+        "src/lib/missionWords.test.ts::__file_root__",
+        "src/components/MissionLine.astro::__file_root__"
+      ]
+    },
+    "src/lib/missionWords.ts::longestWord": {
+      "filePath": "src/lib/missionWords.ts",
+      "name": "longestWord",
+      "imports": [],
+      "importedBy": [
+        "src/lib/missionWords.test.ts::__file_root__",
+        "src/components/MissionLine.astro::__file_root__"
+      ]
+    },
+    "src/lib/missionWords.ts::parseMissionWords": {
+      "filePath": "src/lib/missionWords.ts",
+      "name": "parseMissionWords",
+      "imports": [],
+      "importedBy": [
+        "src/lib/missionWords.test.ts::__file_root__",
+        "src/components/MissionLine.astro::__file_root__"
+      ]
     },
     "src/lib/mobileMenu.test.ts::__file_root__": {
       "filePath": "src/lib/mobileMenu.test.ts",
@@ -758,6 +1211,14 @@
         "src/components/SiteHeader.astro::__file_root__"
       ]
     },
+    "src/lib/site.ts::SiteSettings": {
+      "filePath": "src/lib/site.ts",
+      "name": "SiteSettings",
+      "imports": [],
+      "importedBy": [
+        "src/components/Hero.astro::__file_root__"
+      ]
+    },
     "src/lib/site.ts::__file_root__": {
       "filePath": "src/lib/site.ts",
       "name": "__file_root__",
@@ -784,10 +1245,93 @@
       "importedBy": [
         "src/pages/index.astro::__file_root__",
         "src/pages/isolated-components/BracketLogo.astro::__file_root__",
+        "src/pages/isolated-components/MissionLine.astro::__file_root__",
+        "src/pages/isolated-components/Hero.astro::__file_root__",
+        "src/pages/isolated-components/LearnMore.astro::__file_root__",
         "src/pages/isolated-components/LogoLink.astro::__file_root__",
+        "src/pages/isolated-components/ToolsSection.astro::__file_root__",
         "src/components/SEO.astro::__file_root__",
         "src/components/SiteFooter.astro::__file_root__",
         "src/components/SiteHeader.astro::__file_root__"
+      ]
+    },
+    "src/lib/typewriter.test.ts::__file_root__": {
+      "filePath": "src/lib/typewriter.test.ts",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/typewriter.ts::TypewriterState",
+        "src/lib/typewriter.ts::__file_root__",
+        "src/lib/typewriter.ts::initialTypewriterState",
+        "src/lib/typewriter.ts::typewriterStep"
+      ],
+      "importedBy": []
+    },
+    "src/lib/typewriter.ts::TypewriterState": {
+      "filePath": "src/lib/typewriter.ts",
+      "name": "TypewriterState",
+      "imports": [],
+      "importedBy": [
+        "src/lib/typewriter.test.ts::__file_root__"
+      ]
+    },
+    "src/lib/typewriter.ts::__file_root__": {
+      "filePath": "src/lib/typewriter.ts",
+      "name": "__file_root__",
+      "imports": [],
+      "importedBy": [
+        "src/lib/typewriter.test.ts::__file_root__"
+      ]
+    },
+    "src/lib/typewriter.ts::initialTypewriterState": {
+      "filePath": "src/lib/typewriter.ts",
+      "name": "initialTypewriterState",
+      "imports": [],
+      "importedBy": [
+        "src/lib/typewriter.test.ts::__file_root__"
+      ]
+    },
+    "src/lib/typewriter.ts::typewriterStep": {
+      "filePath": "src/lib/typewriter.ts",
+      "name": "typewriterStep",
+      "imports": [],
+      "importedBy": [
+        "src/lib/typewriter.test.ts::__file_root__"
+      ]
+    },
+    "src/lib/visibleTools.test.ts::__file_root__": {
+      "filePath": "src/lib/visibleTools.test.ts",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/visibleTools.ts::__file_root__",
+        "src/lib/visibleTools.ts::visibleTools"
+      ],
+      "importedBy": []
+    },
+    "src/lib/visibleTools.ts::visibleTools": {
+      "filePath": "src/lib/visibleTools.ts",
+      "name": "visibleTools",
+      "imports": [],
+      "importedBy": [
+        "src/components/ToolsSection.astro::__file_root__"
+      ]
+    },
+    "src/lib/watchedCollectionLoader.test.ts::__file_root__": {
+      "filePath": "src/lib/watchedCollectionLoader.test.ts",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/watchedCollectionLoader.ts::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "src/lib/watchedCollectionLoader.ts::__file_root__": {
+      "filePath": "src/lib/watchedCollectionLoader.ts",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/contentRoot.ts::resolveContentRoot"
+      ],
+      "importedBy": [
+        "src/lib/watchedCollectionLoader.test.ts::__file_root__",
+        "src/content/config.ts::__file_root__"
       ]
     },
     "src/pages/404.astro::__file_root__": {
@@ -799,14 +1343,61 @@
       ],
       "importedBy": []
     },
+    "src/pages/[slug].astro::__file_root__": {
+      "filePath": "src/pages/[slug].astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/layouts/BaseLayout.astro::__file_root__",
+        "src/components/ContentPage.astro::__file_root__"
+      ],
+      "importedBy": []
+    },
     "src/pages/index.astro::__file_root__": {
       "filePath": "src/pages/index.astro",
       "name": "__file_root__",
       "imports": [
         "src/layouts/BaseLayout.astro::__file_root__",
-        "src/components/HiddenPageTitle.astro::__file_root__",
         "src/components/SectionAnchor.astro::__file_root__",
-        "src/lib/site.ts::getSettings"
+        "src/components/Hero.astro::__file_root__",
+        "src/components/BooksSection.astro::__file_root__",
+        "src/components/ToolsSection.astro::__file_root__",
+        "src/components/LearnMore.astro::__file_root__",
+        "src/lib/site.ts::getSettings",
+        "src/lib/contentOrder.ts::pickFirstByOrder",
+        "src/lib/contentOrder.ts::sortByOrder"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/BookCover.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/BookCover.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/BookCover.astro::__file_root__",
+        "src/styles/global.css::__file_root__",
+        "src/lib/contentOrder.ts::pickFirstByOrder",
+        "src/lib/contentOrder.ts::sortByOrder"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/BookFeature.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/BookFeature.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/BookFeature.astro::__file_root__",
+        "src/styles/global.css::__file_root__",
+        "src/lib/contentOrder.ts::pickFirstByOrder",
+        "src/lib/contentOrder.ts::sortByOrder"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/BooksSection.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/BooksSection.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/BooksSection.astro::__file_root__",
+        "src/styles/global.css::__file_root__",
+        "src/lib/contentOrder.ts::pickFirstByOrder",
+        "src/lib/contentOrder.ts::sortByOrder"
       ],
       "importedBy": []
     },
@@ -820,6 +1411,15 @@
       ],
       "importedBy": []
     },
+    "src/pages/isolated-components/ContentPage.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/ContentPage.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/ContentPage.astro::__file_root__",
+        "src/styles/global.css::__file_root__"
+      ],
+      "importedBy": []
+    },
     "src/pages/isolated-components/FooterNav.astro::__file_root__": {
       "filePath": "src/pages/isolated-components/FooterNav.astro",
       "name": "__file_root__",
@@ -828,6 +1428,39 @@
         "src/lib/site.ts::getNav",
         "src/lib/navLinks.ts::toNavLinks",
         "src/styles/global.css::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/Hero.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/Hero.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/Hero.astro::__file_root__",
+        "src/styles/global.css::__file_root__",
+        "src/lib/site.ts::getSettings",
+        "src/lib/contentOrder.ts::pickFirstByOrder",
+        "src/lib/contentOrder.ts::sortByOrder"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/HeroQuote.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/HeroQuote.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/HeroQuote.astro::__file_root__",
+        "src/styles/global.css::__file_root__",
+        "src/lib/contentOrder.ts::pickFirstByOrder",
+        "src/lib/contentOrder.ts::sortByOrder"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/LearnMore.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/LearnMore.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/LearnMore.astro::__file_root__",
+        "src/styles/global.css::__file_root__",
+        "src/lib/site.ts::getSettings"
       ],
       "importedBy": []
     },
@@ -858,6 +1491,16 @@
       "imports": [
         "src/components/MenuToggle.astro::__file_root__",
         "src/styles/global.css::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/MissionLine.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/MissionLine.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/MissionLine.astro::__file_root__",
+        "src/styles/global.css::__file_root__",
+        "src/lib/site.ts::getSettings"
       ],
       "importedBy": []
     },
@@ -897,6 +1540,29 @@
       ],
       "importedBy": []
     },
+    "src/pages/isolated-components/ToolCard.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/ToolCard.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/ToolCard.astro::__file_root__",
+        "src/styles/global.css::__file_root__",
+        "src/lib/contentOrder.ts::pickFirstByOrder",
+        "src/lib/contentOrder.ts::sortByOrder"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/ToolsSection.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/ToolsSection.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/ToolsSection.astro::__file_root__",
+        "src/styles/global.css::__file_root__",
+        "src/lib/site.ts::getSettings",
+        "src/lib/contentOrder.ts::pickFirstByOrder",
+        "src/lib/contentOrder.ts::sortByOrder"
+      ],
+      "importedBy": []
+    },
     "src/styles/global.css::__file_root__": {
       "filePath": "src/styles/global.css",
       "name": "__file_root__",
@@ -904,16 +1570,26 @@
       "importedBy": [
         "src/pages/isolated-components/SectionAnchor.astro::__file_root__",
         "src/pages/isolated-components/BracketLogo.astro::__file_root__",
+        "src/pages/isolated-components/BookFeature.astro::__file_root__",
         "src/pages/isolated-components/NotFound.astro::__file_root__",
         "src/pages/isolated-components/MainNav.astro::__file_root__",
+        "src/pages/isolated-components/ToolCard.astro::__file_root__",
+        "src/pages/isolated-components/MissionLine.astro::__file_root__",
+        "src/pages/isolated-components/ContentPage.astro::__file_root__",
+        "src/pages/isolated-components/Hero.astro::__file_root__",
+        "src/pages/isolated-components/BookCover.astro::__file_root__",
         "src/pages/isolated-components/MenuToggle.astro::__file_root__",
+        "src/pages/isolated-components/BooksSection.astro::__file_root__",
+        "src/pages/isolated-components/LearnMore.astro::__file_root__",
         "src/pages/isolated-components/FooterNav.astro::__file_root__",
         "src/pages/isolated-components/LogoLink.astro::__file_root__",
+        "src/pages/isolated-components/ToolsSection.astro::__file_root__",
         "src/pages/isolated-components/SiteFooter.astro::__file_root__",
+        "src/pages/isolated-components/HeroQuote.astro::__file_root__",
         "src/pages/isolated-components/SiteHeader.astro::__file_root__",
         "src/layouts/BaseLayout.astro::__file_root__"
       ]
     }
   },
-  "lastUpdated": "2026-10-04T16:03:37Z"
+  "lastUpdated": "2026-10-04T18:31:02Z"
 }

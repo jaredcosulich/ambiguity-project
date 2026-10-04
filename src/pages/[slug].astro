@@ -1,0 +1,22 @@
+---
+// One page per published `pages` entry (About, the book page, ...), at
+// `/<slug>`. Drafts are filtered here too so they are not publicly reachable.
+import { getCollection, render } from 'astro:content';
+import { publishedEntries } from '@codeyam/cms/content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContentPage from '../components/ContentPage.astro';
+
+export async function getStaticPaths() {
+  const pages = publishedEntries(await getCollection('pages'));
+  return pages.map((page) => ({ params: { slug: page.id }, props: { page } }));
+}
+
+const { page } = Astro.props;
+const { Content } = await render(page);
+---
+
+<BaseLayout title={page.data.title} description={page.data.description}>
+  <ContentPage id={page.id} title={page.data.title}>
+    <Content />
+  </ContentPage>
+</BaseLayout>

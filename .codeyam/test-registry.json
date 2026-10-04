@@ -28,12 +28,138 @@
       "runner": "tests"
     },
     {
+      "description": "No words means an empty slot.",
+      "file": "src/lib/typewriter.test.ts",
+      "format": "vitest",
+      "key": "initialTypewriterState › starts empty for an empty list",
+      "line": 24,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "The first word is on screen before any animation runs.",
+      "file": "src/lib/typewriter.test.ts",
+      "format": "vitest",
+      "key": "initialTypewriterState › starts on the first word, ready to delete it",
+      "line": 19,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Screen readers hear the full list with an Oxford comma.",
+      "file": "src/lib/missionWords.test.ts",
+      "format": "vitest",
+      "key": "listForReaders › joins three or more words with commas and and",
+      "line": 48,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Two words read as a simple pair.",
+      "file": "src/lib/missionWords.test.ts",
+      "format": "vitest",
+      "key": "listForReaders › joins two words with and",
+      "line": 53,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "A single word or none reads as-is.",
+      "file": "src/lib/missionWords.test.ts",
+      "format": "vitest",
+      "key": "listForReaders › returns a lone word unchanged and an empty list as empty",
+      "line": 58,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "On a tie the first longest word wins.",
+      "file": "src/lib/missionWords.test.ts",
+      "format": "vitest",
+      "key": "longestWord › keeps the first word on a tie",
+      "line": 36,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "An empty list measures as an empty string.",
+      "file": "src/lib/missionWords.test.ts",
+      "format": "vitest",
+      "key": "longestWord › returns an empty string for no words",
+      "line": 41,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "The slot is sized to the longest word so nothing shifts as words change.",
+      "file": "src/lib/missionWords.test.ts",
+      "format": "vitest",
+      "key": "longestWord › returns the longest word",
+      "line": 31,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
       "description": "The toggle offers the action that clicking it would take.",
       "file": "src/lib/mobileMenu.test.ts",
       "format": "vitest",
       "key": "menuLabel › reads Close when open and Menu when closed",
       "line": 16,
       "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "Blank lines left by an editor are ignored.",
+      "file": "src/lib/missionWords.test.ts",
+      "format": "vitest",
+      "key": "parseMissionWords › drops blank lines",
+      "line": 16,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "An empty or missing setting still gives the typewriter a word.",
+      "file": "src/lib/missionWords.test.ts",
+      "format": "vitest",
+      "key": "parseMissionWords › falls back to people when empty or missing",
+      "line": 21,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "One word per line, as the CMS textarea stores it.",
+      "file": "src/lib/missionWords.test.ts",
+      "format": "vitest",
+      "key": "parseMissionWords › splits the setting into one word per line",
+      "line": 6,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Stray spaces and Windows line endings are cleaned up.",
+      "file": "src/lib/missionWords.test.ts",
+      "format": "vitest",
+      "key": "parseMissionWords › trims whitespace and handles CRLF line endings",
+      "line": 11,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "The hero shows the lowest-ordered quote.",
+      "file": "src/lib/contentOrder.test.ts",
+      "format": "vitest",
+      "key": "pickFirstByOrder › returns the lowest-ordered entry",
+      "line": 41,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "No quotes means no hero quote, not a crash.",
+      "file": "src/lib/contentOrder.test.ts",
+      "format": "vitest",
+      "key": "pickFirstByOrder › returns undefined for an empty list",
+      "line": 46,
+      "registeredAt": "2026-10-04T18:05:13Z",
       "runner": "tests"
     },
     {
@@ -127,6 +253,51 @@
       "runner": "tests"
     },
     {
+      "description": "Sorting never mutates the caller's array.",
+      "file": "src/lib/contentOrder.test.ts",
+      "format": "vitest",
+      "key": "sortByOrder › does not mutate its input",
+      "line": 26,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Equal orders keep their incoming sequence so builds are deterministic.",
+      "file": "src/lib/contentOrder.test.ts",
+      "format": "vitest",
+      "key": "sortByOrder › keeps the incoming order for ties",
+      "line": 20,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "An entry with no order goes after every ordered entry.",
+      "file": "src/lib/contentOrder.test.ts",
+      "format": "vitest",
+      "key": "sortByOrder › puts entries without an order last",
+      "line": 14,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Entries come back lowest order first.",
+      "file": "src/lib/contentOrder.test.ts",
+      "format": "vitest",
+      "key": "sortByOrder › sorts ascending by order",
+      "line": 8,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Zero is a real order, not a missing one.",
+      "file": "src/lib/contentOrder.test.ts",
+      "format": "vitest",
+      "key": "sortByOrder › treats order zero as first",
+      "line": 33,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
       "description": "External links pass through unchanged so a nav item can point off-site.",
       "file": "src/lib/navLinks.test.ts",
       "format": "vitest",
@@ -169,6 +340,150 @@
       "key": "toNavLinks › treats a single item as the call-to-action",
       "line": 30,
       "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "The word is deleted a letter at a time, then the next word is typed in.",
+      "file": "src/lib/typewriter.test.ts",
+      "format": "vitest",
+      "key": "typewriterStep › deletes the current word then types the next one letter by letter",
+      "line": 31,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "A fully typed word is held before deleting starts again.",
+      "file": "src/lib/typewriter.test.ts",
+      "format": "vitest",
+      "key": "typewriterStep › holds a finished word before deleting it",
+      "line": 37,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "An empty word list leaves the state alone instead of throwing.",
+      "file": "src/lib/typewriter.test.ts",
+      "format": "vitest",
+      "key": "typewriterStep › is a no-op for an empty list",
+      "line": 67,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Reduced motion swaps whole words on a slow cadence, no typing frames.",
+      "file": "src/lib/typewriter.test.ts",
+      "format": "vitest",
+      "key": "typewriterStep › swaps whole words under reduced motion",
+      "line": 52,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Each phase uses its own speed.",
+      "file": "src/lib/typewriter.test.ts",
+      "format": "vitest",
+      "key": "typewriterStep › uses the delete, type, and between-word delays",
+      "line": 60,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "After the last word it wraps back to the first.",
+      "file": "src/lib/typewriter.test.ts",
+      "format": "vitest",
+      "key": "typewriterStep › wraps around to the first word",
+      "line": 46,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Five published tools show only the first three on the home page.",
+      "file": "src/lib/visibleTools.test.ts",
+      "format": "vitest",
+      "key": "visibleTools › caps the list at three by default",
+      "line": 6,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "A custom or nonsensical cap is respected without throwing.",
+      "file": "src/lib/visibleTools.test.ts",
+      "format": "vitest",
+      "key": "visibleTools › honours a custom cap and clamps a negative one to zero",
+      "line": 22,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Zero tools hides the section, so the result is empty.",
+      "file": "src/lib/visibleTools.test.ts",
+      "format": "vitest",
+      "key": "visibleTools › returns an empty list for no tools",
+      "line": 17,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Fewer than the cap are all shown.",
+      "file": "src/lib/visibleTools.test.ts",
+      "format": "vitest",
+      "key": "visibleTools › returns every tool when under the cap",
+      "line": 12,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "A collection that already has entries is watched by the glob loader itself.",
+      "file": "src/lib/watchedCollectionLoader.test.ts",
+      "format": "vitest",
+      "key": "watchedCollectionLoader › does not watch a collection that already has entries",
+      "line": 40,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "A production build has no watcher, so nothing extra is registered.",
+      "file": "src/lib/watchedCollectionLoader.test.ts",
+      "format": "vitest",
+      "key": "watchedCollectionLoader › does nothing extra without a watcher",
+      "line": 34,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Files in other collections or non-markdown files are ignored.",
+      "file": "src/lib/watchedCollectionLoader.test.ts",
+      "format": "vitest",
+      "key": "watchedCollectionLoader › ignores other folders and non-markdown files",
+      "line": 67,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "An empty collection reloads when its first markdown file appears.",
+      "file": "src/lib/watchedCollectionLoader.test.ts",
+      "format": "vitest",
+      "key": "watchedCollectionLoader › reloads an empty collection when its first entry is added",
+      "line": 47,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Only the first add reloads; the glob loader's own watcher handles the rest.",
+      "file": "src/lib/watchedCollectionLoader.test.ts",
+      "format": "vitest",
+      "key": "watchedCollectionLoader › reloads only once",
+      "line": 57,
+      "registeredAt": "2026-10-04T18:05:13Z",
+      "runner": "tests"
+    },
+    {
+      "description": "The wrapper always delegates the actual load to the CMS glob loader.",
+      "file": "src/lib/watchedCollectionLoader.test.ts",
+      "format": "vitest",
+      "key": "watchedCollectionLoader › runs the inner loader once on load",
+      "line": 28,
+      "registeredAt": "2026-10-04T18:05:13Z",
       "runner": "tests"
     },
     {

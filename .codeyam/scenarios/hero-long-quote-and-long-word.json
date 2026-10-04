@@ -1,0 +1,15 @@
+{
+  "name": "Hero - Long Quote And Long Word",
+  "id": "29350da5-154a-4c4e-915c-a383e17d4b8e",
+  "url": "/isolated-components/Hero",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-long-hero.json"
+  },
+  "componentName": "Hero",
+  "scenarioType": "component",
+  "description": "Hero with a long eyebrow, a long multi-sentence quote, and a very long rotating word; the grid and the sized word slot hold."
+}

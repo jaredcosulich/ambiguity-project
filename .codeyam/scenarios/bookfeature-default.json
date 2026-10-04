@@ -1,0 +1,15 @@
+{
+  "name": "BookFeature - Default",
+  "id": "e96f569a-1057-4274-a936-740d55ed4a0f",
+  "url": "/isolated-components/BookFeature",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-full.json"
+  },
+  "componentName": "BookFeature",
+  "scenarioType": "component",
+  "description": "One book: tilted cover beside the Books label, eyebrow, title, subtitle, blurb and both links."
+}

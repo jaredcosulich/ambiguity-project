@@ -1,0 +1,21 @@
+---
+// The home Books section on the salmon band. Each published book (already in
+// `order`) renders as a BookFeature; several books stack. With none, the
+// section keeps its `#books` anchor so the nav link still lands somewhere.
+import type { CollectionEntry } from 'astro:content';
+import BookFeature from './BookFeature.astro';
+
+interface Props {
+  books: CollectionEntry<'books'>[];
+}
+
+const { books } = Astro.props;
+---
+
+<section id="books" class="books-section" aria-label="Books">
+  {books.map((book, i) => <BookFeature id={book.id} book={book.data} showLabel={i === 0} />)}
+</section>
+
+<style>
+  .books-section { background: var(--salmon-tint); }
+</style>

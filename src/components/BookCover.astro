@@ -1,0 +1,31 @@
+---
+// A book's tilted cover, or a salmon title card when no cover is set.
+import { withBase } from '../lib/base';
+
+interface Props {
+  title: string;
+  cover?: string;
+  coverAlt?: string;
+}
+
+const { title, cover, coverAlt } = Astro.props;
+---
+
+{
+  cover ? (
+    <img class="cover" src={withBase(cover)} alt={coverAlt ?? `Cover of ${title}`} data-cms-field="cover" />
+  ) : (
+    <div class="cover cover-missing" aria-hidden="true">
+      <span>{title}</span>
+    </div>
+  )
+}
+
+<style>
+  .cover { width: clamp(200px, 22vw, 288px); aspect-ratio: 2 / 3; height: auto; flex-shrink: 0; object-fit: cover; border-radius: 2px; box-shadow: 0 2px 4px rgba(43,29,51,0.14), 0 26px 52px rgba(43,29,51,0.28); transform: rotate(-4deg); transition: transform .45s cubic-bezier(.2,.8,.2,1); }
+  .cover:hover { transform: rotate(0deg) translateY(-6px) scale(1.02); }
+  .cover-missing { display: flex; align-items: center; justify-content: center; padding: 24px; background: var(--salmon); color: var(--plum); font-size: 22px; line-height: 1.2; text-align: center; }
+  @media (prefers-reduced-motion: reduce) {
+    .cover { transition: none; }
+  }
+</style>

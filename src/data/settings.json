@@ -4,5 +4,14 @@
   "contactEmail": "",
   "footerText": "© 2026 The Ambiguity Project",
   "socials": [],
-  "substackUrl": ""
+  "substackUrl": "",
+  "heroEyebrow": "A 501(c)(3) Non-Profit",
+  "missionPrefix": "Helping",
+  "missionWords": "people\nstudents\nbusinesses\ngovernments\norganizations\nschools",
+  "missionSuffix": "better recognize, live with, and navigate ambiguity.",
+  "toolsHeading": "Explore some of the tools we've built to support people as they confront ambiguity in different situations.",
+  "toolsAllUrl": "",
+  "learnHeading": "Learn more about what we are doing and how we do it.",
+  "learnButtonLabel": "About The Ambiguity Project",
+  "learnButtonUrl": "/about"
 }

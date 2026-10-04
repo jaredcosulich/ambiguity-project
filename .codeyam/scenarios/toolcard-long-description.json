@@ -1,0 +1,15 @@
+{
+  "name": "ToolCard - Long Description",
+  "id": "3b07f219-7220-4ffd-b5ec-4c7b90aeae5c",
+  "url": "/isolated-components/ToolCard",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-five-tools-long.json"
+  },
+  "componentName": "ToolCard",
+  "scenarioType": "component",
+  "description": "A tool card whose long description wraps over several lines without pushing the arrow off the card."
+}

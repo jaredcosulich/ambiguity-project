@@ -1,0 +1,15 @@
+{
+  "name": "About Page",
+  "id": "d755fc11-b591-4bff-a9bb-e64a1a09686e",
+  "url": "/about",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-full.json"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "src/pages/[slug].astro",
+  "description": "The About page that the Learn More button opens, rendered from the pages collection with the shared header and footer."
+}

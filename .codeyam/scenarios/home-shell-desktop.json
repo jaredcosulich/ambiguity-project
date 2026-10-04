@@ -1,15 +1,18 @@
 {
   "name": "Home Shell - Desktop",
   "id": "ae982193-f3c6-41ea-acb7-798860379bd1",
-  "url": "/",
+  "url": "/#learn",
   "dimensions": [
     "Desktop"
   ],
   "mocks": {},
+  "interactions": [
+    { "action": "hover", "selector": "#learn-h" }
+  ],
   "seed": {
     "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/site-default.json"
   },
   "scenarioType": "application",
   "pageFilePath": "src/pages/index.astro",
-  "description": "Home page shell at desktop width: navy header with logo and nav, empty ivory body awaiting the section plans, footer."
+  "description": "Home page at desktop width with the committed launch content, scrolled to Learn More: with no tools published the Technology section is hidden, so the Books band runs straight into Learn More and the footer."
 }

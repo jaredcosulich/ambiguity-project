@@ -1,5 +1,56 @@
 {
-  "collections": [],
+  "collections": [
+    {
+      "id": "books",
+      "label": "Books",
+      "singular": "book",
+      "fields": [
+        { "name": "title", "label": "Title", "type": "text" },
+        { "name": "subtitle", "label": "Subtitle", "type": "text", "optional": true },
+        { "name": "eyebrow", "label": "Eyebrow", "type": "text", "optional": true, "hint": "Small line above the title, e.g. \"New book · Pre-order now\"." },
+        { "name": "cover", "label": "Cover image", "type": "image", "optional": true },
+        { "name": "coverAlt", "label": "Cover description", "type": "text", "optional": true, "hint": "Describes the cover for screen readers." },
+        { "name": "blurb", "label": "Blurb", "type": "textarea", "optional": true },
+        { "name": "primaryLabel", "label": "Main button label", "type": "text", "optional": true },
+        { "name": "primaryUrl", "label": "Main button link", "type": "text", "optional": true },
+        { "name": "secondaryLabel", "label": "Secondary link label", "type": "text", "optional": true },
+        { "name": "secondaryUrl", "label": "Secondary link", "type": "text", "optional": true },
+        { "name": "order", "label": "Order", "type": "number", "optional": true }
+      ]
+    },
+    {
+      "id": "tools",
+      "label": "Tools",
+      "singular": "tool",
+      "fields": [
+        { "name": "name", "label": "Name", "type": "text" },
+        { "name": "description", "label": "Description", "type": "textarea", "optional": true, "hint": "Who it's for and the situation it helps with." },
+        { "name": "url", "label": "Link", "type": "text", "optional": true },
+        { "name": "order", "label": "Order", "type": "number", "optional": true }
+      ]
+    },
+    {
+      "id": "quotes",
+      "label": "Quotes",
+      "singular": "quote",
+      "fields": [
+        { "name": "text", "label": "Quote", "type": "textarea" },
+        { "name": "attribution", "label": "Attribution", "type": "text", "optional": true },
+        { "name": "order", "label": "Order", "type": "number", "optional": true, "hint": "The home page hero shows the lowest-numbered quote." }
+      ]
+    }
+  ],
+  "paths": {
+    "pages": "/:slug",
+    "books": "/",
+    "tools": "/",
+    "quotes": "/"
+  },
+  "order": {
+    "books": { "field": "order" },
+    "tools": { "field": "order" },
+    "quotes": { "field": "order" }
+  },
   "settings": [
     {
       "name": "substackUrl",
@@ -7,6 +58,15 @@
       "type": "text",
       "optional": true,
       "hint": "The publication's address, e.g. https://ambiguityproject.substack.com. The blog and newsletter signup read it."
-    }
+    },
+    { "name": "heroEyebrow", "label": "Hero eyebrow", "type": "text", "optional": true, "hint": "Small line above the site title in the hero." },
+    { "name": "missionPrefix", "label": "Mission: words before the rotating word", "type": "text", "optional": true },
+    { "name": "missionWords", "label": "Mission: rotating words", "type": "textarea", "optional": true, "hint": "One word per line. The hero types through them in order." },
+    { "name": "missionSuffix", "label": "Mission: words after the rotating word", "type": "text", "optional": true },
+    { "name": "toolsHeading", "label": "Technology section heading", "type": "textarea", "optional": true },
+    { "name": "toolsAllUrl", "label": "\"All tools\" link", "type": "text", "optional": true, "hint": "Leave empty to hide the link." },
+    { "name": "learnHeading", "label": "Learn More heading", "type": "textarea", "optional": true },
+    { "name": "learnButtonLabel", "label": "Learn More button label", "type": "text", "optional": true },
+    { "name": "learnButtonUrl", "label": "Learn More button link", "type": "text", "optional": true }
   ]
 }

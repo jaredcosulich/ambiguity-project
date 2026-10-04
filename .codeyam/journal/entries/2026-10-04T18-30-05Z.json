@@ -1,0 +1,719 @@
+{
+  "timestamp": "2026-10-04T18:30:05Z",
+  "title": "Home Page Sections Editable In The CMS",
+  "type": "feature",
+  "userRequest": "## Summary\n\nBuild the home page's content sections from the mockup\n(`design/mockup/index.html`, moved there by the foundation plan): the hero, the\nBooks section, the Technology/tools section, and Learn More. All of their copy\nis editable in `/admin` rather than hard-coded. An editor can change the\nmission's rotating words, swap the hero quote, add a second book, add or\nreorder tools, and edit the About page, all without a code change. The Blog and\nSupport Us sections are handled by their own plans.\n\n## Key Decisions\n\n- **Model repeating things as collections and one-off strings as settings.**\n  CMS settings can't hold `list` or `image` fields, so:\n  - `books` collection (new): `title`, `subtitle`, `eyebrow`\n    (\"New book · Pre-order now\"), `cover` (image), `coverAlt`, `blurb`\n    (textarea), `primaryLabel` / `primaryUrl` (\"Pre-order the book\"),\n    `secondaryLabel` / `secondaryUrl` (\"About the book →\"), `order`, `draft`.\n    The home page shows the first non-draft book by `order`. If more than one\n    is published, they stack in the same section layout.\n  - `tools` collection (new): `name`, `description`, `url`, `order`, `draft`.\n    The home page shows the first three. The mockup's placeholder rows\n    (\"[Tool name]\") become real empty-state handling: with zero tools, the\n    Technology section is hidden rather than showing placeholders.\n  - `quotes` collection (new): `text`, `attribution`, `order`. The hero shows\n    one quote. With several, it picks one per build (deterministically by\n    `order`, first one) so screenshots stay stable.\n  - Settings (declared in `src/data/collections.json` → `settings`):\n    `heroEyebrow` (\"A 501(c)(3) Non-Profit\"), `missionPrefix` (\"Helping\"),\n    `missionWords` (textarea, one word per line: people, students, businesses,\n    governments, organizations, schools), `missionSuffix` (\"better recognize,\n    live with, and navigate ambiguity.\"), and each section's heading and\n    \"All tools →\" link (`toolsHeading`, `toolsAllUrl`, `learnHeading`,\n    `learnButtonLabel`).\n- **The Learn More button and \"About the book\" link go to real pages.** Seed a\n  `pages/about.md` entry (\"About The Ambiguity Project\") rendered at `/about`,\n  and give \"About the book\" a `pages/ambiguity-everywhere.md` page. Both are\n  editable `pages` entries, so the links never point at `#`. Register their\n  locations in the `collections.json` `paths` map.\n- **Keep the typewriter accessible and stable.** Port the mockup's rotating-word\n  script as-is: sized to the longest word, respects\n  `prefers-reduced-motion`, and keeps a screen-reader-only full list. Build the\n  word list from `missionWords` and the width measure from the longest word\n  (not a hard-coded \"organizations\"). Add a unit test for the pure word-list\n  parsing (trims whitespace, drops blank lines, falls back to \"people\" when\n  empty).\n- **Add CMS staged-preview markers** (`data-cms-entry` / `data-cms-field`) to\n  the book and tool renderers, so \"Preview changes\" in `/admin` patches the\n  real page exactly instead of matching by shape.\n\n## Implementation\n\n### 1. Content schema and registry\n\nAdd the `books`, `tools`, and `quotes` collections to the content config (using\nthe CMS `collectionLoader`). Declare them, plus the new settings and `paths`,\nin `src/data/collections.json`. Seed the content from the mockup: the \"Ambiguity\nEverywhere\" book with its blurb and cover, the Voltaire quote, and the About and\nbook pages. Leave tools empty until real ones exist. For scenarios, the seed\ndata carries three sample tools.\n\n### 2. Section components\n\n**New files**: `src/components/Hero.astro` (eyebrow, h1, typewriter mission,\nquote aside), `src/components/BooksSection.astro`,\n`src/components/ToolsSection.astro`, `src/components/LearnMore.astro`. Each\none carries its CSS from the mockup (hero grid, rotated book cover with hover,\nsage tool cards, periwinkle Learn More band) and its responsive breakpoints\n(960 / 1024 / 860 / 640px).\n\n### 3. Pages\n\nCompose the sections in `src/pages/index.astro` in the mockup's order, leaving\nthe Blog and Support anchors to their plans. Add a `pages` route (e.g.\n`src/pages/[slug].astro`) for About and the book page, using the shared\nheader and footer.\n\n## Scenarios to Demonstrate\n\n- Full home page, desktop and mobile, with the mockup's real content\n- Hero with a very long quote and a long rotating word (layout holds; the word\n  slot is sized correctly)\n- Books: one book; two books; a book with no secondary link; missing cover\n- Tools: zero tools (section hidden); one tool; five tools (only three shown,\n  \"All tools →\" present); a long description\n- Learn More pointing at the About page; the About page rendered\n- Reduced-motion: rotating word swaps without typing animation",
+  "description": "The home page's hero (eyebrow, rotating mission word, quote), Books, Technology and Learn More sections are now built from CMS content: new books, tools and quotes collections plus home-page copy in settings, with About and book pages served at /<slug>. Technology hides itself when no tools are published, and a loader wrapper fixes empty collections never picking up their first entry under astro dev. Scope verdict: this completes the home-page-text part of the 'editors change home page text without code' deliverable; the Blog (Substack) and Support Us sections remain deferred by the user to their own plans, none deferred by the agent. The About page copy is placeholder text written by the agent for the user to replace.",
+  "modifiedFiles": [
+    {
+      "path": ".codeyam/data-structure.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/glossary.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/per-test-evidence.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/plans/home-page-sections-editable-in-the-cms.md\t.codeyam/plans/completed/home-page-sections-editable-in-the-cms.md",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/home-shell-desktop.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/.capture-pipeline.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/admin-dashboard-pages-and-site-settings--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/admin-dashboard-pages-and-site-settings--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/footernav-default--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-desktop--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-desktop--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-empty-nav--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-empty-nav--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-empty-nav--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-long-title-and-extra-nav-items--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-long-title-and-extra-nav-items--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-mobile-menu-open--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-mobile-menu-open--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-single-nav-item--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-single-nav-item--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/mainnav-default--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/sitefooter-default--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/sitefooter-long-footer-text-and-extra-nav-items--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/siteheader-default--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/siteheader-long-title-and-extra-nav-items--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/siteheader-mobile-menu-open--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/seeds/site-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/seeds/site-empty-nav.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/seeds/site-long-title-extra-nav.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/seeds/site-single-nav-item.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/state/claude-launch-provenance.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/state/finalize-debt.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/all.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/d3834e2437624f6d52d30b5982ddaeb8220c9280e83c135642ea45dfc1ae6c82.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/daa00aecd3ae2fc205ea32f3a4abadaa30f87b96c733e200423b11bc0e27d634.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-registry.json",
+      "status": "modified"
+    },
+    {
+      "path": "src/content/config.ts",
+      "status": "modified"
+    },
+    {
+      "path": "src/data/collections.json",
+      "status": "modified"
+    },
+    {
+      "path": "src/data/settings.json",
+      "status": "modified"
+    },
+    {
+      "path": "src/lib/site.ts",
+      "status": "modified"
+    },
+    {
+      "path": "src/pages/index.astro",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/about-page.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/bookcover-cover-and-missing-cover.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/bookfeature-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/bookssection-one-book.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/bookssection-two-books.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/contentpage-about-page.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/coverage-plan/bookssection.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/coverage-plan/hero.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/coverage-plan/learnmore.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/coverage-plan/toolssection.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/hero-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/hero-long-quote-and-long-word.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/heroquote-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/heroquote-long-quote.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/home-full-content-mobile.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/home-full-content.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/home-technology-section.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/learnmore-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/missionline-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/about-page--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/about-page--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/bookcover-cover-and-missing-cover--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/bookcover-cover-and-missing-cover--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/bookfeature-default--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/bookfeature-default--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/bookssection-one-book--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/bookssection-one-book--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/bookssection-two-books--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/bookssection-two-books--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/contentpage-about-page--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/contentpage-about-page--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hero-default--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hero-default--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hero-long-quote-and-long-word--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hero-long-quote-and-long-word--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/heroquote-default--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/heroquote-default--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/heroquote-long-quote--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/heroquote-long-quote--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-full-content--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-full-content--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-full-content-mobile--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-full-content-mobile--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-technology-section--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-technology-section--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/learnmore-default--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/learnmore-default--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/missionline-default--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/missionline-default--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/toolcard-default--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/toolcard-default--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/toolcard-long-description--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/toolcard-long-description--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/toolssection-five-tools-shows-three--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/toolssection-five-tools-shows-three--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/toolssection-one-tool--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/toolssection-one-tool--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/toolssection-three-tools--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/toolssection-three-tools--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/toolcard-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/toolcard-long-description.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/toolssection-five-tools-shows-three.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/toolssection-one-tool.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/toolssection-three-tools.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/seeds/home-five-tools-long.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/seeds/home-full.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/seeds/home-long-hero.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/seeds/home-no-tools.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/seeds/home-one-tool.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/seeds/home-two-books.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/a8ac459d1ce758dfe06691e1097b7d36e174fb4c8d96de39fecffcff70665f3c.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/ba9a9aa4ddffc8bfcce0a4c723ba41b23ab0a47ca07e3c19314f1456f15a6504.json",
+      "status": "added"
+    },
+    {
+      "path": "src/components/BookCover.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/BookFeature.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/BooksSection.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/ContentPage.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/Hero.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/HeroQuote.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/LearnMore.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/MissionLine.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/ToolCard.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/ToolsSection.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/content/books/ambiguity-everywhere.md",
+      "status": "added"
+    },
+    {
+      "path": "src/content/pages/about.md",
+      "status": "added"
+    },
+    {
+      "path": "src/content/pages/ambiguity-everywhere.md",
+      "status": "added"
+    },
+    {
+      "path": "src/content/quotes/voltaire.md",
+      "status": "added"
+    },
+    {
+      "path": "src/content/tools/.gitkeep",
+      "status": "added"
+    },
+    {
+      "path": "src/lib/contentOrder.test.ts",
+      "status": "added"
+    },
+    {
+      "path": "src/lib/contentOrder.ts",
+      "status": "added"
+    },
+    {
+      "path": "src/lib/missionWords.test.ts",
+      "status": "added"
+    },
+    {
+      "path": "src/lib/missionWords.ts",
+      "status": "added"
+    },
+    {
+      "path": "src/lib/typewriter.test.ts",
+      "status": "added"
+    },
+    {
+      "path": "src/lib/typewriter.ts",
+      "status": "added"
+    },
+    {
+      "path": "src/lib/visibleTools.test.ts",
+      "status": "added"
+    },
+    {
+      "path": "src/lib/visibleTools.ts",
+      "status": "added"
+    },
+    {
+      "path": "src/lib/watchedCollectionLoader.test.ts",
+      "status": "added"
+    },
+    {
+      "path": "src/lib/watchedCollectionLoader.ts",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/[slug].astro",
+      "status": "added"
+    }
+  ],
+  "scenarioScreenshots": [
+    {
+      "name": "About Page",
+      "screenshotPath": "about-page--desktop.png"
+    },
+    {
+      "name": "Admin Dashboard - Pages And Site Settings",
+      "screenshotPath": "admin-dashboard-pages-and-site-settings--desktop.png"
+    },
+    {
+      "name": "Home - Full Content",
+      "screenshotPath": "home-full-content--desktop.png"
+    },
+    {
+      "name": "Home - Full Content Mobile",
+      "screenshotPath": "home-full-content-mobile--mobile.png"
+    },
+    {
+      "name": "Home - Technology Section",
+      "screenshotPath": "home-technology-section--desktop.png"
+    },
+    {
+      "name": "Home Shell - Desktop",
+      "screenshotPath": "home-shell-desktop--desktop.png"
+    },
+    {
+      "name": "Home Shell - Empty Nav",
+      "screenshotPath": "home-shell-empty-nav--desktop.png"
+    },
+    {
+      "name": "Home Shell - Long Title And Extra Nav Items",
+      "screenshotPath": "home-shell-long-title-and-extra-nav-items--desktop.png"
+    },
+    {
+      "name": "Home Shell - Mobile Menu Open",
+      "screenshotPath": "home-shell-mobile-menu-open--mobile.png"
+    },
+    {
+      "name": "Home Shell - Single Nav Item",
+      "screenshotPath": "home-shell-single-nav-item--desktop.png"
+    },
+    {
+      "name": "BookCover - Cover And Missing Cover",
+      "screenshotPath": "bookcover-cover-and-missing-cover--desktop.png"
+    },
+    {
+      "name": "BookFeature - Default",
+      "screenshotPath": "bookfeature-default--desktop.png"
+    },
+    {
+      "name": "BooksSection - One Book",
+      "screenshotPath": "bookssection-one-book--desktop.png"
+    },
+    {
+      "name": "BooksSection - Two Books",
+      "screenshotPath": "bookssection-two-books--desktop.png"
+    },
+    {
+      "name": "ContentPage - About Page",
+      "screenshotPath": "contentpage-about-page--desktop.png"
+    },
+    {
+      "name": "FooterNav - Default",
+      "screenshotPath": "footernav-default--desktop.png"
+    },
+    {
+      "name": "Hero - Default",
+      "screenshotPath": "hero-default--desktop.png"
+    },
+    {
+      "name": "Hero - Long Quote And Long Word",
+      "screenshotPath": "hero-long-quote-and-long-word--desktop.png"
+    },
+    {
+      "name": "HeroQuote - Default",
+      "screenshotPath": "heroquote-default--desktop.png"
+    },
+    {
+      "name": "HeroQuote - Long Quote",
+      "screenshotPath": "heroquote-long-quote--desktop.png"
+    },
+    {
+      "name": "LearnMore - Default",
+      "screenshotPath": "learnmore-default--desktop.png"
+    },
+    {
+      "name": "MainNav - Default",
+      "screenshotPath": "mainnav-default--desktop.png"
+    },
+    {
+      "name": "MissionLine - Default",
+      "screenshotPath": "missionline-default--desktop.png"
+    },
+    {
+      "name": "SiteFooter - Default",
+      "screenshotPath": "sitefooter-default--desktop.png"
+    },
+    {
+      "name": "SiteFooter - Long Footer Text And Extra Nav Items",
+      "screenshotPath": "sitefooter-long-footer-text-and-extra-nav-items--desktop.png"
+    },
+    {
+      "name": "SiteHeader - Default",
+      "screenshotPath": "siteheader-default--desktop.png"
+    },
+    {
+      "name": "SiteHeader - Long Title And Extra Nav Items",
+      "screenshotPath": "siteheader-long-title-and-extra-nav-items--desktop.png"
+    },
+    {
+      "name": "SiteHeader - Mobile Menu Open",
+      "screenshotPath": "siteheader-mobile-menu-open--mobile.png"
+    },
+    {
+      "name": "ToolCard - Default",
+      "screenshotPath": "toolcard-default--desktop.png"
+    },
+    {
+      "name": "ToolCard - Long Description",
+      "screenshotPath": "toolcard-long-description--desktop.png"
+    },
+    {
+      "name": "ToolsSection - Five Tools Shows Three",
+      "screenshotPath": "toolssection-five-tools-shows-three--desktop.png"
+    },
+    {
+      "name": "ToolsSection - One Tool",
+      "screenshotPath": "toolssection-one-tool--desktop.png"
+    },
+    {
+      "name": "ToolsSection - Three Tools",
+      "screenshotPath": "toolssection-three-tools--desktop.png"
+    }
+  ],
+  "testResults": {
+    "total": 35,
+    "passed": 35,
+    "failed": 0,
+    "runners": [
+      {
+        "name": "tests",
+        "total": 35,
+        "passed": 35
+      }
+    ]
+  }
+}

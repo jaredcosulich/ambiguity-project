@@ -1,0 +1,15 @@
+{
+  "name": "Home - Full Content",
+  "id": "9a6563cc-64fe-41ba-b0e4-b98c84b8ad51",
+  "url": "/",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-full.json"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "src/pages/index.astro",
+  "description": "Full home page from CMS content: hero with rotating mission word and the Voltaire quote, the Ambiguity Everywhere book, three tools, and Learn More pointing at the About page."
+}

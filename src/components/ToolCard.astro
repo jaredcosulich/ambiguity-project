@@ -1,0 +1,41 @@
+---
+// One tool in the Technology section: bracket icon, name, description, and an
+// arrow when the tool links somewhere.
+import { withBase } from '../lib/base';
+
+interface Props {
+  id: string;
+  name: string;
+  description?: string;
+  url?: string;
+}
+
+const { id, name, description, url } = Astro.props;
+---
+
+<a class="card tool" href={url ? withBase(url) : undefined} data-cms-entry={`tools/${id}`}>
+  <span class="tool-icon">
+    <svg aria-hidden="true" width="29" height="29" viewBox="0 0 36 36" fill="none" stroke="#3F6B61" stroke-width="2.5" stroke-linecap="round">
+      <path d="M14 4 H4 V32 H14" />
+      <path d="M22 4 H32 V32 H22" />
+    </svg>
+  </span>
+  <span class="tool-text">
+    <span class="tool-name" data-cms-field="name">{name}</span>
+    {description && <span class="tool-desc" data-cms-field="description">{description}</span>}
+  </span>
+  {url && <span class="go" aria-hidden="true">→</span>}
+</a>
+
+<style>
+  .tool { display: flex; align-items: center; gap: 22px; padding: 22px 26px; }
+  .tool-icon { display: flex; align-items: center; justify-content: center; width: 51px; height: 51px; flex-shrink: 0; background: var(--sage-tint); border-radius: 6px; }
+  .tool-text { flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px; }
+  .tool-name { font-size: 21px; }
+  .tool-desc { font-size: 14px; line-height: 1.45; color: var(--body); overflow-wrap: anywhere; }
+  .tool .go { font-size: 21px; color: var(--sage); }
+  @media (max-width: 640px) {
+    .tool { padding: 18px; gap: 16px; }
+    .tool-icon { width: 44px; height: 44px; }
+  }
+</style>

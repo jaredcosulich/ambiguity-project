@@ -1,0 +1,65 @@
+---
+// The hero's mission sentence: "<prefix> <rotating word> <suffix>". The word
+// slot is sized to the longest word so nothing shifts; screen readers get the
+// whole list instead of the animation. All text comes from `settings.json`.
+import { parseMissionWords, longestWord, listForReaders } from '../lib/missionWords';
+
+interface Props {
+  prefix?: string;
+  words?: string;
+  suffix?: string;
+}
+
+const { prefix, words: rawWords, suffix } = Astro.props;
+const words = parseMissionWords(rawWords);
+---
+
+<p class="mission">
+  {prefix && <span data-cms-setting="missionPrefix">{prefix}</span>}{' '}
+  <span class="sr-only">{listForReaders(words)}</span><span
+    class="slot"
+    data-typewriter={JSON.stringify(words)}
+    aria-hidden="true"><span class="tw-text">{words[0]}</span><span class="caret"></span></span>{' '}
+  {suffix && <span data-cms-setting="missionSuffix">{suffix}</span>}
+  <span class="measure" aria-hidden="true">{longestWord(words)}</span>
+</p>
+
+<script>
+  import { initialTypewriterState, typewriterStep, TYPEWRITER_TIMING } from '../lib/typewriter';
+
+  document.querySelectorAll<HTMLElement>('[data-typewriter]').forEach((slot) => {
+    const words: string[] = JSON.parse(slot.dataset.typewriter ?? '[]');
+    const textEl = slot.querySelector<HTMLElement>('.tw-text');
+    const measure = slot.parentElement?.querySelector<HTMLElement>('.measure');
+    if (!textEl || words.length === 0) return;
+    const sizeSlot = () => {
+      const w = measure?.getBoundingClientRect().width;
+      if (w) slot.style.width = `${Math.ceil(w + 8)}px`;
+    };
+    sizeSlot();
+    document.fonts?.ready.then(sizeSlot);
+    window.addEventListener('resize', sizeSlot);
+    if (words.length < 2) return;
+    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+    let state = initialTypewriterState(words);
+    const tick = () => {
+      const step = typewriterStep(words, state, reduce);
+      state = step.state;
+      textEl.textContent = state.text;
+      setTimeout(tick, step.delayMs);
+    };
+    setTimeout(tick, TYPEWRITER_TIMING.firstDelayMs);
+  });
+</script>
+
+<style>
+  .mission { position: relative; margin-top: clamp(24px, 2.5vw, 35px); font-size: clamp(20px, 2.24vw, 32px); line-height: 1.25; letter-spacing: -0.01em; }
+  .slot { position: relative; display: inline-block; vertical-align: top; height: 1.25em; min-width: 3em; white-space: nowrap; color: var(--salmon); }
+  .slot::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0.06em; height: 3px; background: var(--salmon); }
+  .caret { display: inline-block; width: 3px; height: 0.9em; margin-left: 3px; vertical-align: -0.1em; background: var(--salmon); animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .measure { position: absolute; left: 0; top: 0; visibility: hidden; white-space: nowrap; pointer-events: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .caret { animation: none; }
+  }
+</style>

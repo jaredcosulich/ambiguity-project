@@ -1,0 +1,15 @@
+{
+  "name": "BookCover - Cover And Missing Cover",
+  "id": "1e2959e4-e7d0-46a1-a71c-48ad0cf4cf54",
+  "url": "/isolated-components/BookCover",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-two-books.json"
+  },
+  "componentName": "BookCover",
+  "scenarioType": "component",
+  "description": "A real cover beside the fallback salmon title card used when a book has no cover image."
+}

@@ -1,0 +1,15 @@
+{
+  "name": "BooksSection - Two Books",
+  "id": "977cbd05-80be-46d2-96f7-e9c28b9a5822",
+  "url": "/isolated-components/BooksSection",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-two-books.json"
+  },
+  "componentName": "BooksSection",
+  "scenarioType": "component",
+  "description": "Two published books stack in the salmon band; the second has no cover, so it shows a title card, and only a main button."
+}

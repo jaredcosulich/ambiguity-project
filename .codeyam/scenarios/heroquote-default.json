@@ -1,0 +1,15 @@
+{
+  "name": "HeroQuote - Default",
+  "id": "fb776276-db98-48ca-9890-ec78a9410a14",
+  "url": "/isolated-components/HeroQuote",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-full.json"
+  },
+  "componentName": "HeroQuote",
+  "scenarioType": "component",
+  "description": "The Voltaire quote with its salmon open-quote mark and uppercase attribution on navy."
+}

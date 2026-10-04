@@ -6,7 +6,16 @@
       "contactEmail": "",
       "footerText": "\u00a9 2026 The Ambiguity Project \u2014 a 501(c)(3) non-profit helping people better recognize, live with, and navigate ambiguity. EIN 00-0000000.",
       "socials": [],
-      "substackUrl": ""
+      "substackUrl": "",
+      "heroEyebrow": "A 501(c)(3) Non-Profit",
+      "missionPrefix": "Helping",
+      "missionWords": "people\nstudents\nbusinesses\ngovernments\norganizations\nschools",
+      "missionSuffix": "better recognize, live with, and navigate ambiguity.",
+      "toolsHeading": "Explore some of the tools we've built to support people as they confront ambiguity in different situations.",
+      "toolsAllUrl": "",
+      "learnHeading": "Learn more about what we are doing and how we do it.",
+      "learnButtonLabel": "About The Ambiguity Project",
+      "learnButtonUrl": "/about"
     },
     "nav": {
       "items": [
@@ -40,6 +49,26 @@
         }
       ]
     },
-    "pages": []
+    "pages": [],
+    "books": [
+      {
+        "slug": "ambiguity-everywhere",
+        "title": "Ambiguity Everywhere",
+        "subtitle": "Shaping our lives, society, and the world",
+        "eyebrow": "New book · Pre-order now",
+        "cover": "/images/book-cover.png",
+        "coverAlt": "Cover of Ambiguity Everywhere by Jared Cosulich: a salmon jigsaw puzzle with missing and loose pieces",
+        "blurb": "All of life’s experiences, from how we learn, to our relationships, to scientific progress, to the economy, to voting, and much more, are ambiguous. Ambiguity Everywhere explores these wide-ranging aspects of our world and how experts in each approach and manage ambiguity.",
+        "primaryLabel": "Pre-order the book",
+        "primaryUrl": "/ambiguity-everywhere",
+        "secondaryLabel": "About the book →",
+        "secondaryUrl": "/ambiguity-everywhere",
+        "order": 1
+      }
+    ],
+    "quotes": [
+      { "slug": "voltaire", "text": "Doubt is not a pleasant condition, but certainty is an absurd one.", "attribution": "Voltaire", "order": 1 }
+    ],
+    "tools": []
   }
 }

@@ -1,5 +1,39 @@
 [
   {
+    "description": "Tilted book cover image, or a salmon title card when no cover is set.",
+    "filePath": "src/components/BookCover.astro",
+    "name": "BookCover",
+    "scenarios": [
+      "bookcover-cover-and-missing-cover"
+    ],
+    "tags": [
+      "home-sections"
+    ]
+  },
+  {
+    "description": "One book: cover beside eyebrow, title, subtitle, blurb and optional main and secondary links.",
+    "filePath": "src/components/BookFeature.astro",
+    "name": "BookFeature",
+    "scenarios": [
+      "bookfeature-default"
+    ],
+    "tags": [
+      "home-sections"
+    ]
+  },
+  {
+    "description": "Home Books band; stacks a BookFeature per published book.",
+    "filePath": "src/components/BooksSection.astro",
+    "name": "BooksSection",
+    "scenarios": [
+      "bookssection-one-book",
+      "bookssection-two-books"
+    ],
+    "tags": [
+      "home-sections"
+    ]
+  },
+  {
     "description": "Inline SVG bracket logo with the three-line wordmark, in a light (header) or dark (footer) tone.",
     "filePath": "src/components/BracketLogo.astro",
     "name": "BracketLogo",
@@ -8,6 +42,17 @@
     ],
     "tags": [
       "site-shell"
+    ]
+  },
+  {
+    "description": "A CMS pages entry rendered as a title over its markdown body.",
+    "filePath": "src/components/ContentPage.astro",
+    "name": "ContentPage",
+    "scenarios": [
+      "contentpage-about-page"
+    ],
+    "tags": [
+      "home-sections"
     ]
   },
   {
@@ -22,6 +67,30 @@
     ]
   },
   {
+    "description": "Home hero on the navy band: CMS eyebrow, site title, MissionLine and HeroQuote.",
+    "filePath": "src/components/Hero.astro",
+    "name": "Hero",
+    "scenarios": [
+      "hero-default",
+      "hero-long-quote-and-long-word"
+    ],
+    "tags": [
+      "home-sections"
+    ]
+  },
+  {
+    "description": "One quote with attribution in the hero aside.",
+    "filePath": "src/components/HeroQuote.astro",
+    "name": "HeroQuote",
+    "scenarios": [
+      "heroquote-default",
+      "heroquote-long-quote"
+    ],
+    "tags": [
+      "home-sections"
+    ]
+  },
+  {
     "description": "The page h1, visually hidden so it stays available to screen readers and search engines.",
     "filePath": "src/components/HiddenPageTitle.astro",
     "name": "HiddenPageTitle",
@@ -32,6 +101,17 @@
       "justification": "one sr-only h1 rendering a single text prop",
       "kind": "trivial-wrapper"
     }
+  },
+  {
+    "description": "Periwinkle Learn More band with a CMS heading and a button to the About page.",
+    "filePath": "src/components/LearnMore.astro",
+    "name": "LearnMore",
+    "scenarios": [
+      "learnmore-default"
+    ],
+    "tags": [
+      "home-sections"
+    ]
   },
   {
     "description": "Header home link wrapping the light bracket logo, labelled with the site title.",
@@ -65,6 +145,21 @@
     "tags": [
       "site-shell"
     ]
+  },
+  {
+    "description": "Hero mission sentence with the rotating typewriter word, sized to the longest word and readable by screen readers.",
+    "filePath": "src/components/MissionLine.astro",
+    "name": "MissionLine",
+    "scenarios": [
+      "missionline-default"
+    ],
+    "tags": [
+      "home-sections"
+    ],
+    "untestabilityReason": {
+      "justification": "Its only behavior is a timer-driven word rotation with no click, fill, or press to replay; the step logic is unit-tested in typewriter.test.ts and the rotation was driven and captured in the demo flow.",
+      "kind": "interaction-not-capturable"
+    }
   },
   {
     "description": "404 page body: bracket label, heading, and a link back to the home page.",
@@ -114,6 +209,31 @@
     ]
   },
   {
+    "description": "One tool card: bracket icon, name, description and arrow when it links somewhere.",
+    "filePath": "src/components/ToolCard.astro",
+    "name": "ToolCard",
+    "scenarios": [
+      "toolcard-default",
+      "toolcard-long-description"
+    ],
+    "tags": [
+      "home-sections"
+    ]
+  },
+  {
+    "description": "Home Technology band with up to three ToolCards; hidden when no tools are published.",
+    "filePath": "src/components/ToolsSection.astro",
+    "name": "ToolsSection",
+    "scenarios": [
+      "toolssection-three-tools",
+      "toolssection-one-tool",
+      "toolssection-five-tools-shows-three"
+    ],
+    "tags": [
+      "home-sections"
+    ]
+  },
+  {
     "description": "Wires the mobile Menu/Close toggle: each button click flips the menu and following any nav link closes it.",
     "filePath": "src/lib/mobileMenu.ts",
     "name": "bindMobileMenu",
@@ -147,6 +267,15 @@
     }
   },
   {
+    "description": "Starting state of the hero typewriter: the first word on screen, ready to delete.",
+    "filePath": "src/lib/typewriter.ts",
+    "name": "initialTypewriterState",
+    "tags": [
+      "home-sections"
+    ],
+    "testFile": "src/lib/typewriter.test.ts"
+  },
+  {
     "description": "True inside astro build, so a production build always resolves committed content and ignores any sandbox override in the environment.",
     "filePath": "src/lib/contentRoot.ts",
     "name": "isProductionBuild",
@@ -156,6 +285,24 @@
     "testFile": "src/lib/contentRoot.test.ts"
   },
   {
+    "description": "Joins the mission words into a screen-reader sentence with an Oxford comma.",
+    "filePath": "src/lib/missionWords.ts",
+    "name": "listForReaders",
+    "tags": [
+      "home-sections"
+    ],
+    "testFile": "src/lib/missionWords.test.ts"
+  },
+  {
+    "description": "Returns the longest mission word, used to size the typewriter slot so the line never shifts.",
+    "filePath": "src/lib/missionWords.ts",
+    "name": "longestWord",
+    "tags": [
+      "home-sections"
+    ],
+    "testFile": "src/lib/missionWords.test.ts"
+  },
+  {
     "description": "Label for the mobile nav toggle: Close when the menu is open, Menu when closed.",
     "filePath": "src/lib/mobileMenu.ts",
     "name": "menuLabel",
@@ -163,6 +310,24 @@
       "site-shell"
     ],
     "testFile": "src/lib/mobileMenu.test.ts"
+  },
+  {
+    "description": "Parses the hero's rotating mission words from the missionWords setting: one per line, trimmed, blank lines dropped, falling back to people.",
+    "filePath": "src/lib/missionWords.ts",
+    "name": "parseMissionWords",
+    "tags": [
+      "home-sections"
+    ],
+    "testFile": "src/lib/missionWords.test.ts"
+  },
+  {
+    "description": "Returns the lowest-ordered CMS entry, or undefined for an empty collection; picks the hero quote.",
+    "filePath": "src/lib/contentOrder.ts",
+    "name": "pickFirstByOrder",
+    "tags": [
+      "home-sections"
+    ],
+    "testFile": "src/lib/contentOrder.test.ts"
   },
   {
     "description": "Reads and parses one JSON singleton (settings or nav) from the active data root, fresh on every call.",
@@ -213,6 +378,15 @@
     "testFile": "src/lib/mobileMenu.test.ts"
   },
   {
+    "description": "Sorts CMS entries by their optional numeric order; unordered entries go last and ties keep incoming order.",
+    "filePath": "src/lib/contentOrder.ts",
+    "name": "sortByOrder",
+    "tags": [
+      "home-sections"
+    ],
+    "testFile": "src/lib/contentOrder.test.ts"
+  },
+  {
     "description": "Shapes editable nav.json items into header/footer links: skips items without a url, routes hrefs through withBase, and flags the last link as the call-to-action button.",
     "filePath": "src/lib/navLinks.ts",
     "name": "toNavLinks",
@@ -220,6 +394,34 @@
       "site-shell"
     ],
     "testFile": "src/lib/navLinks.test.ts"
+  },
+  {
+    "description": "Pure state machine for the rotating mission word: deletes, types, holds, and wraps words, or swaps whole words under reduced motion, returning the next delay.",
+    "filePath": "src/lib/typewriter.ts",
+    "name": "typewriterStep",
+    "tags": [
+      "home-sections"
+    ],
+    "testFile": "src/lib/typewriter.test.ts"
+  },
+  {
+    "description": "Caps the home Technology section at three tools; an empty result hides the section.",
+    "filePath": "src/lib/visibleTools.ts",
+    "name": "visibleTools",
+    "tags": [
+      "home-sections"
+    ],
+    "testFile": "src/lib/visibleTools.test.ts"
+  },
+  {
+    "description": "Wraps the CMS collectionLoader so a collection whose folder starts empty still picks up its first entry under astro dev; Astro's glob loader skips watching empty folders.",
+    "filePath": "src/lib/watchedCollectionLoader.ts",
+    "name": "watchedCollectionLoader",
+    "tags": [
+      "home-sections",
+      "cms"
+    ],
+    "testFile": "src/lib/watchedCollectionLoader.test.ts"
   },
   {
     "description": "Prefixes an internal link or asset path with the active deploy base (the GitHub Pages subpath today, the domain root later); section anchors resolve to the home page and external URLs pass through unchanged.",

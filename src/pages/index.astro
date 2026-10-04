@@ -1,19 +1,34 @@
 ---
-// Home page shell. Each section anchor is filled by a follow-up plan (books,
-// blog, technology, learn more, support); the ids match the nav links in
-// `nav.json`.
+// The home page: hero, books, technology and learn more are built from CMS
+// content (the `books` / `tools` / `quotes` collections plus home copy in
+// `settings.json`). The blog and support anchors are filled by their own plans;
+// the ids match the nav links in `nav.json`.
+import { getCollection } from 'astro:content';
+import { publishedEntries } from '@codeyam/cms/content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HiddenPageTitle from '../components/HiddenPageTitle.astro';
 import SectionAnchor from '../components/SectionAnchor.astro';
+import Hero from '../components/Hero.astro';
+import BooksSection from '../components/BooksSection.astro';
+import ToolsSection from '../components/ToolsSection.astro';
+import LearnMore from '../components/LearnMore.astro';
 import { getSettings } from '../lib/site';
+import { pickFirstByOrder, sortByOrder } from '../lib/contentOrder';
+
 const settings = getSettings();
+const books = sortByOrder(publishedEntries(await getCollection('books')));
+const tools = sortByOrder(publishedEntries(await getCollection('tools')));
+const quote = pickFirstByOrder(await getCollection('quotes'));
 ---
 
 <BaseLayout description={settings.description}>
-  <HiddenPageTitle text={settings.siteTitle} />
-  <SectionAnchor id="books" label="Books" />
+  <Hero settings={settings} quote={quote?.data} />
+  <BooksSection books={books} />
   <SectionAnchor id="blog" label="Blog" />
-  <SectionAnchor id="technology" label="Technology" />
-  <SectionAnchor id="learn" label="Learn more" />
+  <ToolsSection tools={tools} heading={settings.toolsHeading} allUrl={settings.toolsAllUrl} />
+  <LearnMore
+    heading={settings.learnHeading}
+    buttonLabel={settings.learnButtonLabel}
+    buttonUrl={settings.learnButtonUrl}
+  />
   <SectionAnchor id="support" label="Support us" />
 </BaseLayout>

@@ -1,0 +1,15 @@
+{
+  "name": "LearnMore - Default",
+  "id": "4f557aea-87be-4a3c-91f5-a10bd8f719c5",
+  "url": "/isolated-components/LearnMore",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-full.json"
+  },
+  "componentName": "LearnMore",
+  "scenarioType": "component",
+  "description": "Periwinkle Learn More band: heading from settings and an outlined button to the About page."
+}
