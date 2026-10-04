@@ -206,38 +206,38 @@
   },
   "initialTypewriterState › starts empty for an empty list": {
     "file": "src/lib/typewriter.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
-    "lastRunKind": "full",
+    "lastRunAt": "2026-10-04T20:15:23.317Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-04T20:15:23.317Z",
+      "pass|changed|2026-10-04T20:14:35.587Z",
+      "pass|changed|2026-10-04T20:14:17.854Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
       "pass|changed|2026-10-04T18:48:40.287Z",
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
-      "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:29:43.809Z"
     ]
   },
   "initialTypewriterState › starts on the first word, ready to delete it": {
     "file": "src/lib/typewriter.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
-    "lastRunKind": "full",
+    "lastRunAt": "2026-10-04T20:15:23.317Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-04T20:15:23.317Z",
+      "pass|changed|2026-10-04T20:14:35.587Z",
+      "pass|changed|2026-10-04T20:14:17.854Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
       "pass|changed|2026-10-04T18:48:40.287Z",
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
-      "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:29:43.809Z"
     ]
   },
   "isIsolationPath › does not match a segment that only contains the directory name": {
@@ -684,6 +684,42 @@
       "pass|changed|2026-10-04T18:05:49.150Z"
     ]
   },
+  "pinnedTypewriterText › holds the first word when static": {
+    "file": "src/lib/typewriter.test.ts",
+    "lastRunAt": "2026-10-04T20:15:23.317Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-10-04T20:15:23.317Z"
+    ]
+  },
+  "pinnedTypewriterText › holds the next whole word when reduced": {
+    "file": "src/lib/typewriter.test.ts",
+    "lastRunAt": "2026-10-04T20:15:23.317Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-10-04T20:15:23.317Z"
+    ]
+  },
+  "pinnedTypewriterText › is empty for an empty list": {
+    "file": "src/lib/typewriter.test.ts",
+    "lastRunAt": "2026-10-04T20:15:23.317Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-10-04T20:15:23.317Z"
+    ]
+  },
+  "pinnedTypewriterText › keeps a lone word under either pin": {
+    "file": "src/lib/typewriter.test.ts",
+    "lastRunAt": "2026-10-04T20:15:23.317Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-10-04T20:15:23.317Z"
+    ]
+  },
   "resolveContentRoot › defaults to _projectRoot_/src/content when no override is present": {
     "file": "src/lib/contentRoot.test.ts",
     "lastRunAt": "2026-10-04T19:53:44.189Z",
@@ -1029,112 +1065,148 @@
       "pass|full|2026-10-04T15:41:21.363Z"
     ]
   },
-  "typewriterStep › deletes the current word then types the next one letter by letter": {
+  "typewriterPin › ignores unknown values": {
     "file": "src/lib/typewriter.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
-    "lastRunKind": "full",
+    "lastRunAt": "2026-10-04T20:15:23.317Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-04T20:15:23.317Z"
+    ]
+  },
+  "typewriterPin › reads the reduced flag alongside other params": {
+    "file": "src/lib/typewriter.test.ts",
+    "lastRunAt": "2026-10-04T20:15:23.317Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-10-04T20:15:23.317Z"
+    ]
+  },
+  "typewriterPin › reads the static flag": {
+    "file": "src/lib/typewriter.test.ts",
+    "lastRunAt": "2026-10-04T20:15:23.317Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-10-04T20:15:23.317Z"
+    ]
+  },
+  "typewriterPin › returns null with no flag": {
+    "file": "src/lib/typewriter.test.ts",
+    "lastRunAt": "2026-10-04T20:15:23.317Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-10-04T20:15:23.317Z"
+    ]
+  },
+  "typewriterStep › deletes the current word then types the next one letter by letter": {
+    "file": "src/lib/typewriter.test.ts",
+    "lastRunAt": "2026-10-04T20:15:23.317Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-10-04T20:15:23.317Z",
+      "pass|changed|2026-10-04T20:14:35.587Z",
+      "pass|changed|2026-10-04T20:14:17.854Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
       "pass|changed|2026-10-04T18:48:40.287Z",
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
-      "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:29:43.809Z"
     ]
   },
   "typewriterStep › holds a finished word before deleting it": {
     "file": "src/lib/typewriter.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
-    "lastRunKind": "full",
+    "lastRunAt": "2026-10-04T20:15:23.317Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-04T20:15:23.317Z",
+      "pass|changed|2026-10-04T20:14:35.587Z",
+      "pass|changed|2026-10-04T20:14:17.854Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
       "pass|changed|2026-10-04T18:48:40.287Z",
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
-      "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:29:43.809Z"
     ]
   },
   "typewriterStep › is a no-op for an empty list": {
     "file": "src/lib/typewriter.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
-    "lastRunKind": "full",
+    "lastRunAt": "2026-10-04T20:15:23.317Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-04T20:15:23.317Z",
+      "pass|changed|2026-10-04T20:14:35.587Z",
+      "pass|changed|2026-10-04T20:14:17.854Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
       "pass|changed|2026-10-04T18:48:40.287Z",
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
-      "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:29:43.809Z"
     ]
   },
   "typewriterStep › swaps whole words under reduced motion": {
     "file": "src/lib/typewriter.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
-    "lastRunKind": "full",
+    "lastRunAt": "2026-10-04T20:15:23.317Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-04T20:15:23.317Z",
+      "pass|changed|2026-10-04T20:14:35.587Z",
+      "pass|changed|2026-10-04T20:14:17.854Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
       "pass|changed|2026-10-04T18:48:40.287Z",
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
-      "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:29:43.809Z"
     ]
   },
   "typewriterStep › uses the delete, type, and between-word delays": {
     "file": "src/lib/typewriter.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
-    "lastRunKind": "full",
+    "lastRunAt": "2026-10-04T20:15:23.317Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-04T20:15:23.317Z",
+      "pass|changed|2026-10-04T20:14:35.587Z",
+      "pass|changed|2026-10-04T20:14:17.854Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
       "pass|changed|2026-10-04T18:48:40.287Z",
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
-      "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:29:43.809Z"
     ]
   },
   "typewriterStep › wraps around to the first word": {
     "file": "src/lib/typewriter.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
-    "lastRunKind": "full",
+    "lastRunAt": "2026-10-04T20:15:23.317Z",
+    "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-04T20:15:23.317Z",
+      "pass|changed|2026-10-04T20:14:35.587Z",
+      "pass|changed|2026-10-04T20:14:17.854Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
       "pass|changed|2026-10-04T18:48:40.287Z",
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
-      "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:29:43.809Z"
     ]
   },
   "visibleTools › caps the list at three by default": {

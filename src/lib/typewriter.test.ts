@@ -1,5 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { initialTypewriterState, TYPEWRITER_TIMING, typewriterStep, type TypewriterState } from './typewriter';
+import {
+  initialTypewriterState,
+  pinnedTypewriterText,
+  TYPEWRITER_TIMING,
+  typewriterPin,
+  typewriterStep,
+  type TypewriterState,
+} from './typewriter';
 
 const WORDS = ['ab', 'xyz'];
 
@@ -67,5 +74,52 @@ describe('typewriterStep', () => {
   it('is a no-op for an empty list', () => {
     const state = initialTypewriterState([]);
     expect(typewriterStep([], state).state).toBe(state);
+  });
+});
+
+describe('typewriterPin', () => {
+  // The static flag pins the first word for screenshots.
+  it('reads the static flag', () => {
+    expect(typewriterPin('?typewriter=static')).toBe('static');
+  });
+
+  // The reduced flag pins the frame after one reduced-motion swap.
+  it('reads the reduced flag alongside other params', () => {
+    expect(typewriterPin('?s=Default&typewriter=reduced')).toBe('reduced');
+  });
+
+  // Visitors have no flag, so the animation runs as normal.
+  it('returns null with no flag', () => {
+    expect(typewriterPin('')).toBeNull();
+    expect(typewriterPin('?s=Default')).toBeNull();
+  });
+
+  // An unknown value is ignored rather than freezing the animation.
+  it('ignores unknown values', () => {
+    expect(typewriterPin('?typewriter=off')).toBeNull();
+    expect(typewriterPin('?typewriter=')).toBeNull();
+  });
+});
+
+describe('pinnedTypewriterText', () => {
+  // Static holds the first word.
+  it('holds the first word when static', () => {
+    expect(pinnedTypewriterText(WORDS, 'static')).toBe('ab');
+  });
+
+  // Reduced holds the whole next word, the result of one reduced-motion swap.
+  it('holds the next whole word when reduced', () => {
+    expect(pinnedTypewriterText(WORDS, 'reduced')).toBe('xyz');
+  });
+
+  // A single word has nowhere to swap to, so it stays put.
+  it('keeps a lone word under either pin', () => {
+    expect(pinnedTypewriterText(['solo'], 'reduced')).toBe('solo');
+    expect(pinnedTypewriterText(['solo'], 'static')).toBe('solo');
+  });
+
+  // No words means an empty slot.
+  it('is empty for an empty list', () => {
+    expect(pinnedTypewriterText([], 'reduced')).toBe('');
   });
 });

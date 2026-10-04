@@ -25,7 +25,13 @@ const words = parseMissionWords(rawWords);
 </p>
 
 <script>
-  import { initialTypewriterState, typewriterStep, TYPEWRITER_TIMING } from '../lib/typewriter';
+  import {
+    initialTypewriterState,
+    pinnedTypewriterText,
+    typewriterPin,
+    typewriterStep,
+    TYPEWRITER_TIMING,
+  } from '../lib/typewriter';
 
   document.querySelectorAll<HTMLElement>('[data-typewriter]').forEach((slot) => {
     const words: string[] = JSON.parse(slot.dataset.typewriter ?? '[]');
@@ -40,8 +46,16 @@ const words = parseMissionWords(rawWords);
     document.fonts?.ready.then(sizeSlot);
     window.addEventListener('resize', sizeSlot);
     if (words.length < 2) return;
-    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+    // Screenshot flag: hold one frame without the caret blink, so captures
+    // never land mid-animation.
+    const pin = typewriterPin(window.location.search);
+    if (pin) {
+      slot.classList.add('pinned');
+      textEl.textContent = pinnedTypewriterText(words, pin);
+      return;
+    }
     let state = initialTypewriterState(words);
+    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
     const tick = () => {
       const step = typewriterStep(words, state, reduce);
       state = step.state;
@@ -58,6 +72,7 @@ const words = parseMissionWords(rawWords);
   .slot::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0.06em; height: 3px; background: var(--salmon); }
   .caret { display: inline-block; width: 3px; height: 0.9em; margin-left: 3px; vertical-align: -0.1em; background: var(--salmon); animation: blink 1s steps(1) infinite; }
   @keyframes blink { 50% { opacity: 0; } }
+  .slot.pinned .caret { animation: none; }
   .measure { position: absolute; left: 0; top: 0; visibility: hidden; white-space: nowrap; pointer-events: none; }
   @media (prefers-reduced-motion: reduce) {
     .caret { animation: none; }

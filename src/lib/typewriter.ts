@@ -25,6 +25,28 @@ export const TYPEWRITER_TIMING = {
   reducedMotionMs: 2600,
 } as const;
 
+/** A screenshot flag that holds the animation on one frame. */
+export type TypewriterPin = 'static' | 'reduced';
+
+/**
+ * Reads `?typewriter=static|reduced` from a query string. Visitors never set
+ * it, so the animation only holds still when a scenario asks for it.
+ */
+export function typewriterPin(search: string): TypewriterPin | null {
+  const value = new URLSearchParams(search).get('typewriter');
+  return value === 'static' || value === 'reduced' ? value : null;
+}
+
+/**
+ * The text to hold for a pin: the first word for `static`, or the whole next
+ * word (one reduced-motion swap) for `reduced`.
+ */
+export function pinnedTypewriterText(words: readonly string[], pin: TypewriterPin): string {
+  const state = initialTypewriterState(words);
+  if (pin === 'static' || words.length < 2) return state.text;
+  return typewriterStep(words, state, true).state.text;
+}
+
 export function initialTypewriterState(words: readonly string[]): TypewriterState {
   return { index: 0, text: words[0] ?? '', deleting: true };
 }

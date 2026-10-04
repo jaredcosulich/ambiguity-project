@@ -1573,6 +1573,8 @@
         "src/lib/typewriter.ts::TypewriterState",
         "src/lib/typewriter.ts::__file_root__",
         "src/lib/typewriter.ts::initialTypewriterState",
+        "src/lib/typewriter.ts::pinnedTypewriterText",
+        "src/lib/typewriter.ts::typewriterPin",
         "src/lib/typewriter.ts::typewriterStep"
       ],
       "importedBy": []
@@ -1596,6 +1598,22 @@
     "src/lib/typewriter.ts::initialTypewriterState": {
       "filePath": "src/lib/typewriter.ts",
       "name": "initialTypewriterState",
+      "imports": [],
+      "importedBy": [
+        "src/lib/typewriter.test.ts::__file_root__"
+      ]
+    },
+    "src/lib/typewriter.ts::pinnedTypewriterText": {
+      "filePath": "src/lib/typewriter.ts",
+      "name": "pinnedTypewriterText",
+      "imports": [],
+      "importedBy": [
+        "src/lib/typewriter.test.ts::__file_root__"
+      ]
+    },
+    "src/lib/typewriter.ts::typewriterPin": {
+      "filePath": "src/lib/typewriter.ts",
+      "name": "typewriterPin",
       "imports": [],
       "importedBy": [
         "src/lib/typewriter.test.ts::__file_root__"
@@ -1947,5 +1965,5 @@
       ]
     }
   },
-  "lastUpdated": "2026-10-04T19:53:50Z"
+  "lastUpdated": "2026-10-04T20:25:43Z"
 }

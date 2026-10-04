@@ -1,0 +1,15 @@
+{
+  "name": "MissionLine - Reduced Motion",
+  "id": "ee07f6c7-285d-441e-a4c7-a1b1867c8f62",
+  "url": "/isolated-components/MissionLine?typewriter=reduced",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-full.json"
+  },
+  "componentName": "MissionLine",
+  "scenarioType": "component",
+  "description": "What visitors who turn off motion see: after one swap the slot shows the whole next word, students, with no typing frames and a steady caret."
+}

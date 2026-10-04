@@ -483,6 +483,15 @@
     "testFile": "src/lib/contentOrder.test.ts"
   },
   {
+    "description": "The single frame a pinned rotating word holds: the first word for static, or the whole next word after one reduced-motion swap for reduced.",
+    "filePath": "src/lib/typewriter.ts",
+    "name": "pinnedTypewriterText",
+    "tags": [
+      "hero"
+    ],
+    "testFile": "src/lib/typewriter.test.ts"
+  },
+  {
     "description": "Reads and parses one JSON singleton (settings or nav) from the active data root, fresh on every call.",
     "filePath": "src/lib/site.ts",
     "name": "readSingleton",
@@ -556,6 +565,15 @@
       "site-shell"
     ],
     "testFile": "src/lib/navLinks.test.ts"
+  },
+  {
+    "description": "Reads the screenshot flag ?typewriter=static or ?typewriter=reduced from a query string; returns null for visitors and for unknown values so the rotating word keeps animating.",
+    "filePath": "src/lib/typewriter.ts",
+    "name": "typewriterPin",
+    "tags": [
+      "hero"
+    ],
+    "testFile": "src/lib/typewriter.test.ts"
   },
   {
     "description": "Pure state machine for the rotating mission word: deletes, types, holds, and wraps words, or swaps whole words under reduced motion, returning the next delay.",

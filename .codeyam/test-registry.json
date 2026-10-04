@@ -149,7 +149,7 @@
       "file": "src/lib/typewriter.test.ts",
       "format": "vitest",
       "key": "initialTypewriterState › starts empty for an empty list",
-      "line": 24,
+      "line": 31,
       "registeredAt": "2026-10-04T18:05:13Z",
       "runner": "tests"
     },
@@ -158,7 +158,7 @@
       "file": "src/lib/typewriter.test.ts",
       "format": "vitest",
       "key": "initialTypewriterState › starts on the first word, ready to delete it",
-      "line": 19,
+      "line": 26,
       "registeredAt": "2026-10-04T18:05:13Z",
       "runner": "tests"
     },
@@ -442,6 +442,42 @@
       "runner": "tests"
     },
     {
+      "description": "Static holds the first word.",
+      "file": "src/lib/typewriter.test.ts",
+      "format": "vitest",
+      "key": "pinnedTypewriterText › holds the first word when static",
+      "line": 106,
+      "registeredAt": "2026-10-04T20:15:06Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Reduced holds the whole next word, the result of one reduced-motion swap.",
+      "file": "src/lib/typewriter.test.ts",
+      "format": "vitest",
+      "key": "pinnedTypewriterText › holds the next whole word when reduced",
+      "line": 111,
+      "registeredAt": "2026-10-04T20:15:06Z",
+      "runner": "tests"
+    },
+    {
+      "description": "No words means an empty slot.",
+      "file": "src/lib/typewriter.test.ts",
+      "format": "vitest",
+      "key": "pinnedTypewriterText › is empty for an empty list",
+      "line": 122,
+      "registeredAt": "2026-10-04T20:15:06Z",
+      "runner": "tests"
+    },
+    {
+      "description": "A single word has nowhere to swap to, so it stays put.",
+      "file": "src/lib/typewriter.test.ts",
+      "format": "vitest",
+      "key": "pinnedTypewriterText › keeps a lone word under either pin",
+      "line": 116,
+      "registeredAt": "2026-10-04T20:15:06Z",
+      "runner": "tests"
+    },
+    {
       "description": "With no override present (a real production build, or any process outside an editor session), the site reads its committed `src/content`.",
       "file": "src/lib/contentRoot.test.ts",
       "format": "vitest",
@@ -622,11 +658,47 @@
       "runner": "tests"
     },
     {
+      "description": "An unknown value is ignored rather than freezing the animation.",
+      "file": "src/lib/typewriter.test.ts",
+      "format": "vitest",
+      "key": "typewriterPin › ignores unknown values",
+      "line": 98,
+      "registeredAt": "2026-10-04T20:15:06Z",
+      "runner": "tests"
+    },
+    {
+      "description": "The reduced flag pins the frame after one reduced-motion swap.",
+      "file": "src/lib/typewriter.test.ts",
+      "format": "vitest",
+      "key": "typewriterPin › reads the reduced flag alongside other params",
+      "line": 87,
+      "registeredAt": "2026-10-04T20:15:06Z",
+      "runner": "tests"
+    },
+    {
+      "description": "The static flag pins the first word for screenshots.",
+      "file": "src/lib/typewriter.test.ts",
+      "format": "vitest",
+      "key": "typewriterPin › reads the static flag",
+      "line": 82,
+      "registeredAt": "2026-10-04T20:15:06Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Visitors have no flag, so the animation runs as normal.",
+      "file": "src/lib/typewriter.test.ts",
+      "format": "vitest",
+      "key": "typewriterPin › returns null with no flag",
+      "line": 92,
+      "registeredAt": "2026-10-04T20:15:06Z",
+      "runner": "tests"
+    },
+    {
       "description": "The word is deleted a letter at a time, then the next word is typed in.",
       "file": "src/lib/typewriter.test.ts",
       "format": "vitest",
       "key": "typewriterStep › deletes the current word then types the next one letter by letter",
-      "line": 31,
+      "line": 38,
       "registeredAt": "2026-10-04T18:05:13Z",
       "runner": "tests"
     },
@@ -635,7 +707,7 @@
       "file": "src/lib/typewriter.test.ts",
       "format": "vitest",
       "key": "typewriterStep › holds a finished word before deleting it",
-      "line": 37,
+      "line": 44,
       "registeredAt": "2026-10-04T18:05:13Z",
       "runner": "tests"
     },
@@ -644,7 +716,7 @@
       "file": "src/lib/typewriter.test.ts",
       "format": "vitest",
       "key": "typewriterStep › is a no-op for an empty list",
-      "line": 67,
+      "line": 74,
       "registeredAt": "2026-10-04T18:05:13Z",
       "runner": "tests"
     },
@@ -653,7 +725,7 @@
       "file": "src/lib/typewriter.test.ts",
       "format": "vitest",
       "key": "typewriterStep › swaps whole words under reduced motion",
-      "line": 52,
+      "line": 59,
       "registeredAt": "2026-10-04T18:05:13Z",
       "runner": "tests"
     },
@@ -662,7 +734,7 @@
       "file": "src/lib/typewriter.test.ts",
       "format": "vitest",
       "key": "typewriterStep › uses the delete, type, and between-word delays",
-      "line": 60,
+      "line": 67,
       "registeredAt": "2026-10-04T18:05:13Z",
       "runner": "tests"
     },
@@ -671,7 +743,7 @@
       "file": "src/lib/typewriter.test.ts",
       "format": "vitest",
       "key": "typewriterStep › wraps around to the first word",
-      "line": 46,
+      "line": 53,
       "registeredAt": "2026-10-04T18:05:13Z",
       "runner": "tests"
     },

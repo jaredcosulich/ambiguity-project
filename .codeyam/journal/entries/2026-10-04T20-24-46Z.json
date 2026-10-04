@@ -1,0 +1,283 @@
+{
+  "timestamp": "2026-10-04T20:24:46Z",
+  "title": "Hold the rotating hero word still in screenshots",
+  "type": "feature",
+  "userRequest": "## Summary\n\nThe hero's rotating mission word (`src/components/MissionLine.astro`) starts animating 2 seconds after load, so scenario screenshots catch it at whatever frame the capture lands on (\"students|\", \"international devel|\"). Captures of the home page, Hero and MissionLine can therefore differ run to run for reasons unrelated to any change, and there is no scenario showing the reduced-motion behaviour.\n\n## Key Decisions\n\n- Keep the animation exactly as it is for visitors; only make it hold still when the page is being captured.\n- Let a URL flag pin the typewriter (e.g. `?typewriter=static` holds the first word with no caret blink), so a scenario opts in explicitly rather than the page guessing it is being screenshotted.\n- Add a reduced-motion scenario that shows the whole-word swap rather than the typing frames.\n\n## Implementation\n\n1. In `src/components/MissionLine.astro`, read the flag in the inline script and skip scheduling `typewriterStep` when it is set; also stop the caret blink via a class.\n2. Point `hero-default`, `hero-long-quote-and-long-word`, `missionline-default`, `home-full-content`, `home-full-content-mobile` at the pinned URL and recapture.\n3. Add a scenario that emulates reduced motion (or uses the existing `reduceMotion` path in `src/lib/typewriter.ts`) and captures after one swap.\n4. Extend `src/lib/typewriter.test.ts` only if the step function changes.",
+  "description": "Screenshots of the hero no longer catch the rotating mission word mid-typing: a ?typewriter=static flag holds the first word and ?typewriter=reduced holds the whole next word after one reduced-motion swap, both with a steady caret, while visitors without the flag still see the animation. The MissionLine, Hero and home-page scenarios now use the flags, and a new MissionLine - Reduced Motion scenario shows what visitors who turn off motion see. Scope verdict: this is quality work on the delivered home page and delivers no new deliverable; none deferred this cycle, and Support Us remains deferred by the user from earlier.",
+  "modifiedFiles": [
+    {
+      "path": ".codeyam/dependency-graph.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/glossary.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/per-test-evidence.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/plans/hold-the-rotating-hero-word-still-in-screenshots.md\t.codeyam/plans/completed/hold-the-rotating-hero-word-still-in-screenshots.md",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/hero-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/hero-long-quote-and-long-word.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/home-full-content-mobile.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/home-full-content.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/missionline-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/.capture-pipeline.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/admin-dashboard-pages-and-site-settings--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hero-default--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hero-default--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hero-long-quote-and-long-word--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hero-long-quote-and-long-word--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-blog-latest-posts--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-blog-latest-posts-mobile--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-blog-latest-posts-tablet--tablet.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-blog-no-posts-yet--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-full-content--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-full-content--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-full-content-mobile--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-full-content-mobile--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-desktop--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-empty-nav--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-long-title-and-extra-nav-items--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-mobile-menu-open--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-single-nav-item--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-technology-section--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-technology-section--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/missionline-default--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/missionline-default--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/state/finalize-debt.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/all.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/ce88b0360c1f33629ec40efb01bcc852f94e27902558336490ccbc70a698156a.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/d9f81cb9d27fd4e575e3fe8487ebe0146b02222706a3723bc0a55e9209c9f800.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-registry.json",
+      "status": "modified"
+    },
+    {
+      "path": "src/components/MissionLine.astro",
+      "status": "modified"
+    },
+    {
+      "path": "src/lib/typewriter.test.ts",
+      "status": "modified"
+    },
+    {
+      "path": "src/lib/typewriter.ts",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/coverage-plan/missionline.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/missionline-reduced-motion.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/missionline-reduced-motion--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/missionline-reduced-motion--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/2512b714b2c51f0e6ffdcbe8108d009664647dc3386f644d860621ab9855be9d.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/960931b3de84b702ffba6b49cc44c179e6acb277ad62590324614cca6a25f430.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/b5562809cda170805fc26586b72d2f8b61d79076479045f1617081f443f29b1f.json",
+      "status": "added"
+    }
+  ],
+  "scenarioScreenshots": [
+    {
+      "name": "Admin Dashboard - Pages And Site Settings",
+      "screenshotPath": "admin-dashboard-pages-and-site-settings--desktop.png"
+    },
+    {
+      "name": "Home - Blog Latest Posts",
+      "screenshotPath": "home-blog-latest-posts--desktop.png"
+    },
+    {
+      "name": "Home - Blog Latest Posts Mobile",
+      "screenshotPath": "home-blog-latest-posts-mobile--mobile.png"
+    },
+    {
+      "name": "Home - Blog Latest Posts Tablet",
+      "screenshotPath": "home-blog-latest-posts-tablet--tablet.png"
+    },
+    {
+      "name": "Home - Blog No Posts Yet",
+      "screenshotPath": "home-blog-no-posts-yet--desktop.png"
+    },
+    {
+      "name": "Home - Full Content",
+      "screenshotPath": "home-full-content--desktop.png"
+    },
+    {
+      "name": "Home - Full Content Mobile",
+      "screenshotPath": "home-full-content-mobile--mobile.png"
+    },
+    {
+      "name": "Home - Technology Section",
+      "screenshotPath": "home-technology-section--desktop.png"
+    },
+    {
+      "name": "Home Shell - Desktop",
+      "screenshotPath": "home-shell-desktop--desktop.png"
+    },
+    {
+      "name": "Home Shell - Empty Nav",
+      "screenshotPath": "home-shell-empty-nav--desktop.png"
+    },
+    {
+      "name": "Home Shell - Long Title And Extra Nav Items",
+      "screenshotPath": "home-shell-long-title-and-extra-nav-items--desktop.png"
+    },
+    {
+      "name": "Home Shell - Mobile Menu Open",
+      "screenshotPath": "home-shell-mobile-menu-open--mobile.png"
+    },
+    {
+      "name": "Home Shell - Single Nav Item",
+      "screenshotPath": "home-shell-single-nav-item--desktop.png"
+    },
+    {
+      "name": "Hero - Default",
+      "screenshotPath": "hero-default--desktop.png"
+    },
+    {
+      "name": "Hero - Long Quote And Long Word",
+      "screenshotPath": "hero-long-quote-and-long-word--desktop.png"
+    },
+    {
+      "name": "MissionLine - Default",
+      "screenshotPath": "missionline-default--desktop.png"
+    },
+    {
+      "name": "MissionLine - Reduced Motion",
+      "screenshotPath": "missionline-reduced-motion--desktop.png"
+    }
+  ],
+  "testResults": {
+    "total": 16,
+    "passed": 16,
+    "failed": 0,
+    "runners": [
+      {
+        "name": "tests",
+        "total": 16,
+        "passed": 16
+      }
+    ]
+  }
+}

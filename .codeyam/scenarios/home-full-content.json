@@ -1,7 +1,7 @@
 {
   "name": "Home - Full Content",
   "id": "9a6563cc-64fe-41ba-b0e4-b98c84b8ad51",
-  "url": "/",
+  "url": "/?typewriter=static",
   "dimensions": [
     "Desktop"
   ],
@@ -11,5 +11,5 @@
   },
   "scenarioType": "application",
   "pageFilePath": "src/pages/index.astro",
-  "description": "Full home page from CMS content: hero with rotating mission word and the Voltaire quote, the Ambiguity Everywhere book, three tools, and Learn More pointing at the About page."
+  "description": "Full home page from CMS content: hero with the rotating mission word held on people and the Voltaire quote, the Ambiguity Everywhere book, three tools, and Learn More pointing at the About page."
 }

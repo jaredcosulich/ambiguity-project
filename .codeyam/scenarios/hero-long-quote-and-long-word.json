@@ -1,7 +1,7 @@
 {
   "name": "Hero - Long Quote And Long Word",
   "id": "29350da5-154a-4c4e-915c-a383e17d4b8e",
-  "url": "/isolated-components/Hero",
+  "url": "/isolated-components/Hero?typewriter=reduced",
   "dimensions": [
     "Desktop"
   ],
@@ -11,5 +11,5 @@
   },
   "componentName": "Hero",
   "scenarioType": "component",
-  "description": "Hero with a long eyebrow, a long multi-sentence quote, and a very long rotating word; the grid and the sized word slot hold."
+  "description": "Hero with a long eyebrow, a long multi-sentence quote, and the very long rotating word international development organizations held in full; the grid and the sized word slot hold."
 }

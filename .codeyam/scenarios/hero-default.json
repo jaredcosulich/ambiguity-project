@@ -1,7 +1,7 @@
 {
   "name": "Hero - Default",
   "id": "31f81740-99ff-4f8f-8974-1ed5e65e181c",
-  "url": "/isolated-components/Hero",
+  "url": "/isolated-components/Hero?typewriter=static",
   "dimensions": [
     "Desktop"
   ],
@@ -11,5 +11,5 @@
   },
   "componentName": "Hero",
   "scenarioType": "component",
-  "description": "Navy hero from CMS settings: eyebrow, site title, the mission line with its rotating word, and the Voltaire quote."
+  "description": "Navy hero from CMS settings: eyebrow, site title, the mission line with its rotating word held on people, and the Voltaire quote."
 }
