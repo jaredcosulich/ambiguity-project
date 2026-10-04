@@ -1,0 +1,33 @@
+{
+  "timestamp": "2026-10-04T19:53:13Z",
+  "title": "Pin Node 24 in the GitHub Pages deploy workflow",
+  "type": "feature",
+  "userRequest": "## Summary\n\nThe lockfile-sync hook required an `.nvmrc`, which now says 24 (the local Node). The deploy workflow uses `withastro/action@v3` without `node-version`, so CI builds on the action's default Node. Pin it so CI and local installs agree.\n\n## Key Decisions\n\n- Set `with: node-version: 24` on the `withastro/action@v3` step, with a comment tying it to `.nvmrc`.\n\n## Implementation\n\n- `.github/workflows/deploy.yml`: replace the commented-out `with:` block under \"Build Astro site\".\n- Push and confirm the run's \"Build Astro site\" step logs Node 24.",
+  "description": "The Build Astro site step in .github/workflows/deploy.yml now passes node-version 24 to withastro/action@v3, matching .nvmrc, so CI builds on the same Node as local installs. Config-only; no tests apply. Verify on the next Deploy run that the build step logs Node v24. Scope verdict: no open project deliverables remained (all 5 already resolved); nothing delivered or deferred against them this cycle.",
+  "modifiedFiles": [
+    {
+      "path": ".codeyam/dependency-graph.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/plans/pin-node-24-in-the-github-pages-deploy-workflow.md\t.codeyam/plans/completed/pin-node-24-in-the-github-pages-deploy-workflow.md",
+      "status": "modified"
+    },
+    {
+      "path": ".github/workflows/deploy.yml",
+      "status": "modified"
+    }
+  ],
+  "testResults": {
+    "total": 92,
+    "passed": 92,
+    "failed": 0,
+    "runners": [
+      {
+        "name": "tests",
+        "total": 92,
+        "passed": 92
+      }
+    ]
+  }
+}

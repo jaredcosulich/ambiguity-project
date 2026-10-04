@@ -47,9 +47,9 @@ jobs:
           npm run sync:substack
       - name: Build Astro site
         uses: withastro/action@v3
-        # with:
-        #   path: .            # root of the Astro project (default)
-        #   node-version: 20
+        with:
+          # Keep in sync with .nvmrc so CI builds on the same Node as local installs.
+          node-version: 24
 
   deploy:
     needs: build
