@@ -1,0 +1,303 @@
+{
+  "timestamp": "2026-10-05T10:42:50Z",
+  "title": "Cover the mission line's prefix, suffix and single-word states",
+  "type": "feature",
+  "userRequest": "## Summary\n\nThe coverage plan for `src/components/MissionLine.astro` lists four code paths, and only the rotating-word paths have screenshots (`missionline-default`, `missionline-reduced-motion`). An editor can clear the mission prefix or suffix, or enter a single mission word, in Site Settings; none of those states has a scenario, so a layout break there would go unnoticed.\n\n## Key Decisions\n\n- Use the existing `?typewriter=static` flag so the new captures stay steady.\n- Seed through new `.codeyam/seeds/*.json` variants of `home-full.json` rather than new props, since MissionLine reads its text from `settings.json`.\n\n## Implementation\n\n1. Add seeds with an empty `missionPrefix`, an empty `missionSuffix`, and a single-word `missionWords`.\n2. Register `MissionLine - No Prefix Or Suffix` and `MissionLine - Single Word` component scenarios at `/isolated-components/MissionLine?typewriter=static`.\n3. Mark the matching states covered in `.codeyam/scenarios/coverage-plan/missionline.json` via the scenario taxonomy.",
+  "description": "Added two MissionLine component scenarios, each with its own seed: one where the editor has cleared the mission prefix and suffix, leaving only the rotating-word slot, and one with a single mission word. The four MissionLine code paths in the coverage plan are now marked covered. A small fix in MissionLine now checks the screenshot pin before the single-word early return, so one-word captures hold a steady caret instead of blinking. Scope verdict: this cycle is test coverage only. It delivers and defers none of the project deliverables, and none were deferred.",
+  "modifiedFiles": [
+    {
+      "path": ".codeyam/dependency-graph.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/plans/cover-the-mission-line-s-prefix-suffix-and-single-word-states.md\t.codeyam/plans/completed/cover-the-mission-line-s-prefix-suffix-and-single-word-states.md",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/coverage-plan/missionline.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/.capture-pipeline.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/admin-dashboard-pages-and-site-settings--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hero-default--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hero-default--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hero-long-quote-and-long-word--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hero-long-quote-and-long-word--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-blog-latest-posts--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-blog-latest-posts--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-blog-latest-posts-mobile--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-blog-latest-posts-mobile--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-blog-latest-posts-tablet--tablet.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-blog-latest-posts-tablet--tablet.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-blog-no-posts-yet--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-blog-no-posts-yet--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-full-content--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-full-content--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-full-content-mobile--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-full-content-mobile--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-library-section--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-library-section--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-desktop--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-desktop--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-empty-nav--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-empty-nav--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-empty-nav--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-long-title-and-extra-nav-items--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-long-title-and-extra-nav-items--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-mobile-menu-open--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-mobile-menu-open--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-single-nav-item--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-single-nav-item--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-technology-section--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-technology-section--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/missionline-default--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/missionline-default--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/missionline-reduced-motion--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/missionline-reduced-motion--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/state/finalize-debt.json",
+      "status": "modified"
+    },
+    {
+      "path": "src/components/MissionLine.astro",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/missionline-no-prefix-or-suffix.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/missionline-single-word.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/missionline-no-prefix-or-suffix--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/missionline-no-prefix-or-suffix--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/missionline-single-word--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/missionline-single-word--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/seeds/home-mission-no-prefix-suffix.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/seeds/home-mission-single-word.json",
+      "status": "added"
+    }
+  ],
+  "scenarioScreenshots": [
+    {
+      "name": "Admin Dashboard - Pages And Site Settings",
+      "screenshotPath": "admin-dashboard-pages-and-site-settings--desktop.png"
+    },
+    {
+      "name": "Home - Blog Latest Posts",
+      "screenshotPath": "home-blog-latest-posts--desktop.png"
+    },
+    {
+      "name": "Home - Blog Latest Posts Mobile",
+      "screenshotPath": "home-blog-latest-posts-mobile--mobile.png"
+    },
+    {
+      "name": "Home - Blog Latest Posts Tablet",
+      "screenshotPath": "home-blog-latest-posts-tablet--tablet.png"
+    },
+    {
+      "name": "Home - Blog No Posts Yet",
+      "screenshotPath": "home-blog-no-posts-yet--desktop.png"
+    },
+    {
+      "name": "Home - Full Content",
+      "screenshotPath": "home-full-content--desktop.png"
+    },
+    {
+      "name": "Home - Full Content Mobile",
+      "screenshotPath": "home-full-content-mobile--mobile.png"
+    },
+    {
+      "name": "Home - Library Section",
+      "screenshotPath": "home-library-section--desktop.png"
+    },
+    {
+      "name": "Home - Technology Section",
+      "screenshotPath": "home-technology-section--desktop.png"
+    },
+    {
+      "name": "Home Shell - Desktop",
+      "screenshotPath": "home-shell-desktop--desktop.png"
+    },
+    {
+      "name": "Home Shell - Empty Nav",
+      "screenshotPath": "home-shell-empty-nav--desktop.png"
+    },
+    {
+      "name": "Home Shell - Long Title And Extra Nav Items",
+      "screenshotPath": "home-shell-long-title-and-extra-nav-items--desktop.png"
+    },
+    {
+      "name": "Home Shell - Mobile Menu Open",
+      "screenshotPath": "home-shell-mobile-menu-open--mobile.png"
+    },
+    {
+      "name": "Home Shell - Single Nav Item",
+      "screenshotPath": "home-shell-single-nav-item--desktop.png"
+    },
+    {
+      "name": "Hero - Default",
+      "screenshotPath": "hero-default--desktop.png"
+    },
+    {
+      "name": "Hero - Long Quote And Long Word",
+      "screenshotPath": "hero-long-quote-and-long-word--desktop.png"
+    },
+    {
+      "name": "MissionLine - Default",
+      "screenshotPath": "missionline-default--desktop.png"
+    },
+    {
+      "name": "MissionLine - No Prefix Or Suffix",
+      "screenshotPath": "missionline-no-prefix-or-suffix--desktop.png"
+    },
+    {
+      "name": "MissionLine - Reduced Motion",
+      "screenshotPath": "missionline-reduced-motion--desktop.png"
+    },
+    {
+      "name": "MissionLine - Single Word",
+      "screenshotPath": "missionline-single-word--desktop.png"
+    }
+  ],
+  "testResults": {
+    "total": 7,
+    "passed": 7,
+    "failed": 0,
+    "runners": [
+      {
+        "name": "tests",
+        "total": 7,
+        "passed": 7
+      }
+    ]
+  }
+}

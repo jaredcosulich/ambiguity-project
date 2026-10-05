@@ -45,15 +45,16 @@ const words = parseMissionWords(rawWords);
     sizeSlot();
     document.fonts?.ready.then(sizeSlot);
     window.addEventListener('resize', sizeSlot);
-    if (words.length < 2) return;
     // Screenshot flag: hold one frame without the caret blink, so captures
-    // never land mid-animation.
+    // never land mid-animation. Checked before the single-word exit so a
+    // one-word list gets a steady caret too.
     const pin = typewriterPin(window.location.search);
     if (pin) {
       slot.classList.add('pinned');
       textEl.textContent = pinnedTypewriterText(words, pin);
       return;
     }
+    if (words.length < 2) return;
     let state = initialTypewriterState(words);
     const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
     const tick = () => {

@@ -1,0 +1,15 @@
+{
+  "name": "MissionLine - No Prefix Or Suffix",
+  "id": "3d86ec84-183d-4b1a-9d3a-179e0a07ff67",
+  "url": "/isolated-components/MissionLine?typewriter=static",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-mission-no-prefix-suffix.json"
+  },
+  "componentName": "MissionLine",
+  "scenarioType": "component",
+  "description": "An editor cleared the words before and after the rotating word in Site Settings: only the salmon underlined slot is left, starting at the left edge with no stray spacing."
+}

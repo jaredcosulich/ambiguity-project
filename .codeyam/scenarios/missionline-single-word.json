@@ -1,0 +1,15 @@
+{
+  "name": "MissionLine - Single Word",
+  "id": "fcb7c21d-80b9-47ca-b65a-2a7a7cd6408f",
+  "url": "/isolated-components/MissionLine?typewriter=static",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-mission-single-word.json"
+  },
+  "componentName": "MissionLine",
+  "scenarioType": "component",
+  "description": "Only one mission word, people, is set: the sentence reads normally, the slot hugs that word, and nothing rotates."
+}

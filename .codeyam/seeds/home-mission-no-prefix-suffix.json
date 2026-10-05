@@ -1,0 +1,181 @@
+{
+  "seed": {
+    "substackPosts": {
+      "posts": []
+    },
+    "settings": {
+      "siteTitle": "The Ambiguity Project",
+      "description": "The Ambiguity Project is a 501(c)(3) non-profit helping people better recognize, live with, and navigate ambiguity.",
+      "contactEmail": "",
+      "footerText": "\u00a9 2026 The Ambiguity Project",
+      "socials": [],
+      "substackUrl": "https://ambiguityproject.substack.com",
+      "heroEyebrow": "A 501(c)(3) Non-Profit",
+      "missionPrefix": "",
+      "missionWords": "people\nstudents\nbusinesses\ngovernments\norganizations\nschools",
+      "missionSuffix": "",
+      "toolsHeading": "Explore some of the tools we've built to support people as they confront ambiguity in different situations.",
+      "toolsAllUrl": "",
+      "learnHeading": "Learn more about what we are doing and how we do it.",
+      "learnButtonLabel": "About The Ambiguity Project",
+      "learnButtonUrl": "/about"
+    },
+    "nav": {
+      "items": [
+        {
+          "label": "Books",
+          "url": "#books"
+        },
+        {
+          "label": "Library",
+          "url": "/library"
+        },
+        {
+          "label": "Blog",
+          "url": "#blog"
+        },
+        {
+          "label": "Technology",
+          "url": "#technology"
+        },
+        {
+          "label": "Learn More",
+          "url": "#learn"
+        },
+        {
+          "label": "Support Us",
+          "url": "#support"
+        }
+      ]
+    },
+    "pages": [
+      {
+        "slug": "about",
+        "title": "About The Ambiguity Project",
+        "description": "What The Ambiguity Project does and how we do it.",
+        "order": 1,
+        "body": "The Ambiguity Project is a 501(c)(3) non-profit helping people, students, businesses, governments, organizations, and schools better recognize, live with, and navigate ambiguity.\n\nWe write books, share what we are learning on our blog, and build tools that support people as they confront ambiguity in different situations."
+      },
+      {
+        "slug": "ambiguity-everywhere",
+        "title": "Ambiguity Everywhere",
+        "description": "Ambiguity Everywhere: shaping our lives, society, and the world.",
+        "order": 2,
+        "body": "All of life\u2019s experiences, from how we learn, to our relationships, to scientific progress, to the economy, to voting, and much more, are ambiguous. *Ambiguity Everywhere* explores these wide-ranging aspects of our world and how experts in each approach and manage ambiguity."
+      }
+    ],
+    "books": [
+      {
+        "slug": "ambiguity-everywhere",
+        "title": "Ambiguity Everywhere",
+        "subtitle": "Shaping our lives, society, and the world",
+        "eyebrow": "New book \u00b7 Pre-order now",
+        "cover": "/images/book-cover.png",
+        "coverAlt": "Cover of Ambiguity Everywhere by Jared Cosulich: a salmon jigsaw puzzle with missing and loose pieces",
+        "blurb": "All of life\u2019s experiences, from how we learn, to our relationships, to scientific progress, to the economy, to voting, and much more, are ambiguous. Ambiguity Everywhere explores these wide-ranging aspects of our world and how experts in each approach and manage ambiguity.",
+        "primaryLabel": "Pre-order the book",
+        "primaryUrl": "/ambiguity-everywhere",
+        "secondaryLabel": "About the book \u2192",
+        "secondaryUrl": "/ambiguity-everywhere",
+        "order": 1
+      }
+    ],
+    "quotes": [
+      {
+        "slug": "voltaire",
+        "text": "Doubt is not a pleasant condition, but certainty is an absurd one.",
+        "attribution": "Voltaire",
+        "order": 1
+      },
+      {
+        "slug": "keats",
+        "text": "Negative capability: being in uncertainties, mysteries, doubts, without any irritable reaching after fact and reason.",
+        "attribution": "John Keats",
+        "order": 2
+      }
+    ],
+    "tools": [
+      {
+        "slug": "decision-fog-map",
+        "name": "Decision Fog Map",
+        "description": "For teams facing a choice with missing information: sort what you know, what you can find out, and what will stay unknown.",
+        "url": "https://example.org/tools/decision-fog-map",
+        "order": 1
+      },
+      {
+        "slug": "classroom-gray-areas",
+        "name": "Classroom Gray Areas",
+        "description": "Discussion prompts that help teachers bring open-ended, no-single-answer questions into class.",
+        "url": "https://example.org/tools/classroom-gray-areas",
+        "order": 2
+      },
+      {
+        "slug": "policy-what-ifs",
+        "name": "Policy What-Ifs",
+        "description": "Lets local governments stress-test a plan against several plausible futures before committing.",
+        "url": "https://example.org/tools/policy-what-ifs",
+        "order": 3
+      }
+    ],
+    "library": [
+      {
+        "slug": "radical-uncertainty",
+        "title": "Radical Uncertainty",
+        "author": "John Kay & Mervyn King",
+        "cover": "/images/library/radical-uncertainty.svg",
+        "coverAlt": "Cover of Radical Uncertainty by John Kay & Mervyn King",
+        "order": 1,
+        "summary": "Two economists argue that most of the decisions that matter can't be reduced to probabilities, and that pretending otherwise makes us worse at them.",
+        "body": "## Why we picked it\n\nKay and King spent their careers inside institutions that run on forecasts, a former Bank of England governor among them. That makes their central claim land harder: for most important decisions we do not know the odds, and often we don't even know the full list of things that might happen.\n\n## What it gets right\n\nThe book separates *resolvable* uncertainty, the kind a coin flip or an actuarial table can handle, from *radical* uncertainty, where the question itself is still fuzzy. Their antidote is a deceptively simple question to ask before any big decision: **\"What is going on here?\"** Before reaching for a model, build a narrative that makes sense of the situation, then test it.\n\nThis is exactly the habit we try to teach. Naming the kind of ambiguity you are facing comes before choosing a tool to deal with it.\n\n## Where it drags\n\nThe middle third leans heavily on critiques of economic modelling that will feel familiar to anyone who lived through 2008. Readers outside finance can skim it.\n\n## Who should read it\n\nAnyone who has sat in a meeting where a spreadsheet's false precision ended the conversation too early."
+      },
+      {
+        "slug": "thinking-in-bets",
+        "title": "Thinking in Bets",
+        "author": "Annie Duke",
+        "cover": "/images/library/thinking-in-bets.svg",
+        "coverAlt": "Cover of Thinking in Bets by Annie Duke",
+        "order": 2,
+        "summary": "A former professional poker player on separating the quality of a decision from the luck of its outcome.",
+        "body": "Duke's big idea fits in a sentence: **a good decision can have a bad outcome, and a bad decision can get lucky.** She calls the mistake of judging decisions by their results \"resulting\", and once you have a word for it you see it everywhere.\n\n## Most useful takeaways\n\n- Treat beliefs as bets with a confidence level attached, not as true-or-false statements.\n- Ask \"wanna bet?\" of your own opinions. The question exposes how sure you really are.\n- Build a small group that holds you to the habit of reviewing *process*, not just results.\n\n## Our take\n\nIt is an approachable on-ramp to probabilistic thinking, ideal for students and teams who have never been asked to put a number on their uncertainty. The poker stories carry the book; the self-help chapters near the end are thinner."
+      },
+      {
+        "slug": "the-black-swan",
+        "title": "The Black Swan",
+        "author": "Nassim Nicholas Taleb",
+        "cover": "/images/library/the-black-swan.svg",
+        "coverAlt": "Cover of The Black Swan by Nassim Nicholas Taleb",
+        "order": 3,
+        "summary": "Rare, high-impact events shape history far more than we admit, and our tools for predicting them are built to miss them.",
+        "body": "Taleb is combative, digressive and frequently right. *The Black Swan* is about events that are rare, enormously consequential, and explained away only after they happen.\n\n## The key distinction\n\nHe splits the world into **Mediocristan**, where no single observation changes the average much (heights, weights), and **Extremistan**, where one outlier can dominate everything (wealth, book sales, pandemics). Most of our statistical intuitions were built for the first and get applied to the second.\n\n## Why it matters for ambiguity\n\nThe book is a warning about *false confidence*: narratives that make the past look inevitable and forecasts that make the future look tame. Recognising which world you are in is a form of ambiguity literacy.\n\n## Fair warning\n\nThe tone will put some readers off, and the book is longer than its argument. Read the prologue and Part One first; the rest rewards dipping in."
+      },
+      {
+        "slug": "range",
+        "title": "Range",
+        "author": "David Epstein",
+        "cover": "/images/library/range.svg",
+        "coverAlt": "Cover of Range by David Epstein",
+        "order": 4,
+        "summary": "Why generalists often thrive in a world that is messy, unpredictable and full of problems nobody has seen before.",
+        "body": "Epstein takes on the cult of early specialisation. In \"kind\" learning environments with clear rules and quick feedback, like chess or golf, early focus pays off. In \"wicked\" environments, where the rules are unclear and feedback is late or misleading, breadth wins.\n\nMost of life is wicked, which is why the book belongs in this library. It is an argument for being comfortable *not yet knowing* what you will be good at, and for drawing analogies across fields when a problem doesn't fit any one of them.\n\nA warm, well-researched read that we recommend to parents, educators and anyone mid-career who is wondering whether a winding path was a mistake."
+      },
+      {
+        "slug": "superforecasting",
+        "title": "Superforecasting",
+        "author": "Philip E. Tetlock & Dan Gardner",
+        "cover": "/images/library/superforecasting.svg",
+        "coverAlt": "Cover of Superforecasting by Philip E. Tetlock & Dan Gardner",
+        "order": 5,
+        "summary": "What a multi-year forecasting tournament revealed about the ordinary people who predict the future unusually well.",
+        "body": "Tetlock's research found that some volunteers consistently out-predicted experts. The book is about *how* they did it: breaking big questions into smaller ones, starting from base rates, updating in small steps as evidence arrives, and keeping score.\n\nIt pairs nicely with *The Black Swan*. Taleb says some things can't be predicted; Tetlock shows that many more things can be predicted *somewhat* than we assume, if we are humble and disciplined about it. Holding both ideas at once is the point."
+      },
+      {
+        "slug": "not-knowing",
+        "title": "Not Knowing: The Art of Turning Uncertainty into Opportunity",
+        "author": "Steven D'Souza & Diana Renner",
+        "order": 6,
+        "summary": "A practical, reflective guide to staying with the unknown instead of rushing to close it down.",
+        "body": "Where most books on uncertainty try to shrink it, this one asks what happens if you stop fighting it. D'Souza and Renner draw on leadership coaching, art and philosophy to argue that the edge of what we know is where learning actually happens.\n\nThe exercises are the best part: short prompts for noticing when you are reaching for false certainty. A quiet book, and a useful one."
+      }
+    ]
+  }
+}
