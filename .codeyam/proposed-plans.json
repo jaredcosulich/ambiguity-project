@@ -111,6 +111,16 @@
       "status": "written",
       "planSlug": "let-the-test-proof-tool-measure-seed-adapter-fixes",
       "proposedAt": "2026-10-05T00:35:25.479853079+00:00"
+    },
+    {
+      "id": "stop-screenshots-capturing-astro-s-content-store-error-after-a-reseed",
+      "title": "Stop screenshots capturing Astro's content-store error after a reseed",
+      "mode": "backend",
+      "body": "## Summary\n\nDuring this session, `MissionLine - Single Word` was registered right after a different seed had been loaded. The capture landed on Astro's dev error overlay (`UnknownFilesystemError` from `MutableDataStore.writeToDisk`) because the content data store was still being rewritten. `register` reported the capture as successful, so the broken frame would have been committed if nobody had looked at it.\n\n## Key Decisions\n\n- Fix it at the seed boundary: the seed adapter should not return until Astro has finished picking up the new content files.\n- Treat an Astro error overlay in a captured frame as a failed capture, not a screenshot.\n\n## Implementation\n\n1. In `.codeyam/seed-adapter.ts`, after the `fs.writeFileSync` calls that write the content collections, wait until the dev server serves a page reflecting the new data (or until the data-store file stops changing) before exiting.\n2. Add a check to the capture step that fails when the page contains Astro's error overlay (`astro-dev-overlay` / `vite-error-overlay`), so a transient error can't be committed as a screenshot.\n3. Reproduce by seeding `.codeyam/seeds/home-mission-no-prefix-suffix.json` and then immediately registering a scenario seeded with `.codeyam/seeds/home-mission-single-word.json`; confirm the capture now shows the mission line.",
+      "reason": "A capture taken right after a reseed recorded Astro's 'UnknownFilesystemError' page and still counted as a success.",
+      "source": "session-review",
+      "status": "pending",
+      "proposedAt": "2026-10-05T10:45:07.814211469+00:00"
     }
   ]
 }
