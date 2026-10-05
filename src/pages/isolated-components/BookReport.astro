@@ -1,0 +1,33 @@
+---
+import Component from '../../components/BookReport.astro';
+import '../../styles/global.css';
+import { getCollection, render } from 'astro:content';
+import { publishedEntries } from '@codeyam/cms/content';
+import { pickFirstByOrder } from '../../lib/contentOrder';
+const book = pickFirstByOrder(publishedEntries(await getCollection('library')));
+const Content = book ? (await render(book)).Content : null;
+
+// Isolation page for BookReport — codeyam screenshots the #codeyam-capture wrapper by
+// navigating to /isolated-components/BookReport. The first seeded book with its rendered
+// report body, so headings, lists and emphasis in the report all show.
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Isolated: BookReport</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap" />
+  </head>
+  <body style="margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+    <div id="codeyam-capture" style="width: 100%;">
+      {book && Content && (
+        <Component id={book.id} book={book.data}>
+          <Content />
+        </Component>
+      )}
+    </div>
+  </body>
+</html>

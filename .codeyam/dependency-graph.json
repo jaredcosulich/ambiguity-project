@@ -103,6 +103,15 @@
       ],
       "importedBy": []
     },
+    "src/components/BackLink.astro": {
+      "imports": [
+        "src/lib/base.ts"
+      ],
+      "importedBy": [
+        "src/pages/isolated-components/BackLink.astro",
+        "src/components/BookReport.astro"
+      ]
+    },
     "src/components/BlogEmptyCard.astro": {
       "imports": [],
       "importedBy": [
@@ -128,7 +137,9 @@
       ],
       "importedBy": [
         "src/pages/isolated-components/BookCover.astro",
-        "src/components/BookFeature.astro"
+        "src/components/BookFeature.astro",
+        "src/components/LibraryCard.astro",
+        "src/components/BookReportHeader.astro"
       ]
     },
     "src/components/BookFeature.astro": {
@@ -139,6 +150,25 @@
       "importedBy": [
         "src/pages/isolated-components/BookFeature.astro",
         "src/components/BooksSection.astro"
+      ]
+    },
+    "src/components/BookReport.astro": {
+      "imports": [
+        "src/components/BackLink.astro",
+        "src/components/BookReportHeader.astro"
+      ],
+      "importedBy": [
+        "src/pages/library/[slug].astro",
+        "src/pages/isolated-components/BookReport.astro"
+      ]
+    },
+    "src/components/BookReportHeader.astro": {
+      "imports": [
+        "src/components/BookCover.astro"
+      ],
+      "importedBy": [
+        "src/pages/isolated-components/BookReportHeader.astro",
+        "src/components/BookReport.astro"
       ]
     },
     "src/components/BooksSection.astro": {
@@ -203,6 +233,62 @@
       "importedBy": [
         "src/pages/index.astro",
         "src/pages/isolated-components/LearnMore.astro"
+      ]
+    },
+    "src/components/LibraryCard.astro": {
+      "imports": [
+        "src/components/BookCover.astro",
+        "src/lib/library.ts"
+      ],
+      "importedBy": [
+        "src/pages/isolated-components/LibraryCard.astro",
+        "src/components/LibraryGrid.astro",
+        "src/components/LibrarySection.astro"
+      ]
+    },
+    "src/components/LibraryEmpty.astro": {
+      "imports": [],
+      "importedBy": [
+        "src/pages/isolated-components/LibraryEmpty.astro",
+        "src/components/LibraryIndex.astro"
+      ]
+    },
+    "src/components/LibraryGrid.astro": {
+      "imports": [
+        "src/components/LibraryCard.astro"
+      ],
+      "importedBy": [
+        "src/pages/isolated-components/LibraryGrid.astro",
+        "src/components/LibraryIndex.astro"
+      ]
+    },
+    "src/components/LibraryHeader.astro": {
+      "imports": [],
+      "importedBy": [
+        "src/pages/isolated-components/LibraryHeader.astro",
+        "src/components/LibraryIndex.astro"
+      ]
+    },
+    "src/components/LibraryIndex.astro": {
+      "imports": [
+        "src/components/LibraryHeader.astro",
+        "src/components/LibraryGrid.astro",
+        "src/components/LibraryEmpty.astro"
+      ],
+      "importedBy": [
+        "src/pages/library/index.astro",
+        "src/pages/isolated-components/LibraryIndex.astro"
+      ]
+    },
+    "src/components/LibrarySection.astro": {
+      "imports": [
+        "src/components/LibraryCard.astro",
+        "src/lib/base.ts",
+        "src/lib/library.ts"
+      ],
+      "importedBy": [
+        "src/pages/index.astro",
+        "src/pages/isolated-components/LibrarySection.astro"
       ]
     },
     "src/components/LogoLink.astro": {
@@ -343,6 +429,8 @@
       ],
       "importedBy": [
         "src/pages/index.astro",
+        "src/pages/library/index.astro",
+        "src/pages/library/[slug].astro",
         "src/pages/404.astro",
         "src/pages/[slug].astro"
       ]
@@ -358,12 +446,15 @@
       "importedBy": [
         "src/lib/navLinks.ts",
         "src/lib/base.test.ts",
+        "src/lib/library.ts",
         "src/layouts/BaseLayout.astro",
         "src/components/BookFeature.astro",
         "src/components/NotFound.astro",
         "src/components/ToolCard.astro",
         "src/components/BookCover.astro",
         "src/components/LearnMore.astro",
+        "src/components/BackLink.astro",
+        "src/components/LibrarySection.astro",
         "src/components/LogoLink.astro",
         "src/components/ToolsSection.astro"
       ]
@@ -379,11 +470,18 @@
       "importedBy": [
         "src/lib/contentOrder.test.ts",
         "src/pages/index.astro",
+        "src/pages/library/index.astro",
+        "src/pages/isolated-components/LibraryIndex.astro",
         "src/pages/isolated-components/BookFeature.astro",
         "src/pages/isolated-components/ToolCard.astro",
+        "src/pages/isolated-components/BookReport.astro",
         "src/pages/isolated-components/Hero.astro",
         "src/pages/isolated-components/BookCover.astro",
+        "src/pages/isolated-components/LibraryGrid.astro",
         "src/pages/isolated-components/BooksSection.astro",
+        "src/pages/isolated-components/LibraryCard.astro",
+        "src/pages/isolated-components/LibrarySection.astro",
+        "src/pages/isolated-components/BookReportHeader.astro",
         "src/pages/isolated-components/ToolsSection.astro",
         "src/pages/isolated-components/HeroQuote.astro"
       ]
@@ -415,6 +513,22 @@
       "importedBy": [
         "src/lib/isolationPages.test.ts",
         "astro.config.mjs"
+      ]
+    },
+    "src/lib/library.test.ts": {
+      "imports": [
+        "src/lib/library.ts"
+      ],
+      "importedBy": []
+    },
+    "src/lib/library.ts": {
+      "imports": [
+        "src/lib/base.ts"
+      ],
+      "importedBy": [
+        "src/lib/library.test.ts",
+        "src/components/LibraryCard.astro",
+        "src/components/LibrarySection.astro"
       ]
     },
     "src/lib/missionWords.test.ts": {
@@ -570,9 +684,17 @@
         "src/components/ToolsSection.astro",
         "src/components/LearnMore.astro",
         "src/components/BlogSection.astro",
+        "src/components/LibrarySection.astro",
         "src/lib/site.ts",
         "src/lib/substack.ts",
         "src/lib/contentOrder.ts"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/BackLink.astro": {
+      "imports": [
+        "src/components/BackLink.astro",
+        "src/styles/global.css"
       ],
       "importedBy": []
     },
@@ -603,6 +725,22 @@
     "src/pages/isolated-components/BookFeature.astro": {
       "imports": [
         "src/components/BookFeature.astro",
+        "src/styles/global.css",
+        "src/lib/contentOrder.ts"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/BookReport.astro": {
+      "imports": [
+        "src/components/BookReport.astro",
+        "src/styles/global.css",
+        "src/lib/contentOrder.ts"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/BookReportHeader.astro": {
+      "imports": [
+        "src/components/BookReportHeader.astro",
         "src/styles/global.css",
         "src/lib/contentOrder.ts"
       ],
@@ -662,6 +800,52 @@
         "src/components/LearnMore.astro",
         "src/styles/global.css",
         "src/lib/site.ts"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/LibraryCard.astro": {
+      "imports": [
+        "src/components/LibraryCard.astro",
+        "src/styles/global.css",
+        "src/lib/contentOrder.ts"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/LibraryEmpty.astro": {
+      "imports": [
+        "src/components/LibraryEmpty.astro",
+        "src/styles/global.css"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/LibraryGrid.astro": {
+      "imports": [
+        "src/components/LibraryGrid.astro",
+        "src/styles/global.css",
+        "src/lib/contentOrder.ts"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/LibraryHeader.astro": {
+      "imports": [
+        "src/components/LibraryHeader.astro",
+        "src/styles/global.css"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/LibraryIndex.astro": {
+      "imports": [
+        "src/components/LibraryIndex.astro",
+        "src/styles/global.css",
+        "src/lib/contentOrder.ts"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/LibrarySection.astro": {
+      "imports": [
+        "src/components/LibrarySection.astro",
+        "src/styles/global.css",
+        "src/lib/contentOrder.ts"
       ],
       "importedBy": []
     },
@@ -757,28 +941,52 @@
       ],
       "importedBy": []
     },
+    "src/pages/library/[slug].astro": {
+      "imports": [
+        "src/layouts/BaseLayout.astro",
+        "src/components/BookReport.astro"
+      ],
+      "importedBy": []
+    },
+    "src/pages/library/index.astro": {
+      "imports": [
+        "src/layouts/BaseLayout.astro",
+        "src/components/LibraryIndex.astro",
+        "src/lib/contentOrder.ts"
+      ],
+      "importedBy": []
+    },
     "src/styles/global.css": {
       "imports": [],
       "importedBy": [
         "src/pages/isolated-components/SectionAnchor.astro",
         "src/pages/isolated-components/BracketLogo.astro",
+        "src/pages/isolated-components/LibraryIndex.astro",
         "src/pages/isolated-components/BookFeature.astro",
         "src/pages/isolated-components/NotFound.astro",
         "src/pages/isolated-components/MainNav.astro",
         "src/pages/isolated-components/ToolCard.astro",
+        "src/pages/isolated-components/BookReport.astro",
         "src/pages/isolated-components/MissionLine.astro",
+        "src/pages/isolated-components/LibraryEmpty.astro",
         "src/pages/isolated-components/ContentPage.astro",
         "src/pages/isolated-components/Hero.astro",
+        "src/pages/isolated-components/LibraryHeader.astro",
         "src/pages/isolated-components/BookCover.astro",
         "src/pages/isolated-components/MenuToggle.astro",
         "src/pages/isolated-components/BlogEmptyCard.astro",
+        "src/pages/isolated-components/LibraryGrid.astro",
         "src/pages/isolated-components/BooksSection.astro",
         "src/pages/isolated-components/LearnMore.astro",
         "src/pages/isolated-components/PostCover.astro",
+        "src/pages/isolated-components/BackLink.astro",
+        "src/pages/isolated-components/LibraryCard.astro",
         "src/pages/isolated-components/FooterNav.astro",
+        "src/pages/isolated-components/LibrarySection.astro",
         "src/pages/isolated-components/BlogSection.astro",
         "src/pages/isolated-components/LogoLink.astro",
         "src/pages/isolated-components/PostCard.astro",
+        "src/pages/isolated-components/BookReportHeader.astro",
         "src/pages/isolated-components/ToolsSection.astro",
         "src/pages/isolated-components/SiteFooter.astro",
         "src/pages/isolated-components/HeroQuote.astro",
@@ -977,6 +1185,14 @@
       ],
       "importedBy": []
     },
+    "src/components/BackLink.astro::__file_root__": {
+      "filePath": "src/components/BackLink.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/base.ts::withBase"
+      ],
+      "importedBy": []
+    },
     "src/components/BlogEmptyCard.astro::__file_root__": {
       "filePath": "src/components/BlogEmptyCard.astro",
       "name": "__file_root__",
@@ -1002,7 +1218,10 @@
       "imports": [
         "src/lib/base.ts::withBase"
       ],
-      "importedBy": []
+      "importedBy": [
+        "src/components/LibraryCard.astro::__file_root__",
+        "src/components/BookReportHeader.astro::__file_root__"
+      ]
     },
     "src/components/BookFeature.astro::__file_root__": {
       "filePath": "src/components/BookFeature.astro",
@@ -1014,6 +1233,23 @@
       "importedBy": [
         "src/components/BooksSection.astro::__file_root__"
       ]
+    },
+    "src/components/BookReport.astro::__file_root__": {
+      "filePath": "src/components/BookReport.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/BackLink.astro::__file_root__",
+        "src/components/BookReportHeader.astro::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "src/components/BookReportHeader.astro::__file_root__": {
+      "filePath": "src/components/BookReportHeader.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/BookCover.astro::__file_root__"
+      ],
+      "importedBy": []
     },
     "src/components/BooksSection.astro::__file_root__": {
       "filePath": "src/components/BooksSection.astro",
@@ -1057,6 +1293,45 @@
       "name": "__file_root__",
       "imports": [
         "src/lib/base.ts::withBase"
+      ],
+      "importedBy": []
+    },
+    "src/components/LibraryCard.astro::__file_root__": {
+      "filePath": "src/components/LibraryCard.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/BookCover.astro::__file_root__",
+        "src/lib/library.ts::libraryHref"
+      ],
+      "importedBy": [
+        "src/components/LibrarySection.astro::__file_root__"
+      ]
+    },
+    "src/components/LibraryGrid.astro::__file_root__": {
+      "filePath": "src/components/LibraryGrid.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/LibraryCard.astro::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "src/components/LibraryIndex.astro::__file_root__": {
+      "filePath": "src/components/LibraryIndex.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/LibraryHeader.astro::__file_root__",
+        "src/components/LibraryGrid.astro::__file_root__",
+        "src/components/LibraryEmpty.astro::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "src/components/LibrarySection.astro::__file_root__": {
+      "filePath": "src/components/LibrarySection.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/LibraryCard.astro::__file_root__",
+        "src/lib/base.ts::withBase",
+        "src/lib/library.ts::homeLibraryBooks"
       ],
       "importedBy": []
     },
@@ -1213,12 +1488,15 @@
       "name": "withBase",
       "imports": [],
       "importedBy": [
+        "src/lib/library.ts::__file_root__",
         "src/layouts/BaseLayout.astro::__file_root__",
         "src/components/BookFeature.astro::__file_root__",
         "src/components/NotFound.astro::__file_root__",
         "src/components/ToolCard.astro::__file_root__",
         "src/components/BookCover.astro::__file_root__",
         "src/components/LearnMore.astro::__file_root__",
+        "src/components/BackLink.astro::__file_root__",
+        "src/components/LibrarySection.astro::__file_root__",
         "src/components/LogoLink.astro::__file_root__",
         "src/components/ToolsSection.astro::__file_root__"
       ]
@@ -1240,9 +1518,11 @@
         "src/pages/index.astro::__file_root__",
         "src/pages/isolated-components/BookFeature.astro::__file_root__",
         "src/pages/isolated-components/ToolCard.astro::__file_root__",
+        "src/pages/isolated-components/BookReport.astro::__file_root__",
         "src/pages/isolated-components/Hero.astro::__file_root__",
         "src/pages/isolated-components/BookCover.astro::__file_root__",
         "src/pages/isolated-components/BooksSection.astro::__file_root__",
+        "src/pages/isolated-components/BookReportHeader.astro::__file_root__",
         "src/pages/isolated-components/ToolsSection.astro::__file_root__",
         "src/pages/isolated-components/HeroQuote.astro::__file_root__"
       ]
@@ -1253,11 +1533,16 @@
       "imports": [],
       "importedBy": [
         "src/pages/index.astro::__file_root__",
+        "src/pages/library/index.astro::__file_root__",
+        "src/pages/isolated-components/LibraryIndex.astro::__file_root__",
         "src/pages/isolated-components/BookFeature.astro::__file_root__",
         "src/pages/isolated-components/ToolCard.astro::__file_root__",
         "src/pages/isolated-components/Hero.astro::__file_root__",
         "src/pages/isolated-components/BookCover.astro::__file_root__",
+        "src/pages/isolated-components/LibraryGrid.astro::__file_root__",
         "src/pages/isolated-components/BooksSection.astro::__file_root__",
+        "src/pages/isolated-components/LibraryCard.astro::__file_root__",
+        "src/pages/isolated-components/LibrarySection.astro::__file_root__",
         "src/pages/isolated-components/ToolsSection.astro::__file_root__",
         "src/pages/isolated-components/HeroQuote.astro::__file_root__"
       ]
@@ -1304,6 +1589,40 @@
       "importedBy": [
         "src/lib/isolationPages.test.ts::__file_root__",
         "astro.config.mjs::__file_root__"
+      ]
+    },
+    "src/lib/library.test.ts::__file_root__": {
+      "filePath": "src/lib/library.test.ts",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/library.ts::__file_root__",
+        "src/lib/library.ts::homeLibraryBooks",
+        "src/lib/library.ts::libraryHref"
+      ],
+      "importedBy": []
+    },
+    "src/lib/library.ts::__file_root__": {
+      "filePath": "src/lib/library.ts",
+      "name": "__file_root__",
+      "imports": [
+        "src/lib/base.ts::withBase"
+      ],
+      "importedBy": []
+    },
+    "src/lib/library.ts::homeLibraryBooks": {
+      "filePath": "src/lib/library.ts",
+      "name": "homeLibraryBooks",
+      "imports": [],
+      "importedBy": [
+        "src/components/LibrarySection.astro::__file_root__"
+      ]
+    },
+    "src/lib/library.ts::libraryHref": {
+      "filePath": "src/lib/library.ts",
+      "name": "libraryHref",
+      "imports": [],
+      "importedBy": [
+        "src/components/LibraryCard.astro::__file_root__"
       ]
     },
     "src/lib/missionWords.test.ts::__file_root__": {
@@ -1692,10 +2011,20 @@
         "src/components/ToolsSection.astro::__file_root__",
         "src/components/LearnMore.astro::__file_root__",
         "src/components/BlogSection.astro::__file_root__",
+        "src/components/LibrarySection.astro::__file_root__",
         "src/lib/site.ts::getSettings",
         "src/lib/substack.ts::getSubstackPosts",
         "src/lib/contentOrder.ts::pickFirstByOrder",
         "src/lib/contentOrder.ts::sortByOrder"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/BackLink.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/BackLink.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/BackLink.astro::__file_root__",
+        "src/styles/global.css::__file_root__"
       ],
       "importedBy": []
     },
@@ -1738,6 +2067,26 @@
         "src/styles/global.css::__file_root__",
         "src/lib/contentOrder.ts::pickFirstByOrder",
         "src/lib/contentOrder.ts::sortByOrder"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/BookReport.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/BookReport.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/BookReport.astro::__file_root__",
+        "src/styles/global.css::__file_root__",
+        "src/lib/contentOrder.ts::pickFirstByOrder"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/BookReportHeader.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/BookReportHeader.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/BookReportHeader.astro::__file_root__",
+        "src/styles/global.css::__file_root__",
+        "src/lib/contentOrder.ts::pickFirstByOrder"
       ],
       "importedBy": []
     },
@@ -1812,6 +2161,64 @@
         "src/components/LearnMore.astro::__file_root__",
         "src/styles/global.css::__file_root__",
         "src/lib/site.ts::getSettings"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/LibraryCard.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/LibraryCard.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/LibraryCard.astro::__file_root__",
+        "src/styles/global.css::__file_root__",
+        "src/lib/contentOrder.ts::sortByOrder"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/LibraryEmpty.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/LibraryEmpty.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/LibraryEmpty.astro::__file_root__",
+        "src/styles/global.css::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/LibraryGrid.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/LibraryGrid.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/LibraryGrid.astro::__file_root__",
+        "src/styles/global.css::__file_root__",
+        "src/lib/contentOrder.ts::sortByOrder"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/LibraryHeader.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/LibraryHeader.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/LibraryHeader.astro::__file_root__",
+        "src/styles/global.css::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/LibraryIndex.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/LibraryIndex.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/LibraryIndex.astro::__file_root__",
+        "src/styles/global.css::__file_root__",
+        "src/lib/contentOrder.ts::sortByOrder"
+      ],
+      "importedBy": []
+    },
+    "src/pages/isolated-components/LibrarySection.astro::__file_root__": {
+      "filePath": "src/pages/isolated-components/LibrarySection.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/components/LibrarySection.astro::__file_root__",
+        "src/styles/global.css::__file_root__",
+        "src/lib/contentOrder.ts::sortByOrder"
       ],
       "importedBy": []
     },
@@ -1933,6 +2340,25 @@
       ],
       "importedBy": []
     },
+    "src/pages/library/[slug].astro::__file_root__": {
+      "filePath": "src/pages/library/[slug].astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/layouts/BaseLayout.astro::__file_root__",
+        "src/components/BookReport.astro::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "src/pages/library/index.astro::__file_root__": {
+      "filePath": "src/pages/library/index.astro",
+      "name": "__file_root__",
+      "imports": [
+        "src/layouts/BaseLayout.astro::__file_root__",
+        "src/components/LibraryIndex.astro::__file_root__",
+        "src/lib/contentOrder.ts::sortByOrder"
+      ],
+      "importedBy": []
+    },
     "src/styles/global.css::__file_root__": {
       "filePath": "src/styles/global.css",
       "name": "__file_root__",
@@ -1940,23 +2366,32 @@
       "importedBy": [
         "src/pages/isolated-components/SectionAnchor.astro::__file_root__",
         "src/pages/isolated-components/BracketLogo.astro::__file_root__",
+        "src/pages/isolated-components/LibraryIndex.astro::__file_root__",
         "src/pages/isolated-components/BookFeature.astro::__file_root__",
         "src/pages/isolated-components/NotFound.astro::__file_root__",
         "src/pages/isolated-components/MainNav.astro::__file_root__",
         "src/pages/isolated-components/ToolCard.astro::__file_root__",
+        "src/pages/isolated-components/BookReport.astro::__file_root__",
         "src/pages/isolated-components/MissionLine.astro::__file_root__",
+        "src/pages/isolated-components/LibraryEmpty.astro::__file_root__",
         "src/pages/isolated-components/ContentPage.astro::__file_root__",
         "src/pages/isolated-components/Hero.astro::__file_root__",
+        "src/pages/isolated-components/LibraryHeader.astro::__file_root__",
         "src/pages/isolated-components/BookCover.astro::__file_root__",
         "src/pages/isolated-components/MenuToggle.astro::__file_root__",
         "src/pages/isolated-components/BlogEmptyCard.astro::__file_root__",
+        "src/pages/isolated-components/LibraryGrid.astro::__file_root__",
         "src/pages/isolated-components/BooksSection.astro::__file_root__",
         "src/pages/isolated-components/LearnMore.astro::__file_root__",
         "src/pages/isolated-components/PostCover.astro::__file_root__",
+        "src/pages/isolated-components/BackLink.astro::__file_root__",
+        "src/pages/isolated-components/LibraryCard.astro::__file_root__",
         "src/pages/isolated-components/FooterNav.astro::__file_root__",
+        "src/pages/isolated-components/LibrarySection.astro::__file_root__",
         "src/pages/isolated-components/BlogSection.astro::__file_root__",
         "src/pages/isolated-components/LogoLink.astro::__file_root__",
         "src/pages/isolated-components/PostCard.astro::__file_root__",
+        "src/pages/isolated-components/BookReportHeader.astro::__file_root__",
         "src/pages/isolated-components/ToolsSection.astro::__file_root__",
         "src/pages/isolated-components/SiteFooter.astro::__file_root__",
         "src/pages/isolated-components/HeroQuote.astro::__file_root__",
@@ -1965,5 +2400,5 @@
       ]
     }
   },
-  "lastUpdated": "2026-10-04T20:25:43Z"
+  "lastUpdated": "2026-10-05T00:24:46Z"
 }

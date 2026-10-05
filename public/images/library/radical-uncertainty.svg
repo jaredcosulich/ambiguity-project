@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" width="400" height="600">
+  <rect width="400" height="600" fill="#1f3b4d"/>
+  <rect x="24" y="24" width="352" height="552" fill="none" stroke="#f2c14e" stroke-width="2" opacity="0.5"/>
+  <text x="200" y="250" text-anchor="middle" font-family="Georgia, serif" font-size="44" font-weight="700" fill="#f2c14e">RADICAL</text>
+  <text x="200" y="302" text-anchor="middle" font-family="Georgia, serif" font-size="44" font-weight="700" fill="#f2c14e">UNCERTAINTY</text>
+  <line x1="150" y1="350" x2="250" y2="350" stroke="#f2c14e" stroke-width="2"/>
+  <text x="200" y="510" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" letter-spacing="2" fill="#f2c14e">JOHN KAY &amp; MERVYN KING</text>
+</svg>

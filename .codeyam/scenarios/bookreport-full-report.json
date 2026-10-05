@@ -1,0 +1,15 @@
+{
+  "name": "BookReport - Full Report",
+  "id": "0d922427-e8dd-4dc3-9ce9-38ba2d5c9317",
+  "url": "/isolated-components/BookReport",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-full.json"
+  },
+  "componentName": "BookReport",
+  "scenarioType": "component",
+  "description": "The full Radical Uncertainty book report: back link, cover and details, then the report with section headings and bold text."
+}

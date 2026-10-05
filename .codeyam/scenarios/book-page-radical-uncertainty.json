@@ -1,0 +1,15 @@
+{
+  "name": "Book Page - Radical Uncertainty",
+  "id": "176384ff-8674-4402-9ad1-1ddb921f6035",
+  "url": "/library/radical-uncertainty",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-full.json"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "src/pages/library/[slug].astro",
+  "description": "A book report page: back link, large slightly tilted cover beside the Book report label, title, author and summary, then the markdown report with section headings."
+}

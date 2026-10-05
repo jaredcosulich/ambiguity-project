@@ -68,4 +68,20 @@ const quotes = defineCollection({
   }),
 });
 
-export const collections = { pages, books, tools, quotes };
+// Books we have read and reviewed, listed in the Library (/library) by
+// `order`. The markdown body is the book report shown on /library/<slug>.
+const library = defineCollection({
+  loader: collectionLoader('library'),
+  schema: z.object({
+    title: z.string(),
+    author: z.string().optional(),
+    cover: z.string().optional(),
+    coverAlt: z.string().optional(),
+    summary: z.string().optional(),
+    order: z.number().optional(),
+    ...draftField,
+    ...seoFields,
+  }),
+});
+
+export const collections = { pages, books, tools, quotes, library };

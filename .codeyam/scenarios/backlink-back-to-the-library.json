@@ -1,0 +1,15 @@
+{
+  "name": "BackLink - Back To The Library",
+  "id": "01ef14bd-5edb-4da4-bfb5-a1c610a67459",
+  "url": "/isolated-components/BackLink",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-full.json"
+  },
+  "componentName": "BackLink",
+  "scenarioType": "component",
+  "description": "The small sage Back to the library link used at the top of a book report page."
+}

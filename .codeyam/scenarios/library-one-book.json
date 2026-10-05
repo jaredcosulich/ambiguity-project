@@ -1,0 +1,15 @@
+{
+  "name": "Library - One Book",
+  "id": "0110fd3f-c2c3-4680-8f93-00b4587836bc",
+  "url": "/library",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/library-one-book.json"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "src/pages/library/index.astro",
+  "description": "The Library with its very first review published: a single cover card at the start of the grid, the leanest populated state."
+}

@@ -1,0 +1,15 @@
+{
+  "name": "BookReportHeader - Cover",
+  "id": "ec853684-3430-429b-b0ab-a00c08277084",
+  "url": "/isolated-components/BookReportHeader",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-full.json"
+  },
+  "componentName": "BookReportHeader",
+  "scenarioType": "component",
+  "description": "Radical Uncertainty: the large slightly tilted cover beside the Book report label, title, author and italic summary."
+}

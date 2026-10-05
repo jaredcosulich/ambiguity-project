@@ -1,0 +1,15 @@
+{
+  "name": "Library - Six Reviewed Books",
+  "id": "77bd5264-2aa1-4a81-9ab8-86f76ace12cf",
+  "url": "/library",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-full.json"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "src/pages/library/index.astro",
+  "description": "The Library index with six reviewed books as an untilted cover grid with title and author; the sixth has no cover, so it shows the salmon title card."
+}

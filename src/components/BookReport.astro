@@ -1,0 +1,32 @@
+---
+// A reviewed book's page: a link back to the Library, the cover and details,
+// then the book report itself, which arrives as the default slot.
+import type { CollectionEntry } from 'astro:content';
+import BackLink from './BackLink.astro';
+import BookReportHeader from './BookReportHeader.astro';
+
+interface Props {
+  id: string;
+  book: CollectionEntry<'library'>['data'];
+}
+
+const { id, book } = Astro.props;
+---
+
+<article class="book wrap" data-cms-entry={`library/${id}`}>
+  <BackLink href="/library" label="Back to the library" />
+  <BookReportHeader book={book} />
+  <div class="report" data-cms-body>
+    <slot />
+  </div>
+</article>
+
+<style>
+  .book { display: flex; flex-direction: column; gap: clamp(32px, 4vw, 56px); padding-block: clamp(32px, 4vw, 56px) var(--section-y); }
+  .report { max-width: 720px; font-size: 18px; line-height: 1.65; color: var(--body); }
+  .report :global(p + p), .report :global(ul), .report :global(p + ul) { margin-top: 1em; }
+  .report :global(h2) { margin: 1.6em 0 0.5em; font-size: 26px; line-height: 1.2; color: var(--navy); }
+  .report :global(h2:first-child) { margin-top: 0; }
+  .report :global(ul) { padding-left: 1.2em; list-style: disc; }
+  .report :global(li + li) { margin-top: 0.4em; }
+</style>

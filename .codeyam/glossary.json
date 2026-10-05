@@ -1,5 +1,16 @@
 [
   {
+    "description": "A small sage arrow link back to a parent page, used at the top of a book report.",
+    "filePath": "src/components/BackLink.astro",
+    "name": "BackLink",
+    "scenarios": [
+      "backlink-back-to-the-library"
+    ],
+    "tags": [
+      "library"
+    ]
+  },
+  {
     "description": "The Blog section's launch-state card inviting visitors to subscribe on Substack before the first post exists.",
     "filePath": "src/components/BlogEmptyCard.astro",
     "name": "BlogEmptyCard",
@@ -45,6 +56,29 @@
     ],
     "tags": [
       "home-sections"
+    ]
+  },
+  {
+    "description": "A reviewed book's page: BackLink, BookReportHeader, then the report body from the slot with prose styling.",
+    "filePath": "src/components/BookReport.astro",
+    "name": "BookReport",
+    "scenarios": [
+      "bookreport-full-report"
+    ],
+    "tags": [
+      "library"
+    ]
+  },
+  {
+    "description": "The top of a book report page: the large slightly tilted cover beside the Book report label, title, author and summary; stacks on narrow screens.",
+    "filePath": "src/components/BookReportHeader.astro",
+    "name": "BookReportHeader",
+    "scenarios": [
+      "bookreportheader-cover",
+      "bookreportheader-no-cover-long-title"
+    ],
+    "tags": [
+      "library"
     ]
   },
   {
@@ -137,6 +171,74 @@
     ],
     "tags": [
       "home-sections"
+    ]
+  },
+  {
+    "description": "One reviewed book as a cover card (untilted cover or salmon title card, title, author) linking to its report page; editable in place through the CMS.",
+    "filePath": "src/components/LibraryCard.astro",
+    "name": "LibraryCard",
+    "scenarios": [
+      "librarycard-cover-and-missing-cover"
+    ],
+    "tags": [
+      "library"
+    ]
+  },
+  {
+    "description": "The note shown on the Library page before the first book report is published.",
+    "filePath": "src/components/LibraryEmpty.astro",
+    "name": "LibraryEmpty",
+    "scenarios": [
+      "libraryempty-default"
+    ],
+    "tags": [
+      "library"
+    ]
+  },
+  {
+    "description": "Every reviewed book as a responsive grid of LibraryCards.",
+    "filePath": "src/components/LibraryGrid.astro",
+    "name": "LibraryGrid",
+    "scenarios": [
+      "librarygrid-six-books"
+    ],
+    "tags": [
+      "library"
+    ]
+  },
+  {
+    "description": "The Library page heading: sage bracket label, Books we've read and reviewed title, and a one-line intro.",
+    "filePath": "src/components/LibraryHeader.astro",
+    "name": "LibraryHeader",
+    "scenarios": [
+      "libraryheader-default"
+    ],
+    "tags": [
+      "library"
+    ]
+  },
+  {
+    "description": "The Library page body: LibraryHeader above the LibraryGrid, or LibraryEmpty when no review is published.",
+    "filePath": "src/components/LibraryIndex.astro",
+    "name": "LibraryIndex",
+    "scenarios": [
+      "libraryindex-six-books",
+      "libraryindex-empty"
+    ],
+    "tags": [
+      "library"
+    ]
+  },
+  {
+    "description": "The home Library band on sage: up to four reviewed book covers plus an Explore the library link; renders nothing while the library is empty.",
+    "filePath": "src/components/LibrarySection.astro",
+    "name": "LibrarySection",
+    "scenarios": [
+      "librarysection-six-books-shows-four",
+      "librarysection-one-book"
+    ],
+    "tags": [
+      "library"
     ]
   },
   {
@@ -372,6 +474,15 @@
     "testFile": "src/lib/substack.test.ts"
   },
   {
+    "description": "Picks the first few reviewed books (already in order) for the home Library band; defaults to four, clamps a negative cap to zero, and never mutates its input.",
+    "filePath": "src/lib/library.ts",
+    "name": "homeLibraryBooks",
+    "tags": [
+      "library"
+    ],
+    "testFile": "src/lib/library.test.ts"
+  },
+  {
     "description": "Starting state of the hero typewriter: the first word on screen, ready to delete.",
     "filePath": "src/lib/typewriter.ts",
     "name": "initialTypewriterState",
@@ -418,6 +529,15 @@
       "blog"
     ],
     "testFile": "src/lib/substack.test.ts"
+  },
+  {
+    "description": "Builds a reviewed book's report page link, /library/<id>, under the site's deploy base; an empty id falls back to the Library index.",
+    "filePath": "src/lib/library.ts",
+    "name": "libraryHref",
+    "tags": [
+      "library"
+    ],
+    "testFile": "src/lib/library.test.ts"
   },
   {
     "description": "Joins the mission words into a screen-reader sentence with an Oxford comma.",

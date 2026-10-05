@@ -29,6 +29,37 @@
         "reason": "The only interaction is following a link out to Substack; there is no in-page state change to capture."
       }
     },
+    "BookReportHeader": {
+      "empty": {
+        "status": "n-a",
+        "reason": "Every book page belongs to a published entry with a required title, so a header with no book cannot be rendered."
+      },
+      "single": {
+        "status": "covered"
+      },
+      "typical": {
+        "status": "covered"
+      },
+      "many": {
+        "status": "n-a",
+        "reason": "The header always shows exactly one book."
+      },
+      "loading": {
+        "status": "n-a",
+        "reason": "Static pre-rendered page; library entries are read at build time, so there is no pending state."
+      },
+      "edge": {
+        "status": "covered"
+      },
+      "error": {
+        "status": "n-a",
+        "reason": "No runtime fetch can fail; an invalid library entry fails the build instead of reaching a visitor."
+      },
+      "key-interaction": {
+        "status": "n-a",
+        "reason": "The header has no interactive controls."
+      }
+    },
     "HomePage": {
       "empty": {
         "status": "added"
@@ -55,6 +86,97 @@
       },
       "key-interaction": {
         "status": "covered"
+      }
+    },
+    "LibraryCard": {
+      "empty": {
+        "status": "n-a",
+        "reason": "A card is only rendered for an existing library entry, which always has a title."
+      },
+      "single": {
+        "status": "covered"
+      },
+      "typical": {
+        "status": "covered"
+      },
+      "many": {
+        "status": "n-a",
+        "reason": "A card shows exactly one book; many books are the LibraryGrid and LibrarySection scenarios."
+      },
+      "loading": {
+        "status": "n-a",
+        "reason": "Static pre-rendered page; library entries are read at build time, so there is no pending state."
+      },
+      "edge": {
+        "status": "covered"
+      },
+      "error": {
+        "status": "n-a",
+        "reason": "No runtime fetch can fail; an invalid library entry fails the build instead of reaching a visitor."
+      },
+      "key-interaction": {
+        "status": "n-a",
+        "reason": "Clicking the card navigates to the book page, which has its own scenarios; the card itself has no interactive state."
+      }
+    },
+    "LibraryIndex": {
+      "empty": {
+        "status": "covered"
+      },
+      "single": {
+        "status": "covered"
+      },
+      "typical": {
+        "status": "covered"
+      },
+      "many": {
+        "status": "covered"
+      },
+      "loading": {
+        "status": "n-a",
+        "reason": "Static pre-rendered page; library entries are read at build time, so there is no pending state."
+      },
+      "edge": {
+        "status": "covered"
+      },
+      "error": {
+        "status": "n-a",
+        "reason": "No runtime fetch can fail; an invalid library entry fails the build instead of reaching a visitor."
+      },
+      "key-interaction": {
+        "status": "n-a",
+        "reason": "The only interaction is following a link to a book page; there is no in-page state change to capture."
+      }
+    },
+    "LibrarySection": {
+      "empty": {
+        "status": "n-a",
+        "reason": "With no published review the band renders nothing at all, so there is no frame to capture; the home page simply has no Library band."
+      },
+      "single": {
+        "status": "covered"
+      },
+      "typical": {
+        "status": "covered"
+      },
+      "many": {
+        "status": "covered"
+      },
+      "loading": {
+        "status": "n-a",
+        "reason": "Static pre-rendered page; library entries are read at build time, so there is no pending state."
+      },
+      "edge": {
+        "status": "n-a",
+        "reason": "Titles and covers in the band come from LibraryCard, whose missing-cover and long-title edge is captured in its own scenario."
+      },
+      "error": {
+        "status": "n-a",
+        "reason": "No runtime fetch can fail; an invalid library entry fails the build instead of reaching a visitor."
+      },
+      "key-interaction": {
+        "status": "n-a",
+        "reason": "The only interaction is following a link to a book page; there is no in-page state change to capture."
       }
     }
   }

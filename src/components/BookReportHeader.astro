@@ -1,0 +1,34 @@
+---
+// The top of a book report page: the large cover beside the "Book report"
+// label, title, author and summary (stacked on narrow screens).
+import type { CollectionEntry } from 'astro:content';
+import BookCover from './BookCover.astro';
+
+interface Props {
+  book: CollectionEntry<'library'>['data'];
+}
+
+const { title, author, cover, coverAlt, summary } = Astro.props.book;
+---
+
+<header class="book-head">
+  <BookCover title={title} cover={cover} coverAlt={coverAlt} size="large" />
+  <div class="meta">
+    <p class="label">Book report</p>
+    <h1 data-cms-field="title">{title}</h1>
+    {author && <p class="author">by <span data-cms-field="author">{author}</span></p>}
+    {summary && <p class="summary" data-cms-field="summary">{summary}</p>}
+  </div>
+</header>
+
+<style>
+  .book-head { display: flex; align-items: center; gap: clamp(32px, 5vw, 80px); }
+  .meta { display: flex; flex-direction: column; gap: 16px; max-width: 640px; }
+  .meta .label { color: var(--sage-text); --bracket: var(--sage); }
+  h1 { font-size: clamp(32px, 3.6vw, 52px); line-height: 1.08; letter-spacing: -0.02em; color: var(--navy); }
+  .author { font-family: var(--sans); font-size: 17px; font-weight: 600; color: var(--muted); }
+  .summary { font-size: 20px; line-height: 1.5; font-style: italic; color: var(--body); }
+  @media (max-width: 720px) {
+    .book-head { flex-direction: column; align-items: flex-start; }
+  }
+</style>

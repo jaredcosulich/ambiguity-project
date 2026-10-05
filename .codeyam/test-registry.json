@@ -145,6 +145,51 @@
       "runner": "tests"
     },
     {
+      "description": "Six reviewed books show only the first four in the home Library band.",
+      "file": "src/lib/library.test.ts",
+      "format": "vitest",
+      "key": "homeLibraryBooks › caps the list at four by default",
+      "line": 6,
+      "registeredAt": "2026-10-05T00:09:28Z",
+      "runner": "tests"
+    },
+    {
+      "description": "The input list is never mutated.",
+      "file": "src/lib/library.test.ts",
+      "format": "vitest",
+      "key": "homeLibraryBooks › does not modify the list it is given",
+      "line": 28,
+      "registeredAt": "2026-10-05T00:09:28Z",
+      "runner": "tests"
+    },
+    {
+      "description": "A custom cap is respected and a negative one clamps to zero without throwing.",
+      "file": "src/lib/library.test.ts",
+      "format": "vitest",
+      "key": "homeLibraryBooks › honours a custom cap and clamps a negative one to zero",
+      "line": 22,
+      "registeredAt": "2026-10-05T00:09:28Z",
+      "runner": "tests"
+    },
+    {
+      "description": "An empty library yields no books, which hides the home band.",
+      "file": "src/lib/library.test.ts",
+      "format": "vitest",
+      "key": "homeLibraryBooks › returns an empty list for an empty library",
+      "line": 17,
+      "registeredAt": "2026-10-05T00:09:28Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Fewer books than the cap are all shown, in their incoming order.",
+      "file": "src/lib/library.test.ts",
+      "format": "vitest",
+      "key": "homeLibraryBooks › returns every book when under the cap",
+      "line": 12,
+      "registeredAt": "2026-10-05T00:09:28Z",
+      "runner": "tests"
+    },
+    {
       "description": "No words means an empty slot.",
       "file": "src/lib/typewriter.test.ts",
       "format": "vitest",
@@ -232,6 +277,42 @@
       "key": "latestPosts › returns the newest three by default",
       "line": 131,
       "registeredAt": "2026-10-04T18:48:14Z",
+      "runner": "tests"
+    },
+    {
+      "description": "A book page lives at /library/<id> under the root base.",
+      "file": "src/lib/library.test.ts",
+      "format": "vitest",
+      "key": "libraryHref › builds the book page path at the domain root",
+      "line": 37,
+      "registeredAt": "2026-10-05T00:09:28Z",
+      "runner": "tests"
+    },
+    {
+      "description": "No id points at the library index rather than a broken book path.",
+      "file": "src/lib/library.test.ts",
+      "format": "vitest",
+      "key": "libraryHref › falls back to the library index for an empty id",
+      "line": 52,
+      "registeredAt": "2026-10-05T00:09:28Z",
+      "runner": "tests"
+    },
+    {
+      "description": "A base without a trailing slash still produces a single separator.",
+      "file": "src/lib/library.test.ts",
+      "format": "vitest",
+      "key": "libraryHref › handles a base without a trailing slash",
+      "line": 47,
+      "registeredAt": "2026-10-05T00:09:28Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Under the GitHub Pages subpath the base is prefixed.",
+      "file": "src/lib/library.test.ts",
+      "format": "vitest",
+      "key": "libraryHref › prefixes the deploy base when the site lives under a subpath",
+      "line": 42,
+      "registeredAt": "2026-10-05T00:09:28Z",
       "runner": "tests"
     },
     {

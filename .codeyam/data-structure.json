@@ -204,6 +204,60 @@
     ]
   },
   {
+    "name": "LibraryBook",
+    "description": "Books The Ambiguity Project has reviewed (`library` content collection, src/content/library/*). Listed as a cover grid at /library, each with a book-report page at /library/<slug>; the newest few show in the home Library band.",
+    "category": "datastore",
+    "order": 3,
+    "fields": [
+      {
+        "name": "slug",
+        "type": "string",
+        "required": true,
+        "isId": true
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "author",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "cover",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "coverAlt",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "summary",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "order",
+        "type": "number",
+        "required": false
+      },
+      {
+        "name": "draft",
+        "type": "boolean",
+        "required": false
+      },
+      {
+        "name": "body",
+        "type": "string",
+        "required": false
+      }
+    ]
+  },
+  {
     "name": "Tool",
     "description": "Technology section entries (`tools` content collection, src/content/tools/*). Home shows the first three by order; zero hides the section.",
     "category": "datastore",

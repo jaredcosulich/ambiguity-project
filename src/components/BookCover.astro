@@ -1,21 +1,25 @@
 ---
-// A book's tilted cover, or a salmon title card when no cover is set.
+// A book's cover, or a salmon title card when no cover is set. `size`
+// picks the look: `feature` is the tilted home-band cover, `card` fills a
+// library grid cell untilted, and `large` is the slightly tilted book-page
+// cover.
 import { withBase } from '../lib/base';
 
 interface Props {
   title: string;
   cover?: string;
   coverAlt?: string;
+  size?: 'feature' | 'card' | 'large';
 }
 
-const { title, cover, coverAlt } = Astro.props;
+const { title, cover, coverAlt, size = 'feature' } = Astro.props;
 ---
 
 {
   cover ? (
-    <img class="cover" src={withBase(cover)} alt={coverAlt ?? `Cover of ${title}`} data-cms-field="cover" />
+    <img class:list={['cover', `cover-${size}`]} src={withBase(cover)} alt={coverAlt ?? `Cover of ${title}`} data-cms-field="cover" />
   ) : (
-    <div class="cover cover-missing" aria-hidden="true">
+    <div class:list={['cover', `cover-${size}`, 'cover-missing']} aria-hidden="true">
       <span>{title}</span>
     </div>
   )
@@ -24,7 +28,12 @@ const { title, cover, coverAlt } = Astro.props;
 <style>
   .cover { width: clamp(200px, 22vw, 288px); aspect-ratio: 2 / 3; height: auto; flex-shrink: 0; object-fit: cover; border-radius: 2px; box-shadow: 0 2px 4px rgba(43,29,51,0.14), 0 26px 52px rgba(43,29,51,0.28); transform: rotate(-4deg); transition: transform .45s cubic-bezier(.2,.8,.2,1); }
   .cover:hover { transform: rotate(0deg) translateY(-6px) scale(1.02); }
-  .cover-missing { display: flex; align-items: center; justify-content: center; padding: 24px; background: var(--salmon); color: var(--plum); font-size: 22px; line-height: 1.2; text-align: center; }
+  .cover.cover-card { width: 100%; box-shadow: 0 1px 3px rgba(43,29,51,0.12), 0 12px 28px rgba(43,29,51,0.18); transform: none; }
+  .cover.cover-card:hover { transform: translateY(-4px); }
+  .cover.cover-large { width: clamp(220px, 26vw, 340px); transform: rotate(-2deg); }
+  .cover.cover-large:hover { transform: rotate(0deg); }
+  .cover-missing { display: flex; align-items: center; justify-content: center; padding: 24px; background: var(--salmon); color: var(--plum); font-size: 22px; line-height: 1.2; text-align: center; overflow-wrap: anywhere; }
+  .cover-card.cover-missing { padding: 16px; font-size: 18px; }
   @media (prefers-reduced-motion: reduce) {
     .cover { transition: none; }
   }

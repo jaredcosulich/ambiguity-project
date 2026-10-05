@@ -1,0 +1,22 @@
+---
+// Every reviewed book (already in `order`) as a responsive grid of cover cards.
+import type { CollectionEntry } from 'astro:content';
+import LibraryCard from './LibraryCard.astro';
+
+interface Props {
+  books: CollectionEntry<'library'>[];
+}
+
+const { books } = Astro.props;
+---
+
+<div class="grid">
+  {books.map((book) => <LibraryCard id={book.id} book={book.data} />)}
+</div>
+
+<style>
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(190px, 100%), 1fr)); gap: clamp(28px, 3vw, 48px) clamp(20px, 2.5vw, 36px); }
+  @media (max-width: 480px) {
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+</style>

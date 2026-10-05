@@ -1,0 +1,15 @@
+{
+  "name": "LibraryCard - Cover And Missing Cover",
+  "id": "bf2bd0e2-46af-4cea-9361-9fa113c7d996",
+  "url": "/isolated-components/LibraryCard",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/library-no-cover-long-title.json"
+  },
+  "componentName": "LibraryCard",
+  "scenarioType": "component",
+  "description": "Two cards at home-band width: a long-titled book without a cover shows the salmon title card, beside a book with its cover."
+}

@@ -1,0 +1,15 @@
+{
+  "name": "LibraryIndex - Empty",
+  "id": "e24e0a22-c83c-407b-b61b-fa0da76754df",
+  "url": "/isolated-components/LibraryIndex",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/library-empty.json"
+  },
+  "componentName": "LibraryIndex",
+  "scenarioType": "component",
+  "description": "The Library page body before the first review: heading above the on-the-way note instead of an empty grid."
+}

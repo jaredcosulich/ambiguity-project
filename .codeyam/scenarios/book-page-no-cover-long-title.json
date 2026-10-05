@@ -1,0 +1,15 @@
+{
+  "name": "Book Page - No Cover Long Title",
+  "id": "73a09981-e711-4ccd-bdbd-075f221141b5",
+  "url": "/library/not-knowing",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/library-no-cover-long-title.json"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "src/pages/library/[slug].astro",
+  "description": "A book with no cover image and a long title: the large salmon title card stands in for the cover and the long title wraps beside it."
+}

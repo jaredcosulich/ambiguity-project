@@ -38,18 +38,33 @@
         { "name": "attribution", "label": "Attribution", "type": "text", "optional": true },
         { "name": "order", "label": "Order", "type": "number", "optional": true, "hint": "The home page hero shows the lowest-numbered quote." }
       ]
+    },
+    {
+      "id": "library",
+      "label": "Library",
+      "singular": "book",
+      "fields": [
+        { "name": "title", "label": "Title", "type": "text" },
+        { "name": "author", "label": "Author", "type": "text", "optional": true },
+        { "name": "cover", "label": "Cover image", "type": "image", "optional": true },
+        { "name": "coverAlt", "label": "Cover description", "type": "text", "optional": true, "hint": "Describes the cover for screen readers." },
+        { "name": "summary", "label": "Summary", "type": "textarea", "optional": true, "hint": "One or two sentences shown under the title on the book's page." },
+        { "name": "order", "label": "Order", "type": "number", "optional": true, "hint": "Lower numbers show first; the home page shows the first four." }
+      ]
     }
   ],
   "paths": {
     "pages": "/:slug",
     "books": "/",
     "tools": "/",
-    "quotes": "/"
+    "quotes": "/",
+    "library": "/library/:slug"
   },
   "order": {
     "books": { "field": "order" },
     "tools": { "field": "order" },
-    "quotes": { "field": "order" }
+    "quotes": { "field": "order" },
+    "library": { "field": "order" }
   },
   "settings": [
     {

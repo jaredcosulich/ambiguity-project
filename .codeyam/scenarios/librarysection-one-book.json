@@ -1,0 +1,15 @@
+{
+  "name": "LibrarySection - One Book",
+  "id": "e87af83b-cb1d-4a52-b99b-230e2d17ac8d",
+  "url": "/isolated-components/LibrarySection",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/library-one-book.json"
+  },
+  "componentName": "LibrarySection",
+  "scenarioType": "component",
+  "description": "The home Library band with a single reviewed book: one cover in the first column and the Explore the library link."
+}

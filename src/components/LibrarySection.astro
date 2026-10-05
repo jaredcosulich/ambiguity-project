@@ -1,0 +1,48 @@
+---
+// The home Library band: the first few reviewed books (already in `order`) as
+// a row of covers, plus a link to the full library. Renders nothing until the
+// first review is published, so the home page has no empty band.
+import type { CollectionEntry } from 'astro:content';
+import LibraryCard from './LibraryCard.astro';
+import { withBase } from '../lib/base';
+import { homeLibraryBooks } from '../lib/library';
+
+interface Props {
+  books: CollectionEntry<'library'>[];
+}
+
+const { books } = Astro.props;
+const shown = homeLibraryBooks(books);
+---
+
+{
+  shown.length > 0 && (
+    <section id="library" class="library-section" aria-labelledby="library-h">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="label">Library</p>
+            <h2 id="library-h">Books we've read and reviewed.</h2>
+          </div>
+          <a class="more" href={withBase('/library')}>Explore the library →</a>
+        </div>
+        <div class="library-row">
+          {shown.map((book) => <LibraryCard id={book.id} book={book.data} />)}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .library-section { padding-block: var(--section-y); background: var(--sage-tint); }
+  .library-section .label { color: var(--sage-text); --bracket: var(--sage); }
+  .library-section .more { color: var(--sage-text); }
+  .section-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px 32px; margin-bottom: clamp(28px, 3vw, 38px); }
+  .section-head > div { display: flex; flex-direction: column; gap: 19px; max-width: 720px; }
+  .library-section h2 { font-size: clamp(26px, 2.5vw, 35px); line-height: 1.18; }
+  .library-row { display: grid; grid-template-columns: repeat(4, minmax(0, 220px)); gap: clamp(20px, 3vw, 48px); }
+  @media (max-width: 900px) {
+    .library-row { grid-template-columns: repeat(2, minmax(0, 220px)); }
+  }
+</style>

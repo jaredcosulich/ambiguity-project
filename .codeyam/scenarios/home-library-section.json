@@ -1,0 +1,21 @@
+{
+  "name": "Home - Library Section",
+  "id": "c14e1ad3-3c09-4046-ab58-1f7c70b2fdf6",
+  "url": "/?typewriter=static#library",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-full.json"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "src/pages/index.astro",
+  "description": "Home page scrolled to the new Library band below Books: the first four reviewed books as covers with an Explore the library link.",
+  "interactions": [
+    {
+      "action": "hover",
+      "selector": "#library-h"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+---
+// One page per published reviewed book, at /library/<slug>: the book's cover
+// and details, then its report (the entry's markdown body). Drafts are
+// filtered so an unfinished report is not reachable.
+import { getCollection, render } from 'astro:content';
+import { publishedEntries } from '@codeyam/cms/content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BookReport from '../../components/BookReport.astro';
+
+export async function getStaticPaths() {
+  const books = publishedEntries(await getCollection('library'));
+  return books.map((book) => ({ params: { slug: book.id }, props: { book } }));
+}
+
+const { book } = Astro.props;
+const { Content } = await render(book);
+---
+
+<BaseLayout title={book.data.title} description={book.data.summary} image={book.data.cover}>
+  <BookReport id={book.id} book={book.data}>
+    <Content />
+  </BookReport>
+</BaseLayout>

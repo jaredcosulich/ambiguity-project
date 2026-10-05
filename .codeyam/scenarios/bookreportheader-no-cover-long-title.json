@@ -1,0 +1,15 @@
+{
+  "name": "BookReportHeader - No Cover Long Title",
+  "id": "ed7fc12c-ea99-43b1-9764-37e234399315",
+  "url": "/isolated-components/BookReportHeader",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/library-no-cover-long-title.json"
+  },
+  "componentName": "BookReportHeader",
+  "scenarioType": "component",
+  "description": "A book with no cover and a long title: the large salmon title card stands in for the cover and the title wraps over three lines."
+}

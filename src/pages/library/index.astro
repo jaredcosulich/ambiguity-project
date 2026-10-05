@@ -1,0 +1,15 @@
+---
+// The Library: every published reviewed book as a cover grid, in `order`.
+// Before the first review is published it shows a short "on the way" note.
+import { getCollection } from 'astro:content';
+import { publishedEntries } from '@codeyam/cms/content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LibraryIndex from '../../components/LibraryIndex.astro';
+import { sortByOrder } from '../../lib/contentOrder';
+
+const books = sortByOrder(publishedEntries(await getCollection('library')));
+---
+
+<BaseLayout title="Library" description="Books The Ambiguity Project has read and reviewed.">
+  <LibraryIndex books={books} />
+</BaseLayout>

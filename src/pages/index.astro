@@ -13,6 +13,7 @@ import BooksSection from '../components/BooksSection.astro';
 import ToolsSection from '../components/ToolsSection.astro';
 import LearnMore from '../components/LearnMore.astro';
 import BlogSection from '../components/BlogSection.astro';
+import LibrarySection from '../components/LibrarySection.astro';
 import { getSettings } from '../lib/site';
 import { getSubstackPosts } from '../lib/substack';
 import { pickFirstByOrder, sortByOrder } from '../lib/contentOrder';
@@ -20,6 +21,7 @@ import { pickFirstByOrder, sortByOrder } from '../lib/contentOrder';
 const settings = getSettings();
 const books = sortByOrder(publishedEntries(await getCollection('books')));
 const tools = sortByOrder(publishedEntries(await getCollection('tools')));
+const library = sortByOrder(publishedEntries(await getCollection('library')));
 const quote = pickFirstByOrder(await getCollection('quotes'));
 const posts = getSubstackPosts();
 ---
@@ -27,6 +29,7 @@ const posts = getSubstackPosts();
 <BaseLayout description={settings.description}>
   <Hero settings={settings} quote={quote?.data} />
   <BooksSection books={books} />
+  <LibrarySection books={library} />
   <BlogSection posts={posts} substackUrl={settings.substackUrl} siteTitle={settings.siteTitle} />
   <ToolsSection tools={tools} heading={settings.toolsHeading} allUrl={settings.toolsAllUrl} />
   <LearnMore

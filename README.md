@@ -22,11 +22,11 @@ design/mockup/       # the original hand-written mockup — the visual source of
 public/              # favicon, apple-touch-icon, images (served as-is)
 src/
   components/        # SiteHeader, SiteFooter and their parts, one component per file
-  content/config.ts  # content collections (currently `pages`)
+  content/config.ts  # content collections: pages, books, tools, quotes, library (reviewed books)
   data/              # editable JSON: settings.json, nav.json, cms.json, collections.json
   layouts/           # BaseLayout: <head>, fonts, header, footer
   lib/               # site data loading, withBase(), nav links, mobile menu
-  pages/             # routes; the home page is a shell the section plans fill in
+  pages/             # routes: the home page, /<slug> pages, /library and /library/<slug> book reports
   styles/            # tokens.css (design tokens) and global.css (shared rules)
 ```
 
@@ -71,7 +71,7 @@ codeyam-editor start
 ```
 <!-- codeyam:run-and-edit:end -->
 
-<!-- codeyam:scenario-gallery:start d=31bc91a177ba -->
+<!-- codeyam:scenario-gallery:start d=66c479997231 -->
 ## Scenario gallery
 
 States captured as runnable scenarios with codeyam-editor:
@@ -82,11 +82,11 @@ States captured as runnable scenarios with codeyam-editor:
 
 The About page that the Learn More button opens, rendered from the pages collection with the shared header and footer.
 
-### Home - Blog Latest Posts Mobile
+### Book Page - Radical Uncertainty Mobile
 
-<img src=".codeyam/scenarios/screenshots/home-blog-latest-posts-mobile--mobile.png" alt="Home - Blog Latest Posts Mobile" width="280">
+<img src=".codeyam/scenarios/screenshots/book-page-radical-uncertainty-mobile--mobile.png" alt="Book Page - Radical Uncertainty Mobile" width="280">
 
-At phone width the Blog section stacks the newest posts in a single column, with the All posts link wrapping under the heading.
+A book report at phone width: the cover stacks above the title, author and summary, with the back link on top.
 
 ### Home - Blog Latest Posts Tablet
 
@@ -100,6 +100,18 @@ At tablet width the Blog section shows two cards side by side and hides the thir
 
 CodeYam CMS dashboard at /admin showing the pages collection and the Site settings entry point.
 
+### Home - Blog Latest Posts Mobile
+
+<img src=".codeyam/scenarios/screenshots/home-blog-latest-posts-mobile--mobile.png" alt="Home - Blog Latest Posts Mobile" width="280">
+
+At phone width the Blog section stacks the newest posts in a single column, with the All posts link wrapping under the heading.
+
+### Book Page - No Cover Long Title
+
+<img src=".codeyam/scenarios/screenshots/book-page-no-cover-long-title--desktop.png" alt="Book Page - No Cover Long Title" width="280">
+
+A book with no cover image and a long title: the large salmon title card stands in for the cover and the long title wraps beside it.
+
 ### Home Shell - Mobile Menu Open
 
 <img src=".codeyam/scenarios/screenshots/home-shell-mobile-menu-open--mobile.png" alt="Home Shell - Mobile Menu Open" width="280">
@@ -111,16 +123,4 @@ Home page at mobile width after tapping Menu: the nav drops down as divided rows
 <img src=".codeyam/scenarios/screenshots/home-blog-latest-posts--desktop.png" alt="Home - Blog Latest Posts" width="280">
 
 Home page scrolled to the Blog section with ten synced Substack posts: only the newest three show as cards, one without a cover image falls back to the ochre site-name panel.
-
-### Home - Full Content Mobile
-
-<img src=".codeyam/scenarios/screenshots/home-full-content-mobile--mobile.png" alt="Home - Full Content Mobile" width="280">
-
-Full CMS-driven home page at phone width: hero stacks above the quote, the book stacks above its copy, tool cards fill the width.
-
-### Home Shell - Desktop
-
-<img src=".codeyam/scenarios/screenshots/home-shell-desktop--desktop.png" alt="Home Shell - Desktop" width="280">
-
-Home page at desktop width with the committed launch content, scrolled to Learn More: with no tools published the Technology section is hidden, so the Books band runs straight into Learn More and the footer.
 <!-- codeyam:scenario-gallery:end -->

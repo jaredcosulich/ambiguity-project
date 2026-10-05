@@ -1,0 +1,24 @@
+---
+import Component from '../../components/BackLink.astro';
+import '../../styles/global.css';
+
+// Isolation page for BackLink — codeyam screenshots the #codeyam-capture wrapper by
+// navigating to /isolated-components/BackLink. Shown with the label the book report
+// page uses.
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Isolated: BackLink</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap" />
+  </head>
+  <body style="margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+    <div id="codeyam-capture" style="padding: 48px; display: flex; flex-direction: column;">
+      <Component href="/library" label="Back to the library" />
+    </div>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "LibraryGrid - Six Books",
+  "id": "f8ecde17-36ab-4375-8b41-c37710a7266a",
+  "url": "/isolated-components/LibraryGrid",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-full.json"
+  },
+  "componentName": "LibraryGrid",
+  "scenarioType": "component",
+  "description": "Six reviewed books in the responsive cover grid: five untilted covers per row at desktop width, the sixth wraps with its salmon title card."
+}

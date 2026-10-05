@@ -1,0 +1,28 @@
+---
+// One reviewed book in the Library grid: its cover, title and author, linking
+// to the book's report page at /library/<id>.
+import type { CollectionEntry } from 'astro:content';
+import BookCover from './BookCover.astro';
+import { libraryHref } from '../lib/library';
+
+interface Props {
+  id: string;
+  book: CollectionEntry<'library'>['data'];
+}
+
+const { id, book } = Astro.props;
+---
+
+<a class="library-card" href={libraryHref(id)} data-cms-entry={`library/${id}`}>
+  <BookCover title={book.title} cover={book.cover} coverAlt={book.coverAlt} size="card" />
+  <span class="title" data-cms-field="title">{book.title}</span>
+  {book.author && <span class="author" data-cms-field="author">{book.author}</span>}
+</a>
+
+<style>
+  .library-card { display: flex; flex-direction: column; gap: 6px; min-width: 0; color: inherit; text-decoration: none; }
+  .library-card > :global(.cover) { margin-bottom: 12px; }
+  .title { font-family: var(--serif); font-size: 19px; line-height: 1.25; color: var(--navy); }
+  .library-card:hover .title { text-decoration: underline; text-underline-offset: 4px; }
+  .author { font-family: var(--sans); font-size: 14px; color: var(--muted); }
+</style>

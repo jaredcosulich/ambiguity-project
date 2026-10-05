@@ -1,0 +1,767 @@
+{
+  "timestamp": "2026-10-05T00:23:37Z",
+  "title": "Library of Reviewed Books with Book Pages",
+  "type": "feature",
+  "userRequest": "## Summary\n\nAdd a **Library** of the books The Ambiguity Project has reviewed. A new \"Library\" link in the top nav goes to `/library`, a grid of every reviewed book shown as a cover card (cover, title, author). Clicking a card opens that book's page at `/library/<slug>`, with a larger cover, the book's details, and the full \"book report\" (the markdown body of the entry). The home page gets a new Library section: the newest few covers in a row plus an \"Explore the library →\" link. Reviewed books are a **new, separate CMS collection** (`library`). The existing `books` collection keeps driving the Ambiguity Everywhere band and its pre-order button, unchanged.\n\n## Key Decisions\n\n- **Separate `library` collection, not the existing `books` one.** `books` means \"our own book(s)\" and carries pre-order fields (eyebrow, primary/secondary buttons). A reviewed book needs different fields (author, report body). The user confirmed this split.\n- **Book report = markdown body** of each library entry, rendered with `render()` the same way `src/pages/[slug].astro` renders pages. The CMS edits it as rich text, so writing a report needs no code change.\n- **Routes live under `/library/`.** `/library` is the index and `/library/[slug]` is a book. This keeps book slugs from colliding with `pages` slugs at the root `/[slug]` route. For example, `ambiguity-everywhere` already exists as a page.\n- **Nav: insert \"Library\" after \"Books\"** in `src/data/nav.json` with `url: \"/library\"`. `toNavLinks` flags the *last* item as the CTA, so \"Support Us\" stays the button. A page link goes through `withBase()` the same way the anchors do.\n- **Home section: a row of covers + link.** Show up to 4 books in `order`, each linking to its book page, plus \"Explore the library →\". When the library is empty, render nothing (no empty band), so the home page stays clean until the first review is published.\n- **Reuse `BookCover`** for the cover art, including its salmon title-card fallback when an entry has no cover. A size option keeps the grid card cover at normal size and makes the book page's cover large. The book page and grid should show covers untilted, or at most slightly tilted. Decide the look against the scenarios.\n- Drafts are filtered with `publishedEntries` everywhere, as with `pages`/`books`, so a draft report is not publicly reachable.\n\n## Implementation\n\n### 1. Library collection schema\n\n**File**: `src/content/config.ts`\n\nAdd a `library` collection with `collectionLoader('library')`. Fields: `title` (required), `author` (string, optional), `cover` / `coverAlt` (optional), `summary` (optional, one or two sentences for the card and page header), `order` (optional), `...draftField`, `...seoFields`. Export it in `collections`.\n\n### 2. CMS wiring\n\n**File**: `src/data/collections.json`\n\nAdd a `library` collection entry (label \"Library\", singular \"book\") with the fields above (`cover` as `type: \"image\"`) and a body/report field if the CMS needs one declared. Add `\"library\": \"/library/:slug\"` to `paths` and `\"library\": { \"field\": \"order\" }` to `order`.\n\n### 3. Library index page\n\n**New file**: `src/pages/library/index.astro`\n\n`BaseLayout` with a heading (e.g. \"Library\" bracket label + \"Books we've read and reviewed\"), and a responsive grid of `LibraryCard`s for every published entry sorted with `sortByOrder`. Empty state: a short \"Our first book reports are on the way\" message instead of an empty grid.\n\n### 4. Book page\n\n**New file**: `src/pages/library/[slug].astro`\n\n`getStaticPaths` over published library entries. Layout: large cover beside the title, author and summary (stacked on mobile), then the rendered report body with the same prose styling `ContentPage` gives pages. Include a \"← Back to the library\" link. Pass title/summary to `BaseLayout` for SEO.\n\n### 5. Components\n\n**New file**: `src/components/LibraryCard.astro`: one cover card (cover via `BookCover`, title, author) linking to `withBase('/library/<id>')`, with `data-cms-entry={`library/${id}`}` so the CMS can edit it in place.\n\n**New file**: `src/components/LibrarySection.astro`: the home band, `id=\"library\"`, label \"Library\", heading, up to 4 `LibraryCard`s, \"Explore the library →\" link. Renders nothing for an empty list.\n\n**File**: `src/components/BookCover.astro`: add an optional size/tilt prop for the large book-page cover and the untilted grid cover. The existing call in `BookFeature` keeps its current look.\n\n### 6. Home page and nav\n\n**File**: `src/pages/index.astro`: load `sortByOrder(publishedEntries(await getCollection('library')))` and render `<LibrarySection>` right after `<BooksSection>`.\n\n**File**: `src/data/nav.json`: add `{ \"label\": \"Library\", \"url\": \"/library\" }` after \"Books\". Update the real-nav case in `src/lib/navLinks.test.ts` if it asserts the site's actual item list.\n\n### 7. Content and seeds\n\n**New file**: `src/content/library/` with at least one real entry once the user supplies a book and report. Until then, seed data drives the scenarios. Cover images go under `public/images/library/`.\n\n**New file**: `.codeyam/seeds/library-*.json` seeds (several books with covers and reports, one book, empty, one book with no cover / long title). Isolation pages for `LibraryCard` and `LibrarySection` under `src/pages/isolated-components/`, following the existing ones.\n\n## Reused existing code\n\n- `BookCover` from `src/components/BookCover.astro`: cover art and missing-cover fallback\n- `sortByOrder` from `src/lib/contentOrder.ts`: stable ordering\n- `withBase` from `src/lib/base.ts`: every internal link and cover src\n- `toNavLinks` from `src/lib/navLinks.ts`: nav rendering, last item stays the CTA\n- `collectionLoader` via `src/lib/watchedCollectionLoader.ts`: sandbox-aware loader so seeds work\n- `ContentPage` from `src/components/ContentPage.astro` and `src/pages/[slug].astro`: pattern for rendering a markdown body as a page\n- `BlogSection` from `src/components/BlogSection.astro`: section-head + grid + \"All posts →\" layout to mirror for the home Library band\n- `publishedEntries` from `@codeyam/cms/content`: draft filtering\n\n## Scenarios to Demonstrate\n\n- Library page with 6–8 reviewed books with real-looking covers (rich grid, desktop and mobile)\n- Library page empty state (no reviews yet)\n- Library page where one book has no cover (salmon title-card fallback) and one has a very long title\n- Book page: full report with headings, quotes and lists, plus a large cover\n- Book page: short report, no cover, no author\n- Home page with the Library section (4 covers + explore link), and with only 1–2 books\n- Home page with an empty library: the section is absent and the rest of the page is unchanged\n- Header nav showing \"Library\" between Books and Blog, with Support Us still the button (desktop and mobile menu)",
+  "description": "Added a Library of books The Ambiguity Project has reviewed: a new `library` CMS collection (title, author, cover, summary, order, markdown report), a /library page with an untilted cover grid, a /library/<slug> book report page with a large cover beside the details and the rendered report, a Library menu link, and a home Library band showing the first four books with an Explore the library link (hidden while the library is empty). Built from LibraryIndex/LibraryHeader/LibraryGrid/LibraryEmpty/LibraryCard/LibrarySection/BookReport/BookReportHeader/BackLink, with a size option on BookCover and two tested helpers (homeLibraryBooks, libraryHref).\n\nScope verdict: no tracked project deliverable was in scope for this cycle; the four delivered deliverables stay delivered and Support Us remains deferred by the user (not a priority yet). Within this plan, real book reports are deferred until the user supplies a book and report: the site ships with an empty library (no band on the home page, an on-the-way note at /library), and the six books in the scenarios are sample data only. Note: right after scenario data is reloaded, the dev server briefly serves the old book list, so a book page can 404 for under a second; published builds are static and unaffected.",
+  "modifiedFiles": [
+    {
+      "path": ".codeyam/data-structure.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/glossary.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/per-test-evidence.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/plans/library-of-reviewed-books-with-book-pages.md\t.codeyam/plans/completed/library-of-reviewed-books-with-book-pages.md",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/home-full-content.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/.capture-pipeline.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/about-page--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/admin-dashboard-pages-and-site-settings--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/admin-dashboard-pages-and-site-settings--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/bookcover-cover-and-missing-cover--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/bookcover-cover-and-missing-cover--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/bookfeature-default--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/bookfeature-default--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/bookssection-one-book--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/bookssection-one-book--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/bookssection-two-books--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/contentpage-about-page--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hero-default--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/heroquote-default--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-blog-latest-posts--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-blog-latest-posts-mobile--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-blog-latest-posts-tablet--tablet.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-blog-no-posts-yet--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-full-content--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-full-content--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-full-content-mobile--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-desktop--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-empty-nav--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-long-title-and-extra-nav-items--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-mobile-menu-open--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-shell-single-nav-item--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-technology-section--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-technology-section--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/learnmore-default--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/toolcard-default--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/toolssection-three-tools--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/seeds/home-full.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/state/claude-launch-provenance.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/state/finalize-debt.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/state/scenario-taxonomy.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/all.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/2512b714b2c51f0e6ffdcbe8108d009664647dc3386f644d860621ab9855be9d.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/960931b3de84b702ffba6b49cc44c179e6acb277ad62590324614cca6a25f430.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/b5562809cda170805fc26586b72d2f8b61d79076479045f1617081f443f29b1f.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-registry.json",
+      "status": "modified"
+    },
+    {
+      "path": "README.md",
+      "status": "modified"
+    },
+    {
+      "path": "src/components/BookCover.astro",
+      "status": "modified"
+    },
+    {
+      "path": "src/content/config.ts",
+      "status": "modified"
+    },
+    {
+      "path": "src/data/collections.json",
+      "status": "modified"
+    },
+    {
+      "path": "src/data/nav.json",
+      "status": "modified"
+    },
+    {
+      "path": "src/pages/index.astro",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/backlink-back-to-the-library.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/book-page-no-cover-long-title.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/book-page-radical-uncertainty-mobile.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/book-page-radical-uncertainty.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/bookreport-full-report.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/bookreportheader-cover.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/bookreportheader-no-cover-long-title.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/coverage-plan/bookreportheader.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/coverage-plan/librarycard.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/coverage-plan/libraryindex.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/coverage-plan/librarysection.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/home-library-section.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/library-empty.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/library-one-book.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/library-six-reviewed-books-mobile.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/library-six-reviewed-books.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/librarycard-cover-and-missing-cover.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/libraryempty-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/librarygrid-six-books.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/libraryheader-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/libraryindex-empty.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/libraryindex-six-books.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/librarysection-one-book.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/librarysection-six-books-shows-four.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/backlink-back-to-the-library--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/backlink-back-to-the-library--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/book-page-no-cover-long-title--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/book-page-no-cover-long-title--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/book-page-radical-uncertainty--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/book-page-radical-uncertainty--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/book-page-radical-uncertainty-mobile--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/book-page-radical-uncertainty-mobile--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/bookreport-full-report--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/bookreport-full-report--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/bookreportheader-cover--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/bookreportheader-cover--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/bookreportheader-no-cover-long-title--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/bookreportheader-no-cover-long-title--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-library-section--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-library-section--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/library-empty--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/library-empty--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/library-one-book--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/library-one-book--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/library-six-reviewed-books--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/library-six-reviewed-books--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/library-six-reviewed-books-mobile--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/library-six-reviewed-books-mobile--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/librarycard-cover-and-missing-cover--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/librarycard-cover-and-missing-cover--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/libraryempty-default--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/libraryempty-default--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/librarygrid-six-books--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/librarygrid-six-books--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/libraryheader-default--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/libraryheader-default--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/libraryindex-empty--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/libraryindex-empty--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/libraryindex-six-books--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/libraryindex-six-books--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/librarysection-one-book--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/librarysection-one-book--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/librarysection-six-books-shows-four--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/librarysection-six-books-shows-four--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/seeds/library-empty.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/seeds/library-no-cover-long-title.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/seeds/library-one-book.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/164f8c8d8cb28a047a50e8d52a4f38bb5195869cada612d18ac2b7d1399cfc60.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/28dc8ec77ecb1f7b41ef5e0dcbdefcc7e8b92dd0cf4b477d7ce2f4ac81d6124f.json",
+      "status": "added"
+    },
+    {
+      "path": "public/images/library/radical-uncertainty.svg",
+      "status": "added"
+    },
+    {
+      "path": "public/images/library/range.svg",
+      "status": "added"
+    },
+    {
+      "path": "public/images/library/superforecasting.svg",
+      "status": "added"
+    },
+    {
+      "path": "public/images/library/the-black-swan.svg",
+      "status": "added"
+    },
+    {
+      "path": "public/images/library/thinking-in-bets.svg",
+      "status": "added"
+    },
+    {
+      "path": "src/components/BackLink.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/BookReport.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/BookReportHeader.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/LibraryCard.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/LibraryEmpty.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/LibraryGrid.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/LibraryHeader.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/LibraryIndex.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/components/LibrarySection.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/lib/library.test.ts",
+      "status": "added"
+    },
+    {
+      "path": "src/lib/library.ts",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/BackLink.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/BookReport.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/BookReportHeader.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/LibraryCard.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/LibraryEmpty.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/LibraryGrid.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/LibraryHeader.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/LibraryIndex.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/isolated-components/LibrarySection.astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/library/[slug].astro",
+      "status": "added"
+    },
+    {
+      "path": "src/pages/library/index.astro",
+      "status": "added"
+    }
+  ],
+  "scenarioScreenshots": [
+    {
+      "name": "Admin Dashboard - Pages And Site Settings",
+      "screenshotPath": "admin-dashboard-pages-and-site-settings--desktop.png"
+    },
+    {
+      "name": "Book Page - No Cover Long Title",
+      "screenshotPath": "book-page-no-cover-long-title--desktop.png"
+    },
+    {
+      "name": "Book Page - Radical Uncertainty",
+      "screenshotPath": "book-page-radical-uncertainty--desktop.png"
+    },
+    {
+      "name": "Book Page - Radical Uncertainty Mobile",
+      "screenshotPath": "book-page-radical-uncertainty-mobile--mobile.png"
+    },
+    {
+      "name": "Home - Blog Latest Posts",
+      "screenshotPath": "home-blog-latest-posts--desktop.png"
+    },
+    {
+      "name": "Home - Blog Latest Posts Mobile",
+      "screenshotPath": "home-blog-latest-posts-mobile--mobile.png"
+    },
+    {
+      "name": "Home - Blog Latest Posts Tablet",
+      "screenshotPath": "home-blog-latest-posts-tablet--tablet.png"
+    },
+    {
+      "name": "Home - Blog No Posts Yet",
+      "screenshotPath": "home-blog-no-posts-yet--desktop.png"
+    },
+    {
+      "name": "Home - Full Content",
+      "screenshotPath": "home-full-content--desktop.png"
+    },
+    {
+      "name": "Home - Full Content Mobile",
+      "screenshotPath": "home-full-content-mobile--mobile.png"
+    },
+    {
+      "name": "Home - Library Section",
+      "screenshotPath": "home-library-section--desktop.png"
+    },
+    {
+      "name": "Home - Technology Section",
+      "screenshotPath": "home-technology-section--desktop.png"
+    },
+    {
+      "name": "Home Shell - Desktop",
+      "screenshotPath": "home-shell-desktop--desktop.png"
+    },
+    {
+      "name": "Home Shell - Empty Nav",
+      "screenshotPath": "home-shell-empty-nav--desktop.png"
+    },
+    {
+      "name": "Home Shell - Long Title And Extra Nav Items",
+      "screenshotPath": "home-shell-long-title-and-extra-nav-items--desktop.png"
+    },
+    {
+      "name": "Home Shell - Mobile Menu Open",
+      "screenshotPath": "home-shell-mobile-menu-open--mobile.png"
+    },
+    {
+      "name": "Home Shell - Single Nav Item",
+      "screenshotPath": "home-shell-single-nav-item--desktop.png"
+    },
+    {
+      "name": "Library - Empty",
+      "screenshotPath": "library-empty--desktop.png"
+    },
+    {
+      "name": "Library - One Book",
+      "screenshotPath": "library-one-book--desktop.png"
+    },
+    {
+      "name": "Library - Six Reviewed Books",
+      "screenshotPath": "library-six-reviewed-books--desktop.png"
+    },
+    {
+      "name": "Library - Six Reviewed Books Mobile",
+      "screenshotPath": "library-six-reviewed-books-mobile--mobile.png"
+    },
+    {
+      "name": "BackLink - Back To The Library",
+      "screenshotPath": "backlink-back-to-the-library--desktop.png"
+    },
+    {
+      "name": "BookCover - Cover And Missing Cover",
+      "screenshotPath": "bookcover-cover-and-missing-cover--desktop.png"
+    },
+    {
+      "name": "BookFeature - Default",
+      "screenshotPath": "bookfeature-default--desktop.png"
+    },
+    {
+      "name": "BookReport - Full Report",
+      "screenshotPath": "bookreport-full-report--desktop.png"
+    },
+    {
+      "name": "BookReportHeader - Cover",
+      "screenshotPath": "bookreportheader-cover--desktop.png"
+    },
+    {
+      "name": "BookReportHeader - No Cover Long Title",
+      "screenshotPath": "bookreportheader-no-cover-long-title--desktop.png"
+    },
+    {
+      "name": "BooksSection - One Book",
+      "screenshotPath": "bookssection-one-book--desktop.png"
+    },
+    {
+      "name": "BooksSection - Two Books",
+      "screenshotPath": "bookssection-two-books--desktop.png"
+    },
+    {
+      "name": "LibraryCard - Cover And Missing Cover",
+      "screenshotPath": "librarycard-cover-and-missing-cover--desktop.png"
+    },
+    {
+      "name": "LibraryEmpty - Default",
+      "screenshotPath": "libraryempty-default--desktop.png"
+    },
+    {
+      "name": "LibraryGrid - Six Books",
+      "screenshotPath": "librarygrid-six-books--desktop.png"
+    },
+    {
+      "name": "LibraryHeader - Default",
+      "screenshotPath": "libraryheader-default--desktop.png"
+    },
+    {
+      "name": "LibraryIndex - Empty",
+      "screenshotPath": "libraryindex-empty--desktop.png"
+    },
+    {
+      "name": "LibraryIndex - Six Books",
+      "screenshotPath": "libraryindex-six-books--desktop.png"
+    },
+    {
+      "name": "LibrarySection - One Book",
+      "screenshotPath": "librarysection-one-book--desktop.png"
+    },
+    {
+      "name": "LibrarySection - Six Books Shows Four",
+      "screenshotPath": "librarysection-six-books-shows-four--desktop.png"
+    }
+  ],
+  "testResults": {
+    "total": 109,
+    "passed": 109,
+    "failed": 0,
+    "runners": [
+      {
+        "name": "tests",
+        "total": 109,
+        "passed": 109
+      }
+    ]
+  }
+}

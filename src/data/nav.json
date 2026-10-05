@@ -1,6 +1,7 @@
 {
   "items": [
     { "label": "Books", "url": "#books" },
+    { "label": "Library", "url": "/library" },
     { "label": "Blog", "url": "#blog" },
     { "label": "Technology", "url": "#technology" },
     { "label": "Learn More", "url": "#learn" },

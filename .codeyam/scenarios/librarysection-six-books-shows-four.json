@@ -1,0 +1,15 @@
+{
+  "name": "LibrarySection - Six Books Shows Four",
+  "id": "b23de8ad-12fe-4625-83d4-d52c7f14b9a9",
+  "url": "/isolated-components/LibrarySection",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-full.json"
+  },
+  "componentName": "LibrarySection",
+  "scenarioType": "component",
+  "description": "The home Library band on sage with six reviewed books: only the first four covers show, with the Explore the library link."
+}

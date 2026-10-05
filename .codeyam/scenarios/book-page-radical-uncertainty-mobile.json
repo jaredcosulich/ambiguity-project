@@ -1,0 +1,15 @@
+{
+  "name": "Book Page - Radical Uncertainty Mobile",
+  "id": "87a9d551-03f3-4683-9c1f-c3fe52d2c9be",
+  "url": "/library/radical-uncertainty",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-full.json"
+  },
+  "scenarioType": "application",
+  "pageFilePath": "src/pages/library/[slug].astro",
+  "description": "A book report at phone width: the cover stacks above the title, author and summary, with the back link on top."
+}

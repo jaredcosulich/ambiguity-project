@@ -1,10 +1,12 @@
 {
   "bindMobileMenu › closes the open menu when a nav link is followed": {
     "file": "src/lib/mobileMenu.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -12,16 +14,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
-      "pass|full|2026-10-04T16:00:53.884Z",
-      "pass|full|2026-10-04T15:41:21.363Z"
+      "pass|full|2026-10-04T16:00:53.884Z"
     ]
   },
   "bindMobileMenu › keeps the menu closed when a link is followed while closed": {
     "file": "src/lib/mobileMenu.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -29,16 +32,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
-      "pass|full|2026-10-04T16:00:53.884Z",
-      "pass|full|2026-10-04T15:41:21.363Z"
+      "pass|full|2026-10-04T16:00:53.884Z"
     ]
   },
   "bindMobileMenu › toggles the menu on each button click": {
     "file": "src/lib/mobileMenu.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -46,16 +50,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
-      "pass|full|2026-10-04T16:00:53.884Z",
-      "pass|full|2026-10-04T15:41:21.363Z"
+      "pass|full|2026-10-04T16:00:53.884Z"
     ]
   },
   "decodeEntities › decodes named and numeric entities": {
     "file": "src/lib/substack.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -64,10 +69,12 @@
   },
   "decodeEntities › leaves unknown entities untouched": {
     "file": "src/lib/substack.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -76,10 +83,12 @@
   },
   "decodeEntities › passes plain text through": {
     "file": "src/lib/substack.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -88,10 +97,12 @@
   },
   "excludeIsolationPages › is a no-op when the folder is absent": {
     "file": "src/lib/isolationPages.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|changed|2026-10-04T19:09:38.579Z"
@@ -99,10 +110,12 @@
   },
   "excludeIsolationPages › removes the isolated-components folder from the build output": {
     "file": "src/lib/isolationPages.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|changed|2026-10-04T19:09:38.579Z"
@@ -110,10 +123,12 @@
   },
   "feedUrlFor › appends /feed": {
     "file": "src/lib/substack.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -122,10 +137,12 @@
   },
   "feedUrlFor › strips trailing slashes": {
     "file": "src/lib/substack.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -134,10 +151,12 @@
   },
   "formatPostDate › formats an ISO date": {
     "file": "src/lib/substack.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -146,10 +165,12 @@
   },
   "formatPostDate › formats in UTC": {
     "file": "src/lib/substack.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -158,10 +179,12 @@
   },
   "formatPostDate › returns an empty string for an invalid date": {
     "file": "src/lib/substack.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -170,10 +193,12 @@
   },
   "getSubstackPosts › reads posts from the snapshot": {
     "file": "src/lib/substack.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -182,10 +207,12 @@
   },
   "getSubstackPosts › returns an empty list for unreadable or malformed snapshots": {
     "file": "src/lib/substack.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -194,22 +221,81 @@
   },
   "getSubstackPosts › returns an empty list when the file is missing": {
     "file": "src/lib/substack.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
       "pass|changed|2026-10-04T18:48:40.287Z"
     ]
   },
-  "initialTypewriterState › starts empty for an empty list": {
-    "file": "src/lib/typewriter.test.ts",
-    "lastRunAt": "2026-10-04T20:15:23.317Z",
-    "lastRunKind": "changed",
+  "homeLibraryBooks › caps the list at four by default": {
+    "file": "src/lib/library.test.ts",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
+    "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
+      "pass|changed|2026-10-05T00:09:44.474Z"
+    ]
+  },
+  "homeLibraryBooks › does not modify the list it is given": {
+    "file": "src/lib/library.test.ts",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
+      "pass|changed|2026-10-05T00:09:44.474Z"
+    ]
+  },
+  "homeLibraryBooks › honours a custom cap and clamps a negative one to zero": {
+    "file": "src/lib/library.test.ts",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
+      "pass|changed|2026-10-05T00:09:44.474Z"
+    ]
+  },
+  "homeLibraryBooks › returns an empty list for an empty library": {
+    "file": "src/lib/library.test.ts",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
+      "pass|changed|2026-10-05T00:09:44.474Z"
+    ]
+  },
+  "homeLibraryBooks › returns every book when under the cap": {
+    "file": "src/lib/library.test.ts",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
+      "pass|changed|2026-10-05T00:09:44.474Z"
+    ]
+  },
+  "initialTypewriterState › starts empty for an empty list": {
+    "file": "src/lib/typewriter.test.ts",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|changed|2026-10-04T20:15:23.317Z",
       "pass|changed|2026-10-04T20:14:35.587Z",
       "pass|changed|2026-10-04T20:14:17.854Z",
@@ -217,17 +303,17 @@
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
       "pass|changed|2026-10-04T18:48:40.287Z",
-      "pass|changed|2026-10-04T18:47:33.072Z",
-      "pass|changed|2026-10-04T18:46:57.891Z",
-      "pass|changed|2026-10-04T18:29:43.809Z"
+      "pass|changed|2026-10-04T18:47:33.072Z"
     ]
   },
   "initialTypewriterState › starts on the first word, ready to delete it": {
     "file": "src/lib/typewriter.test.ts",
-    "lastRunAt": "2026-10-04T20:15:23.317Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
+    "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|changed|2026-10-04T20:15:23.317Z",
       "pass|changed|2026-10-04T20:14:35.587Z",
       "pass|changed|2026-10-04T20:14:17.854Z",
@@ -235,17 +321,17 @@
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
       "pass|changed|2026-10-04T18:48:40.287Z",
-      "pass|changed|2026-10-04T18:47:33.072Z",
-      "pass|changed|2026-10-04T18:46:57.891Z",
-      "pass|changed|2026-10-04T18:29:43.809Z"
+      "pass|changed|2026-10-04T18:47:33.072Z"
     ]
   },
   "isIsolationPath › does not match a segment that only contains the directory name": {
     "file": "src/lib/isolationPages.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|changed|2026-10-04T19:09:38.579Z"
@@ -253,10 +339,12 @@
   },
   "isIsolationPath › does not match ordinary pages": {
     "file": "src/lib/isolationPages.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|changed|2026-10-04T19:09:38.579Z"
@@ -264,10 +352,12 @@
   },
   "isIsolationPath › matches a bare isolation pathname": {
     "file": "src/lib/isolationPages.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|changed|2026-10-04T19:09:38.579Z"
@@ -275,10 +365,12 @@
   },
   "isIsolationPath › matches an absolute URL under a base path": {
     "file": "src/lib/isolationPages.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|changed|2026-10-04T19:09:38.579Z"
@@ -286,10 +378,12 @@
   },
   "isIsolationPath › returns false for an empty string": {
     "file": "src/lib/isolationPages.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|changed|2026-10-04T19:09:38.579Z"
@@ -297,10 +391,12 @@
   },
   "latestPosts › handles empty input without mutating": {
     "file": "src/lib/substack.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -309,10 +405,12 @@
   },
   "latestPosts › returns all posts when under the limit": {
     "file": "src/lib/substack.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -321,22 +419,70 @@
   },
   "latestPosts › returns the newest three by default": {
     "file": "src/lib/substack.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
       "pass|changed|2026-10-04T18:48:40.287Z"
     ]
   },
-  "listForReaders › joins three or more words with commas and and": {
-    "file": "src/lib/missionWords.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+  "libraryHref › builds the book page path at the domain root": {
+    "file": "src/lib/library.test.ts",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
+      "pass|changed|2026-10-05T00:09:44.474Z"
+    ]
+  },
+  "libraryHref › falls back to the library index for an empty id": {
+    "file": "src/lib/library.test.ts",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
+      "pass|changed|2026-10-05T00:09:44.474Z"
+    ]
+  },
+  "libraryHref › handles a base without a trailing slash": {
+    "file": "src/lib/library.test.ts",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
+      "pass|changed|2026-10-05T00:09:44.474Z"
+    ]
+  },
+  "libraryHref › prefixes the deploy base when the site lives under a subpath": {
+    "file": "src/lib/library.test.ts",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
+      "pass|changed|2026-10-05T00:09:44.474Z"
+    ]
+  },
+  "listForReaders › joins three or more words with commas and and": {
+    "file": "src/lib/missionWords.test.ts",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -344,17 +490,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "listForReaders › joins two words with and": {
     "file": "src/lib/missionWords.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -362,17 +508,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "listForReaders › returns a lone word unchanged and an empty list as empty": {
     "file": "src/lib/missionWords.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -380,17 +526,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "longestWord › keeps the first word on a tie": {
     "file": "src/lib/missionWords.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -398,17 +544,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "longestWord › returns an empty string for no words": {
     "file": "src/lib/missionWords.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -416,17 +562,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "longestWord › returns the longest word": {
     "file": "src/lib/missionWords.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -434,17 +580,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "looksLikeRssFeed › accepts a document with a channel": {
     "file": "src/lib/substack.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -453,10 +599,12 @@
   },
   "looksLikeRssFeed › does not match a channel-prefixed element name": {
     "file": "src/lib/substack.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -465,10 +613,12 @@
   },
   "looksLikeRssFeed › rejects an error page or empty body": {
     "file": "src/lib/substack.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -477,10 +627,12 @@
   },
   "menuLabel › reads Close when open and Menu when closed": {
     "file": "src/lib/mobileMenu.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -488,16 +640,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
-      "pass|full|2026-10-04T16:00:53.884Z",
-      "pass|full|2026-10-04T15:41:21.363Z"
+      "pass|full|2026-10-04T16:00:53.884Z"
     ]
   },
   "parseMissionWords › drops blank lines": {
     "file": "src/lib/missionWords.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -505,17 +658,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "parseMissionWords › falls back to people when empty or missing": {
     "file": "src/lib/missionWords.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -523,17 +676,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "parseMissionWords › splits the setting into one word per line": {
     "file": "src/lib/missionWords.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -541,17 +694,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "parseMissionWords › trims whitespace and handles CRLF line endings": {
     "file": "src/lib/missionWords.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -559,17 +712,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "parseSubstackFeed › decodes HTML entities in titles": {
     "file": "src/lib/substack.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -578,10 +731,12 @@
   },
   "parseSubstackFeed › normalizes a full item": {
     "file": "src/lib/substack.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -590,10 +745,12 @@
   },
   "parseSubstackFeed › omits image and category when the item has none": {
     "file": "src/lib/substack.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -602,10 +759,12 @@
   },
   "parseSubstackFeed › returns an empty list for an empty channel": {
     "file": "src/lib/substack.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -614,10 +773,12 @@
   },
   "parseSubstackFeed › returns an empty list for malformed input": {
     "file": "src/lib/substack.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -626,10 +787,12 @@
   },
   "parseSubstackFeed › skips incomplete items": {
     "file": "src/lib/substack.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -638,10 +801,12 @@
   },
   "parseSubstackFeed › sorts posts newest first": {
     "file": "src/lib/substack.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -650,10 +815,12 @@
   },
   "pickFirstByOrder › returns the lowest-ordered entry": {
     "file": "src/lib/contentOrder.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -661,17 +828,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "pickFirstByOrder › returns undefined for an empty list": {
     "file": "src/lib/contentOrder.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -679,53 +846,61 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "pinnedTypewriterText › holds the first word when static": {
     "file": "src/lib/typewriter.test.ts",
-    "lastRunAt": "2026-10-04T20:15:23.317Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
+    "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|changed|2026-10-04T20:15:23.317Z"
     ]
   },
   "pinnedTypewriterText › holds the next whole word when reduced": {
     "file": "src/lib/typewriter.test.ts",
-    "lastRunAt": "2026-10-04T20:15:23.317Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
+    "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|changed|2026-10-04T20:15:23.317Z"
     ]
   },
   "pinnedTypewriterText › is empty for an empty list": {
     "file": "src/lib/typewriter.test.ts",
-    "lastRunAt": "2026-10-04T20:15:23.317Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
+    "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|changed|2026-10-04T20:15:23.317Z"
     ]
   },
   "pinnedTypewriterText › keeps a lone word under either pin": {
     "file": "src/lib/typewriter.test.ts",
-    "lastRunAt": "2026-10-04T20:15:23.317Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
+    "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|changed|2026-10-04T20:15:23.317Z"
     ]
   },
   "resolveContentRoot › defaults to _projectRoot_/src/content when no override is present": {
     "file": "src/lib/contentRoot.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -733,16 +908,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
-      "pass|full|2026-10-04T16:00:53.884Z",
-      "pass|full|2026-10-04T15:41:21.363Z"
+      "pass|full|2026-10-04T16:00:53.884Z"
     ]
   },
   "resolveContentRoot › ignores a real .codeyam/tmp/content-root sidecar on disk": {
     "file": "src/lib/contentRoot.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -750,16 +926,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
-      "pass|full|2026-10-04T16:00:53.884Z",
-      "pass|full|2026-10-04T15:41:21.363Z"
+      "pass|full|2026-10-04T16:00:53.884Z"
     ]
   },
   "resolveContentRoot › ignores the env override during a production build": {
     "file": "src/lib/contentRoot.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -767,16 +944,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
-      "pass|full|2026-10-04T16:00:53.884Z",
-      "pass|full|2026-10-04T15:41:21.363Z"
+      "pass|full|2026-10-04T16:00:53.884Z"
     ]
   },
   "resolveContentRoot › prefers the CODEYAM_CONTENT_ROOT env override": {
     "file": "src/lib/contentRoot.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -784,16 +962,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
-      "pass|full|2026-10-04T16:00:53.884Z",
-      "pass|full|2026-10-04T15:41:21.363Z"
+      "pass|full|2026-10-04T16:00:53.884Z"
     ]
   },
   "resolveDataRoot › defaults to _projectRoot_/src/data when no override is present": {
     "file": "src/lib/contentRoot.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -801,16 +980,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
-      "pass|full|2026-10-04T16:00:53.884Z",
-      "pass|full|2026-10-04T15:41:21.363Z"
+      "pass|full|2026-10-04T16:00:53.884Z"
     ]
   },
   "resolveDataRoot › ignores a real .codeyam/tmp/data-root sidecar on disk": {
     "file": "src/lib/contentRoot.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -818,16 +998,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
-      "pass|full|2026-10-04T16:00:53.884Z",
-      "pass|full|2026-10-04T15:41:21.363Z"
+      "pass|full|2026-10-04T16:00:53.884Z"
     ]
   },
   "resolveDataRoot › ignores the env override during a production build": {
     "file": "src/lib/contentRoot.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -835,16 +1016,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
-      "pass|full|2026-10-04T16:00:53.884Z",
-      "pass|full|2026-10-04T15:41:21.363Z"
+      "pass|full|2026-10-04T16:00:53.884Z"
     ]
   },
   "resolveDataRoot › prefers the CODEYAM_DATA_ROOT env override": {
     "file": "src/lib/contentRoot.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -852,16 +1034,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
-      "pass|full|2026-10-04T16:00:53.884Z",
-      "pass|full|2026-10-04T15:41:21.363Z"
+      "pass|full|2026-10-04T16:00:53.884Z"
     ]
   },
   "setMenuOpen › closes the nav and restores the button": {
     "file": "src/lib/mobileMenu.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -869,16 +1052,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
-      "pass|full|2026-10-04T16:00:53.884Z",
-      "pass|full|2026-10-04T15:41:21.363Z"
+      "pass|full|2026-10-04T16:00:53.884Z"
     ]
   },
   "setMenuOpen › opens the nav and updates the button": {
     "file": "src/lib/mobileMenu.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -886,16 +1070,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
-      "pass|full|2026-10-04T16:00:53.884Z",
-      "pass|full|2026-10-04T15:41:21.363Z"
+      "pass|full|2026-10-04T16:00:53.884Z"
     ]
   },
   "sortByOrder › does not mutate its input": {
     "file": "src/lib/contentOrder.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -903,17 +1088,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "sortByOrder › keeps the incoming order for ties": {
     "file": "src/lib/contentOrder.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -921,17 +1106,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "sortByOrder › puts entries without an order last": {
     "file": "src/lib/contentOrder.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -939,17 +1124,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "sortByOrder › sorts ascending by order": {
     "file": "src/lib/contentOrder.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -957,17 +1142,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "sortByOrder › treats order zero as first": {
     "file": "src/lib/contentOrder.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -975,17 +1160,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "toNavLinks › keeps external urls untouched": {
     "file": "src/lib/navLinks.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -993,16 +1178,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
-      "pass|full|2026-10-04T16:00:53.884Z",
-      "pass|full|2026-10-04T15:41:21.363Z"
+      "pass|full|2026-10-04T16:00:53.884Z"
     ]
   },
   "toNavLinks › maps every item and flags only the last as the call-to-action": {
     "file": "src/lib/navLinks.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -1010,16 +1196,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
-      "pass|full|2026-10-04T16:00:53.884Z",
-      "pass|full|2026-10-04T15:41:21.363Z"
+      "pass|full|2026-10-04T16:00:53.884Z"
     ]
   },
   "toNavLinks › returns an empty list for an empty nav": {
     "file": "src/lib/navLinks.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -1027,16 +1214,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
-      "pass|full|2026-10-04T16:00:53.884Z",
-      "pass|full|2026-10-04T15:41:21.363Z"
+      "pass|full|2026-10-04T16:00:53.884Z"
     ]
   },
   "toNavLinks › skips items without a url when choosing the call-to-action": {
     "file": "src/lib/navLinks.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -1044,16 +1232,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
-      "pass|full|2026-10-04T16:00:53.884Z",
-      "pass|full|2026-10-04T15:41:21.363Z"
+      "pass|full|2026-10-04T16:00:53.884Z"
     ]
   },
   "toNavLinks › treats a single item as the call-to-action": {
     "file": "src/lib/navLinks.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -1061,52 +1250,61 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
-      "pass|full|2026-10-04T16:00:53.884Z",
-      "pass|full|2026-10-04T15:41:21.363Z"
+      "pass|full|2026-10-04T16:00:53.884Z"
     ]
   },
   "typewriterPin › ignores unknown values": {
     "file": "src/lib/typewriter.test.ts",
-    "lastRunAt": "2026-10-04T20:15:23.317Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
+    "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|changed|2026-10-04T20:15:23.317Z"
     ]
   },
   "typewriterPin › reads the reduced flag alongside other params": {
     "file": "src/lib/typewriter.test.ts",
-    "lastRunAt": "2026-10-04T20:15:23.317Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
+    "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|changed|2026-10-04T20:15:23.317Z"
     ]
   },
   "typewriterPin › reads the static flag": {
     "file": "src/lib/typewriter.test.ts",
-    "lastRunAt": "2026-10-04T20:15:23.317Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
+    "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|changed|2026-10-04T20:15:23.317Z"
     ]
   },
   "typewriterPin › returns null with no flag": {
     "file": "src/lib/typewriter.test.ts",
-    "lastRunAt": "2026-10-04T20:15:23.317Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
+    "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|changed|2026-10-04T20:15:23.317Z"
     ]
   },
   "typewriterStep › deletes the current word then types the next one letter by letter": {
     "file": "src/lib/typewriter.test.ts",
-    "lastRunAt": "2026-10-04T20:15:23.317Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
+    "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|changed|2026-10-04T20:15:23.317Z",
       "pass|changed|2026-10-04T20:14:35.587Z",
       "pass|changed|2026-10-04T20:14:17.854Z",
@@ -1114,17 +1312,17 @@
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
       "pass|changed|2026-10-04T18:48:40.287Z",
-      "pass|changed|2026-10-04T18:47:33.072Z",
-      "pass|changed|2026-10-04T18:46:57.891Z",
-      "pass|changed|2026-10-04T18:29:43.809Z"
+      "pass|changed|2026-10-04T18:47:33.072Z"
     ]
   },
   "typewriterStep › holds a finished word before deleting it": {
     "file": "src/lib/typewriter.test.ts",
-    "lastRunAt": "2026-10-04T20:15:23.317Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
+    "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|changed|2026-10-04T20:15:23.317Z",
       "pass|changed|2026-10-04T20:14:35.587Z",
       "pass|changed|2026-10-04T20:14:17.854Z",
@@ -1132,17 +1330,17 @@
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
       "pass|changed|2026-10-04T18:48:40.287Z",
-      "pass|changed|2026-10-04T18:47:33.072Z",
-      "pass|changed|2026-10-04T18:46:57.891Z",
-      "pass|changed|2026-10-04T18:29:43.809Z"
+      "pass|changed|2026-10-04T18:47:33.072Z"
     ]
   },
   "typewriterStep › is a no-op for an empty list": {
     "file": "src/lib/typewriter.test.ts",
-    "lastRunAt": "2026-10-04T20:15:23.317Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
+    "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|changed|2026-10-04T20:15:23.317Z",
       "pass|changed|2026-10-04T20:14:35.587Z",
       "pass|changed|2026-10-04T20:14:17.854Z",
@@ -1150,17 +1348,17 @@
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
       "pass|changed|2026-10-04T18:48:40.287Z",
-      "pass|changed|2026-10-04T18:47:33.072Z",
-      "pass|changed|2026-10-04T18:46:57.891Z",
-      "pass|changed|2026-10-04T18:29:43.809Z"
+      "pass|changed|2026-10-04T18:47:33.072Z"
     ]
   },
   "typewriterStep › swaps whole words under reduced motion": {
     "file": "src/lib/typewriter.test.ts",
-    "lastRunAt": "2026-10-04T20:15:23.317Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
+    "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|changed|2026-10-04T20:15:23.317Z",
       "pass|changed|2026-10-04T20:14:35.587Z",
       "pass|changed|2026-10-04T20:14:17.854Z",
@@ -1168,17 +1366,17 @@
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
       "pass|changed|2026-10-04T18:48:40.287Z",
-      "pass|changed|2026-10-04T18:47:33.072Z",
-      "pass|changed|2026-10-04T18:46:57.891Z",
-      "pass|changed|2026-10-04T18:29:43.809Z"
+      "pass|changed|2026-10-04T18:47:33.072Z"
     ]
   },
   "typewriterStep › uses the delete, type, and between-word delays": {
     "file": "src/lib/typewriter.test.ts",
-    "lastRunAt": "2026-10-04T20:15:23.317Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
+    "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|changed|2026-10-04T20:15:23.317Z",
       "pass|changed|2026-10-04T20:14:35.587Z",
       "pass|changed|2026-10-04T20:14:17.854Z",
@@ -1186,17 +1384,17 @@
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
       "pass|changed|2026-10-04T18:48:40.287Z",
-      "pass|changed|2026-10-04T18:47:33.072Z",
-      "pass|changed|2026-10-04T18:46:57.891Z",
-      "pass|changed|2026-10-04T18:29:43.809Z"
+      "pass|changed|2026-10-04T18:47:33.072Z"
     ]
   },
   "typewriterStep › wraps around to the first word": {
     "file": "src/lib/typewriter.test.ts",
-    "lastRunAt": "2026-10-04T20:15:23.317Z",
-    "lastRunKind": "changed",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
+    "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|changed|2026-10-04T20:15:23.317Z",
       "pass|changed|2026-10-04T20:14:35.587Z",
       "pass|changed|2026-10-04T20:14:17.854Z",
@@ -1204,17 +1402,17 @@
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
       "pass|changed|2026-10-04T18:48:40.287Z",
-      "pass|changed|2026-10-04T18:47:33.072Z",
-      "pass|changed|2026-10-04T18:46:57.891Z",
-      "pass|changed|2026-10-04T18:29:43.809Z"
+      "pass|changed|2026-10-04T18:47:33.072Z"
     ]
   },
   "visibleTools › caps the list at three by default": {
     "file": "src/lib/visibleTools.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -1222,17 +1420,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "visibleTools › honours a custom cap and clamps a negative one to zero": {
     "file": "src/lib/visibleTools.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -1240,17 +1438,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "visibleTools › returns an empty list for no tools": {
     "file": "src/lib/visibleTools.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -1258,17 +1456,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "visibleTools › returns every tool when under the cap": {
     "file": "src/lib/visibleTools.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -1276,17 +1474,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "watchedCollectionLoader › does not watch a collection that already has entries": {
     "file": "src/lib/watchedCollectionLoader.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -1294,17 +1492,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "watchedCollectionLoader › does nothing extra without a watcher": {
     "file": "src/lib/watchedCollectionLoader.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -1312,17 +1510,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "watchedCollectionLoader › ignores other folders and non-markdown files": {
     "file": "src/lib/watchedCollectionLoader.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -1330,17 +1528,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "watchedCollectionLoader › reloads an empty collection when its first entry is added": {
     "file": "src/lib/watchedCollectionLoader.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -1348,17 +1546,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "watchedCollectionLoader › reloads only once": {
     "file": "src/lib/watchedCollectionLoader.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -1366,17 +1564,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "watchedCollectionLoader › runs the inner loader once on load": {
     "file": "src/lib/watchedCollectionLoader.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -1384,17 +1582,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|changed|2026-10-04T18:29:43.809Z",
-      "pass|changed|2026-10-04T18:05:58.106Z",
-      "pass|changed|2026-10-04T18:05:53.661Z",
-      "pass|changed|2026-10-04T18:05:49.150Z"
+      "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
   "withBase › anchors a hash link to the home page under the base": {
     "file": "src/lib/base.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -1402,16 +1600,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
-      "pass|full|2026-10-04T16:00:53.884Z",
-      "pass|full|2026-10-04T15:41:21.363Z"
+      "pass|full|2026-10-04T16:00:53.884Z"
     ]
   },
   "withBase › leaves paths root-relative when the base is the domain root": {
     "file": "src/lib/base.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -1419,16 +1618,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
-      "pass|full|2026-10-04T16:00:53.884Z",
-      "pass|full|2026-10-04T15:41:21.363Z"
+      "pass|full|2026-10-04T16:00:53.884Z"
     ]
   },
   "withBase › maps the root path to the base": {
     "file": "src/lib/base.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -1436,16 +1636,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
-      "pass|full|2026-10-04T16:00:53.884Z",
-      "pass|full|2026-10-04T15:41:21.363Z"
+      "pass|full|2026-10-04T16:00:53.884Z"
     ]
   },
   "withBase › prefixes a relative path with the base": {
     "file": "src/lib/base.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -1453,16 +1654,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
-      "pass|full|2026-10-04T16:00:53.884Z",
-      "pass|full|2026-10-04T15:41:21.363Z"
+      "pass|full|2026-10-04T16:00:53.884Z"
     ]
   },
   "withBase › prefixes a root-absolute path with the base": {
     "file": "src/lib/base.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -1470,16 +1672,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
-      "pass|full|2026-10-04T16:00:53.884Z",
-      "pass|full|2026-10-04T15:41:21.363Z"
+      "pass|full|2026-10-04T16:00:53.884Z"
     ]
   },
   "withBase › returns external and protocol-relative URLs unchanged": {
     "file": "src/lib/base.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -1487,16 +1690,17 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
-      "pass|full|2026-10-04T16:00:53.884Z",
-      "pass|full|2026-10-04T15:41:21.363Z"
+      "pass|full|2026-10-04T16:00:53.884Z"
     ]
   },
   "withBase › tolerates a base without a trailing slash": {
     "file": "src/lib/base.test.ts",
-    "lastRunAt": "2026-10-04T19:53:44.189Z",
+    "lastRunAt": "2026-10-05T00:24:30.172Z",
     "lastRunKind": "full",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|full|2026-10-05T00:24:30.172Z",
+      "pass|changed|2026-10-05T00:23:15.447Z",
       "pass|full|2026-10-04T19:53:44.189Z",
       "pass|full|2026-10-04T19:11:48.277Z",
       "pass|full|2026-10-04T19:01:33.419Z",
@@ -1504,8 +1708,7 @@
       "pass|changed|2026-10-04T18:47:33.072Z",
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
-      "pass|full|2026-10-04T16:00:53.884Z",
-      "pass|full|2026-10-04T15:41:21.363Z"
+      "pass|full|2026-10-04T16:00:53.884Z"
     ]
   }
 }

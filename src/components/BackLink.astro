@@ -1,0 +1,18 @@
+---
+// A small "← label" link back to a parent page, e.g. from a book report to
+// the Library.
+import { withBase } from '../lib/base';
+
+interface Props {
+  href: string;
+  label: string;
+}
+
+const { href, label } = Astro.props;
+---
+
+<a class="back more" href={withBase(href)}>← {label}</a>
+
+<style>
+  .back { align-self: flex-start; color: var(--sage-text); }
+</style>

@@ -1,0 +1,16 @@
+---
+// The Library page heading: sage bracket label, title and a one-line intro.
+---
+
+<div class="head">
+  <p class="label">Library</p>
+  <h1 id="library-h">Books we've read and reviewed</h1>
+  <p class="intro">Our reports on books that help make sense of uncertainty, doubt and the questions that stay open.</p>
+</div>
+
+<style>
+  .head { display: flex; flex-direction: column; gap: 19px; max-width: 760px; margin-bottom: clamp(36px, 4vw, 56px); }
+  .head .label { color: var(--sage-text); --bracket: var(--sage); }
+  h1 { font-size: clamp(32px, 3.6vw, 52px); line-height: 1.08; letter-spacing: -0.02em; color: var(--navy); }
+  .intro { font-size: 18px; line-height: 1.6; color: var(--body); }
+</style>

@@ -1,0 +1,30 @@
+---
+import Component from '../../components/LibraryCard.astro';
+import '../../styles/global.css';
+import { getCollection } from 'astro:content';
+import { publishedEntries } from '@codeyam/cms/content';
+import { sortByOrder } from '../../lib/contentOrder';
+const books = sortByOrder(publishedEntries(await getCollection('library')));
+
+// Isolation page for LibraryCard — codeyam screenshots the #codeyam-capture wrapper by
+// navigating to /isolated-components/LibraryCard. Every seeded book as a card at the
+// home-band width (220px), so a book without a cover shows its salmon title card.
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Isolated: LibraryCard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap" />
+  </head>
+  <body style="margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+    <div id="codeyam-capture" style="padding: 48px;">
+      <div style="display: grid; grid-template-columns: repeat(2, 220px); gap: 40px;">
+        {books.map((b) => <Component id={b.id} book={b.data} />)}
+      </div>
+    </div>
+  </body>
+</html>

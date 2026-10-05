@@ -1,0 +1,15 @@
+{
+  "name": "LibraryHeader - Default",
+  "id": "1237f199-6608-4e82-b6bc-59aef5ec6426",
+  "url": "/isolated-components/LibraryHeader",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "seed": {
+    "command": "npx tsx .codeyam/seed-adapter.ts .codeyam/seeds/home-full.json"
+  },
+  "componentName": "LibraryHeader",
+  "scenarioType": "component",
+  "description": "The Library page heading: sage bracket Library label, the Books we've read and reviewed title and the one-line intro."
+}

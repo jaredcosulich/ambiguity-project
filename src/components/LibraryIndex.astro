@@ -1,0 +1,23 @@
+---
+// The Library page body: heading, then the cover grid, or a short "on the
+// way" note while no review is published.
+import type { CollectionEntry } from 'astro:content';
+import LibraryHeader from './LibraryHeader.astro';
+import LibraryGrid from './LibraryGrid.astro';
+import LibraryEmpty from './LibraryEmpty.astro';
+
+interface Props {
+  books: CollectionEntry<'library'>[];
+}
+
+const { books } = Astro.props;
+---
+
+<section class="library wrap" aria-labelledby="library-h">
+  <LibraryHeader />
+  {books.length === 0 ? <LibraryEmpty /> : <LibraryGrid books={books} />}
+</section>
+
+<style>
+  .library { padding-block: var(--section-y); }
+</style>
