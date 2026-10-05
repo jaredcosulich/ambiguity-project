@@ -88,6 +88,16 @@
       "status": "written",
       "planSlug": "cover-the-mission-line-s-prefix-suffix-and-single-word-states",
       "proposedAt": "2026-10-04T20:26:55.268668606+00:00"
+    },
+    {
+      "id": "stop-pages-flashing-404-when-scenario-content-loads",
+      "title": "Stop pages flashing 404 when scenario content loads",
+      "mode": "backend",
+      "body": "## Summary\n\nLoading a scenario's sample content briefly breaks pages in the dev server. The seed adapter (`.codeyam/seed-adapter.ts`) deletes every markdown file in a collection folder and then rewrites them all, even when the content is unchanged. Astro's content watcher sees the deletions first, so for up to a second after a scenario loads, pages built from that collection (e.g. `/library/<slug>`) return 404. This session hit it repeatedly: the batch error check reported two book pages as broken, a direct capture returned HTTP 404, and registration had to wait and retry.\n\n## Key Decisions\n\n- Write first, prune after: write each entry's file, skip writing when the bytes already match, then delete only files whose slug is no longer in the seed. Unchanged scenarios then produce no file events at all, and changed ones never pass through an empty folder.\n- Keep the adapter's wire shape and singleton handling unchanged.\n\n## Implementation\n\n**File**: `.codeyam/seed-adapter.ts`\n- Replace `clearCollectionDir` + write loop in `writeSeed` with: compute the target `{fileName: contents}` map via `entryToFile`; for each, write only if the existing file differs; then remove `.md`/`.mdx` files not in the map.\n- Add unit tests beside the adapter (or in its existing test file) for: unchanged seed writes nothing, a removed entry is deleted, a changed entry is rewritten, and an empty seed empties the folder.\n\n**Verify**: switch between the Library scenarios in the preview and run the impacted error check; the book page scenarios should pass in one batch without a 404.",
+      "reason": "Loading sample content deletes and rewrites every file, so book pages briefly 404 and checks fail for no real reason.",
+      "source": "session-review",
+      "status": "pending",
+      "proposedAt": "2026-10-05T00:26:01.506043888+00:00"
     }
   ]
 }
