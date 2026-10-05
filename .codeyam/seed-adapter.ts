@@ -3,8 +3,8 @@
  *
  * For static sites whose "data" is a set of typed markdown files under
  * `src/content/<collection>/` rather than a runtime database. Each scenario
- * seeds a *set of content files*: this adapter clears every managed collection
- * directory and rewrites it from the seed payload, one markdown file per entry
+ * seeds a *set of content files*: this adapter syncs every managed collection
+ * directory to the seed payload, one markdown file per entry
  * (frontmatter from the entry's scalar fields, body from its `body`/`content`).
  *
  * Usage: npx tsx .codeyam/seed-adapter.ts <path-to-seed-data.json>
@@ -189,14 +189,22 @@ export function entryToFile(
   return { fileName: `${stem}.md`, contents: `${frontmatter}${markdownBody}\n` };
 }
 
-/** Remove every `.md`/`.mdx` file in a collection directory, then recreate it. */
-function clearCollectionDir(dir: string): void {
-  if (fs.existsSync(dir)) {
-    for (const name of fs.readdirSync(dir)) {
-      if (/\.mdx?$/.test(name)) fs.rmSync(path.join(dir, name));
-    }
-  } else {
-    fs.mkdirSync(dir, { recursive: true });
+/**
+ * Make a collection directory hold exactly `files` (`fileName → contents`).
+ * Writes first, skipping files whose bytes already match, then prunes any
+ * `.md`/`.mdx` file not in `files`. The folder never passes through an empty
+ * state, so Astro's content watcher never sees a page vanish mid-switch, and an
+ * unchanged seed touches nothing.
+ */
+export function syncCollectionDir(dir: string, files: Map<string, string>): void {
+  fs.mkdirSync(dir, { recursive: true });
+  for (const [fileName, contents] of files) {
+    const filePath = path.join(dir, fileName);
+    const existing = fs.existsSync(filePath) ? fs.readFileSync(filePath, 'utf-8') : null;
+    if (existing !== contents) fs.writeFileSync(filePath, contents);
+  }
+  for (const name of fs.readdirSync(dir)) {
+    if (/\.mdx?$/.test(name) && !files.has(name)) fs.rmSync(path.join(dir, name));
   }
 }
 
@@ -212,8 +220,8 @@ function writeSingleton(dataRoot: string, name: string, value: Record<string, un
 
 /**
  * Write a whole seed to disk, returning per-key written counts. Array-valued
- * keys are folder collections (one markdown file per entry, directory cleared
- * first so a scenario fully replaces prior content); object-valued keys are
+ * keys are folder collections (one markdown file per entry, directory synced so
+ * a scenario fully replaces prior content without emptying it); object-valued keys are
  * singletons written as `<dataRoot>/<key>.json` (count 1). `dataRoot` defaults
  * to the `data` sibling of `contentRoot` (`src/data` for `src/content`).
  */
@@ -226,13 +234,13 @@ export function writeSeed(
   for (const [key, value] of Object.entries(seed)) {
     if (key === '_auth') continue;
     if (Array.isArray(value)) {
-      const dir = path.join(contentRoot, key);
-      clearCollectionDir(dir);
+      const files = new Map<string, string>();
       value.forEach((raw, index) => {
         const entry = raw && typeof raw === 'object' ? (raw as Record<string, unknown>) : {};
         const { fileName, contents } = entryToFile(entry, index);
-        fs.writeFileSync(path.join(dir, fileName), contents);
+        files.set(fileName, contents);
       });
+      syncCollectionDir(path.join(contentRoot, key), files);
       counts[key] = value.length;
     } else if (value && typeof value === 'object') {
       writeSingleton(dataRoot, key, value as Record<string, unknown>);

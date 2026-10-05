@@ -1,0 +1,89 @@
+{
+  "timestamp": "2026-10-05T00:33:33Z",
+  "title": "Stop pages flashing 404 when scenario content loads",
+  "type": "fix",
+  "userRequest": "## Summary\n\nLoading a scenario's sample content briefly breaks pages in the dev server. The seed adapter (`.codeyam/seed-adapter.ts`) deletes every markdown file in a collection folder and then rewrites them all, even when the content is unchanged. Astro's content watcher sees the deletions first, so for up to a second after a scenario loads, pages built from that collection (e.g. `/library/<slug>`) return 404. This session hit it repeatedly: the batch error check reported two book pages as broken, a direct capture returned HTTP 404, and registration had to wait and retry.\n\n## Key Decisions\n\n- Write first, prune after: write each entry's file, skip writing when the bytes already match, then delete only files whose slug is no longer in the seed. Unchanged scenarios then produce no file events at all, and changed ones never pass through an empty folder.\n- Keep the adapter's wire shape and singleton handling unchanged.\n\n## Implementation\n\n**File**: `.codeyam/seed-adapter.ts`\n- Replace `clearCollectionDir` + write loop in `writeSeed` with: compute the target `{fileName: contents}` map via `entryToFile`; for each, write only if the existing file differs; then remove `.md`/`.mdx` files not in the map.\n- Add unit tests beside the adapter (or in its existing test file) for: unchanged seed writes nothing, a removed entry is deleted, a changed entry is rewritten, and an empty seed empties the folder.\n\n**Verify**: switch between the Library scenarios in the preview and run the impacted error check; the book page scenarios should pass in one batch without a 404.",
+  "description": "The seed adapter no longer clears a collection folder before rewriting it. writeSeed builds the target file set, writes only files whose bytes differ, then prunes .md/.mdx files no longer in the seed, so Astro's content watcher never sees book pages vanish during a scenario switch. 7 new vitest cases in src/lib/seedAdapter.test.ts; red-if-reverted was agent-attested by hand (neutered skip-unchanged guard, 2 tests failed) because prove-red cannot scope .codeyam/. Scope verdict: this is dev-tooling reliability work; it delivers none of the five project deliverables and defers none — all deliverables are unchanged by this cycle.",
+  "modifiedFiles": [
+    {
+      "path": ".codeyam/dependency-graph.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/glossary.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/per-test-evidence.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/plans/stop-pages-flashing-404-when-scenario-content-loads.md\t.codeyam/plans/completed/stop-pages-flashing-404-when-scenario-content-loads.md",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/seed-adapter.ts",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/all.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/28dc8ec77ecb1f7b41ef5e0dcbdefcc7e8b92dd0cf4b477d7ce2f4ac81d6124f.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/43a02653377721fdaca8fe427860c5eae6391dc4a31393d3e30fbbf8eeed79c5.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-registry.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/state/red-proofs/stop-pages-flashing-404-when-scenario-content-loads.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/761690653b7f7396cd4af2f04a64376fa53e1d1a160cb6e0b31d6db549a3d4b9.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/8d446e5e2a8bf673c404a8b022fca46c6bb0f241702b09d904e75bffae9bfb56.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/95c606569bb3f75aabc528f491633ebf8015e885856d4871407c3f0c21514e46.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/b6de62847e5f8e87d738207849539b0e40484cfb1f58070d5e453029c3647319.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/d6d173e7ec457165d4ebca0c7edf0d46a1f2788b2690f8a55750f880352c3220.json",
+      "status": "added"
+    },
+    {
+      "path": "src/lib/seedAdapter.test.ts",
+      "status": "added"
+    }
+  ],
+  "testResults": {
+    "total": 7,
+    "passed": 7,
+    "failed": 0,
+    "runners": [
+      {
+        "name": "tests",
+        "total": 7,
+        "passed": 7
+      }
+    ]
+  }
+}

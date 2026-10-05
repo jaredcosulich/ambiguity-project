@@ -1,0 +1,44 @@
+{
+  "provenAt": "2026-10-05T00:30:33Z",
+  "slug": "stop-pages-flashing-404-when-scenario-content-loads",
+  "paths": [],
+  "runScope": [
+    ".codeyam/seed-adapter.ts"
+  ],
+  "neuters": [
+    {
+      "file": ".codeyam/seed-adapter.ts",
+      "find": "if (existing !== contents) fs.writeFileSync",
+      "replace": "if (existing !== null || true) fs.writeFileSync"
+    }
+  ],
+  "tests": {
+    "deletes only the entries no longer in the seed": {
+      "withoutFix": "missing",
+      "withFix": "missing",
+      "established": {
+        "kind": "attestedByHand",
+        "method": "Neutered the skip-unchanged guard in .codeyam/seed-adapter.ts syncCollectionDir (existing !== contents -> existing !== null || true) via Edit, ran refresh-tests --file src/lib/seedAdapter.test.ts, then restored. prove-red itself reported selected-nothing because no runner scope covers .codeyam/.",
+        "evidence": "Neutered run: 2 failed / 5 passed, the two named tests failed (refresh-tests runId 18ca6de2-b7d7-4b98-9d70-b44021880b65). Restored run: 7/7 passed."
+      }
+    },
+    "leaves files untouched when the seed is unchanged": {
+      "withoutFix": "missing",
+      "withFix": "missing",
+      "established": {
+        "kind": "attestedByHand",
+        "method": "Neutered the skip-unchanged guard in .codeyam/seed-adapter.ts syncCollectionDir (existing !== contents -> existing !== null || true) via Edit, ran refresh-tests --file src/lib/seedAdapter.test.ts, then restored. prove-red itself reported selected-nothing because no runner scope covers .codeyam/.",
+        "evidence": "Neutered run: 2 failed / 5 passed, the two named tests failed (refresh-tests runId 18ca6de2-b7d7-4b98-9d70-b44021880b65). Restored run: 7/7 passed."
+      }
+    }
+  },
+  "proof": {
+    "verdict": "provenByHand",
+    "attested": [
+      "leaves files untouched when the seed is unchanged",
+      "deletes only the entries no longer in the seed"
+    ],
+    "method": "Neutered the skip-unchanged guard in .codeyam/seed-adapter.ts syncCollectionDir (existing !== contents -> existing !== null || true) via Edit, ran refresh-tests --file src/lib/seedAdapter.test.ts, then restored. prove-red itself reported selected-nothing because no runner scope covers .codeyam/.",
+    "evidence": "Neutered run: 2 failed / 5 passed, the two named tests failed (refresh-tests runId 18ca6de2-b7d7-4b98-9d70-b44021880b65). Restored run: 7/7 passed."
+  }
+}

@@ -1163,6 +1163,24 @@
       "pass|changed|2026-10-04T18:05:58.106Z"
     ]
   },
+  "syncCollectionDir › never removes a file that stays in the target set": {
+    "file": "src/lib/seedAdapter.test.ts",
+    "lastRunAt": "2026-10-05T00:31:03.044Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-10-05T00:31:03.044Z"
+    ]
+  },
+  "syncCollectionDir › prunes stale markdown but keeps non-markdown files": {
+    "file": "src/lib/seedAdapter.test.ts",
+    "lastRunAt": "2026-10-05T00:31:03.044Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-10-05T00:31:03.044Z"
+    ]
+  },
   "toNavLinks › keeps external urls untouched": {
     "file": "src/lib/navLinks.test.ts",
     "lastRunAt": "2026-10-05T00:24:30.172Z",
@@ -1709,6 +1727,51 @@
       "pass|changed|2026-10-04T18:46:57.891Z",
       "pass|full|2026-10-04T16:03:25.795Z",
       "pass|full|2026-10-04T16:00:53.884Z"
+    ]
+  },
+  "writeSeed collection sync › creates a missing collection folder": {
+    "file": "src/lib/seedAdapter.test.ts",
+    "lastRunAt": "2026-10-05T00:31:03.044Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-10-05T00:31:03.044Z"
+    ]
+  },
+  "writeSeed collection sync › deletes only the entries no longer in the seed": {
+    "file": "src/lib/seedAdapter.test.ts",
+    "lastRunAt": "2026-10-05T00:31:03.044Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-10-05T00:31:03.044Z"
+    ]
+  },
+  "writeSeed collection sync › empties the folder for an empty collection": {
+    "file": "src/lib/seedAdapter.test.ts",
+    "lastRunAt": "2026-10-05T00:31:03.044Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-10-05T00:31:03.044Z"
+    ]
+  },
+  "writeSeed collection sync › leaves files untouched when the seed is unchanged": {
+    "file": "src/lib/seedAdapter.test.ts",
+    "lastRunAt": "2026-10-05T00:31:03.044Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-10-05T00:31:03.044Z"
+    ]
+  },
+  "writeSeed collection sync › rewrites an entry whose contents changed": {
+    "file": "src/lib/seedAdapter.test.ts",
+    "lastRunAt": "2026-10-05T00:31:03.044Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-10-05T00:31:03.044Z"
     ]
   }
 }

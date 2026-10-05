@@ -669,6 +669,15 @@
     "testFile": "src/lib/contentOrder.test.ts"
   },
   {
+    "description": "Makes a content collection folder hold exactly a given set of markdown files: writes only files whose contents changed, then prunes stale .md/.mdx files, so the folder never passes through an empty state during a scenario switch.",
+    "filePath": ".codeyam/seed-adapter.ts",
+    "name": "syncCollectionDir",
+    "tags": [
+      "seed-adapter"
+    ],
+    "testFile": "src/lib/seedAdapter.test.ts"
+  },
+  {
     "description": "Read a feed field as trimmed, entity-decoded text whether the parser returned a plain value or a node with #text; missing fields read as an empty string.",
     "filePath": "src/lib/substack.ts",
     "name": "text",
@@ -731,5 +740,14 @@
       "site-shell"
     ],
     "testFile": "src/lib/base.test.ts"
+  },
+  {
+    "description": "Writes a whole scenario seed to disk: array keys become synced markdown collections, object keys become singleton JSON data files; returns per-key counts.",
+    "filePath": ".codeyam/seed-adapter.ts",
+    "name": "writeSeed",
+    "tags": [
+      "seed-adapter"
+    ],
+    "testFile": "src/lib/seedAdapter.test.ts"
   }
 ]

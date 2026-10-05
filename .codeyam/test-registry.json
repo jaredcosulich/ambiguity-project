@@ -694,6 +694,24 @@
       "runner": "tests"
     },
     {
+      "description": "Files are written before stale ones are pruned, so a kept slug is never absent from the folder at any point during the sync.",
+      "file": "src/lib/seedAdapter.test.ts",
+      "format": "vitest",
+      "key": "syncCollectionDir › never removes a file that stays in the target set",
+      "line": 106,
+      "registeredAt": "2026-10-05T00:30:48Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Only markdown is managed: other files in the folder (images, notes) survive.",
+      "file": "src/lib/seedAdapter.test.ts",
+      "format": "vitest",
+      "key": "syncCollectionDir › prunes stale markdown but keeps non-markdown files",
+      "line": 90,
+      "registeredAt": "2026-10-05T00:30:48Z",
+      "runner": "tests"
+    },
+    {
       "description": "External links pass through unchanged so a nav item can point off-site.",
       "file": "src/lib/navLinks.test.ts",
       "format": "vitest",
@@ -979,6 +997,51 @@
       "key": "withBase › tolerates a base without a trailing slash",
       "line": 29,
       "registeredAt": "2026-10-04T15:41:21.363853072+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "A collection folder that does not exist yet is created on first seed.",
+      "file": "src/lib/seedAdapter.test.ts",
+      "format": "vitest",
+      "key": "writeSeed collection sync › creates a missing collection folder",
+      "line": 79,
+      "registeredAt": "2026-10-05T00:30:48Z",
+      "runner": "tests"
+    },
+    {
+      "description": "An entry dropped from the seed must disappear from disk so a scenario fully replaces the prior one, while surviving entries stay in place.",
+      "file": "src/lib/seedAdapter.test.ts",
+      "format": "vitest",
+      "key": "writeSeed collection sync › deletes only the entries no longer in the seed",
+      "line": 43,
+      "registeredAt": "2026-10-05T00:30:48Z",
+      "runner": "tests"
+    },
+    {
+      "description": "An empty collection in the seed must leave an empty folder, not stale files.",
+      "file": "src/lib/seedAdapter.test.ts",
+      "format": "vitest",
+      "key": "writeSeed collection sync › empties the folder for an empty collection",
+      "line": 68,
+      "registeredAt": "2026-10-05T00:30:48Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Re-seeding identical content must not touch any file: a rewrite is a file event Astro's watcher reacts to, and that churn is what flashed pages 404.",
+      "file": "src/lib/seedAdapter.test.ts",
+      "format": "vitest",
+      "key": "writeSeed collection sync › leaves files untouched when the seed is unchanged",
+      "line": 28,
+      "registeredAt": "2026-10-05T00:30:48Z",
+      "runner": "tests"
+    },
+    {
+      "description": "A changed entry must be rewritten with its new contents.",
+      "file": "src/lib/seedAdapter.test.ts",
+      "format": "vitest",
+      "key": "writeSeed collection sync › rewrites an entry whose contents changed",
+      "line": 56,
+      "registeredAt": "2026-10-05T00:30:48Z",
       "runner": "tests"
     }
   ],
